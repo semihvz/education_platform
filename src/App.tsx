@@ -1,0 +1,304 @@
+import { useState, useEffect } from 'react';
+import { Header } from './components/Header';
+import { TopicSelector } from './components/TopicSelector';
+import { QuestionCard } from './components/QuestionCard';
+import { ExplanationCard } from './components/ExplanationCard';
+import { EmbeddedQuestionBankView } from './components/EmbeddedQuestionBankView';
+import { FlashcardTopicSelector } from './components/FlashcardTopicSelector';
+import { FlashcardDeckView } from './components/FlashcardDeckView';
+import { SettingsModal } from './components/SettingsModal';
+import { SavedQuestionsModal } from './components/SavedQuestionsModal';
+import { StatsDashboard } from './components/StatsDashboard';
+
+import type { Question, Difficulty, AppSettings, UserStats, SavedQuestionItem, Flashcard, SavedFlashcardItem } from './types/quiz';
+import { generateQuestionFromAI, generateFlashcardsFromAI, getPreloadedQuestions } from './services/aiService';
+import { 
+  loadSettings, 
+  saveSettings, 
+  loadUserStats, 
+  recordAnswerResult, 
+  loadSavedQuestionsFromDB, 
+  toggleSaveQuestionToDB,
+  loadSavedFlashcardsFromDB,
+  toggleSaveFlashcardToDB
+} from './services/storageService';
+import { audioService } from './services/audioService';
+
+export function App() {
+  const [settings, setSettings] = useState<AppSettings>(loadSettings);
+  const [stats, setStats] = useState<UserStats>(loadUserStats);
+  const [savedQuestions, setSavedQuestions] = useState<SavedQuestionItem[]>([]);
+  const [savedFlashcards, setSavedFlashcards] = useState<SavedFlashcardItem[]>([]);
+
+  // 3 Modes: 'ai-quiz' | 'embedded-bank' | 'flashcards'
+  const [activeMode, setActiveMode] = useState<'ai-quiz' | 'embedded-bank' | 'flashcards'>('ai-quiz');
+
+  // AI Quiz State
+  const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
+  const [userAnswerId, setUserAnswerId] = useState<string | null>(null);
+
+  // Embedded Question Bank State
+  const [embeddedQuestions] = useState<Question[]>(() => getPreloadedQuestions());
+  
+  // Flashcards State
+  const [currentDeck, setCurrentDeck] = useState<Flashcard[] | null>(null);
+
+  const [isLoadingAI, setIsLoadingAI] = useState<boolean>(false);
+  const [saveToast, setSaveToast] = useState<string | null>(null);
+
+  // Modals
+  const [showSettings, setShowSettings] = useState<boolean>(false);
+  const [showBookmarks, setShowBookmarks] = useState<boolean>(false);
+  const [showStats, setShowStats] = useState<boolean>(false);
+
+  // Sync theme attribute & load DB saved items
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', settings.theme);
+    loadSavedQuestionsFromDB().then((items) => setSavedQuestions(items));
+    loadSavedFlashcardsFromDB().then((items) => setSavedFlashcards(items));
+  }, [settings.theme]);
+
+  // Generate new AI Question
+  const handleGenerateQuestion = async (topic: string, difficulty: Difficulty) => {
+    audioService.playClickSound(settings.soundEnabled);
+    setIsLoadingAI(true);
+    setUserAnswerId(null);
+    setCurrentQuestion(null);
+
+    try {
+      const question = await generateQuestionFromAI(
+        topic, 
+        difficulty, 
+        settings.apiKey, 
+        settings.selectedModel
+      );
+      setCurrentQuestion(question);
+    } catch (e) {
+      console.error('Error generating AI question:', e);
+    } finally {
+      setIsLoadingAI(false);
+    }
+  };
+
+  // Generate new AI Flashcard Deck
+  const handleGenerateFlashcardDeck = async (topic: string) => {
+    audioService.playClickSound(settings.soundEnabled);
+    setIsLoadingAI(true);
+    setCurrentDeck(null);
+
+    try {
+      const deck = await generateFlashcardsFromAI(
+        topic,
+        5,
+        settings.apiKey,
+        settings.selectedModel
+      );
+      setCurrentDeck(deck);
+    } catch (e) {
+      console.error('Error generating flashcard deck:', e);
+    } finally {
+      setIsLoadingAI(false);
+    }
+  };
+
+  // Handle user submitting answer in Quiz mode
+  const handleAnswerSubmit = (question: Question, optionId: string) => {
+    const isCorrect = optionId === question.correctOptionId;
+
+    if (isCorrect) {
+      audioService.playCorrectSound(settings.soundEnabled);
+      audioService.triggerHaptic('success');
+    } else {
+      audioService.playIncorrectSound(settings.soundEnabled);
+      audioService.triggerHaptic('warning');
+    }
+
+    const updatedStats = recordAnswerResult(question.topic, isCorrect);
+    setStats(updatedStats);
+  };
+
+  // DB Save / Bookmark toggle for Questions
+  const handleToggleSaveQuestion = async (q: Question, ansId: string) => {
+    const isCorrect = ansId === q.correctOptionId;
+
+    const item: SavedQuestionItem = {
+      question: q,
+      userAnswerId: ansId,
+      savedAt: Date.now(),
+      wasCorrect: isCorrect
+    };
+
+    const { isSaved, updatedList } = await toggleSaveQuestionToDB(item);
+    setSavedQuestions(updatedList);
+
+    setSaveToast(isSaved ? 'Soru veritabanına kaydedildi! 💾' : 'Soru kütüphaneden çıkarıldı.');
+    setTimeout(() => setSaveToast(null), 2500);
+  };
+
+  // DB Save / Bookmark toggle for Flashcards
+  const handleToggleSaveFlashcard = async (card: Flashcard) => {
+    const { isSaved, updatedList } = await toggleSaveFlashcardToDB(card);
+    setSavedFlashcards(updatedList);
+
+    setSaveToast(isSaved ? 'Çalışma kartı veritabanına kaydedildi! 🎴' : 'Kart kütüphaneden çıkarıldı.');
+    setTimeout(() => setSaveToast(null), 2500);
+  };
+
+  const isCurrentQuestionSaved = (qId: string) => {
+    return savedQuestions.some(item => item.question.id === qId);
+  };
+
+  const isFlashcardSaved = (cardId: string) => {
+    return savedFlashcards.some(item => item.card.id === cardId);
+  };
+
+  const handleUpdateSettings = (newSettings: AppSettings) => {
+    setSettings(newSettings);
+    saveSettings(newSettings);
+  };
+
+  const handleReviewSavedQuestion = (item: SavedQuestionItem) => {
+    setActiveMode('ai-quiz');
+    setCurrentQuestion(item.question);
+    setUserAnswerId(item.userAnswerId);
+  };
+
+  const handleRemoveSavedQuestionItem = async (item: SavedQuestionItem) => {
+    const { updatedList } = await toggleSaveQuestionToDB(item);
+    setSavedQuestions(updatedList);
+  };
+
+  const handleRemoveSavedFlashcardItem = async (item: SavedFlashcardItem) => {
+    const { updatedList } = await toggleSaveFlashcardToDB(item.card);
+    setSavedFlashcards(updatedList);
+  };
+
+  return (
+    <div className="app-root">
+      <Header
+        stats={stats}
+        settings={settings}
+        activeMode={activeMode}
+        onSwitchMode={(mode) => {
+          audioService.playClickSound(settings.soundEnabled);
+          setActiveMode(mode);
+        }}
+        onUpdateSettings={handleUpdateSettings}
+        onOpenSettings={() => setShowSettings(true)}
+        onOpenBookmarks={() => setShowBookmarks(true)}
+        onOpenStats={() => setShowStats(true)}
+      />
+
+      {/* Database Save Notification Toast */}
+      {saveToast && (
+        <div className="toast-notification">
+          <span>{saveToast}</span>
+        </div>
+      )}
+
+      <main className="main-container">
+        {/* 1. ALAN: AI ILE SORU URET (DYANMIC GENERATOR) */}
+        {activeMode === 'ai-quiz' && (
+          <>
+            {!currentQuestion && (
+              <TopicSelector
+                onGenerate={handleGenerateQuestion}
+                isLoading={isLoadingAI}
+              />
+            )}
+
+            {currentQuestion && (
+              <div className="active-quiz-view">
+                <QuestionCard
+                  question={currentQuestion}
+                  onAnswerSubmit={(optId) => {
+                    setUserAnswerId(optId);
+                    handleAnswerSubmit(currentQuestion, optId);
+                  }}
+                  answeredOptionId={userAnswerId}
+                />
+
+                {userAnswerId !== null && (
+                  <ExplanationCard
+                    question={currentQuestion}
+                    userAnswerId={userAnswerId}
+                    isSaved={isCurrentQuestionSaved(currentQuestion.id)}
+                    onToggleSave={() => handleToggleSaveQuestion(currentQuestion, userAnswerId)}
+                    onNextQuestion={() => {
+                      if (currentQuestion) {
+                        handleGenerateQuestion(currentQuestion.topic, currentQuestion.difficulty);
+                      } else {
+                        setCurrentQuestion(null);
+                        setUserAnswerId(null);
+                      }
+                    }}
+                  />
+                )}
+              </div>
+            )}
+          </>
+        )}
+
+        {/* 2. ALAN: GOMULU SORULARI GOSTER / COZ (100 OXFORD SINAVI) */}
+        {activeMode === 'embedded-bank' && (
+          <EmbeddedQuestionBankView
+            questions={embeddedQuestions}
+            onAnswerSubmit={handleAnswerSubmit}
+            onSaveQuestion={handleToggleSaveQuestion}
+            isQuestionSaved={isCurrentQuestionSaved}
+          />
+        )}
+
+        {/* 3. ALAN: BILGI KARTLARI (FLASHCARD SYSTEM) */}
+        {activeMode === 'flashcards' && (
+          <>
+            {!currentDeck && (
+              <FlashcardTopicSelector
+                onGenerateDeck={handleGenerateFlashcardDeck}
+                isLoading={isLoadingAI}
+              />
+            )}
+
+            {currentDeck && (
+              <FlashcardDeckView
+                cards={currentDeck}
+                onSaveCard={handleToggleSaveFlashcard}
+                isCardSaved={isFlashcardSaved}
+                onNewDeckRequest={() => setCurrentDeck(null)}
+              />
+            )}
+          </>
+        )}
+      </main>
+
+      {/* Modals */}
+      {showSettings && (
+        <SettingsModal
+          settings={settings}
+          onSave={handleUpdateSettings}
+          onClose={() => setShowSettings(false)}
+        />
+      )}
+
+      {showBookmarks && (
+        <SavedQuestionsModal
+          questionItems={savedQuestions}
+          flashcardItems={savedFlashcards}
+          onRemoveQuestionItem={handleRemoveSavedQuestionItem}
+          onRemoveFlashcardItem={handleRemoveSavedFlashcardItem}
+          onSelectQuestionForReview={handleReviewSavedQuestion}
+          onClose={() => setShowBookmarks(false)}
+        />
+      )}
+
+      {showStats && (
+        <StatsDashboard
+          stats={stats}
+          onClose={() => setShowStats(false)}
+        />
+      )}
+    </div>
+  );
+}
+
+export default App;
