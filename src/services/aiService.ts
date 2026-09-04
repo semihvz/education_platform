@@ -1,55 +1,33 @@
 import { GoogleGenAI } from '@google/genai';
 import type { Question, Difficulty, Flashcard } from '../types/quiz';
 
-// Strict Option Balancing (Uniform Normal Distribution: A, B, C, D, E each 20%)
-let optionBalanceCounter = 0;
-const OPTION_CYCLE = ['A', 'B', 'C', 'D', 'E'];
+// Dynamic Random Option Shuffling Engine (Fisher-Yates)
+export function shuffleQuestionOptions(question: Question): Question {
+  const optsCopy = question.options.map(o => ({ ...o }));
 
-function enforceBalancedOptionsAndDifficulty(question: Question): Question {
-  const targetLabel = OPTION_CYCLE[optionBalanceCounter % 5];
-  optionBalanceCounter += 1;
+  // Fisher-Yates Shuffle
+  for (let i = optsCopy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [optsCopy[i], optsCopy[j]] = [optsCopy[j], optsCopy[i]];
+  }
 
-  const correctOpt = question.options.find(o => o.isCorrect) || question.options[0];
-  const incorrectOpts = question.options.filter(o => !o.isCorrect);
+  const labels = ['A', 'B', 'C', 'D', 'E'];
+  let newCorrectId = 'A';
 
-  const oldExplanations = question.explanation?.whyOthersIncorrect || {};
-
-  const incItems = incorrectOpts.map(o => ({
-    text: o.text,
-    expl: oldExplanations[o.id] || `${o.id} şıkkı bu soru için doğru değildir.`
-  }));
-
-  const newOptionsList: { id: string; text: string; isCorrect: boolean }[] = [];
-  const newWhyOthers: Record<string, string> = {};
-  let incIndex = 0;
-
-  OPTION_CYCLE.forEach((label) => {
-    if (label === targetLabel) {
-      newOptionsList.push({
-        id: label,
-        text: correctOpt.text,
-        isCorrect: true,
-      });
-    } else {
-      const item = incItems[incIndex++] || { text: 'Çeldirici Seçenek', expl: 'Hatalı seçenektir.' };
-      newOptionsList.push({
-        id: label,
-        text: item.text,
-        isCorrect: false,
-      });
-      newWhyOthers[label] = item.expl.replace(/^[A-E] şıkkı/, `${label} şıkkı`);
+  const newOptionsList = optsCopy.map((opt, idx) => {
+    const label = labels[idx];
+    if (opt.isCorrect || opt.id === question.correctOptionId) {
+      newCorrectId = label;
+      return { ...opt, id: label, isCorrect: true };
     }
+    return { ...opt, id: label, isCorrect: false };
   });
 
   return {
     ...question,
-    difficulty: 'advanced', // ALWAYS Advanced / İleri Seviye
+    difficulty: 'advanced',
     options: newOptionsList,
-    correctOptionId: targetLabel,
-    explanation: {
-      ...question.explanation,
-      whyOthersIncorrect: newWhyOthers
-    }
+    correctOptionId: newCorrectId,
   };
 }
 
@@ -9347,7 +9325,7 @@ ${refSamplePrompt}
         explanation: parsed.explanation,
         createdAt: Date.now(),
       };
-      return enforceBalancedOptionsAndDifficulty(q);
+      return shuffleQuestionOptions(q);
     } catch (err) {
       console.warn('Gemini API call error, falling back to smart dynamic generator:', err);
     }
@@ -9355,7 +9333,7 @@ ${refSamplePrompt}
 
   // Fallback / Demo Smart Dynamic Question Generator
   const rawQ = generateDynamicFallbackQuestion(topic, 'advanced');
-  return enforceBalancedOptionsAndDifficulty(rawQ);
+  return shuffleQuestionOptions(rawQ);
 }
 
 function generateDynamicFallbackQuestion(topic: string, _difficulty: Difficulty = 'advanced'): Question {

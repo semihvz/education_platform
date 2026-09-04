@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { BookOpen, ChevronLeft, ChevronRight, Database, Globe } from 'lucide-react';
 import type { Question } from '../types/quiz';
+import { shuffleQuestionOptions } from '../services/aiService';
 import { QuestionCard } from './QuestionCard';
 import { ExplanationCard } from './ExplanationCard';
 
@@ -31,7 +32,15 @@ export const EmbeddedQuestionBankView: React.FC<EmbeddedQuestionBankViewProps> =
     setCurrentIndex(0);
   };
 
-  if (!questions || questions.length === 0 || filteredQuestions.length === 0) {
+  const rawQ = filteredQuestions[currentIndex];
+  
+  // Dynamically shuffle options randomly on every view/render
+  const currentQ = useMemo(() => {
+    if (!rawQ) return null;
+    return shuffleQuestionOptions(rawQ);
+  }, [rawQ?.id, currentIndex, selectedTopic]);
+
+  if (!questions || questions.length === 0 || !currentQ) {
     return (
       <div className="embedded-empty-box">
         <BookOpen className="icon" />
@@ -41,7 +50,6 @@ export const EmbeddedQuestionBankView: React.FC<EmbeddedQuestionBankViewProps> =
     );
   }
 
-  const currentQ = filteredQuestions[currentIndex];
   const currentAnswer = userAnswers[currentQ.id] || null;
   const isSaved = isQuestionSaved(currentQ.id);
 
