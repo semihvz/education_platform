@@ -100,10 +100,10 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "explanation": {
             "whyCorrect": "DENSE_RANK() eşit değerlere aynı sırayı verir ve ardışık numaralandırmaya devam eder (1, 1, 2). RANK() ise eşit değerler sonrasında atlama yapar (1, 1, 3).",
             "whyOthersIncorrect": {
-                "B": "RANK atlama yapar, sıralama 1, 2, 3 olamaz.",
-                "C": "DENSE_RANK atlama yapmaz.",
-                "D": "Her iki fonksiyonun da davranışı yanlış verilmiştir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Window Functions - DENSE_RANK vs RANK",
             "keyTakeaway": "SQL İleri Seviye Soru #1 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -118,13 +118,13 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "LAG(satis_miktari, 1) OVER (ORDER BY ay)",
-                "isCorrect": true
+                "text": "LEAD(satis_miktari, 1) OVER (ORDER BY ay)",
+                "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "LEAD(satis_miktari, 1) OVER (ORDER BY ay)",
-                "isCorrect": false
+                "text": "LAG(satis_miktari, 1) OVER (ORDER BY ay)",
+                "isCorrect": true
             },
             {
                 "id": "C",
@@ -142,14 +142,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "LAG() fonksiyonu sıralı veri kümesinde mevcut satırdan önceki (offset) satırların değerini döndürmek için kullanılır.",
             "whyOthersIncorrect": {
-                "B": "LEAD() fonksiyonu sonraki satırların değerini alır.",
-                "C": "FIRST_VALUE() en ilk satırı alır.",
-                "D": "NTH_VALUE N. satırı alır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Window Functions - LAG & LEAD",
             "keyTakeaway": "SQL İleri Seviye Soru #2 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -164,18 +164,18 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Tablonun en başından mevcut satıra kadar olan kümülatif (yürüyen) toplamı",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Sadece bir önceki satır ile mevcut satırın toplamını",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "Tüm tablonun genel toplamını sabit olarak",
                 "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Tablonun en başından mevcut satıra kadar olan kümülatif (yürüyen) toplamı",
+                "isCorrect": true
             },
             {
                 "id": "D",
@@ -188,14 +188,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "UNBOUNDED PRECEDING en ilk satırdan başlar, CURRENT ROW ise mevcut satıra kadar olan satırları kapsayarak kümülatif toplam (running total) hesaplar.",
             "whyOthersIncorrect": {
-                "B": "Sadece bir önceki satır için '1 PRECEDING' kullanılır.",
-                "C": "Genel toplam için ORDER BY kaldırılmalıdır.",
-                "D": "Sonraki satırlar için 'FOLLOWING' kullanılır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Window Functions - Frame Specification",
             "keyTakeaway": "SQL İleri Seviye Soru #3 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -210,23 +210,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "UNION ALL",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "INTERSECT",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "EXCEPT",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "CROSS JOIN",
                 "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "UNION ALL",
+                "isCorrect": true
             },
             {
                 "id": "E",
@@ -234,14 +234,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "Recursive CTE yapısında Anchor Member (kök sorgu) ile Recursive Member (özyinelemeli sorgu) birbirine UNION ALL operatörü ile bağlanır.",
             "whyOthersIncorrect": {
-                "B": "INTERSECT kesişim alır.",
-                "C": "EXCEPT küme farkı alır.",
-                "D": "CROSS JOIN kartezyen çarpım yapar.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Recursive CTE - Özyinelemeli Sorgular",
             "keyTakeaway": "SQL İleri Seviye Soru #4 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -256,38 +256,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "FROM -> WHERE -> GROUP BY -> HAVING -> SELECT -> ORDER BY",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "FROM -> GROUP BY -> WHERE -> HAVING -> SELECT -> ORDER BY",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "WHERE -> FROM -> GROUP BY -> SELECT -> HAVING -> ORDER BY",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "D",
                 "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "FROM -> WHERE -> GROUP BY -> HAVING -> SELECT -> ORDER BY",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "SQL mantıksal sorgu işleme sırası: 1. FROM/JOIN, 2. WHERE, 3. GROUP BY, 4. HAVING, 5. SELECT, 6. ORDER BY, 7. LIMIT/OFFSET.",
             "whyOthersIncorrect": {
-                "B": "SELECT ifadesi görünüşte ilk sıradadır ancak mantıksal işlemede HAVING'den sonra çalışır.",
-                "C": "WHERE ifadesi GROUP BY'dan önce çalışmalıdır.",
-                "D": "FROM her zaman ilk adımdır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: SQL Execution Order - Sorgu Çalışma Sırası",
             "keyTakeaway": "SQL İleri Seviye Soru #5 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -330,10 +330,10 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "explanation": {
             "whyCorrect": "Phantom Read, bir transaction çalışırken başka bir transaction tarafından yeni satır eklenmesi (INSERT) veya silinmesi sonucu oluşan tutarsızlıktır.",
             "whyOthersIncorrect": {
-                "B": "Non-Repeatable Read mevcut bir satırın UPDATE edilmesiyle oluşur.",
-                "C": "Dirty Read uncommitted verinin okunmasıdır.",
-                "D": "Lost Update çakışan güncellemelerde veri kaybıdır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Transaction Isolation Levels - Phantom Read",
             "keyTakeaway": "SQL İleri Seviye Soru #6 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -348,13 +348,13 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "SERIALIZABLE",
-                "isCorrect": true
+                "text": "REPEATABLE READ",
+                "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "REPEATABLE READ",
-                "isCorrect": false
+                "text": "SERIALIZABLE",
+                "isCorrect": true
             },
             {
                 "id": "C",
@@ -372,14 +372,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "SERIALIZABLE en yüksek izolasyon seviyesidir; kilitler ve aralık kilitleri (range locks) kullanarak Phantom Read dahil tüm tutarsızlıkları önler.",
             "whyOthersIncorrect": {
-                "B": "REPEATABLE READ çoğu VTYS'de Dirty Read ve Non-repeatable Read'i önler ancak standartta Phantom Read'e izin verebilir.",
-                "C": "READ COMMITTED dirty read'i önler.",
-                "D": "READ UNCOMMITTED en düşük seviyedir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Transaction Isolation Levels - SERIALIZABLE",
             "keyTakeaway": "SQL İleri Seviye Soru #7 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -394,18 +394,18 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "GROUP BY ROLLUP(bolum_id, unvan)",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "GROUP BY CUBE(bolum_id, unvan)",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "GROUP BY bolum_id, unvan WITH CUBE",
                 "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "GROUP BY ROLLUP(bolum_id, unvan)",
+                "isCorrect": true
             },
             {
                 "id": "D",
@@ -418,14 +418,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "ROLLUP(A, B) ifadesi sırasıyla (A, B), (A) ve () hiyerarşik gruplamalarını üretir. Bu da belirtilen GROUPING SETS ile birebir aynıdır.",
             "whyOthersIncorrect": {
-                "B": "CUBE tüm kombinasyonları kapsar: (A,B), (A), (B), ().",
-                "C": "WITH CUBE eski sözdizimidir.",
-                "D": "GROUP BY UNION ALL geçerli SQL sözdizimi değildir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: GROUPING SETS - Çoklu Gruplama",
             "keyTakeaway": "SQL İleri Seviye Soru #8 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -440,23 +440,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "WHERE gruplamadan önce satırları filtreler, HAVING ise GROUP BY sonrasında gruplanmış özet verileri filtreler.",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "WHERE sadece sayısal alanlarda kullanılır, HAVING metinsel alanlarda kullanılır.",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "HAVING agregasyon fonksiyonları içeremez, WHERE içerebilir.",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "WHERE sorguyu hızlandırmaz, HAVING performansı artırır.",
                 "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "WHERE gruplamadan önce satırları filtreler, HAVING ise GROUP BY sonrasında gruplanmış özet verileri filtreler.",
+                "isCorrect": true
             },
             {
                 "id": "E",
@@ -464,14 +464,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "WHERE satır bazlı filtreleme yapar ve GROUP BY öncesi çalışır. HAVING ise gruplanmış sonuçlar üzerinde (SUM, AVG vb. içeren) filtreleme yapar.",
             "whyOthersIncorrect": {
-                "B": "Veri tipleri ile alakası yoktur.",
-                "C": "Tam tersine HAVING agregasyon (COUNT, SUM) içerebilir.",
-                "D": "İki tümce de amaca göre performans etkiler.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: HAVING vs WHERE Farkı",
             "keyTakeaway": "SQL İleri Seviye Soru #9 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -486,38 +486,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "'Python' ve NULL",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "'SQL' ve 10",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "NULL ve 0",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "'Python' ve 10",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "D",
                 "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "'Python' ve NULL",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "COALESCE verilen listedeki İLK NULL OLMAYAN değeri döndürür ('Python'). NULLIF(a, b) ise iki parametre eşitse NULL döndürür (10 = 10 olduğu için NULL).",
             "whyOthersIncorrect": {
-                "B": "NULLIF eşitlik durumunda NULL verir, 10 vermez.",
-                "C": "COALESCE ilk non-null olan 'Python'ı bulur.",
-                "D": "NULLIF sonucu 10 değildir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: COALESCE vs NULLIF",
             "keyTakeaway": "SQL İleri Seviye Soru #10 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -560,10 +560,10 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "explanation": {
             "whyCorrect": "Correlated Subquery dış sorgudaki tablonun takma adına (alias) bağımlıdır ve dış sorgunun her satırı için yürütülür.",
             "whyOthersIncorrect": {
-                "B": "Scalar subquery tek değer döndürür.",
-                "C": "Inline view FROM içinde yazılan alt sorgudur.",
-                "D": "CTE WITH ile tanımlanır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Correlated Subquery",
             "keyTakeaway": "SQL İleri Seviye Soru #11 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -578,13 +578,13 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "WHERE B.id IS NULL",
-                "isCorrect": true
+                "text": "WHERE B.id IS NOT NULL",
+                "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "WHERE B.id IS NOT NULL",
-                "isCorrect": false
+                "text": "WHERE B.id IS NULL",
+                "isCorrect": true
             },
             {
                 "id": "C",
@@ -602,14 +602,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "LEFT JOIN eşleşmeyen B satırlarına NULL atar. WHERE B.id IS NULL filtresiyle sadece B'de karşılığı olmayan (fark) satırlar elde edilir.",
             "whyOthersIncorrect": {
-                "B": "IS NOT NULL eşleşenleri filtreler.",
-                "C": "A.id = B.id INNER JOIN gibi davranır.",
-                "D": "NULL değer 0'a eşit değildir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: LEFT JOIN & NULL Check",
             "keyTakeaway": "SQL İleri Seviye Soru #12 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -624,18 +624,18 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "UNION mükerrer (duplicate) satırları eler ve sıralama yapar; UNION ALL elenmeden tüm satırları birleştirir ve daha hızlıdır.",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "UNION ALL mükerrer satırları eler, UNION elemez.",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "UNION iki tabloyu yan yana birleştirir, UNION ALL alt alta birleştirir.",
                 "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "UNION mükerrer (duplicate) satırları eler ve sıralama yapar; UNION ALL elenmeden tüm satırları birleştirir ve daha hızlıdır.",
+                "isCorrect": true
             },
             {
                 "id": "D",
@@ -648,14 +648,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "UNION tekil satırları bulmak için dahili DISTINCT (sort/hash) işlemi yapar. UNION ALL mükerrerleri elemediği için çok daha hızlıdır.",
             "whyOthersIncorrect": {
-                "B": "Tam tersidir.",
-                "C": "İkisi de dikey (alt alta) birleştirir.",
-                "D": "İkisi de bellek kullanır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: UNION vs UNION ALL",
             "keyTakeaway": "SQL İleri Seviye Soru #13 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -670,23 +670,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "WHERE UPPER(ad) = 'AHMET'",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "WHERE ad = 'Ahmet'",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "WHERE ad LIKE 'Ahmet%'",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "WHERE maas BETWEEN 3000 AND 5000",
                 "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "WHERE UPPER(ad) = 'AHMET'",
+                "isCorrect": true
             },
             {
                 "id": "E",
@@ -694,14 +694,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "İndeksli sütun bir fonksiyona (UPPER, LOWER, TO_CHAR vb.) sarıldığında klasik B-Tree indeksi pasif kalır (Full Table Scan yapılır). İndeksli alan saf tutulmalıdır.",
             "whyOthersIncorrect": {
-                "B": "Eşitlik aramaları B-Tree ile çok hızlıdır.",
-                "C": "Ön ek wildcard (LIKE 'text%') B-Tree kullanabilir.",
-                "D": "Range scan BETWEEN B-Tree ile desteklenir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: B-Tree Indexing",
             "keyTakeaway": "SQL İleri Seviye Soru #14 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -716,38 +716,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Index Seek ağaçta doğrudan aranan noktaya gider (hızlı); Index Scan tüm indeks yapısını baştan sona tarar.",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Index Scan tek bir satır okur, Index Seek tüm tabloyu okur.",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "Index Seek sadece Clustered indekslerde çalışır.",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "Index Scan sadece hafızada çalışır.",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "D",
                 "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Index Seek ağaçta doğrudan aranan noktaya gider (hızlı); Index Scan tüm indeks yapısını baştan sona tarar.",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "Index Seek nokta atışı (bipartite/tree navigation) arama yapar. Index Scan ise indeks yapısının tamamını okur.",
             "whyOthersIncorrect": {
-                "B": "Tam tersidir.",
-                "C": "Non-clustered indekslerde de Seek yapılabilir.",
-                "D": "Disk okuması da yapabilir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Index Seek vs Index Scan",
             "keyTakeaway": "SQL İleri Seviye Soru #15 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -790,10 +790,10 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "explanation": {
             "whyCorrect": "Bir verinin disk üzerinde sadece TEK BİR fiziksel sıralaması olabileceği için bir tabloda yalnızca 1 adet Clustered Index bulunabilir.",
             "whyOthersIncorrect": {
-                "B": "Lisans ile ilgisi yoktur.",
-                "C": "Primary Key harici sütunlara da Clustered yapılabilir.",
-                "D": "Birden fazla Non-Clustered indeks olabilir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Clustered vs Non-Clustered Index",
             "keyTakeaway": "SQL İleri Seviye Soru #16 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -808,13 +808,13 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "İşlem ya tamamen başarılı olur ya da hiç gerçekleşmemiş gibi tamamen geri alınır (All or Nothing).",
-                "isCorrect": true
+                "text": "Veritabanı her zaman bir tutarlı durumdan diğer tutarlı duruma geçer.",
+                "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "Veritabanı her zaman bir tutarlı durumdan diğer tutarlı duruma geçer.",
-                "isCorrect": false
+                "text": "İşlem ya tamamen başarılı olur ya da hiç gerçekleşmemiş gibi tamamen geri alınır (All or Nothing).",
+                "isCorrect": true
             },
             {
                 "id": "C",
@@ -832,14 +832,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "Atomicity (Hep ya da Hiç): Bir transaction içerisindeki tüm adımlar ya hep birlikte başarılı olur (COMMIT) ya da bir hata durumunda tüm adımlar geri alınır (ROLLBACK).",
             "whyOthersIncorrect": {
-                "B": "Bu Consistency tanımıdır.",
-                "C": "Bu Isolation tanımıdır.",
-                "D": "Bu Durability tanımıdır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: ACID - Atomicity",
             "keyTakeaway": "SQL İleri Seviye Soru #17 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -854,18 +854,18 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Eşzamanlı çalışan birden fazla transaction'ın birbirlerinin henüz tamamlanmamış verilerini görmesini ve etkilemesini kontrol eder.",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Verinin diske fiziksel olarak yazılmasını sağlar.",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "Veritabanı kısıtlamalarının (CHECK, FK) ihlal edilmemesini sağlar.",
                 "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Eşzamanlı çalışan birden fazla transaction'ın birbirlerinin henüz tamamlanmamış verilerini görmesini ve etkilemesini kontrol eder.",
+                "isCorrect": true
             },
             {
                 "id": "D",
@@ -878,14 +878,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "Yalıtım (Isolation), aynı anda yürütülen işlemlerin birbirinden bağımsız ve izole olmasını sağlar.",
             "whyOthersIncorrect": {
-                "B": "Durability tanımıdır.",
-                "C": "Consistency tanımıdır.",
-                "D": "Backup mekanizmasıdır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: ACID - Isolation",
             "keyTakeaway": "SQL İleri Seviye Soru #18 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -900,23 +900,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Recursive tümcede durdurma koşulu (WHERE adım < N veya parent_id IS NOT NULL) bulunmalıdır.",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "GROUP BY eklenmelidir.",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "ORDER BY eklenmelidir.",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "UNION ALL yerine UNION kullanılmalıdır.",
                 "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Recursive tümcede durdurma koşulu (WHERE adım < N veya parent_id IS NOT NULL) bulunmalıdır.",
+                "isCorrect": true
             },
             {
                 "id": "E",
@@ -924,14 +924,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "Recursive kısımda özyinelemeyi sonlandıracak mantıksal bir WHERE sınır koşulu veya MAXRECURSION seçeneği kullanılmalıdır.",
             "whyOthersIncorrect": {
-                "B": "GROUP BY döngüyü kesmez.",
-                "C": "ORDER BY sıralama yapar.",
-                "D": "UNION ALL yerine UNION kullanmak sadece mükerrerleri siler, döngüyü garanti kesmez.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Recursive CTE Terminating Condition",
             "keyTakeaway": "SQL İleri Seviye Soru #19 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -946,38 +946,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "EXISTS tercih edilmelidir; çünkü EXISTS NULL değerlerden etkilenmez ve ilk eşleşmede durur (Short-circuit).",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "IN tercih edilmelidir; çünkü IN NULL değerleri otomatik olarak sıfıra çevirir.",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "İkisi de tamamen aynı çalışır ve hiçbir performans farkı yoktur.",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "IN sadece sayısal verilerde çalışır.",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "D",
                 "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "EXISTS tercih edilmelidir; çünkü EXISTS NULL değerlerden etkilenmez ve ilk eşleşmede durur (Short-circuit).",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "NOT IN kullanımı alt sorgudaki tek bir NULL değer yüzünden tüm sonucu boş döndürebilir (Three-valued logic). EXISTS ise Boolean kontrol yapar ve ilk TRUE'da durur.",
             "whyOthersIncorrect": {
-                "B": "IN NULL değerleri sıfır yapmaz.",
-                "C": "Özellikle NOT IN ve NOT EXISTS arasında ciddi davranış farkı vardır.",
-                "D": "IN tüm tiplerde çalışır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: EXISTS vs IN",
             "keyTakeaway": "SQL İleri Seviye Soru #20 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -1020,10 +1020,10 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "explanation": {
             "whyCorrect": "CROSS JOIN kartezyen çarpım üretir. Sonuç satır sayısı A_satır × B_satır = 50 × 100 = 5000 olur.",
             "whyOthersIncorrect": {
-                "B": "150 toplam satır sayısıdır.",
-                "C": "100 B tablosunun satırıdır.",
-                "D": "50 A tablosunun satırıdır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: CROSS JOIN & Kartezyen Çarpım",
             "keyTakeaway": "SQL İleri Seviye Soru #21 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -1038,13 +1038,13 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Aynı tabloda yer alan çalışan-yönetici ilişkisi gibi hiyerarşik veya birbiriyle ilişkili satırları kıyaslamak için.",
-                "isCorrect": true
+                "text": "Tablodaki mükerrer sütunları silmek için.",
+                "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "Tablodaki mükerrer sütunları silmek için.",
-                "isCorrect": false
+                "text": "Aynı tabloda yer alan çalışan-yönetici ilişkisi gibi hiyerarşik veya birbiriyle ilişkili satırları kıyaslamak için.",
+                "isCorrect": true
             },
             {
                 "id": "C",
@@ -1062,14 +1062,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "SELF JOIN bir tablonun kendi satırları arasındaki ilişkileri (örneğin personel tablosundaki müdür_id ile personel_id ilişkisi) sorgulamak için kullanılır.",
             "whyOthersIncorrect": {
-                "B": "Mükerrer sütun silmez.",
-                "C": "Yedekleme yapmaz.",
-                "D": "İndeks yapılandırmaz.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: SELF JOIN Kullanım Amacı",
             "keyTakeaway": "SQL İleri Seviye Soru #22 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -1084,18 +1084,18 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Verileri puan sırasına göre 4 eşit gruba (çeyreklik/quartile) böler ve her satıra 1, 2, 3 veya 4 değerini atar.",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "İlk 4 satırı döndürür.",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "Her 4 satırda bir toplam alır.",
                 "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Verileri puan sırasına göre 4 eşit gruba (çeyreklik/quartile) böler ve her satıra 1, 2, 3 veya 4 değerini atar.",
+                "isCorrect": true
             },
             {
                 "id": "D",
@@ -1108,14 +1108,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "NTILE(n) sıralı veri kümesini belirtilen n adet eşit kovaya (bucket/quartile) bölerek her satıra kova numarasını verir.",
             "whyOthersIncorrect": {
-                "B": "İlk 4 satır için LIMIT / TOP kullanılır.",
-                "C": "Gruplama yapmaz.",
-                "D": "Matematiksel bölme yapmaz.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Window Function - NTILE(4)",
             "keyTakeaway": "SQL İleri Seviye Soru #23 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -1130,23 +1130,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Ana (Parent) tablodan bir satır silindiğinde, ona bağlı tüm alt (Child) tablodaki satırlar da otomatik olarak silinir.",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Ana tablodan satır silinmesi engellenir.",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "Alt tablodaki ilgili alanlara NULL değeri atanır.",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "Silinen satırlar çöp kutusuna taşınır.",
                 "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Ana (Parent) tablodan bir satır silindiğinde, ona bağlı tüm alt (Child) tablodaki satırlar da otomatik olarak silinir.",
+                "isCorrect": true
             },
             {
                 "id": "E",
@@ -1154,14 +1154,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "ON DELETE CASCADE ilkesi ana tablodaki silme işlemini ilişkili tüm detay satırlarına otomatik olarak yayarak siler.",
             "whyOthersIncorrect": {
-                "B": "Silmeyi engelleyen RESTRICT / NO ACTION seçeneğidir.",
-                "C": "NULL atayan ON DELETE SET NULL seçeneğidir.",
-                "D": "Çöp kutusu mekanizması yoktur.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: FOREIGN KEY CASCADE",
             "keyTakeaway": "SQL İleri Seviye Soru #24 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -1176,38 +1176,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Covering Index (Kapsayan İndeks)",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Clustered Index",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "Bitmap Index",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "Filtered Index",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "D",
                 "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Covering Index (Kapsayan İndeks)",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "Eğer bir sorgudaki SELECT, WHERE, JOIN ve ORDER BY sütunlarının tamamı indekste varsa buna Covering Index denir ve tabloya gitmeden (Index-Only Scan) yanıt döner.",
             "whyOthersIncorrect": {
-                "B": "Clustered index tablonun kendisidir.",
-                "C": "Bitmap indeks bit dizileri kullanır.",
-                "D": "Filtered index WHERE koşullu indekstir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Index - Covering Index",
             "keyTakeaway": "SQL İleri Seviye Soru #25 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -1250,10 +1250,10 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "explanation": {
             "whyCorrect": "Materialized View sorgunun çıktısını tablo gibi diskte tutar (fiziksel saklama). Bu sayede karmaşık sorgularda çok hızlıdır ancak REFRESH edilmelidir.",
             "whyOthersIncorrect": {
-                "B": "Tam tersidir.",
-                "C": "Oracle, PostgreSQL, SQL Server (Indexed View) gibi birçok VTYS'de vardır.",
-                "D": "Materialized View üzerine indeks oluşturulabilir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Materialized View vs Normal View",
             "keyTakeaway": "SQL İleri Seviye Soru #26 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -1268,13 +1268,13 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Çünkü SQL üç değerli mantık (Three-valued logic) kullanır ve NULL bilinmeyen bir değer olduğu için eşitlik IS NULL ile kontrol edilmelidir.",
-                "isCorrect": true
+                "text": "Çünkü NULL sadece 0 sayısal değerine eşittir.",
+                "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "Çünkü NULL sadece 0 sayısal değerine eşittir.",
-                "isCorrect": false
+                "text": "Çünkü SQL üç değerli mantık (Three-valued logic) kullanır ve NULL bilinmeyen bir değer olduğu için eşitlik IS NULL ile kontrol edilmelidir.",
+                "isCorrect": true
             },
             {
                 "id": "C",
@@ -1292,14 +1292,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "SQL'de NULL ile yapılan tüm mantıksal karşılaştırmalar (`=`, `<>`, `<`) UNKNOWN döner. Bir değerin NULL olup olmadığını test etmek için `IS NULL` veya `IS NOT NULL` kullanılmalıdır.",
             "whyOthersIncorrect": {
-                "B": "NULL 0'a eşit değildir.",
-                "C": "WHERE metinlerde gayet iyi çalışır.",
-                "D": "NULL standart bir SQL kavramıdır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: NULL Değer Karşılaştırması",
             "keyTakeaway": "SQL İleri Seviye Soru #27 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -1314,18 +1314,18 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "UPSERT mantığı - MERGE INTO komutu",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "BULK INSERT komutu",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "TRUNCATE TABLE komutu",
                 "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "UPSERT mantığı - MERGE INTO komutu",
+                "isCorrect": true
             },
             {
                 "id": "D",
@@ -1338,14 +1338,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "Var olan satırı güncelleme, yoksa ekleme mantığına UPSERT denir. ANSI SQL standardında bu işlem MERGE INTO komutu ile sağlanır (PostgreSQL'de ON CONFLICT).",
             "whyOthersIncorrect": {
-                "B": "BULK INSERT toplu veri yükler.",
-                "C": "TRUNCATE tabloyu boşaltır.",
-                "D": "ALTER TABLE tablo yapısını değiştirir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: UPSERT (MERGE / ON CONFLICT)",
             "keyTakeaway": "SQL İleri Seviye Soru #28 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -1360,23 +1360,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "8 (2^3)",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "3",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "6",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "9",
                 "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "8 (2^3)",
+                "isCorrect": true
             },
             {
                 "id": "E",
@@ -1384,14 +1384,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "CUBE n adet sütun için 2^n kombinasyon üretir. 3 sütun için 2^3 = 8 farklı gruplama seti oluşturur: (A,B,C), (A,B), (A,C), (B,C), (A), (B), (C), ().",
             "whyOthersIncorrect": {
-                "B": "3 sütun sayısıdır.",
-                "C": "6 yanlış kombinasyondur.",
-                "D": "9 yanlış hesaptır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: GROUP BY - CUBE",
             "keyTakeaway": "SQL İleri Seviye Soru #29 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -1406,38 +1406,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Çünkü varsayılan pencere çerçevesi (frame) CURRENT ROW'a kadardır ve her satırda kendisini son satır görür.",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Çünkü LAST_VALUE sadece alfabetik sıralamada çalışır.",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "Çünkü tablonun sıralaması bozuktur.",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "Çünkü LAST_VALUE fonksiyonu NULL değerleri otomatik siler.",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "D",
                 "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Çünkü varsayılan pencere çerçevesi (frame) CURRENT ROW'a kadardır ve her satırda kendisini son satır görür.",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "Varsayılan pencere çerçevesi `RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW` olduğundan, pencere o anki satırda biter ve LAST_VALUE hep o anki satırı döndürür.",
             "whyOthersIncorrect": {
-                "B": "Tüm tiplerde çalışır.",
-                "C": "Sıralama ile ilgili değil çerçeve ile ilgilidir.",
-                "D": "NULL silmez.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Window Functions - FIRST_VALUE & LAST_VALUE",
             "keyTakeaway": "SQL İleri Seviye Soru #30 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -1480,10 +1480,10 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "explanation": {
             "whyCorrect": "Filtered Index (Partial Index), tablonun tamamı yerine sadece WHERE koşuluna uyan satırları indeksleyerek disk alanı ve bakım maliyetinden tasarruf sağlar.",
             "whyOthersIncorrect": {
-                "B": "Clustered index tüm tabloyu sıralar.",
-                "C": "Global index tüm partitionları kapsar.",
-                "D": "Bitmap index bit matrisi kullanır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Index - Partial / Filtered Index",
             "keyTakeaway": "SQL İleri Seviye Soru #31 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -1498,13 +1498,13 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Deadlock (Ölümcül Kilitlenme)",
-                "isCorrect": true
+                "text": "Livelock",
+                "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "Livelock",
-                "isCorrect": false
+                "text": "Deadlock (Ölümcül Kilitlenme)",
+                "isCorrect": true
             },
             {
                 "id": "C",
@@ -1522,14 +1522,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "Deadlock, Transaction A'nın Kaynak 1'i kilitleyip Kaynak 2'yi beklemesi, Transaction B'nin ise Kaynak 2'yi kilitleyip Kaynak 1'i beklemesi durumudur. VTYS birini kurban (victim) seçerek çözer.",
             "whyOthersIncorrect": {
-                "B": "Livelock işlem devam etmesine rağmen ilerleme olmamasıdır.",
-                "C": "Starvation kaynağa erişememe açlığıdır.",
-                "D": "Latch kısa süreli dahili bellek kilididir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Transaction - Deadlock (Kilitlenme)",
             "keyTakeaway": "SQL İleri Seviye Soru #32 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -1544,18 +1544,18 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Parametreli Sorgular (Prepared Statements / Parameterized Queries) kullanmak",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Girdileri tırnak işaretlerinden arındırmak",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "Tüm sorguları büyük harfe çevirmek",
                 "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Parametreli Sorgular (Prepared Statements / Parameterized Queries) kullanmak",
+                "isCorrect": true
             },
             {
                 "id": "D",
@@ -1568,14 +1568,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "Prepared Statements (Parametreli Sorgular), kullanıcı girdisini SQL komut kodundan ayırarak veri olarak işler ve SQL Injection'ı %100 engeller.",
             "whyOthersIncorrect": {
-                "B": "Manuel tırnak temizliği kaçırma riskleri taşır.",
-                "C": "Harf boyutu güvenlik sağlamaz.",
-                "D": "GET/POST farkı SQLi engellemez.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: SQL Security - SQL Injection",
             "keyTakeaway": "SQL İleri Seviye Soru #33 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -1590,23 +1590,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Tablonun 2NF'de olması ve birincil anahtara geçişli (transitive) bağımlılığın olmaması",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Tabloda tekrarlayan sütunların olmaması",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "Tüm alanların atomik olması",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "Foreign key bulunmaması",
                 "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Tablonun 2NF'de olması ve birincil anahtara geçişli (transitive) bağımlılığın olmaması",
+                "isCorrect": true
             },
             {
                 "id": "E",
@@ -1614,14 +1614,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "3NF kuralı: Tablo 2NF olmalı ve birincil anahtar olmayan bir alan, başka bir birincil anahtar olmayan alana bağımlı olmamalıdır (No Transitive Dependency).",
             "whyOthersIncorrect": {
-                "B": "1NF kuralıdır.",
-                "C": "1NF kuralıdır.",
-                "D": "Foreign Key ilişkisel veritabanının temelidir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Database Normalization - 3NF",
             "keyTakeaway": "SQL İleri Seviye Soru #34 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -1636,38 +1636,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Her determinantın (belirleyicinin) mutlaka bir aday anahtar (candidate key) olması kuralı",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Tabloda hiç NULL değer bulunmaması kuralı",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "En fazla 5 sütun bulunabilmesi kuralı",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "Tüm sütunların sayısal olması kuralı",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "D",
                 "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Her determinantın (belirleyicinin) mutlaka bir aday anahtar (candidate key) olması kuralı",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "BCNF, 3NF'nin daha katı bir halidir. Her X -> Y bağımlılığında X'in mutlaka bir Super Key / Candidate Key olmasını şart koşar.",
             "whyOthersIncorrect": {
-                "B": "NULL ile ilgisi yoktur.",
-                "C": "Sütun sayısı sınırı yoktur.",
-                "D": "Veri tipi sınırı yoktur.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Database Normalization - BCNF",
             "keyTakeaway": "SQL İleri Seviye Soru #35 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -1710,10 +1710,10 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "explanation": {
             "whyCorrect": "CHECK kısıtlaması bir sütuna girilebilecek verilerin belirli bir mantıksal koşula (Boolean expression) uymasını zorunlu kılar.",
             "whyOthersIncorrect": {
-                "B": "DEFAULT varsayılan değer atar.",
-                "C": "FOREIGN KEY başka tabloya bağlar.",
-                "D": "UNIQUE benzersizlik sağlar.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Constraint - CHECK Constraint",
             "keyTakeaway": "SQL İleri Seviye Soru #36 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -1728,13 +1728,13 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "CTE hafızada sadece ilgili sorgu süresince var olan mantıksal bir görünümdür; Temporary Table ise tempdb/oturum içinde fiziksel olarak oluşturulur ve indekslenebilir.",
-                "isCorrect": true
+                "text": "CTE sadece PostgreSQL'de vardır.",
+                "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "CTE sadece PostgreSQL'de vardır.",
-                "isCorrect": false
+                "text": "CTE hafızada sadece ilgili sorgu süresince var olan mantıksal bir görünümdür; Temporary Table ise tempdb/oturum içinde fiziksel olarak oluşturulur ve indekslenebilir.",
+                "isCorrect": true
             },
             {
                 "id": "C",
@@ -1752,14 +1752,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "CTE tek bir sorgunun çalışma anı (scope) boyunca geçerli mantıksal yapıdır. Temporary Table ise oturum kapanana kadar tempdb'de fiziksel yaşar ve indekslenebilir.",
             "whyOthersIncorrect": {
-                "B": "CTE tüm gelişmiş VTYS'lerde vardır.",
-                "C": "Temporary table oturum sonunda silinir.",
-                "D": "Tam tersidir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Storage - CTE vs Temporary Table",
             "keyTakeaway": "SQL İleri Seviye Soru #37 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -1774,18 +1774,18 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Sorgudaki WHERE koşulunun indeksleri etkin bir şekilde kullanabilecek biçimde yazılmış olması",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Sorgunun sonucunun bellekte saklanması",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "Sorgunun otomatik olarak paralelleştirilmesi",
                 "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Sorgudaki WHERE koşulunun indeksleri etkin bir şekilde kullanabilecek biçimde yazılmış olması",
+                "isCorrect": true
             },
             {
                 "id": "D",
@@ -1798,14 +1798,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "SARGABLE sorgular, indeksli sütunların üzerinde fonksiyon veya tip dönüşümü yapılmadan yazıldığı için VTYS'nin Index Seek yapabilmesine olanak tanır.",
             "whyOthersIncorrect": {
-                "B": "Caching mekanizmasıdır.",
-                "C": "Parallel execution plan'dır.",
-                "D": "Grafik çizimi değildir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Query Optimization - SARGABLE Queries",
             "keyTakeaway": "SQL İleri Seviye Soru #38 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -1820,23 +1820,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Tam olarak 1 satır ve 1 sütundan oluşan tek bir değer",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Bir tablo dolusu satır ve sütun",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "Sadece Boolean (TRUE/FALSE) değer",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "Sadece dizi (Array) verisi",
                 "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Tam olarak 1 satır ve 1 sütundan oluşan tek bir değer",
+                "isCorrect": true
             },
             {
                 "id": "E",
@@ -1844,14 +1844,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "Scalar subquery tek bir hücre (1 satır × 1 sütun) değer döndüren sorgudur. Bu yüzden SELECT listesinde veya matematiksel ifadelerde kullanılabilir.",
             "whyOthersIncorrect": {
-                "B": "Tablo döndüren sorgular Table-valued subquery'dir.",
-                "C": "EXISTS Boolean döndürür.",
-                "D": "Array türü spesifik veritiplerindedir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Subquery - Scalar Subquery",
             "keyTakeaway": "SQL İleri Seviye Soru #39 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -1866,38 +1866,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "PostgreSQL'de ->> operatörü / JSON_EXTRACT_TEXT",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "SUM()",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "GROUP_CONCAT()",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "STRING_SPLIT()",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "D",
                 "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "PostgreSQL'de ->> operatörü / JSON_EXTRACT_TEXT",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "JSON alanlarından metin değeri çekmek için PostgreSQL'de `->>` operatörü, MySQL/SQLite'ta `JSON_EXTRACT()` veya `->>` kullanılır.",
             "whyOthersIncorrect": {
-                "B": "SUM sayısal toplama yapar.",
-                "C": "GROUP_CONCAT metinleri birleştirir.",
-                "D": "STRING_SPLIT metni parçalar.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: JSON Data in SQL - JSON_EXTRACT / ->>",
             "keyTakeaway": "SQL İleri Seviye Soru #40 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -1940,10 +1940,10 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "explanation": {
             "whyCorrect": "Filtered Index (Partial Index), tablonun tamamı yerine sadece WHERE koşuluna uyan satırları indeksleyerek disk alanı ve bakım maliyetinden tasarruf sağlar.",
             "whyOthersIncorrect": {
-                "B": "Clustered index tüm tabloyu sıralar.",
-                "C": "Global index tüm partitionları kapsar.",
-                "D": "Bitmap index bit matrisi kullanır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Index - Partial / Filtered Index",
             "keyTakeaway": "SQL İleri Seviye Soru #41 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -1958,13 +1958,13 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Deadlock (Ölümcül Kilitlenme)",
-                "isCorrect": true
+                "text": "Livelock",
+                "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "Livelock",
-                "isCorrect": false
+                "text": "Deadlock (Ölümcül Kilitlenme)",
+                "isCorrect": true
             },
             {
                 "id": "C",
@@ -1982,14 +1982,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "Deadlock, Transaction A'nın Kaynak 1'i kilitleyip Kaynak 2'yi beklemesi, Transaction B'nin ise Kaynak 2'yi kilitleyip Kaynak 1'i beklemesi durumudur. VTYS birini kurban (victim) seçerek çözer.",
             "whyOthersIncorrect": {
-                "B": "Livelock işlem devam etmesine rağmen ilerleme olmamasıdır.",
-                "C": "Starvation kaynağa erişememe açlığıdır.",
-                "D": "Latch kısa süreli dahili bellek kilididir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Transaction - Deadlock (Kilitlenme)",
             "keyTakeaway": "SQL İleri Seviye Soru #42 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -2004,18 +2004,18 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Parametreli Sorgular (Prepared Statements / Parameterized Queries) kullanmak",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Girdileri tırnak işaretlerinden arındırmak",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "Tüm sorguları büyük harfe çevirmek",
                 "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Parametreli Sorgular (Prepared Statements / Parameterized Queries) kullanmak",
+                "isCorrect": true
             },
             {
                 "id": "D",
@@ -2028,14 +2028,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "Prepared Statements (Parametreli Sorgular), kullanıcı girdisini SQL komut kodundan ayırarak veri olarak işler ve SQL Injection'ı %100 engeller.",
             "whyOthersIncorrect": {
-                "B": "Manuel tırnak temizliği kaçırma riskleri taşır.",
-                "C": "Harf boyutu güvenlik sağlamaz.",
-                "D": "GET/POST farkı SQLi engellemez.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: SQL Security - SQL Injection",
             "keyTakeaway": "SQL İleri Seviye Soru #43 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -2050,23 +2050,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Tablonun 2NF'de olması ve birincil anahtara geçişli (transitive) bağımlılığın olmaması",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Tabloda tekrarlayan sütunların olmaması",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "Tüm alanların atomik olması",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "Foreign key bulunmaması",
                 "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Tablonun 2NF'de olması ve birincil anahtara geçişli (transitive) bağımlılığın olmaması",
+                "isCorrect": true
             },
             {
                 "id": "E",
@@ -2074,14 +2074,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "3NF kuralı: Tablo 2NF olmalı ve birincil anahtar olmayan bir alan, başka bir birincil anahtar olmayan alana bağımlı olmamalıdır (No Transitive Dependency).",
             "whyOthersIncorrect": {
-                "B": "1NF kuralıdır.",
-                "C": "1NF kuralıdır.",
-                "D": "Foreign Key ilişkisel veritabanının temelidir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Database Normalization - 3NF",
             "keyTakeaway": "SQL İleri Seviye Soru #44 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -2096,38 +2096,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Her determinantın (belirleyicinin) mutlaka bir aday anahtar (candidate key) olması kuralı",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Tabloda hiç NULL değer bulunmaması kuralı",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "En fazla 5 sütun bulunabilmesi kuralı",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "Tüm sütunların sayısal olması kuralı",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "D",
                 "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Her determinantın (belirleyicinin) mutlaka bir aday anahtar (candidate key) olması kuralı",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "BCNF, 3NF'nin daha katı bir halidir. Her X -> Y bağımlılığında X'in mutlaka bir Super Key / Candidate Key olmasını şart koşar.",
             "whyOthersIncorrect": {
-                "B": "NULL ile ilgisi yoktur.",
-                "C": "Sütun sayısı sınırı yoktur.",
-                "D": "Veri tipi sınırı yoktur.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Database Normalization - BCNF",
             "keyTakeaway": "SQL İleri Seviye Soru #45 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -2170,10 +2170,10 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "explanation": {
             "whyCorrect": "CHECK kısıtlaması bir sütuna girilebilecek verilerin belirli bir mantıksal koşula (Boolean expression) uymasını zorunlu kılar.",
             "whyOthersIncorrect": {
-                "B": "DEFAULT varsayılan değer atar.",
-                "C": "FOREIGN KEY başka tabloya bağlar.",
-                "D": "UNIQUE benzersizlik sağlar.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Constraint - CHECK Constraint",
             "keyTakeaway": "SQL İleri Seviye Soru #46 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -2188,13 +2188,13 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "CTE hafızada sadece ilgili sorgu süresince var olan mantıksal bir görünümdür; Temporary Table ise tempdb/oturum içinde fiziksel olarak oluşturulur ve indekslenebilir.",
-                "isCorrect": true
+                "text": "CTE sadece PostgreSQL'de vardır.",
+                "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "CTE sadece PostgreSQL'de vardır.",
-                "isCorrect": false
+                "text": "CTE hafızada sadece ilgili sorgu süresince var olan mantıksal bir görünümdür; Temporary Table ise tempdb/oturum içinde fiziksel olarak oluşturulur ve indekslenebilir.",
+                "isCorrect": true
             },
             {
                 "id": "C",
@@ -2212,14 +2212,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "CTE tek bir sorgunun çalışma anı (scope) boyunca geçerli mantıksal yapıdır. Temporary Table ise oturum kapanana kadar tempdb'de fiziksel yaşar ve indekslenebilir.",
             "whyOthersIncorrect": {
-                "B": "CTE tüm gelişmiş VTYS'lerde vardır.",
-                "C": "Temporary table oturum sonunda silinir.",
-                "D": "Tam tersidir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Storage - CTE vs Temporary Table",
             "keyTakeaway": "SQL İleri Seviye Soru #47 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -2234,18 +2234,18 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Sorgudaki WHERE koşulunun indeksleri etkin bir şekilde kullanabilecek biçimde yazılmış olması",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Sorgunun sonucunun bellekte saklanması",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "Sorgunun otomatik olarak paralelleştirilmesi",
                 "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Sorgudaki WHERE koşulunun indeksleri etkin bir şekilde kullanabilecek biçimde yazılmış olması",
+                "isCorrect": true
             },
             {
                 "id": "D",
@@ -2258,14 +2258,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "SARGABLE sorgular, indeksli sütunların üzerinde fonksiyon veya tip dönüşümü yapılmadan yazıldığı için VTYS'nin Index Seek yapabilmesine olanak tanır.",
             "whyOthersIncorrect": {
-                "B": "Caching mekanizmasıdır.",
-                "C": "Parallel execution plan'dır.",
-                "D": "Grafik çizimi değildir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Query Optimization - SARGABLE Queries",
             "keyTakeaway": "SQL İleri Seviye Soru #48 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -2280,23 +2280,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Tam olarak 1 satır ve 1 sütundan oluşan tek bir değer",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Bir tablo dolusu satır ve sütun",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "Sadece Boolean (TRUE/FALSE) değer",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "Sadece dizi (Array) verisi",
                 "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Tam olarak 1 satır ve 1 sütundan oluşan tek bir değer",
+                "isCorrect": true
             },
             {
                 "id": "E",
@@ -2304,14 +2304,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "Scalar subquery tek bir hücre (1 satır × 1 sütun) değer döndüren sorgudur. Bu yüzden SELECT listesinde veya matematiksel ifadelerde kullanılabilir.",
             "whyOthersIncorrect": {
-                "B": "Tablo döndüren sorgular Table-valued subquery'dir.",
-                "C": "EXISTS Boolean döndürür.",
-                "D": "Array türü spesifik veritiplerindedir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Subquery - Scalar Subquery",
             "keyTakeaway": "SQL İleri Seviye Soru #49 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -2326,38 +2326,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "PostgreSQL'de ->> operatörü / JSON_EXTRACT_TEXT",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "SUM()",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "GROUP_CONCAT()",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "STRING_SPLIT()",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "D",
                 "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "PostgreSQL'de ->> operatörü / JSON_EXTRACT_TEXT",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "JSON alanlarından metin değeri çekmek için PostgreSQL'de `->>` operatörü, MySQL/SQLite'ta `JSON_EXTRACT()` veya `->>` kullanılır.",
             "whyOthersIncorrect": {
-                "B": "SUM sayısal toplama yapar.",
-                "C": "GROUP_CONCAT metinleri birleştirir.",
-                "D": "STRING_SPLIT metni parçalar.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: JSON Data in SQL - JSON_EXTRACT / ->>",
             "keyTakeaway": "SQL İleri Seviye Soru #50 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -2400,10 +2400,10 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "explanation": {
             "whyCorrect": "Filtered Index (Partial Index), tablonun tamamı yerine sadece WHERE koşuluna uyan satırları indeksleyerek disk alanı ve bakım maliyetinden tasarruf sağlar.",
             "whyOthersIncorrect": {
-                "B": "Clustered index tüm tabloyu sıralar.",
-                "C": "Global index tüm partitionları kapsar.",
-                "D": "Bitmap index bit matrisi kullanır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Index - Partial / Filtered Index",
             "keyTakeaway": "SQL İleri Seviye Soru #51 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -2418,13 +2418,13 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Deadlock (Ölümcül Kilitlenme)",
-                "isCorrect": true
+                "text": "Livelock",
+                "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "Livelock",
-                "isCorrect": false
+                "text": "Deadlock (Ölümcül Kilitlenme)",
+                "isCorrect": true
             },
             {
                 "id": "C",
@@ -2442,14 +2442,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "Deadlock, Transaction A'nın Kaynak 1'i kilitleyip Kaynak 2'yi beklemesi, Transaction B'nin ise Kaynak 2'yi kilitleyip Kaynak 1'i beklemesi durumudur. VTYS birini kurban (victim) seçerek çözer.",
             "whyOthersIncorrect": {
-                "B": "Livelock işlem devam etmesine rağmen ilerleme olmamasıdır.",
-                "C": "Starvation kaynağa erişememe açlığıdır.",
-                "D": "Latch kısa süreli dahili bellek kilididir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Transaction - Deadlock (Kilitlenme)",
             "keyTakeaway": "SQL İleri Seviye Soru #52 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -2464,18 +2464,18 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Parametreli Sorgular (Prepared Statements / Parameterized Queries) kullanmak",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Girdileri tırnak işaretlerinden arındırmak",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "Tüm sorguları büyük harfe çevirmek",
                 "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Parametreli Sorgular (Prepared Statements / Parameterized Queries) kullanmak",
+                "isCorrect": true
             },
             {
                 "id": "D",
@@ -2488,14 +2488,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "Prepared Statements (Parametreli Sorgular), kullanıcı girdisini SQL komut kodundan ayırarak veri olarak işler ve SQL Injection'ı %100 engeller.",
             "whyOthersIncorrect": {
-                "B": "Manuel tırnak temizliği kaçırma riskleri taşır.",
-                "C": "Harf boyutu güvenlik sağlamaz.",
-                "D": "GET/POST farkı SQLi engellemez.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: SQL Security - SQL Injection",
             "keyTakeaway": "SQL İleri Seviye Soru #53 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -2510,23 +2510,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Tablonun 2NF'de olması ve birincil anahtara geçişli (transitive) bağımlılığın olmaması",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Tabloda tekrarlayan sütunların olmaması",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "Tüm alanların atomik olması",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "Foreign key bulunmaması",
                 "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Tablonun 2NF'de olması ve birincil anahtara geçişli (transitive) bağımlılığın olmaması",
+                "isCorrect": true
             },
             {
                 "id": "E",
@@ -2534,14 +2534,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "3NF kuralı: Tablo 2NF olmalı ve birincil anahtar olmayan bir alan, başka bir birincil anahtar olmayan alana bağımlı olmamalıdır (No Transitive Dependency).",
             "whyOthersIncorrect": {
-                "B": "1NF kuralıdır.",
-                "C": "1NF kuralıdır.",
-                "D": "Foreign Key ilişkisel veritabanının temelidir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Database Normalization - 3NF",
             "keyTakeaway": "SQL İleri Seviye Soru #54 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -2556,38 +2556,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Her determinantın (belirleyicinin) mutlaka bir aday anahtar (candidate key) olması kuralı",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Tabloda hiç NULL değer bulunmaması kuralı",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "En fazla 5 sütun bulunabilmesi kuralı",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "Tüm sütunların sayısal olması kuralı",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "D",
                 "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Her determinantın (belirleyicinin) mutlaka bir aday anahtar (candidate key) olması kuralı",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "BCNF, 3NF'nin daha katı bir halidir. Her X -> Y bağımlılığında X'in mutlaka bir Super Key / Candidate Key olmasını şart koşar.",
             "whyOthersIncorrect": {
-                "B": "NULL ile ilgisi yoktur.",
-                "C": "Sütun sayısı sınırı yoktur.",
-                "D": "Veri tipi sınırı yoktur.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Database Normalization - BCNF",
             "keyTakeaway": "SQL İleri Seviye Soru #55 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -2630,10 +2630,10 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "explanation": {
             "whyCorrect": "CHECK kısıtlaması bir sütuna girilebilecek verilerin belirli bir mantıksal koşula (Boolean expression) uymasını zorunlu kılar.",
             "whyOthersIncorrect": {
-                "B": "DEFAULT varsayılan değer atar.",
-                "C": "FOREIGN KEY başka tabloya bağlar.",
-                "D": "UNIQUE benzersizlik sağlar.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Constraint - CHECK Constraint",
             "keyTakeaway": "SQL İleri Seviye Soru #56 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -2648,13 +2648,13 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "CTE hafızada sadece ilgili sorgu süresince var olan mantıksal bir görünümdür; Temporary Table ise tempdb/oturum içinde fiziksel olarak oluşturulur ve indekslenebilir.",
-                "isCorrect": true
+                "text": "CTE sadece PostgreSQL'de vardır.",
+                "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "CTE sadece PostgreSQL'de vardır.",
-                "isCorrect": false
+                "text": "CTE hafızada sadece ilgili sorgu süresince var olan mantıksal bir görünümdür; Temporary Table ise tempdb/oturum içinde fiziksel olarak oluşturulur ve indekslenebilir.",
+                "isCorrect": true
             },
             {
                 "id": "C",
@@ -2672,14 +2672,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "CTE tek bir sorgunun çalışma anı (scope) boyunca geçerli mantıksal yapıdır. Temporary Table ise oturum kapanana kadar tempdb'de fiziksel yaşar ve indekslenebilir.",
             "whyOthersIncorrect": {
-                "B": "CTE tüm gelişmiş VTYS'lerde vardır.",
-                "C": "Temporary table oturum sonunda silinir.",
-                "D": "Tam tersidir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Storage - CTE vs Temporary Table",
             "keyTakeaway": "SQL İleri Seviye Soru #57 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -2694,18 +2694,18 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Sorgudaki WHERE koşulunun indeksleri etkin bir şekilde kullanabilecek biçimde yazılmış olması",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Sorgunun sonucunun bellekte saklanması",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "Sorgunun otomatik olarak paralelleştirilmesi",
                 "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Sorgudaki WHERE koşulunun indeksleri etkin bir şekilde kullanabilecek biçimde yazılmış olması",
+                "isCorrect": true
             },
             {
                 "id": "D",
@@ -2718,14 +2718,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "SARGABLE sorgular, indeksli sütunların üzerinde fonksiyon veya tip dönüşümü yapılmadan yazıldığı için VTYS'nin Index Seek yapabilmesine olanak tanır.",
             "whyOthersIncorrect": {
-                "B": "Caching mekanizmasıdır.",
-                "C": "Parallel execution plan'dır.",
-                "D": "Grafik çizimi değildir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Query Optimization - SARGABLE Queries",
             "keyTakeaway": "SQL İleri Seviye Soru #58 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -2740,23 +2740,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Tam olarak 1 satır ve 1 sütundan oluşan tek bir değer",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Bir tablo dolusu satır ve sütun",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "Sadece Boolean (TRUE/FALSE) değer",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "Sadece dizi (Array) verisi",
                 "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Tam olarak 1 satır ve 1 sütundan oluşan tek bir değer",
+                "isCorrect": true
             },
             {
                 "id": "E",
@@ -2764,14 +2764,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "Scalar subquery tek bir hücre (1 satır × 1 sütun) değer döndüren sorgudur. Bu yüzden SELECT listesinde veya matematiksel ifadelerde kullanılabilir.",
             "whyOthersIncorrect": {
-                "B": "Tablo döndüren sorgular Table-valued subquery'dir.",
-                "C": "EXISTS Boolean döndürür.",
-                "D": "Array türü spesifik veritiplerindedir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Subquery - Scalar Subquery",
             "keyTakeaway": "SQL İleri Seviye Soru #59 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -2786,38 +2786,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "PostgreSQL'de ->> operatörü / JSON_EXTRACT_TEXT",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "SUM()",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "GROUP_CONCAT()",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "STRING_SPLIT()",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "D",
                 "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "PostgreSQL'de ->> operatörü / JSON_EXTRACT_TEXT",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "JSON alanlarından metin değeri çekmek için PostgreSQL'de `->>` operatörü, MySQL/SQLite'ta `JSON_EXTRACT()` veya `->>` kullanılır.",
             "whyOthersIncorrect": {
-                "B": "SUM sayısal toplama yapar.",
-                "C": "GROUP_CONCAT metinleri birleştirir.",
-                "D": "STRING_SPLIT metni parçalar.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: JSON Data in SQL - JSON_EXTRACT / ->>",
             "keyTakeaway": "SQL İleri Seviye Soru #60 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -2860,10 +2860,10 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "explanation": {
             "whyCorrect": "Filtered Index (Partial Index), tablonun tamamı yerine sadece WHERE koşuluna uyan satırları indeksleyerek disk alanı ve bakım maliyetinden tasarruf sağlar.",
             "whyOthersIncorrect": {
-                "B": "Clustered index tüm tabloyu sıralar.",
-                "C": "Global index tüm partitionları kapsar.",
-                "D": "Bitmap index bit matrisi kullanır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Index - Partial / Filtered Index",
             "keyTakeaway": "SQL İleri Seviye Soru #61 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -2878,13 +2878,13 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Deadlock (Ölümcül Kilitlenme)",
-                "isCorrect": true
+                "text": "Livelock",
+                "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "Livelock",
-                "isCorrect": false
+                "text": "Deadlock (Ölümcül Kilitlenme)",
+                "isCorrect": true
             },
             {
                 "id": "C",
@@ -2902,14 +2902,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "Deadlock, Transaction A'nın Kaynak 1'i kilitleyip Kaynak 2'yi beklemesi, Transaction B'nin ise Kaynak 2'yi kilitleyip Kaynak 1'i beklemesi durumudur. VTYS birini kurban (victim) seçerek çözer.",
             "whyOthersIncorrect": {
-                "B": "Livelock işlem devam etmesine rağmen ilerleme olmamasıdır.",
-                "C": "Starvation kaynağa erişememe açlığıdır.",
-                "D": "Latch kısa süreli dahili bellek kilididir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Transaction - Deadlock (Kilitlenme)",
             "keyTakeaway": "SQL İleri Seviye Soru #62 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -2924,18 +2924,18 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Parametreli Sorgular (Prepared Statements / Parameterized Queries) kullanmak",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Girdileri tırnak işaretlerinden arındırmak",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "Tüm sorguları büyük harfe çevirmek",
                 "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Parametreli Sorgular (Prepared Statements / Parameterized Queries) kullanmak",
+                "isCorrect": true
             },
             {
                 "id": "D",
@@ -2948,14 +2948,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "Prepared Statements (Parametreli Sorgular), kullanıcı girdisini SQL komut kodundan ayırarak veri olarak işler ve SQL Injection'ı %100 engeller.",
             "whyOthersIncorrect": {
-                "B": "Manuel tırnak temizliği kaçırma riskleri taşır.",
-                "C": "Harf boyutu güvenlik sağlamaz.",
-                "D": "GET/POST farkı SQLi engellemez.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: SQL Security - SQL Injection",
             "keyTakeaway": "SQL İleri Seviye Soru #63 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -2970,23 +2970,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Tablonun 2NF'de olması ve birincil anahtara geçişli (transitive) bağımlılığın olmaması",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Tabloda tekrarlayan sütunların olmaması",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "Tüm alanların atomik olması",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "Foreign key bulunmaması",
                 "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Tablonun 2NF'de olması ve birincil anahtara geçişli (transitive) bağımlılığın olmaması",
+                "isCorrect": true
             },
             {
                 "id": "E",
@@ -2994,14 +2994,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "3NF kuralı: Tablo 2NF olmalı ve birincil anahtar olmayan bir alan, başka bir birincil anahtar olmayan alana bağımlı olmamalıdır (No Transitive Dependency).",
             "whyOthersIncorrect": {
-                "B": "1NF kuralıdır.",
-                "C": "1NF kuralıdır.",
-                "D": "Foreign Key ilişkisel veritabanının temelidir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Database Normalization - 3NF",
             "keyTakeaway": "SQL İleri Seviye Soru #64 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -3016,38 +3016,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Her determinantın (belirleyicinin) mutlaka bir aday anahtar (candidate key) olması kuralı",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Tabloda hiç NULL değer bulunmaması kuralı",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "En fazla 5 sütun bulunabilmesi kuralı",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "Tüm sütunların sayısal olması kuralı",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "D",
                 "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Her determinantın (belirleyicinin) mutlaka bir aday anahtar (candidate key) olması kuralı",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "BCNF, 3NF'nin daha katı bir halidir. Her X -> Y bağımlılığında X'in mutlaka bir Super Key / Candidate Key olmasını şart koşar.",
             "whyOthersIncorrect": {
-                "B": "NULL ile ilgisi yoktur.",
-                "C": "Sütun sayısı sınırı yoktur.",
-                "D": "Veri tipi sınırı yoktur.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Database Normalization - BCNF",
             "keyTakeaway": "SQL İleri Seviye Soru #65 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -3090,10 +3090,10 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "explanation": {
             "whyCorrect": "CHECK kısıtlaması bir sütuna girilebilecek verilerin belirli bir mantıksal koşula (Boolean expression) uymasını zorunlu kılar.",
             "whyOthersIncorrect": {
-                "B": "DEFAULT varsayılan değer atar.",
-                "C": "FOREIGN KEY başka tabloya bağlar.",
-                "D": "UNIQUE benzersizlik sağlar.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Constraint - CHECK Constraint",
             "keyTakeaway": "SQL İleri Seviye Soru #66 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -3108,13 +3108,13 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "CTE hafızada sadece ilgili sorgu süresince var olan mantıksal bir görünümdür; Temporary Table ise tempdb/oturum içinde fiziksel olarak oluşturulur ve indekslenebilir.",
-                "isCorrect": true
+                "text": "CTE sadece PostgreSQL'de vardır.",
+                "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "CTE sadece PostgreSQL'de vardır.",
-                "isCorrect": false
+                "text": "CTE hafızada sadece ilgili sorgu süresince var olan mantıksal bir görünümdür; Temporary Table ise tempdb/oturum içinde fiziksel olarak oluşturulur ve indekslenebilir.",
+                "isCorrect": true
             },
             {
                 "id": "C",
@@ -3132,14 +3132,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "CTE tek bir sorgunun çalışma anı (scope) boyunca geçerli mantıksal yapıdır. Temporary Table ise oturum kapanana kadar tempdb'de fiziksel yaşar ve indekslenebilir.",
             "whyOthersIncorrect": {
-                "B": "CTE tüm gelişmiş VTYS'lerde vardır.",
-                "C": "Temporary table oturum sonunda silinir.",
-                "D": "Tam tersidir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Storage - CTE vs Temporary Table",
             "keyTakeaway": "SQL İleri Seviye Soru #67 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -3154,18 +3154,18 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Sorgudaki WHERE koşulunun indeksleri etkin bir şekilde kullanabilecek biçimde yazılmış olması",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Sorgunun sonucunun bellekte saklanması",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "Sorgunun otomatik olarak paralelleştirilmesi",
                 "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Sorgudaki WHERE koşulunun indeksleri etkin bir şekilde kullanabilecek biçimde yazılmış olması",
+                "isCorrect": true
             },
             {
                 "id": "D",
@@ -3178,14 +3178,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "SARGABLE sorgular, indeksli sütunların üzerinde fonksiyon veya tip dönüşümü yapılmadan yazıldığı için VTYS'nin Index Seek yapabilmesine olanak tanır.",
             "whyOthersIncorrect": {
-                "B": "Caching mekanizmasıdır.",
-                "C": "Parallel execution plan'dır.",
-                "D": "Grafik çizimi değildir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Query Optimization - SARGABLE Queries",
             "keyTakeaway": "SQL İleri Seviye Soru #68 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -3200,23 +3200,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Tam olarak 1 satır ve 1 sütundan oluşan tek bir değer",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Bir tablo dolusu satır ve sütun",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "Sadece Boolean (TRUE/FALSE) değer",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "Sadece dizi (Array) verisi",
                 "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Tam olarak 1 satır ve 1 sütundan oluşan tek bir değer",
+                "isCorrect": true
             },
             {
                 "id": "E",
@@ -3224,14 +3224,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "Scalar subquery tek bir hücre (1 satır × 1 sütun) değer döndüren sorgudur. Bu yüzden SELECT listesinde veya matematiksel ifadelerde kullanılabilir.",
             "whyOthersIncorrect": {
-                "B": "Tablo döndüren sorgular Table-valued subquery'dir.",
-                "C": "EXISTS Boolean döndürür.",
-                "D": "Array türü spesifik veritiplerindedir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Subquery - Scalar Subquery",
             "keyTakeaway": "SQL İleri Seviye Soru #69 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -3246,38 +3246,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "PostgreSQL'de ->> operatörü / JSON_EXTRACT_TEXT",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "SUM()",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "GROUP_CONCAT()",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "STRING_SPLIT()",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "D",
                 "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "PostgreSQL'de ->> operatörü / JSON_EXTRACT_TEXT",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "JSON alanlarından metin değeri çekmek için PostgreSQL'de `->>` operatörü, MySQL/SQLite'ta `JSON_EXTRACT()` veya `->>` kullanılır.",
             "whyOthersIncorrect": {
-                "B": "SUM sayısal toplama yapar.",
-                "C": "GROUP_CONCAT metinleri birleştirir.",
-                "D": "STRING_SPLIT metni parçalar.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: JSON Data in SQL - JSON_EXTRACT / ->>",
             "keyTakeaway": "SQL İleri Seviye Soru #70 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -3320,10 +3320,10 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "explanation": {
             "whyCorrect": "Filtered Index (Partial Index), tablonun tamamı yerine sadece WHERE koşuluna uyan satırları indeksleyerek disk alanı ve bakım maliyetinden tasarruf sağlar.",
             "whyOthersIncorrect": {
-                "B": "Clustered index tüm tabloyu sıralar.",
-                "C": "Global index tüm partitionları kapsar.",
-                "D": "Bitmap index bit matrisi kullanır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Index - Partial / Filtered Index",
             "keyTakeaway": "SQL İleri Seviye Soru #71 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -3338,13 +3338,13 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Deadlock (Ölümcül Kilitlenme)",
-                "isCorrect": true
+                "text": "Livelock",
+                "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "Livelock",
-                "isCorrect": false
+                "text": "Deadlock (Ölümcül Kilitlenme)",
+                "isCorrect": true
             },
             {
                 "id": "C",
@@ -3362,14 +3362,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "Deadlock, Transaction A'nın Kaynak 1'i kilitleyip Kaynak 2'yi beklemesi, Transaction B'nin ise Kaynak 2'yi kilitleyip Kaynak 1'i beklemesi durumudur. VTYS birini kurban (victim) seçerek çözer.",
             "whyOthersIncorrect": {
-                "B": "Livelock işlem devam etmesine rağmen ilerleme olmamasıdır.",
-                "C": "Starvation kaynağa erişememe açlığıdır.",
-                "D": "Latch kısa süreli dahili bellek kilididir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Transaction - Deadlock (Kilitlenme)",
             "keyTakeaway": "SQL İleri Seviye Soru #72 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -3384,18 +3384,18 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Parametreli Sorgular (Prepared Statements / Parameterized Queries) kullanmak",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Girdileri tırnak işaretlerinden arındırmak",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "Tüm sorguları büyük harfe çevirmek",
                 "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Parametreli Sorgular (Prepared Statements / Parameterized Queries) kullanmak",
+                "isCorrect": true
             },
             {
                 "id": "D",
@@ -3408,14 +3408,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "Prepared Statements (Parametreli Sorgular), kullanıcı girdisini SQL komut kodundan ayırarak veri olarak işler ve SQL Injection'ı %100 engeller.",
             "whyOthersIncorrect": {
-                "B": "Manuel tırnak temizliği kaçırma riskleri taşır.",
-                "C": "Harf boyutu güvenlik sağlamaz.",
-                "D": "GET/POST farkı SQLi engellemez.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: SQL Security - SQL Injection",
             "keyTakeaway": "SQL İleri Seviye Soru #73 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -3430,23 +3430,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Tablonun 2NF'de olması ve birincil anahtara geçişli (transitive) bağımlılığın olmaması",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Tabloda tekrarlayan sütunların olmaması",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "Tüm alanların atomik olması",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "Foreign key bulunmaması",
                 "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Tablonun 2NF'de olması ve birincil anahtara geçişli (transitive) bağımlılığın olmaması",
+                "isCorrect": true
             },
             {
                 "id": "E",
@@ -3454,14 +3454,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "3NF kuralı: Tablo 2NF olmalı ve birincil anahtar olmayan bir alan, başka bir birincil anahtar olmayan alana bağımlı olmamalıdır (No Transitive Dependency).",
             "whyOthersIncorrect": {
-                "B": "1NF kuralıdır.",
-                "C": "1NF kuralıdır.",
-                "D": "Foreign Key ilişkisel veritabanının temelidir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Database Normalization - 3NF",
             "keyTakeaway": "SQL İleri Seviye Soru #74 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -3476,38 +3476,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Her determinantın (belirleyicinin) mutlaka bir aday anahtar (candidate key) olması kuralı",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Tabloda hiç NULL değer bulunmaması kuralı",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "En fazla 5 sütun bulunabilmesi kuralı",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "Tüm sütunların sayısal olması kuralı",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "D",
                 "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Her determinantın (belirleyicinin) mutlaka bir aday anahtar (candidate key) olması kuralı",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "BCNF, 3NF'nin daha katı bir halidir. Her X -> Y bağımlılığında X'in mutlaka bir Super Key / Candidate Key olmasını şart koşar.",
             "whyOthersIncorrect": {
-                "B": "NULL ile ilgisi yoktur.",
-                "C": "Sütun sayısı sınırı yoktur.",
-                "D": "Veri tipi sınırı yoktur.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Database Normalization - BCNF",
             "keyTakeaway": "SQL İleri Seviye Soru #75 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -3550,10 +3550,10 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "explanation": {
             "whyCorrect": "CHECK kısıtlaması bir sütuna girilebilecek verilerin belirli bir mantıksal koşula (Boolean expression) uymasını zorunlu kılar.",
             "whyOthersIncorrect": {
-                "B": "DEFAULT varsayılan değer atar.",
-                "C": "FOREIGN KEY başka tabloya bağlar.",
-                "D": "UNIQUE benzersizlik sağlar.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Constraint - CHECK Constraint",
             "keyTakeaway": "SQL İleri Seviye Soru #76 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -3568,13 +3568,13 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "CTE hafızada sadece ilgili sorgu süresince var olan mantıksal bir görünümdür; Temporary Table ise tempdb/oturum içinde fiziksel olarak oluşturulur ve indekslenebilir.",
-                "isCorrect": true
+                "text": "CTE sadece PostgreSQL'de vardır.",
+                "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "CTE sadece PostgreSQL'de vardır.",
-                "isCorrect": false
+                "text": "CTE hafızada sadece ilgili sorgu süresince var olan mantıksal bir görünümdür; Temporary Table ise tempdb/oturum içinde fiziksel olarak oluşturulur ve indekslenebilir.",
+                "isCorrect": true
             },
             {
                 "id": "C",
@@ -3592,14 +3592,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "CTE tek bir sorgunun çalışma anı (scope) boyunca geçerli mantıksal yapıdır. Temporary Table ise oturum kapanana kadar tempdb'de fiziksel yaşar ve indekslenebilir.",
             "whyOthersIncorrect": {
-                "B": "CTE tüm gelişmiş VTYS'lerde vardır.",
-                "C": "Temporary table oturum sonunda silinir.",
-                "D": "Tam tersidir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Storage - CTE vs Temporary Table",
             "keyTakeaway": "SQL İleri Seviye Soru #77 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -3614,18 +3614,18 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Sorgudaki WHERE koşulunun indeksleri etkin bir şekilde kullanabilecek biçimde yazılmış olması",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Sorgunun sonucunun bellekte saklanması",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "Sorgunun otomatik olarak paralelleştirilmesi",
                 "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Sorgudaki WHERE koşulunun indeksleri etkin bir şekilde kullanabilecek biçimde yazılmış olması",
+                "isCorrect": true
             },
             {
                 "id": "D",
@@ -3638,14 +3638,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "SARGABLE sorgular, indeksli sütunların üzerinde fonksiyon veya tip dönüşümü yapılmadan yazıldığı için VTYS'nin Index Seek yapabilmesine olanak tanır.",
             "whyOthersIncorrect": {
-                "B": "Caching mekanizmasıdır.",
-                "C": "Parallel execution plan'dır.",
-                "D": "Grafik çizimi değildir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Query Optimization - SARGABLE Queries",
             "keyTakeaway": "SQL İleri Seviye Soru #78 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -3660,23 +3660,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Tam olarak 1 satır ve 1 sütundan oluşan tek bir değer",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Bir tablo dolusu satır ve sütun",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "Sadece Boolean (TRUE/FALSE) değer",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "Sadece dizi (Array) verisi",
                 "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Tam olarak 1 satır ve 1 sütundan oluşan tek bir değer",
+                "isCorrect": true
             },
             {
                 "id": "E",
@@ -3684,14 +3684,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "Scalar subquery tek bir hücre (1 satır × 1 sütun) değer döndüren sorgudur. Bu yüzden SELECT listesinde veya matematiksel ifadelerde kullanılabilir.",
             "whyOthersIncorrect": {
-                "B": "Tablo döndüren sorgular Table-valued subquery'dir.",
-                "C": "EXISTS Boolean döndürür.",
-                "D": "Array türü spesifik veritiplerindedir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Subquery - Scalar Subquery",
             "keyTakeaway": "SQL İleri Seviye Soru #79 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -3706,38 +3706,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "PostgreSQL'de ->> operatörü / JSON_EXTRACT_TEXT",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "SUM()",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "GROUP_CONCAT()",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "STRING_SPLIT()",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "D",
                 "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "PostgreSQL'de ->> operatörü / JSON_EXTRACT_TEXT",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "JSON alanlarından metin değeri çekmek için PostgreSQL'de `->>` operatörü, MySQL/SQLite'ta `JSON_EXTRACT()` veya `->>` kullanılır.",
             "whyOthersIncorrect": {
-                "B": "SUM sayısal toplama yapar.",
-                "C": "GROUP_CONCAT metinleri birleştirir.",
-                "D": "STRING_SPLIT metni parçalar.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: JSON Data in SQL - JSON_EXTRACT / ->>",
             "keyTakeaway": "SQL İleri Seviye Soru #80 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -3780,10 +3780,10 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "explanation": {
             "whyCorrect": "Filtered Index (Partial Index), tablonun tamamı yerine sadece WHERE koşuluna uyan satırları indeksleyerek disk alanı ve bakım maliyetinden tasarruf sağlar.",
             "whyOthersIncorrect": {
-                "B": "Clustered index tüm tabloyu sıralar.",
-                "C": "Global index tüm partitionları kapsar.",
-                "D": "Bitmap index bit matrisi kullanır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Index - Partial / Filtered Index",
             "keyTakeaway": "SQL İleri Seviye Soru #81 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -3798,13 +3798,13 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Deadlock (Ölümcül Kilitlenme)",
-                "isCorrect": true
+                "text": "Livelock",
+                "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "Livelock",
-                "isCorrect": false
+                "text": "Deadlock (Ölümcül Kilitlenme)",
+                "isCorrect": true
             },
             {
                 "id": "C",
@@ -3822,14 +3822,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "Deadlock, Transaction A'nın Kaynak 1'i kilitleyip Kaynak 2'yi beklemesi, Transaction B'nin ise Kaynak 2'yi kilitleyip Kaynak 1'i beklemesi durumudur. VTYS birini kurban (victim) seçerek çözer.",
             "whyOthersIncorrect": {
-                "B": "Livelock işlem devam etmesine rağmen ilerleme olmamasıdır.",
-                "C": "Starvation kaynağa erişememe açlığıdır.",
-                "D": "Latch kısa süreli dahili bellek kilididir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Transaction - Deadlock (Kilitlenme)",
             "keyTakeaway": "SQL İleri Seviye Soru #82 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -3844,18 +3844,18 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Parametreli Sorgular (Prepared Statements / Parameterized Queries) kullanmak",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Girdileri tırnak işaretlerinden arındırmak",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "Tüm sorguları büyük harfe çevirmek",
                 "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Parametreli Sorgular (Prepared Statements / Parameterized Queries) kullanmak",
+                "isCorrect": true
             },
             {
                 "id": "D",
@@ -3868,14 +3868,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "Prepared Statements (Parametreli Sorgular), kullanıcı girdisini SQL komut kodundan ayırarak veri olarak işler ve SQL Injection'ı %100 engeller.",
             "whyOthersIncorrect": {
-                "B": "Manuel tırnak temizliği kaçırma riskleri taşır.",
-                "C": "Harf boyutu güvenlik sağlamaz.",
-                "D": "GET/POST farkı SQLi engellemez.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: SQL Security - SQL Injection",
             "keyTakeaway": "SQL İleri Seviye Soru #83 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -3890,23 +3890,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Tablonun 2NF'de olması ve birincil anahtara geçişli (transitive) bağımlılığın olmaması",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Tabloda tekrarlayan sütunların olmaması",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "Tüm alanların atomik olması",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "Foreign key bulunmaması",
                 "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Tablonun 2NF'de olması ve birincil anahtara geçişli (transitive) bağımlılığın olmaması",
+                "isCorrect": true
             },
             {
                 "id": "E",
@@ -3914,14 +3914,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "3NF kuralı: Tablo 2NF olmalı ve birincil anahtar olmayan bir alan, başka bir birincil anahtar olmayan alana bağımlı olmamalıdır (No Transitive Dependency).",
             "whyOthersIncorrect": {
-                "B": "1NF kuralıdır.",
-                "C": "1NF kuralıdır.",
-                "D": "Foreign Key ilişkisel veritabanının temelidir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Database Normalization - 3NF",
             "keyTakeaway": "SQL İleri Seviye Soru #84 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -3936,38 +3936,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Her determinantın (belirleyicinin) mutlaka bir aday anahtar (candidate key) olması kuralı",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Tabloda hiç NULL değer bulunmaması kuralı",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "En fazla 5 sütun bulunabilmesi kuralı",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "Tüm sütunların sayısal olması kuralı",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "D",
                 "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Her determinantın (belirleyicinin) mutlaka bir aday anahtar (candidate key) olması kuralı",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "BCNF, 3NF'nin daha katı bir halidir. Her X -> Y bağımlılığında X'in mutlaka bir Super Key / Candidate Key olmasını şart koşar.",
             "whyOthersIncorrect": {
-                "B": "NULL ile ilgisi yoktur.",
-                "C": "Sütun sayısı sınırı yoktur.",
-                "D": "Veri tipi sınırı yoktur.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Database Normalization - BCNF",
             "keyTakeaway": "SQL İleri Seviye Soru #85 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -4010,10 +4010,10 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "explanation": {
             "whyCorrect": "CHECK kısıtlaması bir sütuna girilebilecek verilerin belirli bir mantıksal koşula (Boolean expression) uymasını zorunlu kılar.",
             "whyOthersIncorrect": {
-                "B": "DEFAULT varsayılan değer atar.",
-                "C": "FOREIGN KEY başka tabloya bağlar.",
-                "D": "UNIQUE benzersizlik sağlar.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Constraint - CHECK Constraint",
             "keyTakeaway": "SQL İleri Seviye Soru #86 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -4028,13 +4028,13 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "CTE hafızada sadece ilgili sorgu süresince var olan mantıksal bir görünümdür; Temporary Table ise tempdb/oturum içinde fiziksel olarak oluşturulur ve indekslenebilir.",
-                "isCorrect": true
+                "text": "CTE sadece PostgreSQL'de vardır.",
+                "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "CTE sadece PostgreSQL'de vardır.",
-                "isCorrect": false
+                "text": "CTE hafızada sadece ilgili sorgu süresince var olan mantıksal bir görünümdür; Temporary Table ise tempdb/oturum içinde fiziksel olarak oluşturulur ve indekslenebilir.",
+                "isCorrect": true
             },
             {
                 "id": "C",
@@ -4052,14 +4052,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "CTE tek bir sorgunun çalışma anı (scope) boyunca geçerli mantıksal yapıdır. Temporary Table ise oturum kapanana kadar tempdb'de fiziksel yaşar ve indekslenebilir.",
             "whyOthersIncorrect": {
-                "B": "CTE tüm gelişmiş VTYS'lerde vardır.",
-                "C": "Temporary table oturum sonunda silinir.",
-                "D": "Tam tersidir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Storage - CTE vs Temporary Table",
             "keyTakeaway": "SQL İleri Seviye Soru #87 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -4074,18 +4074,18 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Sorgudaki WHERE koşulunun indeksleri etkin bir şekilde kullanabilecek biçimde yazılmış olması",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Sorgunun sonucunun bellekte saklanması",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "Sorgunun otomatik olarak paralelleştirilmesi",
                 "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Sorgudaki WHERE koşulunun indeksleri etkin bir şekilde kullanabilecek biçimde yazılmış olması",
+                "isCorrect": true
             },
             {
                 "id": "D",
@@ -4098,14 +4098,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "SARGABLE sorgular, indeksli sütunların üzerinde fonksiyon veya tip dönüşümü yapılmadan yazıldığı için VTYS'nin Index Seek yapabilmesine olanak tanır.",
             "whyOthersIncorrect": {
-                "B": "Caching mekanizmasıdır.",
-                "C": "Parallel execution plan'dır.",
-                "D": "Grafik çizimi değildir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Query Optimization - SARGABLE Queries",
             "keyTakeaway": "SQL İleri Seviye Soru #88 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -4120,23 +4120,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Tam olarak 1 satır ve 1 sütundan oluşan tek bir değer",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Bir tablo dolusu satır ve sütun",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "Sadece Boolean (TRUE/FALSE) değer",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "Sadece dizi (Array) verisi",
                 "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Tam olarak 1 satır ve 1 sütundan oluşan tek bir değer",
+                "isCorrect": true
             },
             {
                 "id": "E",
@@ -4144,14 +4144,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "Scalar subquery tek bir hücre (1 satır × 1 sütun) değer döndüren sorgudur. Bu yüzden SELECT listesinde veya matematiksel ifadelerde kullanılabilir.",
             "whyOthersIncorrect": {
-                "B": "Tablo döndüren sorgular Table-valued subquery'dir.",
-                "C": "EXISTS Boolean döndürür.",
-                "D": "Array türü spesifik veritiplerindedir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Subquery - Scalar Subquery",
             "keyTakeaway": "SQL İleri Seviye Soru #89 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -4166,38 +4166,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "PostgreSQL'de ->> operatörü / JSON_EXTRACT_TEXT",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "SUM()",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "GROUP_CONCAT()",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "STRING_SPLIT()",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "D",
                 "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "PostgreSQL'de ->> operatörü / JSON_EXTRACT_TEXT",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "JSON alanlarından metin değeri çekmek için PostgreSQL'de `->>` operatörü, MySQL/SQLite'ta `JSON_EXTRACT()` veya `->>` kullanılır.",
             "whyOthersIncorrect": {
-                "B": "SUM sayısal toplama yapar.",
-                "C": "GROUP_CONCAT metinleri birleştirir.",
-                "D": "STRING_SPLIT metni parçalar.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: JSON Data in SQL - JSON_EXTRACT / ->>",
             "keyTakeaway": "SQL İleri Seviye Soru #90 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -4240,10 +4240,10 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "explanation": {
             "whyCorrect": "Filtered Index (Partial Index), tablonun tamamı yerine sadece WHERE koşuluna uyan satırları indeksleyerek disk alanı ve bakım maliyetinden tasarruf sağlar.",
             "whyOthersIncorrect": {
-                "B": "Clustered index tüm tabloyu sıralar.",
-                "C": "Global index tüm partitionları kapsar.",
-                "D": "Bitmap index bit matrisi kullanır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Index - Partial / Filtered Index",
             "keyTakeaway": "SQL İleri Seviye Soru #91 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -4258,13 +4258,13 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Deadlock (Ölümcül Kilitlenme)",
-                "isCorrect": true
+                "text": "Livelock",
+                "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "Livelock",
-                "isCorrect": false
+                "text": "Deadlock (Ölümcül Kilitlenme)",
+                "isCorrect": true
             },
             {
                 "id": "C",
@@ -4282,14 +4282,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "Deadlock, Transaction A'nın Kaynak 1'i kilitleyip Kaynak 2'yi beklemesi, Transaction B'nin ise Kaynak 2'yi kilitleyip Kaynak 1'i beklemesi durumudur. VTYS birini kurban (victim) seçerek çözer.",
             "whyOthersIncorrect": {
-                "B": "Livelock işlem devam etmesine rağmen ilerleme olmamasıdır.",
-                "C": "Starvation kaynağa erişememe açlığıdır.",
-                "D": "Latch kısa süreli dahili bellek kilididir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Transaction - Deadlock (Kilitlenme)",
             "keyTakeaway": "SQL İleri Seviye Soru #92 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -4304,18 +4304,18 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Parametreli Sorgular (Prepared Statements / Parameterized Queries) kullanmak",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Girdileri tırnak işaretlerinden arındırmak",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "Tüm sorguları büyük harfe çevirmek",
                 "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Parametreli Sorgular (Prepared Statements / Parameterized Queries) kullanmak",
+                "isCorrect": true
             },
             {
                 "id": "D",
@@ -4328,14 +4328,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "Prepared Statements (Parametreli Sorgular), kullanıcı girdisini SQL komut kodundan ayırarak veri olarak işler ve SQL Injection'ı %100 engeller.",
             "whyOthersIncorrect": {
-                "B": "Manuel tırnak temizliği kaçırma riskleri taşır.",
-                "C": "Harf boyutu güvenlik sağlamaz.",
-                "D": "GET/POST farkı SQLi engellemez.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: SQL Security - SQL Injection",
             "keyTakeaway": "SQL İleri Seviye Soru #93 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -4350,23 +4350,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Tablonun 2NF'de olması ve birincil anahtara geçişli (transitive) bağımlılığın olmaması",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Tabloda tekrarlayan sütunların olmaması",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "Tüm alanların atomik olması",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "Foreign key bulunmaması",
                 "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Tablonun 2NF'de olması ve birincil anahtara geçişli (transitive) bağımlılığın olmaması",
+                "isCorrect": true
             },
             {
                 "id": "E",
@@ -4374,14 +4374,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "3NF kuralı: Tablo 2NF olmalı ve birincil anahtar olmayan bir alan, başka bir birincil anahtar olmayan alana bağımlı olmamalıdır (No Transitive Dependency).",
             "whyOthersIncorrect": {
-                "B": "1NF kuralıdır.",
-                "C": "1NF kuralıdır.",
-                "D": "Foreign Key ilişkisel veritabanının temelidir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Database Normalization - 3NF",
             "keyTakeaway": "SQL İleri Seviye Soru #94 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -4396,38 +4396,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Her determinantın (belirleyicinin) mutlaka bir aday anahtar (candidate key) olması kuralı",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Tabloda hiç NULL değer bulunmaması kuralı",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "En fazla 5 sütun bulunabilmesi kuralı",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "Tüm sütunların sayısal olması kuralı",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "D",
                 "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Her determinantın (belirleyicinin) mutlaka bir aday anahtar (candidate key) olması kuralı",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "BCNF, 3NF'nin daha katı bir halidir. Her X -> Y bağımlılığında X'in mutlaka bir Super Key / Candidate Key olmasını şart koşar.",
             "whyOthersIncorrect": {
-                "B": "NULL ile ilgisi yoktur.",
-                "C": "Sütun sayısı sınırı yoktur.",
-                "D": "Veri tipi sınırı yoktur.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Database Normalization - BCNF",
             "keyTakeaway": "SQL İleri Seviye Soru #95 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -4470,10 +4470,10 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "explanation": {
             "whyCorrect": "CHECK kısıtlaması bir sütuna girilebilecek verilerin belirli bir mantıksal koşula (Boolean expression) uymasını zorunlu kılar.",
             "whyOthersIncorrect": {
-                "B": "DEFAULT varsayılan değer atar.",
-                "C": "FOREIGN KEY başka tabloya bağlar.",
-                "D": "UNIQUE benzersizlik sağlar.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Constraint - CHECK Constraint",
             "keyTakeaway": "SQL İleri Seviye Soru #96 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -4488,13 +4488,13 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "CTE hafızada sadece ilgili sorgu süresince var olan mantıksal bir görünümdür; Temporary Table ise tempdb/oturum içinde fiziksel olarak oluşturulur ve indekslenebilir.",
-                "isCorrect": true
+                "text": "CTE sadece PostgreSQL'de vardır.",
+                "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "CTE sadece PostgreSQL'de vardır.",
-                "isCorrect": false
+                "text": "CTE hafızada sadece ilgili sorgu süresince var olan mantıksal bir görünümdür; Temporary Table ise tempdb/oturum içinde fiziksel olarak oluşturulur ve indekslenebilir.",
+                "isCorrect": true
             },
             {
                 "id": "C",
@@ -4512,14 +4512,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "CTE tek bir sorgunun çalışma anı (scope) boyunca geçerli mantıksal yapıdır. Temporary Table ise oturum kapanana kadar tempdb'de fiziksel yaşar ve indekslenebilir.",
             "whyOthersIncorrect": {
-                "B": "CTE tüm gelişmiş VTYS'lerde vardır.",
-                "C": "Temporary table oturum sonunda silinir.",
-                "D": "Tam tersidir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Storage - CTE vs Temporary Table",
             "keyTakeaway": "SQL İleri Seviye Soru #97 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -4534,18 +4534,18 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Sorgudaki WHERE koşulunun indeksleri etkin bir şekilde kullanabilecek biçimde yazılmış olması",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Sorgunun sonucunun bellekte saklanması",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "Sorgunun otomatik olarak paralelleştirilmesi",
                 "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Sorgudaki WHERE koşulunun indeksleri etkin bir şekilde kullanabilecek biçimde yazılmış olması",
+                "isCorrect": true
             },
             {
                 "id": "D",
@@ -4558,14 +4558,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "SARGABLE sorgular, indeksli sütunların üzerinde fonksiyon veya tip dönüşümü yapılmadan yazıldığı için VTYS'nin Index Seek yapabilmesine olanak tanır.",
             "whyOthersIncorrect": {
-                "B": "Caching mekanizmasıdır.",
-                "C": "Parallel execution plan'dır.",
-                "D": "Grafik çizimi değildir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Query Optimization - SARGABLE Queries",
             "keyTakeaway": "SQL İleri Seviye Soru #98 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -4580,23 +4580,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Tam olarak 1 satır ve 1 sütundan oluşan tek bir değer",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Bir tablo dolusu satır ve sütun",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "Sadece Boolean (TRUE/FALSE) değer",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "Sadece dizi (Array) verisi",
                 "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Tam olarak 1 satır ve 1 sütundan oluşan tek bir değer",
+                "isCorrect": true
             },
             {
                 "id": "E",
@@ -4604,14 +4604,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "Scalar subquery tek bir hücre (1 satır × 1 sütun) değer döndüren sorgudur. Bu yüzden SELECT listesinde veya matematiksel ifadelerde kullanılabilir.",
             "whyOthersIncorrect": {
-                "B": "Tablo döndüren sorgular Table-valued subquery'dir.",
-                "C": "EXISTS Boolean döndürür.",
-                "D": "Array türü spesifik veritiplerindedir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Subquery - Scalar Subquery",
             "keyTakeaway": "SQL İleri Seviye Soru #99 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -4626,38 +4626,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "PostgreSQL'de ->> operatörü / JSON_EXTRACT_TEXT",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "SUM()",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "GROUP_CONCAT()",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "STRING_SPLIT()",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "D",
                 "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "PostgreSQL'de ->> operatörü / JSON_EXTRACT_TEXT",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "JSON alanlarından metin değeri çekmek için PostgreSQL'de `->>` operatörü, MySQL/SQLite'ta `JSON_EXTRACT()` veya `->>` kullanılır.",
             "whyOthersIncorrect": {
-                "B": "SUM sayısal toplama yapar.",
-                "C": "GROUP_CONCAT metinleri birleştirir.",
-                "D": "STRING_SPLIT metni parçalar.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: JSON Data in SQL - JSON_EXTRACT / ->>",
             "keyTakeaway": "SQL İleri Seviye Soru #100 - Veritabanı ve sorgu optimizasyon kuralı."
