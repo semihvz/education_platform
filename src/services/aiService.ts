@@ -55,22 +55,22 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "B",
-                "text": "1, 2, 3 ve 1, 1, 2",
+                "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
             },
             {
                 "id": "C",
-                "text": "1, 1, 3 ve 1, 2, 3",
-                "isCorrect": false
-            },
-            {
-                "id": "D",
                 "text": "1, 1, 2 ve 1, 2, 3",
                 "isCorrect": false
             },
             {
+                "id": "D",
+                "text": "1, 1, 3 ve 1, 2, 3",
+                "isCorrect": false
+            },
+            {
                 "id": "E",
-                "text": "Yukarıdakilerin hiçbiri",
+                "text": "1, 2, 3 ve 1, 1, 2",
                 "isCorrect": false
             }
         ],
@@ -101,33 +101,33 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "B",
-                "text": "LAG(satis_miktari, 1) OVER (ORDER BY ay)",
-                "isCorrect": true
-            },
-            {
-                "id": "C",
-                "text": "FIRST_VALUE(satis_miktari) OVER (ORDER BY ay)",
-                "isCorrect": false
-            },
-            {
-                "id": "D",
                 "text": "NTH_VALUE(satis_miktari, 1) OVER (ORDER BY ay)",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "C",
                 "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "FIRST_VALUE(satis_miktari) OVER (ORDER BY ay)",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "LAG(satis_miktari, 1) OVER (ORDER BY ay)",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "B",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "LAG() fonksiyonu sıralı veri kümesinde mevcut satırdan önceki (offset) satırların değerini döndürmek için kullanılır.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Window Functions - LAG & LEAD",
             "keyTakeaway": "SQL İleri Seviye Soru #2 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -142,22 +142,22 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Sadece bir önceki satır ile mevcut satırın toplamını",
+                "text": "Mevcut satırdan sonraki tüm satırların toplamını",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "Tüm tablonun genel toplamını sabit olarak",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
                 "text": "Tablonun en başından mevcut satıra kadar olan kümülatif (yürüyen) toplamı",
                 "isCorrect": true
             },
             {
+                "id": "C",
+                "text": "Tüm tablonun genel toplamını sabit olarak",
+                "isCorrect": false
+            },
+            {
                 "id": "D",
-                "text": "Mevcut satırdan sonraki tüm satırların toplamını",
+                "text": "Sadece bir önceki satır ile mevcut satırın toplamını",
                 "isCorrect": false
             },
             {
@@ -166,12 +166,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "C",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "UNBOUNDED PRECEDING en ilk satırdan başlar, CURRENT ROW ise mevcut satıra kadar olan satırları kapsayarak kümülatif toplam (running total) hesaplar.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
@@ -198,27 +198,27 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "C",
-                "text": "CROSS JOIN",
-                "isCorrect": false
-            },
-            {
-                "id": "D",
                 "text": "UNION ALL",
                 "isCorrect": true
             },
             {
-                "id": "E",
+                "id": "D",
                 "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "CROSS JOIN",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "Recursive CTE yapısında Anchor Member (kök sorgu) ile Recursive Member (özyinelemeli sorgu) birbirine UNION ALL operatörü ile bağlanır.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Recursive CTE - Özyinelemeli Sorgular",
@@ -234,38 +234,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY",
-                "isCorrect": false
+                "text": "FROM -> WHERE -> GROUP BY -> HAVING -> SELECT -> ORDER BY",
+                "isCorrect": true
             },
             {
                 "id": "B",
-                "text": "FROM -> GROUP BY -> WHERE -> HAVING -> SELECT -> ORDER BY",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
-                "text": "WHERE -> FROM -> GROUP BY -> SELECT -> HAVING -> ORDER BY",
-                "isCorrect": false
-            },
-            {
-                "id": "D",
                 "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
             },
             {
+                "id": "C",
+                "text": "FROM -> GROUP BY -> WHERE -> HAVING -> SELECT -> ORDER BY",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "WHERE -> FROM -> GROUP BY -> SELECT -> HAVING -> ORDER BY",
+                "isCorrect": false
+            },
+            {
                 "id": "E",
-                "text": "FROM -> WHERE -> GROUP BY -> HAVING -> SELECT -> ORDER BY",
-                "isCorrect": true
+                "text": "SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY",
+                "isCorrect": false
             }
         ],
-        "correctOptionId": "E",
+        "correctOptionId": "A",
         "explanation": {
             "whyCorrect": "SQL mantıksal sorgu işleme sırası: 1. FROM/JOIN, 2. WHERE, 3. GROUP BY, 4. HAVING, 5. SELECT, 6. ORDER BY, 7. LIMIT/OFFSET.",
             "whyOthersIncorrect": {
-                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: SQL Execution Order - Sorgu Çalışma Sırası",
             "keyTakeaway": "SQL İleri Seviye Soru #5 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -285,22 +285,22 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "B",
-                "text": "Non-Repeatable Read (Tekrarlanamayan Okuma)",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
                 "text": "Dirty Read (Kirli Okuma)",
                 "isCorrect": false
             },
             {
+                "id": "C",
+                "text": "Non-Repeatable Read (Tekrarlanamayan Okuma)",
+                "isCorrect": false
+            },
+            {
                 "id": "D",
-                "text": "Lost Update (Kayıp Güncelleme)",
+                "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "Yukarıdakilerin hiçbiri",
+                "text": "Lost Update (Kayıp Güncelleme)",
                 "isCorrect": false
             }
         ],
@@ -331,31 +331,31 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "B",
-                "text": "SERIALIZABLE",
-                "isCorrect": true
-            },
-            {
-                "id": "C",
-                "text": "READ COMMITTED",
-                "isCorrect": false
-            },
-            {
-                "id": "D",
                 "text": "READ UNCOMMITTED",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "C",
+                "text": "SERIALIZABLE",
+                "isCorrect": true
+            },
+            {
+                "id": "D",
                 "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "READ COMMITTED",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "B",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "SERIALIZABLE en yüksek izolasyon seviyesidir; kilitler ve aralık kilitleri (range locks) kullanarak Phantom Read dahil tüm tutarsızlıkları önler.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
@@ -372,18 +372,18 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "GROUP BY CUBE(bolum_id, unvan)",
+                "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "GROUP BY bolum_id, unvan WITH CUBE",
-                "isCorrect": false
+                "text": "GROUP BY ROLLUP(bolum_id, unvan)",
+                "isCorrect": true
             },
             {
                 "id": "C",
-                "text": "GROUP BY ROLLUP(bolum_id, unvan)",
-                "isCorrect": true
+                "text": "GROUP BY CUBE(bolum_id, unvan)",
+                "isCorrect": false
             },
             {
                 "id": "D",
@@ -392,16 +392,16 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "E",
-                "text": "Yukarıdakilerin hiçbiri",
+                "text": "GROUP BY bolum_id, unvan WITH CUBE",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "C",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "ROLLUP(A, B) ifadesi sırasıyla (A, B), (A) ve () hiyerarşik gruplamalarını üretir. Bu da belirtilen GROUPING SETS ile birebir aynıdır.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
@@ -418,8 +418,8 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "WHERE sadece sayısal alanlarda kullanılır, HAVING metinsel alanlarda kullanılır.",
-                "isCorrect": false
+                "text": "WHERE gruplamadan önce satırları filtreler, HAVING ise GROUP BY sonrasında gruplanmış özet verileri filtreler.",
+                "isCorrect": true
             },
             {
                 "id": "B",
@@ -428,27 +428,27 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "C",
-                "text": "WHERE sorguyu hızlandırmaz, HAVING performansı artırır.",
+                "text": "WHERE sadece sayısal alanlarda kullanılır, HAVING metinsel alanlarda kullanılır.",
                 "isCorrect": false
             },
             {
                 "id": "D",
-                "text": "WHERE gruplamadan önce satırları filtreler, HAVING ise GROUP BY sonrasında gruplanmış özet verileri filtreler.",
-                "isCorrect": true
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "Yukarıdakilerin hiçbiri",
+                "text": "WHERE sorguyu hızlandırmaz, HAVING performansı artırır.",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "A",
         "explanation": {
             "whyCorrect": "WHERE satır bazlı filtreleme yapar ve GROUP BY öncesi çalışır. HAVING ise gruplanmış sonuçlar üzerinde (SUM, AVG vb. içeren) filtreleme yapar.",
             "whyOthersIncorrect": {
-                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: HAVING vs WHERE Farkı",
@@ -464,12 +464,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "'SQL' ve 10",
+                "text": "NULL ve 0",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "NULL ve 0",
+                "text": "'SQL' ve 10",
                 "isCorrect": false
             },
             {
@@ -510,23 +510,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Correlated Subquery (İlişkili Alt Sorgu)",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Scalar Subquery",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "Inline View",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "CTE",
                 "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Correlated Subquery (İlişkili Alt Sorgu)",
+                "isCorrect": true
             },
             {
                 "id": "E",
@@ -534,13 +534,13 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "Correlated Subquery dış sorgudaki tablonun takma adına (alias) bağımlıdır ve dış sorgunun her satırı için yürütülür.",
             "whyOthersIncorrect": {
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Correlated Subquery",
@@ -561,32 +561,32 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "B",
-                "text": "WHERE B.id IS NULL",
-                "isCorrect": true
-            },
-            {
-                "id": "C",
-                "text": "WHERE A.id = B.id",
-                "isCorrect": false
-            },
-            {
-                "id": "D",
                 "text": "WHERE B.id = 0",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "C",
                 "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "WHERE B.id IS NULL",
+                "isCorrect": true
+            },
+            {
+                "id": "E",
+                "text": "WHERE A.id = B.id",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "B",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "LEFT JOIN eşleşmeyen B satırlarına NULL atar. WHERE B.id IS NULL filtresiyle sadece B'de karşılığı olmayan (fark) satırlar elde edilir.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: LEFT JOIN & NULL Check",
@@ -602,36 +602,36 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "UNION ALL mükerrer satırları eler, UNION elemez.",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
-                "text": "UNION iki tabloyu yan yana birleştirir, UNION ALL alt alta birleştirir.",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
                 "text": "UNION mükerrer (duplicate) satırları eler ve sıralama yapar; UNION ALL elenmeden tüm satırları birleştirir ve daha hızlıdır.",
                 "isCorrect": true
             },
             {
-                "id": "D",
+                "id": "B",
                 "text": "UNION ALL bellek kullanmaz, UNION bellek kullanır.",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "C",
+                "text": "UNION iki tabloyu yan yana birleştirir, UNION ALL alt alta birleştirir.",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
                 "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "UNION ALL mükerrer satırları eler, UNION elemez.",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "C",
+        "correctOptionId": "A",
         "explanation": {
             "whyCorrect": "UNION tekil satırları bulmak için dahili DISTINCT (sort/hash) işlemi yapar. UNION ALL mükerrerleri elemediği için çok daha hızlıdır.",
             "whyOthersIncorrect": {
-                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
@@ -648,7 +648,7 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "WHERE ad = 'Ahmet'",
+                "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
             },
             {
@@ -663,23 +663,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "D",
-                "text": "WHERE UPPER(ad) = 'AHMET'",
-                "isCorrect": true
+                "text": "WHERE ad = 'Ahmet'",
+                "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "Yukarıdakilerin hiçbiri",
-                "isCorrect": false
+                "text": "WHERE UPPER(ad) = 'AHMET'",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "İndeksli sütun bir fonksiyona (UPPER, LOWER, TO_CHAR vb.) sarıldığında klasik B-Tree indeksi pasif kalır (Full Table Scan yapılır). İndeksli alan saf tutulmalıdır.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: B-Tree Indexing",
             "keyTakeaway": "SQL İleri Seviye Soru #14 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -694,7 +694,7 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Index Scan tek bir satır okur, Index Seek tüm tabloyu okur.",
+                "text": "Index Scan sadece hafızada çalışır.",
                 "isCorrect": false
             },
             {
@@ -704,28 +704,28 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "C",
-                "text": "Index Scan sadece hafızada çalışır.",
-                "isCorrect": false
+                "text": "Index Seek ağaçta doğrudan aranan noktaya gider (hızlı); Index Scan tüm indeks yapısını baştan sona tarar.",
+                "isCorrect": true
             },
             {
                 "id": "D",
-                "text": "Yukarıdakilerin hiçbiri",
+                "text": "Index Scan tek bir satır okur, Index Seek tüm tabloyu okur.",
                 "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "Index Seek ağaçta doğrudan aranan noktaya gider (hızlı); Index Scan tüm indeks yapısını baştan sona tarar.",
-                "isCorrect": true
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
             }
         ],
-        "correctOptionId": "E",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "Index Seek nokta atışı (bipartite/tree navigation) arama yapar. Index Scan ise indeks yapısının tamamını okur.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Index Seek vs Index Scan",
             "keyTakeaway": "SQL İleri Seviye Soru #15 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -740,35 +740,35 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Çünkü Clustered Index tablodaki verilerin fiziksel olarak diskteki dizilim sırasını belirler.",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
-                "text": "Çünkü veritabanı yazılımları lisans gereği tek indekse izin verir.",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
                 "text": "Çünkü Clustered Index sadece birincil anahtar (Primary Key) üzerinde tanımlanabilir.",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "B",
+                "text": "Çünkü Clustered Index tablodaki verilerin fiziksel olarak diskteki dizilim sırasını belirler.",
+                "isCorrect": true
+            },
+            {
+                "id": "C",
                 "text": "Çünkü bellekte birden fazla indeks saklanamaz.",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "D",
                 "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Çünkü veritabanı yazılımları lisans gereği tek indekse izin verir.",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "Bir verinin disk üzerinde sadece TEK BİR fiziksel sıralaması olabileceği için bir tabloda yalnızca 1 adet Clustered Index bulunabilir.",
             "whyOthersIncorrect": {
-                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
@@ -786,36 +786,36 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Veritabanı her zaman bir tutarlı durumdan diğer tutarlı duruma geçer.",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
-                "text": "İşlem ya tamamen başarılı olur ya da hiç gerçekleşmemiş gibi tamamen geri alınır (All or Nothing).",
-                "isCorrect": true
-            },
-            {
-                "id": "C",
                 "text": "Eşzamanlı işlemler birbirini etkilemez.",
                 "isCorrect": false
             },
             {
+                "id": "B",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "İşlem ya tamamen başarılı olur ya da hiç gerçekleşmemiş gibi tamamen geri alınır (All or Nothing).",
+                "isCorrect": true
+            },
+            {
                 "id": "D",
-                "text": "Tamamlanan işlemler kalıcıdır.",
+                "text": "Veritabanı her zaman bir tutarlı durumdan diğer tutarlı duruma geçer.",
                 "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "Yukarıdakilerin hiçbiri",
+                "text": "Tamamlanan işlemler kalıcıdır.",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "B",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "Atomicity (Hep ya da Hiç): Bir transaction içerisindeki tüm adımlar ya hep birlikte başarılı olur (COMMIT) ya da bir hata durumunda tüm adımlar geri alınır (ROLLBACK).",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
@@ -837,13 +837,13 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "B",
-                "text": "Veritabanı kısıtlamalarının (CHECK, FK) ihlal edilmemesini sağlar.",
+                "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
             },
             {
                 "id": "C",
-                "text": "Eşzamanlı çalışan birden fazla transaction'ın birbirlerinin henüz tamamlanmamış verilerini görmesini ve etkilemesini kontrol eder.",
-                "isCorrect": true
+                "text": "Veritabanı kısıtlamalarının (CHECK, FK) ihlal edilmemesini sağlar.",
+                "isCorrect": false
             },
             {
                 "id": "D",
@@ -852,18 +852,18 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "E",
-                "text": "Yukarıdakilerin hiçbiri",
-                "isCorrect": false
+                "text": "Eşzamanlı çalışan birden fazla transaction'ın birbirlerinin henüz tamamlanmamış verilerini görmesini ve etkilemesini kontrol eder.",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "C",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "Yalıtım (Isolation), aynı anda yürütülen işlemlerin birbirinden bağımsız ve izole olmasını sağlar.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: ACID - Isolation",
             "keyTakeaway": "SQL İleri Seviye Soru #18 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -888,7 +888,7 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "C",
-                "text": "UNION ALL yerine UNION kullanılmalıdır.",
+                "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
             },
             {
@@ -898,7 +898,7 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "E",
-                "text": "Yukarıdakilerin hiçbiri",
+                "text": "UNION ALL yerine UNION kullanılmalıdır.",
                 "isCorrect": false
             }
         ],
@@ -975,12 +975,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "B",
-                "text": "150",
+                "text": "100",
                 "isCorrect": false
             },
             {
                 "id": "C",
-                "text": "100",
+                "text": "150",
                 "isCorrect": false
             },
             {
@@ -1016,13 +1016,13 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Tablodaki mükerrer sütunları silmek için.",
+                "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "Aynı tabloda yer alan çalışan-yönetici ilişkisi gibi hiyerarşik veya birbiriyle ilişkili satırları kıyaslamak için.",
-                "isCorrect": true
+                "text": "Tablodaki mükerrer sütunları silmek için.",
+                "isCorrect": false
             },
             {
                 "id": "C",
@@ -1036,18 +1036,18 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "E",
-                "text": "Yukarıdakilerin hiçbiri",
-                "isCorrect": false
+                "text": "Aynı tabloda yer alan çalışan-yönetici ilişkisi gibi hiyerarşik veya birbiriyle ilişkili satırları kıyaslamak için.",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "B",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "SELF JOIN bir tablonun kendi satırları arasındaki ilişkileri (örneğin personel tablosundaki müdür_id ile personel_id ilişkisi) sorgulamak için kullanılır.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: SELF JOIN Kullanım Amacı",
             "keyTakeaway": "SQL İleri Seviye Soru #22 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -1067,33 +1067,33 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "B",
-                "text": "Her 4 satırda bir toplam alır.",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
-                "text": "Verileri puan sırasına göre 4 eşit gruba (çeyreklik/quartile) böler ve her satıra 1, 2, 3 veya 4 değerini atar.",
-                "isCorrect": true
-            },
-            {
-                "id": "D",
                 "text": "Puanı 4'e böler.",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "C",
+                "text": "Her 4 satırda bir toplam alır.",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
                 "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Verileri puan sırasına göre 4 eşit gruba (çeyreklik/quartile) böler ve her satıra 1, 2, 3 veya 4 değerini atar.",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "C",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "NTILE(n) sıralı veri kümesini belirtilen n adet eşit kovaya (bucket/quartile) bölerek her satıra kova numarasını verir.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Window Function - NTILE(4)",
             "keyTakeaway": "SQL İleri Seviye Soru #23 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -1108,37 +1108,37 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Ana tablodan satır silinmesi engellenir.",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
-                "text": "Alt tablodaki ilgili alanlara NULL değeri atanır.",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
                 "text": "Silinen satırlar çöp kutusuna taşınır.",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "B",
+                "text": "Ana tablodan satır silinmesi engellenir.",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
                 "text": "Ana (Parent) tablodan bir satır silindiğinde, ona bağlı tüm alt (Child) tablodaki satırlar da otomatik olarak silinir.",
                 "isCorrect": true
             },
             {
-                "id": "E",
+                "id": "D",
                 "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Alt tablodaki ilgili alanlara NULL değeri atanır.",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "ON DELETE CASCADE ilkesi ana tablodaki silme işlemini ilişkili tüm detay satırlarına otomatik olarak yayarak siler.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: FOREIGN KEY CASCADE",
@@ -1154,12 +1154,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Clustered Index",
+                "text": "Bitmap Index",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "Bitmap Index",
+                "text": "Clustered Index",
                 "isCorrect": false
             },
             {
@@ -1200,22 +1200,22 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Materialized View sorgu sonucunu fiziksel olarak diskte saklar ve yenilenmesi gerekir; Normal View ise sadece saklanmış bir SQL sorgusudur.",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
-                "text": "Normal View diskte yer kaplar, Materialized View kaplamaz.",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
                 "text": "Materialized View sadece PostgreSQL'de vardır.",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "B",
                 "text": "Normal View indekslenemez ancak Materialized View da indekslenemez.",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Materialized View sorgu sonucunu fiziksel olarak diskte saklar ve yenilenmesi gerekir; Normal View ise sadece saklanmış bir SQL sorgusudur.",
+                "isCorrect": true
+            },
+            {
+                "id": "D",
+                "text": "Normal View diskte yer kaplar, Materialized View kaplamaz.",
                 "isCorrect": false
             },
             {
@@ -1224,12 +1224,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "Materialized View sorgunun çıktısını tablo gibi diskte tutar (fiziksel saklama). Bu sayede karmaşık sorgularda çok hızlıdır ancak REFRESH edilmelidir.",
             "whyOthersIncorrect": {
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
@@ -1246,13 +1246,13 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Çünkü NULL sadece 0 sayısal değerine eşittir.",
-                "isCorrect": false
+                "text": "Çünkü SQL üç değerli mantık (Three-valued logic) kullanır ve NULL bilinmeyen bir değer olduğu için eşitlik IS NULL ile kontrol edilmelidir.",
+                "isCorrect": true
             },
             {
                 "id": "B",
-                "text": "Çünkü SQL üç değerli mantık (Three-valued logic) kullanır ve NULL bilinmeyen bir değer olduğu için eşitlik IS NULL ile kontrol edilmelidir.",
-                "isCorrect": true
+                "text": "Çünkü NULL terimi SQL standartlarında kaldırılmıştır.",
+                "isCorrect": false
             },
             {
                 "id": "C",
@@ -1261,7 +1261,7 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "D",
-                "text": "Çünkü NULL terimi SQL standartlarında kaldırılmıştır.",
+                "text": "Çünkü NULL sadece 0 sayısal değerine eşittir.",
                 "isCorrect": false
             },
             {
@@ -1270,11 +1270,11 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "B",
+        "correctOptionId": "A",
         "explanation": {
             "whyCorrect": "SQL'de NULL ile yapılan tüm mantıksal karşılaştırmalar (`=`, `<>`, `<`) UNKNOWN döner. Bir değerin NULL olup olmadığını test etmek için `IS NULL` veya `IS NOT NULL` kullanılmalıdır.",
             "whyOthersIncorrect": {
-                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
@@ -1292,8 +1292,8 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "BULK INSERT komutu",
-                "isCorrect": false
+                "text": "UPSERT mantığı - MERGE INTO komutu",
+                "isCorrect": true
             },
             {
                 "id": "B",
@@ -1302,26 +1302,26 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "C",
-                "text": "UPSERT mantığı - MERGE INTO komutu",
-                "isCorrect": true
+                "text": "BULK INSERT komutu",
+                "isCorrect": false
             },
             {
                 "id": "D",
-                "text": "ALTER TABLE komutu",
+                "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "Yukarıdakilerin hiçbiri",
+                "text": "ALTER TABLE komutu",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "C",
+        "correctOptionId": "A",
         "explanation": {
             "whyCorrect": "Var olan satırı güncelleme, yoksa ekleme mantığına UPSERT denir. ANSI SQL standardında bu işlem MERGE INTO komutu ile sağlanır (PostgreSQL'de ON CONFLICT).",
             "whyOthersIncorrect": {
-                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
@@ -1343,8 +1343,8 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "B",
-                "text": "6",
-                "isCorrect": false
+                "text": "8 (2^3)",
+                "isCorrect": true
             },
             {
                 "id": "C",
@@ -1353,22 +1353,22 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "D",
-                "text": "8 (2^3)",
-                "isCorrect": true
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "Yukarıdakilerin hiçbiri",
+                "text": "6",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "CUBE n adet sütun için 2^n kombinasyon üretir. 3 sütun için 2^3 = 8 farklı gruplama seti oluşturur: (A,B,C), (A,B), (A,C), (B,C), (A), (B), (C), ().",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: GROUP BY - CUBE",
@@ -1394,28 +1394,28 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "C",
-                "text": "Çünkü LAST_VALUE fonksiyonu NULL değerleri otomatik siler.",
-                "isCorrect": false
-            },
-            {
-                "id": "D",
                 "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "D",
                 "text": "Çünkü varsayılan pencere çerçevesi (frame) CURRENT ROW'a kadardır ve her satırda kendisini son satır görür.",
                 "isCorrect": true
+            },
+            {
+                "id": "E",
+                "text": "Çünkü LAST_VALUE fonksiyonu NULL değerleri otomatik siler.",
+                "isCorrect": false
             }
         ],
-        "correctOptionId": "E",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "Varsayılan pencere çerçevesi `RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW` olduğundan, pencere o anki satırda biter ve LAST_VALUE hep o anki satırı döndürür.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Window Functions - FIRST_VALUE & LAST_VALUE",
             "keyTakeaway": "SQL İleri Seviye Soru #30 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -1430,35 +1430,35 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            },
+            {
+                "id": "B",
                 "text": "Filtered Index (Kısmi / Filtrelenmiş İndeks)",
                 "isCorrect": true
             },
             {
-                "id": "B",
-                "text": "Clustered Index",
-                "isCorrect": false
-            },
-            {
                 "id": "C",
-                "text": "Global Index",
-                "isCorrect": false
-            },
-            {
-                "id": "D",
                 "text": "Bitmap Index",
                 "isCorrect": false
             },
             {
+                "id": "D",
+                "text": "Global Index",
+                "isCorrect": false
+            },
+            {
                 "id": "E",
-                "text": "Yukarıdakilerin hiçbiri",
+                "text": "Clustered Index",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "Filtered Index (Partial Index), tablonun tamamı yerine sadece WHERE koşuluna uyan satırları indeksleyerek disk alanı ve bakım maliyetinden tasarruf sağlar.",
             "whyOthersIncorrect": {
-                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
@@ -1476,38 +1476,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Livelock",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
-                "text": "Deadlock (Ölümcül Kilitlenme)",
-                "isCorrect": true
-            },
-            {
-                "id": "C",
-                "text": "Starvation",
-                "isCorrect": false
-            },
-            {
-                "id": "D",
                 "text": "Latch",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "B",
+                "text": "Livelock",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
                 "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Starvation",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Deadlock (Ölümcül Kilitlenme)",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "B",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "Deadlock, Transaction A'nın Kaynak 1'i kilitleyip Kaynak 2'yi beklemesi, Transaction B'nin ise Kaynak 2'yi kilitleyip Kaynak 1'i beklemesi durumudur. VTYS birini kurban (victim) seçerek çözer.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Transaction - Deadlock (Kilitlenme)",
             "keyTakeaway": "SQL İleri Seviye Soru #32 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -1527,7 +1527,7 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "B",
-                "text": "Tüm sorguları büyük harfe çevirmek",
+                "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
             },
             {
@@ -1537,12 +1537,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "D",
-                "text": "Sadece GET istekleri kullanmak",
+                "text": "Tüm sorguları büyük harfe çevirmek",
                 "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "Yukarıdakilerin hiçbiri",
+                "text": "Sadece GET istekleri kullanmak",
                 "isCorrect": false
             }
         ],
@@ -1573,12 +1573,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "B",
-                "text": "Tüm alanların atomik olması",
+                "text": "Foreign key bulunmaması",
                 "isCorrect": false
             },
             {
                 "id": "C",
-                "text": "Foreign key bulunmaması",
+                "text": "Tüm alanların atomik olması",
                 "isCorrect": false
             },
             {
@@ -1619,12 +1619,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "B",
-                "text": "En fazla 5 sütun bulunabilmesi kuralı",
-                "isCorrect": false
+                "text": "Her determinantın (belirleyicinin) mutlaka bir aday anahtar (candidate key) olması kuralı",
+                "isCorrect": true
             },
             {
                 "id": "C",
-                "text": "Tüm sütunların sayısal olması kuralı",
+                "text": "En fazla 5 sütun bulunabilmesi kuralı",
                 "isCorrect": false
             },
             {
@@ -1634,18 +1634,18 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "E",
-                "text": "Her determinantın (belirleyicinin) mutlaka bir aday anahtar (candidate key) olması kuralı",
-                "isCorrect": true
+                "text": "Tüm sütunların sayısal olması kuralı",
+                "isCorrect": false
             }
         ],
-        "correctOptionId": "E",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "BCNF, 3NF'nin daha katı bir halidir. Her X -> Y bağımlılığında X'in mutlaka bir Super Key / Candidate Key olmasını şart koşar.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Database Normalization - BCNF",
             "keyTakeaway": "SQL İleri Seviye Soru #35 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -1660,35 +1660,35 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "CHECK (yas >= 18)",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
-                "text": "DEFAULT (yas >= 18)",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
                 "text": "FOREIGN KEY (yas >= 18)",
                 "isCorrect": false
             },
             {
+                "id": "B",
+                "text": "CHECK (yas >= 18)",
+                "isCorrect": true
+            },
+            {
+                "id": "C",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            },
+            {
                 "id": "D",
-                "text": "UNIQUE (yas >= 18)",
+                "text": "DEFAULT (yas >= 18)",
                 "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "Yukarıdakilerin hiçbiri",
+                "text": "UNIQUE (yas >= 18)",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "CHECK kısıtlaması bir sütuna girilebilecek verilerin belirli bir mantıksal koşula (Boolean expression) uymasını zorunlu kılar.",
             "whyOthersIncorrect": {
-                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
@@ -1711,31 +1711,31 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "B",
-                "text": "CTE hafızada sadece ilgili sorgu süresince var olan mantıksal bir görünümdür; Temporary Table ise tempdb/oturum içinde fiziksel olarak oluşturulur ve indekslenebilir.",
-                "isCorrect": true
-            },
-            {
-                "id": "C",
-                "text": "Temporary Table silinemez.",
-                "isCorrect": false
-            },
-            {
-                "id": "D",
                 "text": "CTE diskte yer kaplar, Temporary Table kaplamaz.",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "C",
+                "text": "CTE hafızada sadece ilgili sorgu süresince var olan mantıksal bir görünümdür; Temporary Table ise tempdb/oturum içinde fiziksel olarak oluşturulur ve indekslenebilir.",
+                "isCorrect": true
+            },
+            {
+                "id": "D",
                 "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Temporary Table silinemez.",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "B",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "CTE tek bir sorgunun çalışma anı (scope) boyunca geçerli mantıksal yapıdır. Temporary Table ise oturum kapanana kadar tempdb'de fiziksel yaşar ve indekslenebilir.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
@@ -1752,37 +1752,37 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Sorgunun sonucunun bellekte saklanması",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
                 "text": "Sorgunun otomatik olarak paralelleştirilmesi",
                 "isCorrect": false
             },
             {
+                "id": "B",
+                "text": "Sorgunun sonucunun bellekte saklanması",
+                "isCorrect": false
+            },
+            {
                 "id": "C",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
                 "text": "Sorgudaki WHERE koşulunun indeksleri etkin bir şekilde kullanabilecek biçimde yazılmış olması",
                 "isCorrect": true
             },
             {
-                "id": "D",
-                "text": "Sorguda grafik çizilmesi",
-                "isCorrect": false
-            },
-            {
                 "id": "E",
-                "text": "Yukarıdakilerin hiçbiri",
+                "text": "Sorguda grafik çizilmesi",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "C",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "SARGABLE sorgular, indeksli sütunların üzerinde fonksiyon veya tip dönüşümü yapılmadan yazıldığı için VTYS'nin Index Seek yapabilmesine olanak tanır.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Query Optimization - SARGABLE Queries",
@@ -1798,37 +1798,37 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Bir tablo dolusu satır ve sütun",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
-                "text": "Sadece Boolean (TRUE/FALSE) değer",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
-                "text": "Sadece dizi (Array) verisi",
-                "isCorrect": false
-            },
-            {
-                "id": "D",
                 "text": "Tam olarak 1 satır ve 1 sütundan oluşan tek bir değer",
                 "isCorrect": true
             },
             {
-                "id": "E",
+                "id": "B",
                 "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Sadece Boolean (TRUE/FALSE) değer",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Bir tablo dolusu satır ve sütun",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Sadece dizi (Array) verisi",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "A",
         "explanation": {
             "whyCorrect": "Scalar subquery tek bir hücre (1 satır × 1 sütun) değer döndüren sorgudur. Bu yüzden SELECT listesinde veya matematiksel ifadelerde kullanılabilir.",
             "whyOthersIncorrect": {
-                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Subquery - Scalar Subquery",
@@ -1844,38 +1844,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "SUM()",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
-                "text": "GROUP_CONCAT()",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
                 "text": "STRING_SPLIT()",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "B",
+                "text": "PostgreSQL'de ->> operatörü / JSON_EXTRACT_TEXT",
+                "isCorrect": true
+            },
+            {
+                "id": "C",
                 "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
             },
             {
+                "id": "D",
+                "text": "GROUP_CONCAT()",
+                "isCorrect": false
+            },
+            {
                 "id": "E",
-                "text": "PostgreSQL'de ->> operatörü / JSON_EXTRACT_TEXT",
-                "isCorrect": true
+                "text": "SUM()",
+                "isCorrect": false
             }
         ],
-        "correctOptionId": "E",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "JSON alanlarından metin değeri çekmek için PostgreSQL'de `->>` operatörü, MySQL/SQLite'ta `JSON_EXTRACT()` veya `->>` kullanılır.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: JSON Data in SQL - JSON_EXTRACT / ->>",
             "keyTakeaway": "SQL İleri Seviye Soru #40 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -1895,12 +1895,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "B",
-                "text": "Clustered Index",
+                "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
             },
             {
                 "id": "C",
-                "text": "Global Index",
+                "text": "Clustered Index",
                 "isCorrect": false
             },
             {
@@ -1910,7 +1910,7 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "E",
-                "text": "Yukarıdakilerin hiçbiri",
+                "text": "Global Index",
                 "isCorrect": false
             }
         ],
@@ -1936,36 +1936,36 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Livelock",
+                "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "Deadlock (Ölümcül Kilitlenme)",
-                "isCorrect": true
-            },
-            {
-                "id": "C",
                 "text": "Starvation",
                 "isCorrect": false
             },
             {
+                "id": "C",
+                "text": "Deadlock (Ölümcül Kilitlenme)",
+                "isCorrect": true
+            },
+            {
                 "id": "D",
-                "text": "Latch",
+                "text": "Livelock",
                 "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "Yukarıdakilerin hiçbiri",
+                "text": "Latch",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "B",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "Deadlock, Transaction A'nın Kaynak 1'i kilitleyip Kaynak 2'yi beklemesi, Transaction B'nin ise Kaynak 2'yi kilitleyip Kaynak 1'i beklemesi durumudur. VTYS birini kurban (victim) seçerek çözer.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
@@ -1982,37 +1982,37 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Girdileri tırnak işaretlerinden arındırmak",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
                 "text": "Tüm sorguları büyük harfe çevirmek",
                 "isCorrect": false
             },
             {
-                "id": "C",
-                "text": "Parametreli Sorgular (Prepared Statements / Parameterized Queries) kullanmak",
-                "isCorrect": true
+                "id": "B",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "Sadece GET istekleri kullanmak",
                 "isCorrect": false
             },
             {
+                "id": "D",
+                "text": "Parametreli Sorgular (Prepared Statements / Parameterized Queries) kullanmak",
+                "isCorrect": true
+            },
+            {
                 "id": "E",
-                "text": "Yukarıdakilerin hiçbiri",
+                "text": "Girdileri tırnak işaretlerinden arındırmak",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "C",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "Prepared Statements (Parametreli Sorgular), kullanıcı girdisini SQL komut kodundan ayırarak veri olarak işler ve SQL Injection'ı %100 engeller.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: SQL Security - SQL Injection",
@@ -2028,13 +2028,13 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Tabloda tekrarlayan sütunların olmaması",
+                "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "Tüm alanların atomik olması",
-                "isCorrect": false
+                "text": "Tablonun 2NF'de olması ve birincil anahtara geçişli (transitive) bağımlılığın olmaması",
+                "isCorrect": true
             },
             {
                 "id": "C",
@@ -2043,22 +2043,22 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "D",
-                "text": "Tablonun 2NF'de olması ve birincil anahtara geçişli (transitive) bağımlılığın olmaması",
-                "isCorrect": true
+                "text": "Tabloda tekrarlayan sütunların olmaması",
+                "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "Yukarıdakilerin hiçbiri",
+                "text": "Tüm alanların atomik olması",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "3NF kuralı: Tablo 2NF olmalı ve birincil anahtar olmayan bir alan, başka bir birincil anahtar olmayan alana bağımlı olmamalıdır (No Transitive Dependency).",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Database Normalization - 3NF",
@@ -2074,38 +2074,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Tabloda hiç NULL değer bulunmaması kuralı",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
-                "text": "En fazla 5 sütun bulunabilmesi kuralı",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
                 "text": "Tüm sütunların sayısal olması kuralı",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "B",
                 "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "C",
+                "text": "En fazla 5 sütun bulunabilmesi kuralı",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
                 "text": "Her determinantın (belirleyicinin) mutlaka bir aday anahtar (candidate key) olması kuralı",
                 "isCorrect": true
+            },
+            {
+                "id": "E",
+                "text": "Tabloda hiç NULL değer bulunmaması kuralı",
+                "isCorrect": false
             }
         ],
-        "correctOptionId": "E",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "BCNF, 3NF'nin daha katı bir halidir. Her X -> Y bağımlılığında X'in mutlaka bir Super Key / Candidate Key olmasını şart koşar.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Database Normalization - BCNF",
             "keyTakeaway": "SQL İleri Seviye Soru #45 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -2120,37 +2120,37 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "CHECK (yas >= 18)",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
-                "text": "DEFAULT (yas >= 18)",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
-                "text": "FOREIGN KEY (yas >= 18)",
-                "isCorrect": false
-            },
-            {
-                "id": "D",
                 "text": "UNIQUE (yas >= 18)",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "B",
                 "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "DEFAULT (yas >= 18)",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "CHECK (yas >= 18)",
+                "isCorrect": true
+            },
+            {
+                "id": "E",
+                "text": "FOREIGN KEY (yas >= 18)",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "CHECK kısıtlaması bir sütuna girilebilecek verilerin belirli bir mantıksal koşula (Boolean expression) uymasını zorunlu kılar.",
             "whyOthersIncorrect": {
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Constraint - CHECK Constraint",
@@ -2166,7 +2166,7 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "CTE sadece PostgreSQL'de vardır.",
+                "text": "CTE diskte yer kaplar, Temporary Table kaplamaz.",
                 "isCorrect": false
             },
             {
@@ -2176,12 +2176,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "C",
-                "text": "Temporary Table silinemez.",
+                "text": "CTE sadece PostgreSQL'de vardır.",
                 "isCorrect": false
             },
             {
                 "id": "D",
-                "text": "CTE diskte yer kaplar, Temporary Table kaplamaz.",
+                "text": "Temporary Table silinemez.",
                 "isCorrect": false
             },
             {
@@ -2212,18 +2212,18 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
+                "text": "Sorgudaki WHERE koşulunun indeksleri etkin bir şekilde kullanabilecek biçimde yazılmış olması",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
                 "text": "Sorgunun sonucunun bellekte saklanması",
                 "isCorrect": false
             },
             {
-                "id": "B",
+                "id": "C",
                 "text": "Sorgunun otomatik olarak paralelleştirilmesi",
                 "isCorrect": false
-            },
-            {
-                "id": "C",
-                "text": "Sorgudaki WHERE koşulunun indeksleri etkin bir şekilde kullanabilecek biçimde yazılmış olması",
-                "isCorrect": true
             },
             {
                 "id": "D",
@@ -2236,12 +2236,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "C",
+        "correctOptionId": "A",
         "explanation": {
             "whyCorrect": "SARGABLE sorgular, indeksli sütunların üzerinde fonksiyon veya tip dönüşümü yapılmadan yazıldığı için VTYS'nin Index Seek yapabilmesine olanak tanır.",
             "whyOthersIncorrect": {
-                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
@@ -2258,8 +2258,8 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Bir tablo dolusu satır ve sütun",
-                "isCorrect": false
+                "text": "Tam olarak 1 satır ve 1 sütundan oluşan tek bir değer",
+                "isCorrect": true
             },
             {
                 "id": "B",
@@ -2273,8 +2273,8 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "D",
-                "text": "Tam olarak 1 satır ve 1 sütundan oluşan tek bir değer",
-                "isCorrect": true
+                "text": "Bir tablo dolusu satır ve sütun",
+                "isCorrect": false
             },
             {
                 "id": "E",
@@ -2282,13 +2282,13 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "A",
         "explanation": {
             "whyCorrect": "Scalar subquery tek bir hücre (1 satır × 1 sütun) değer döndüren sorgudur. Bu yüzden SELECT listesinde veya matematiksel ifadelerde kullanılabilir.",
             "whyOthersIncorrect": {
-                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Subquery - Scalar Subquery",
@@ -2309,7 +2309,7 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "B",
-                "text": "GROUP_CONCAT()",
+                "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
             },
             {
@@ -2319,7 +2319,7 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "D",
-                "text": "Yukarıdakilerin hiçbiri",
+                "text": "GROUP_CONCAT()",
                 "isCorrect": false
             },
             {
@@ -2350,12 +2350,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Filtered Index (Kısmi / Filtrelenmiş İndeks)",
-                "isCorrect": true
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "Clustered Index",
+                "text": "Bitmap Index",
                 "isCorrect": false
             },
             {
@@ -2365,23 +2365,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "D",
-                "text": "Bitmap Index",
+                "text": "Clustered Index",
                 "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "Yukarıdakilerin hiçbiri",
-                "isCorrect": false
+                "text": "Filtered Index (Kısmi / Filtrelenmiş İndeks)",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "Filtered Index (Partial Index), tablonun tamamı yerine sadece WHERE koşuluna uyan satırları indeksleyerek disk alanı ve bakım maliyetinden tasarruf sağlar.",
             "whyOthersIncorrect": {
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Index - Partial / Filtered Index",
             "keyTakeaway": "SQL İleri Seviye Soru #51 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -2401,31 +2401,31 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "B",
-                "text": "Deadlock (Ölümcül Kilitlenme)",
-                "isCorrect": true
-            },
-            {
-                "id": "C",
-                "text": "Starvation",
-                "isCorrect": false
-            },
-            {
-                "id": "D",
                 "text": "Latch",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "C",
+                "text": "Deadlock (Ölümcül Kilitlenme)",
+                "isCorrect": true
+            },
+            {
+                "id": "D",
                 "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Starvation",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "B",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "Deadlock, Transaction A'nın Kaynak 1'i kilitleyip Kaynak 2'yi beklemesi, Transaction B'nin ise Kaynak 2'yi kilitleyip Kaynak 1'i beklemesi durumudur. VTYS birini kurban (victim) seçerek çözer.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
@@ -2442,18 +2442,18 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Girdileri tırnak işaretlerinden arındırmak",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
                 "text": "Tüm sorguları büyük harfe çevirmek",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "Parametreli Sorgular (Prepared Statements / Parameterized Queries) kullanmak",
                 "isCorrect": true
+            },
+            {
+                "id": "C",
+                "text": "Girdileri tırnak işaretlerinden arındırmak",
+                "isCorrect": false
             },
             {
                 "id": "D",
@@ -2466,12 +2466,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "C",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "Prepared Statements (Parametreli Sorgular), kullanıcı girdisini SQL komut kodundan ayırarak veri olarak işler ve SQL Injection'ı %100 engeller.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
@@ -2488,7 +2488,7 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Tabloda tekrarlayan sütunların olmaması",
+                "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
             },
             {
@@ -2503,23 +2503,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "D",
-                "text": "Tablonun 2NF'de olması ve birincil anahtara geçişli (transitive) bağımlılığın olmaması",
-                "isCorrect": true
+                "text": "Tabloda tekrarlayan sütunların olmaması",
+                "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "Yukarıdakilerin hiçbiri",
-                "isCorrect": false
+                "text": "Tablonun 2NF'de olması ve birincil anahtara geçişli (transitive) bağımlılığın olmaması",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "3NF kuralı: Tablo 2NF olmalı ve birincil anahtar olmayan bir alan, başka bir birincil anahtar olmayan alana bağımlı olmamalıdır (No Transitive Dependency).",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Database Normalization - 3NF",
             "keyTakeaway": "SQL İleri Seviye Soru #54 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -2534,38 +2534,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Tabloda hiç NULL değer bulunmaması kuralı",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
-                "text": "En fazla 5 sütun bulunabilmesi kuralı",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
-                "text": "Tüm sütunların sayısal olması kuralı",
-                "isCorrect": false
-            },
-            {
-                "id": "D",
                 "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "B",
                 "text": "Her determinantın (belirleyicinin) mutlaka bir aday anahtar (candidate key) olması kuralı",
                 "isCorrect": true
+            },
+            {
+                "id": "C",
+                "text": "En fazla 5 sütun bulunabilmesi kuralı",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Tüm sütunların sayısal olması kuralı",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Tabloda hiç NULL değer bulunmaması kuralı",
+                "isCorrect": false
             }
         ],
-        "correctOptionId": "E",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "BCNF, 3NF'nin daha katı bir halidir. Her X -> Y bağımlılığında X'in mutlaka bir Super Key / Candidate Key olmasını şart koşar.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Database Normalization - BCNF",
             "keyTakeaway": "SQL İleri Seviye Soru #55 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -2580,8 +2580,8 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "CHECK (yas >= 18)",
-                "isCorrect": true
+                "text": "FOREIGN KEY (yas >= 18)",
+                "isCorrect": false
             },
             {
                 "id": "B",
@@ -2590,13 +2590,13 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "C",
-                "text": "FOREIGN KEY (yas >= 18)",
+                "text": "UNIQUE (yas >= 18)",
                 "isCorrect": false
             },
             {
                 "id": "D",
-                "text": "UNIQUE (yas >= 18)",
-                "isCorrect": false
+                "text": "CHECK (yas >= 18)",
+                "isCorrect": true
             },
             {
                 "id": "E",
@@ -2604,13 +2604,13 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "CHECK kısıtlaması bir sütuna girilebilecek verilerin belirli bir mantıksal koşula (Boolean expression) uymasını zorunlu kılar.",
             "whyOthersIncorrect": {
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Constraint - CHECK Constraint",
@@ -2626,22 +2626,22 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "CTE sadece PostgreSQL'de vardır.",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
                 "text": "CTE hafızada sadece ilgili sorgu süresince var olan mantıksal bir görünümdür; Temporary Table ise tempdb/oturum içinde fiziksel olarak oluşturulur ve indekslenebilir.",
                 "isCorrect": true
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "Temporary Table silinemez.",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "CTE diskte yer kaplar, Temporary Table kaplamaz.",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "CTE sadece PostgreSQL'de vardır.",
                 "isCorrect": false
             },
             {
@@ -2650,11 +2650,11 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "B",
+        "correctOptionId": "A",
         "explanation": {
             "whyCorrect": "CTE tek bir sorgunun çalışma anı (scope) boyunca geçerli mantıksal yapıdır. Temporary Table ise oturum kapanana kadar tempdb'de fiziksel yaşar ve indekslenebilir.",
             "whyOthersIncorrect": {
-                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
@@ -2672,18 +2672,18 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Sorgunun sonucunun bellekte saklanması",
+                "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "Sorgunun otomatik olarak paralelleştirilmesi",
-                "isCorrect": false
+                "text": "Sorgudaki WHERE koşulunun indeksleri etkin bir şekilde kullanabilecek biçimde yazılmış olması",
+                "isCorrect": true
             },
             {
                 "id": "C",
-                "text": "Sorgudaki WHERE koşulunun indeksleri etkin bir şekilde kullanabilecek biçimde yazılmış olması",
-                "isCorrect": true
+                "text": "Sorgunun sonucunun bellekte saklanması",
+                "isCorrect": false
             },
             {
                 "id": "D",
@@ -2692,16 +2692,16 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "E",
-                "text": "Yukarıdakilerin hiçbiri",
+                "text": "Sorgunun otomatik olarak paralelleştirilmesi",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "C",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "SARGABLE sorgular, indeksli sütunların üzerinde fonksiyon veya tip dönüşümü yapılmadan yazıldığı için VTYS'nin Index Seek yapabilmesine olanak tanır.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
@@ -2718,37 +2718,37 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Bir tablo dolusu satır ve sütun",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
-                "text": "Sadece Boolean (TRUE/FALSE) değer",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
-                "text": "Sadece dizi (Array) verisi",
-                "isCorrect": false
-            },
-            {
-                "id": "D",
                 "text": "Tam olarak 1 satır ve 1 sütundan oluşan tek bir değer",
                 "isCorrect": true
             },
             {
-                "id": "E",
+                "id": "B",
                 "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Sadece Boolean (TRUE/FALSE) değer",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Sadece dizi (Array) verisi",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Bir tablo dolusu satır ve sütun",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "A",
         "explanation": {
             "whyCorrect": "Scalar subquery tek bir hücre (1 satır × 1 sütun) değer döndüren sorgudur. Bu yüzden SELECT listesinde veya matematiksel ifadelerde kullanılabilir.",
             "whyOthersIncorrect": {
-                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Subquery - Scalar Subquery",
@@ -2764,18 +2764,18 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "SUM()",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
                 "text": "GROUP_CONCAT()",
                 "isCorrect": false
             },
             {
-                "id": "C",
-                "text": "STRING_SPLIT()",
+                "id": "B",
+                "text": "SUM()",
                 "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "PostgreSQL'de ->> operatörü / JSON_EXTRACT_TEXT",
+                "isCorrect": true
             },
             {
                 "id": "D",
@@ -2784,18 +2784,18 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "E",
-                "text": "PostgreSQL'de ->> operatörü / JSON_EXTRACT_TEXT",
-                "isCorrect": true
+                "text": "STRING_SPLIT()",
+                "isCorrect": false
             }
         ],
-        "correctOptionId": "E",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "JSON alanlarından metin değeri çekmek için PostgreSQL'de `->>` operatörü, MySQL/SQLite'ta `JSON_EXTRACT()` veya `->>` kullanılır.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: JSON Data in SQL - JSON_EXTRACT / ->>",
             "keyTakeaway": "SQL İleri Seviye Soru #60 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -2815,22 +2815,22 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "B",
-                "text": "Clustered Index",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
-                "text": "Global Index",
-                "isCorrect": false
-            },
-            {
-                "id": "D",
                 "text": "Bitmap Index",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "C",
+                "text": "Clustered Index",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
                 "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Global Index",
                 "isCorrect": false
             }
         ],
@@ -2861,18 +2861,18 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "B",
-                "text": "Deadlock (Ölümcül Kilitlenme)",
-                "isCorrect": true
-            },
-            {
-                "id": "C",
                 "text": "Starvation",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "Latch",
                 "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Deadlock (Ölümcül Kilitlenme)",
+                "isCorrect": true
             },
             {
                 "id": "E",
@@ -2880,13 +2880,13 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "B",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "Deadlock, Transaction A'nın Kaynak 1'i kilitleyip Kaynak 2'yi beklemesi, Transaction B'nin ise Kaynak 2'yi kilitleyip Kaynak 1'i beklemesi durumudur. VTYS birini kurban (victim) seçerek çözer.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Transaction - Deadlock (Kilitlenme)",
@@ -2902,12 +2902,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Girdileri tırnak işaretlerinden arındırmak",
+                "text": "Sadece GET istekleri kullanmak",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "Tüm sorguları büyük harfe çevirmek",
+                "text": "Girdileri tırnak işaretlerinden arındırmak",
                 "isCorrect": false
             },
             {
@@ -2917,7 +2917,7 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "D",
-                "text": "Sadece GET istekleri kullanmak",
+                "text": "Tüm sorguları büyük harfe çevirmek",
                 "isCorrect": false
             },
             {
@@ -2948,12 +2948,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Tabloda tekrarlayan sütunların olmaması",
+                "text": "Tüm alanların atomik olması",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "Tüm alanların atomik olması",
+                "text": "Tabloda tekrarlayan sütunların olmaması",
                 "isCorrect": false
             },
             {
@@ -2994,38 +2994,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Tabloda hiç NULL değer bulunmaması kuralı",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
                 "text": "En fazla 5 sütun bulunabilmesi kuralı",
                 "isCorrect": false
             },
             {
-                "id": "C",
-                "text": "Tüm sütunların sayısal olması kuralı",
-                "isCorrect": false
-            },
-            {
-                "id": "D",
+                "id": "B",
                 "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "C",
                 "text": "Her determinantın (belirleyicinin) mutlaka bir aday anahtar (candidate key) olması kuralı",
                 "isCorrect": true
+            },
+            {
+                "id": "D",
+                "text": "Tabloda hiç NULL değer bulunmaması kuralı",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Tüm sütunların sayısal olması kuralı",
+                "isCorrect": false
             }
         ],
-        "correctOptionId": "E",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "BCNF, 3NF'nin daha katı bir halidir. Her X -> Y bağımlılığında X'in mutlaka bir Super Key / Candidate Key olmasını şart koşar.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Database Normalization - BCNF",
             "keyTakeaway": "SQL İleri Seviye Soru #65 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -3040,8 +3040,8 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "CHECK (yas >= 18)",
-                "isCorrect": true
+                "text": "FOREIGN KEY (yas >= 18)",
+                "isCorrect": false
             },
             {
                 "id": "B",
@@ -3050,7 +3050,7 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "C",
-                "text": "FOREIGN KEY (yas >= 18)",
+                "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
             },
             {
@@ -3060,18 +3060,18 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "E",
-                "text": "Yukarıdakilerin hiçbiri",
-                "isCorrect": false
+                "text": "CHECK (yas >= 18)",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "CHECK kısıtlaması bir sütuna girilebilecek verilerin belirli bir mantıksal koşula (Boolean expression) uymasını zorunlu kılar.",
             "whyOthersIncorrect": {
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Constraint - CHECK Constraint",
             "keyTakeaway": "SQL İleri Seviye Soru #66 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -3086,7 +3086,7 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "CTE sadece PostgreSQL'de vardır.",
+                "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
             },
             {
@@ -3101,12 +3101,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "D",
-                "text": "CTE diskte yer kaplar, Temporary Table kaplamaz.",
+                "text": "CTE sadece PostgreSQL'de vardır.",
                 "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "Yukarıdakilerin hiçbiri",
+                "text": "CTE diskte yer kaplar, Temporary Table kaplamaz.",
                 "isCorrect": false
             }
         ],
@@ -3132,38 +3132,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Sorgunun sonucunun bellekte saklanması",
+                "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "Sorgunun otomatik olarak paralelleştirilmesi",
+                "text": "Sorgunun sonucunun bellekte saklanması",
                 "isCorrect": false
             },
             {
                 "id": "C",
-                "text": "Sorgudaki WHERE koşulunun indeksleri etkin bir şekilde kullanabilecek biçimde yazılmış olması",
-                "isCorrect": true
-            },
-            {
-                "id": "D",
                 "text": "Sorguda grafik çizilmesi",
                 "isCorrect": false
             },
             {
-                "id": "E",
-                "text": "Yukarıdakilerin hiçbiri",
+                "id": "D",
+                "text": "Sorgunun otomatik olarak paralelleştirilmesi",
                 "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Sorgudaki WHERE koşulunun indeksleri etkin bir şekilde kullanabilecek biçimde yazılmış olması",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "C",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "SARGABLE sorgular, indeksli sütunların üzerinde fonksiyon veya tip dönüşümü yapılmadan yazıldığı için VTYS'nin Index Seek yapabilmesine olanak tanır.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Query Optimization - SARGABLE Queries",
             "keyTakeaway": "SQL İleri Seviye Soru #68 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -3178,37 +3178,37 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Bir tablo dolusu satır ve sütun",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
-                "text": "Sadece Boolean (TRUE/FALSE) değer",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
                 "text": "Sadece dizi (Array) verisi",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "B",
                 "text": "Tam olarak 1 satır ve 1 sütundan oluşan tek bir değer",
                 "isCorrect": true
             },
             {
-                "id": "E",
+                "id": "C",
+                "text": "Bir tablo dolusu satır ve sütun",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
                 "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Sadece Boolean (TRUE/FALSE) değer",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "Scalar subquery tek bir hücre (1 satır × 1 sütun) değer döndüren sorgudur. Bu yüzden SELECT listesinde veya matematiksel ifadelerde kullanılabilir.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Subquery - Scalar Subquery",
@@ -3224,12 +3224,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "SUM()",
-                "isCorrect": false
+                "text": "PostgreSQL'de ->> operatörü / JSON_EXTRACT_TEXT",
+                "isCorrect": true
             },
             {
                 "id": "B",
-                "text": "GROUP_CONCAT()",
+                "text": "SUM()",
                 "isCorrect": false
             },
             {
@@ -3244,18 +3244,18 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "E",
-                "text": "PostgreSQL'de ->> operatörü / JSON_EXTRACT_TEXT",
-                "isCorrect": true
+                "text": "GROUP_CONCAT()",
+                "isCorrect": false
             }
         ],
-        "correctOptionId": "E",
+        "correctOptionId": "A",
         "explanation": {
             "whyCorrect": "JSON alanlarından metin değeri çekmek için PostgreSQL'de `->>` operatörü, MySQL/SQLite'ta `JSON_EXTRACT()` veya `->>` kullanılır.",
             "whyOthersIncorrect": {
-                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: JSON Data in SQL - JSON_EXTRACT / ->>",
             "keyTakeaway": "SQL İleri Seviye Soru #70 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -3270,36 +3270,36 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Filtered Index (Kısmi / Filtrelenmiş İndeks)",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "Clustered Index",
                 "isCorrect": false
             },
             {
-                "id": "C",
-                "text": "Global Index",
-                "isCorrect": false
-            },
-            {
-                "id": "D",
+                "id": "B",
                 "text": "Bitmap Index",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "C",
+                "text": "Filtered Index (Kısmi / Filtrelenmiş İndeks)",
+                "isCorrect": true
+            },
+            {
+                "id": "D",
                 "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Global Index",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "Filtered Index (Partial Index), tablonun tamamı yerine sadece WHERE koşuluna uyan satırları indeksleyerek disk alanı ve bakım maliyetinden tasarruf sağlar.",
             "whyOthersIncorrect": {
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
@@ -3316,35 +3316,35 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Livelock",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
                 "text": "Deadlock (Ölümcül Kilitlenme)",
                 "isCorrect": true
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "Starvation",
                 "isCorrect": false
             },
             {
+                "id": "C",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            },
+            {
                 "id": "D",
-                "text": "Latch",
+                "text": "Livelock",
                 "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "Yukarıdakilerin hiçbiri",
+                "text": "Latch",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "B",
+        "correctOptionId": "A",
         "explanation": {
             "whyCorrect": "Deadlock, Transaction A'nın Kaynak 1'i kilitleyip Kaynak 2'yi beklemesi, Transaction B'nin ise Kaynak 2'yi kilitleyip Kaynak 1'i beklemesi durumudur. VTYS birini kurban (victim) seçerek çözer.",
             "whyOthersIncorrect": {
-                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
@@ -3362,36 +3362,36 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Girdileri tırnak işaretlerinden arındırmak",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
                 "text": "Tüm sorguları büyük harfe çevirmek",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "Parametreli Sorgular (Prepared Statements / Parameterized Queries) kullanmak",
                 "isCorrect": true
             },
             {
+                "id": "C",
+                "text": "Girdileri tırnak işaretlerinden arındırmak",
+                "isCorrect": false
+            },
+            {
                 "id": "D",
-                "text": "Sadece GET istekleri kullanmak",
+                "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "Yukarıdakilerin hiçbiri",
+                "text": "Sadece GET istekleri kullanmak",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "C",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "Prepared Statements (Parametreli Sorgular), kullanıcı girdisini SQL komut kodundan ayırarak veri olarak işler ve SQL Injection'ı %100 engeller.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
@@ -3408,12 +3408,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Tabloda tekrarlayan sütunların olmaması",
-                "isCorrect": false
+                "text": "Tablonun 2NF'de olması ve birincil anahtara geçişli (transitive) bağımlılığın olmaması",
+                "isCorrect": true
             },
             {
                 "id": "B",
-                "text": "Tüm alanların atomik olması",
+                "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
             },
             {
@@ -3423,22 +3423,22 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "D",
-                "text": "Tablonun 2NF'de olması ve birincil anahtara geçişli (transitive) bağımlılığın olmaması",
-                "isCorrect": true
+                "text": "Tüm alanların atomik olması",
+                "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "Yukarıdakilerin hiçbiri",
+                "text": "Tabloda tekrarlayan sütunların olmaması",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "A",
         "explanation": {
             "whyCorrect": "3NF kuralı: Tablo 2NF olmalı ve birincil anahtar olmayan bir alan, başka bir birincil anahtar olmayan alana bağımlı olmamalıdır (No Transitive Dependency).",
             "whyOthersIncorrect": {
-                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Database Normalization - 3NF",
@@ -3459,17 +3459,17 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "B",
-                "text": "En fazla 5 sütun bulunabilmesi kuralı",
+                "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
             },
             {
                 "id": "C",
-                "text": "Tüm sütunların sayısal olması kuralı",
+                "text": "En fazla 5 sütun bulunabilmesi kuralı",
                 "isCorrect": false
             },
             {
                 "id": "D",
-                "text": "Yukarıdakilerin hiçbiri",
+                "text": "Tüm sütunların sayısal olması kuralı",
                 "isCorrect": false
             },
             {
@@ -3500,36 +3500,36 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "CHECK (yas >= 18)",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
-                "text": "DEFAULT (yas >= 18)",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
                 "text": "FOREIGN KEY (yas >= 18)",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "B",
                 "text": "UNIQUE (yas >= 18)",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "C",
+                "text": "CHECK (yas >= 18)",
+                "isCorrect": true
+            },
+            {
+                "id": "D",
                 "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "DEFAULT (yas >= 18)",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "CHECK kısıtlaması bir sütuna girilebilecek verilerin belirli bir mantıksal koşula (Boolean expression) uymasını zorunlu kılar.",
             "whyOthersIncorrect": {
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
@@ -3546,38 +3546,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "CTE sadece PostgreSQL'de vardır.",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
-                "text": "CTE hafızada sadece ilgili sorgu süresince var olan mantıksal bir görünümdür; Temporary Table ise tempdb/oturum içinde fiziksel olarak oluşturulur ve indekslenebilir.",
-                "isCorrect": true
-            },
-            {
-                "id": "C",
-                "text": "Temporary Table silinemez.",
-                "isCorrect": false
-            },
-            {
-                "id": "D",
                 "text": "CTE diskte yer kaplar, Temporary Table kaplamaz.",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "B",
                 "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "CTE sadece PostgreSQL'de vardır.",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Temporary Table silinemez.",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "CTE hafızada sadece ilgili sorgu süresince var olan mantıksal bir görünümdür; Temporary Table ise tempdb/oturum içinde fiziksel olarak oluşturulur ve indekslenebilir.",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "B",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "CTE tek bir sorgunun çalışma anı (scope) boyunca geçerli mantıksal yapıdır. Temporary Table ise oturum kapanana kadar tempdb'de fiziksel yaşar ve indekslenebilir.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Storage - CTE vs Temporary Table",
             "keyTakeaway": "SQL İleri Seviye Soru #77 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -3592,22 +3592,22 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Sorgunun sonucunun bellekte saklanması",
+                "text": "Sorguda grafik çizilmesi",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "Sorgunun otomatik olarak paralelleştirilmesi",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
                 "text": "Sorgudaki WHERE koşulunun indeksleri etkin bir şekilde kullanabilecek biçimde yazılmış olması",
                 "isCorrect": true
             },
             {
+                "id": "C",
+                "text": "Sorgunun sonucunun bellekte saklanması",
+                "isCorrect": false
+            },
+            {
                 "id": "D",
-                "text": "Sorguda grafik çizilmesi",
+                "text": "Sorgunun otomatik olarak paralelleştirilmesi",
                 "isCorrect": false
             },
             {
@@ -3616,12 +3616,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "C",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "SARGABLE sorgular, indeksli sütunların üzerinde fonksiyon veya tip dönüşümü yapılmadan yazıldığı için VTYS'nin Index Seek yapabilmesine olanak tanır.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
@@ -3638,37 +3638,37 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Bir tablo dolusu satır ve sütun",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
                 "text": "Sadece Boolean (TRUE/FALSE) değer",
                 "isCorrect": false
             },
             {
-                "id": "C",
-                "text": "Sadece dizi (Array) verisi",
-                "isCorrect": false
-            },
-            {
-                "id": "D",
+                "id": "B",
                 "text": "Tam olarak 1 satır ve 1 sütundan oluşan tek bir değer",
                 "isCorrect": true
             },
             {
-                "id": "E",
+                "id": "C",
                 "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Bir tablo dolusu satır ve sütun",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Sadece dizi (Array) verisi",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "Scalar subquery tek bir hücre (1 satır × 1 sütun) değer döndüren sorgudur. Bu yüzden SELECT listesinde veya matematiksel ifadelerde kullanılabilir.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Subquery - Scalar Subquery",
@@ -3684,38 +3684,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "SUM()",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
-                "text": "GROUP_CONCAT()",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
-                "text": "STRING_SPLIT()",
-                "isCorrect": false
-            },
-            {
-                "id": "D",
                 "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "B",
                 "text": "PostgreSQL'de ->> operatörü / JSON_EXTRACT_TEXT",
                 "isCorrect": true
+            },
+            {
+                "id": "C",
+                "text": "GROUP_CONCAT()",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "STRING_SPLIT()",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "SUM()",
+                "isCorrect": false
             }
         ],
-        "correctOptionId": "E",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "JSON alanlarından metin değeri çekmek için PostgreSQL'de `->>` operatörü, MySQL/SQLite'ta `JSON_EXTRACT()` veya `->>` kullanılır.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: JSON Data in SQL - JSON_EXTRACT / ->>",
             "keyTakeaway": "SQL İleri Seviye Soru #80 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -3730,35 +3730,35 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Filtered Index (Kısmi / Filtrelenmiş İndeks)",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
-                "text": "Clustered Index",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
-                "text": "Global Index",
-                "isCorrect": false
-            },
-            {
-                "id": "D",
                 "text": "Bitmap Index",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "B",
+                "text": "Filtered Index (Kısmi / Filtrelenmiş İndeks)",
+                "isCorrect": true
+            },
+            {
+                "id": "C",
                 "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Global Index",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Clustered Index",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "Filtered Index (Partial Index), tablonun tamamı yerine sadece WHERE koşuluna uyan satırları indeksleyerek disk alanı ve bakım maliyetinden tasarruf sağlar.",
             "whyOthersIncorrect": {
-                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
@@ -3786,12 +3786,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "C",
-                "text": "Starvation",
+                "text": "Latch",
                 "isCorrect": false
             },
             {
                 "id": "D",
-                "text": "Latch",
+                "text": "Starvation",
                 "isCorrect": false
             },
             {
@@ -3822,8 +3822,8 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Girdileri tırnak işaretlerinden arındırmak",
-                "isCorrect": false
+                "text": "Parametreli Sorgular (Prepared Statements / Parameterized Queries) kullanmak",
+                "isCorrect": true
             },
             {
                 "id": "B",
@@ -3832,12 +3832,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "C",
-                "text": "Parametreli Sorgular (Prepared Statements / Parameterized Queries) kullanmak",
-                "isCorrect": true
+                "text": "Sadece GET istekleri kullanmak",
+                "isCorrect": false
             },
             {
                 "id": "D",
-                "text": "Sadece GET istekleri kullanmak",
+                "text": "Girdileri tırnak işaretlerinden arındırmak",
                 "isCorrect": false
             },
             {
@@ -3846,12 +3846,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "C",
+        "correctOptionId": "A",
         "explanation": {
             "whyCorrect": "Prepared Statements (Parametreli Sorgular), kullanıcı girdisini SQL komut kodundan ayırarak veri olarak işler ve SQL Injection'ı %100 engeller.",
             "whyOthersIncorrect": {
-                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
@@ -3868,37 +3868,37 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Tabloda tekrarlayan sütunların olmaması",
+                "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "Tüm alanların atomik olması",
+                "text": "Tabloda tekrarlayan sütunların olmaması",
                 "isCorrect": false
             },
             {
                 "id": "C",
-                "text": "Foreign key bulunmaması",
-                "isCorrect": false
-            },
-            {
-                "id": "D",
                 "text": "Tablonun 2NF'de olması ve birincil anahtara geçişli (transitive) bağımlılığın olmaması",
                 "isCorrect": true
             },
             {
+                "id": "D",
+                "text": "Foreign key bulunmaması",
+                "isCorrect": false
+            },
+            {
                 "id": "E",
-                "text": "Yukarıdakilerin hiçbiri",
+                "text": "Tüm alanların atomik olması",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "3NF kuralı: Tablo 2NF olmalı ve birincil anahtar olmayan bir alan, başka bir birincil anahtar olmayan alana bağımlı olmamalıdır (No Transitive Dependency).",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Database Normalization - 3NF",
@@ -3914,8 +3914,8 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Tabloda hiç NULL değer bulunmaması kuralı",
-                "isCorrect": false
+                "text": "Her determinantın (belirleyicinin) mutlaka bir aday anahtar (candidate key) olması kuralı",
+                "isCorrect": true
             },
             {
                 "id": "B",
@@ -3929,23 +3929,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "D",
-                "text": "Yukarıdakilerin hiçbiri",
+                "text": "Tabloda hiç NULL değer bulunmaması kuralı",
                 "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "Her determinantın (belirleyicinin) mutlaka bir aday anahtar (candidate key) olması kuralı",
-                "isCorrect": true
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
             }
         ],
-        "correctOptionId": "E",
+        "correctOptionId": "A",
         "explanation": {
             "whyCorrect": "BCNF, 3NF'nin daha katı bir halidir. Her X -> Y bağımlılığında X'in mutlaka bir Super Key / Candidate Key olmasını şart koşar.",
             "whyOthersIncorrect": {
-                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Database Normalization - BCNF",
             "keyTakeaway": "SQL İleri Seviye Soru #85 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -3960,12 +3960,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "CHECK (yas >= 18)",
-                "isCorrect": true
+                "text": "UNIQUE (yas >= 18)",
+                "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "DEFAULT (yas >= 18)",
+                "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
             },
             {
@@ -3975,23 +3975,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "D",
-                "text": "UNIQUE (yas >= 18)",
+                "text": "DEFAULT (yas >= 18)",
                 "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "Yukarıdakilerin hiçbiri",
-                "isCorrect": false
+                "text": "CHECK (yas >= 18)",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "CHECK kısıtlaması bir sütuna girilebilecek verilerin belirli bir mantıksal koşula (Boolean expression) uymasını zorunlu kılar.",
             "whyOthersIncorrect": {
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Constraint - CHECK Constraint",
             "keyTakeaway": "SQL İleri Seviye Soru #86 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -4006,36 +4006,36 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "CTE sadece PostgreSQL'de vardır.",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
-                "text": "CTE hafızada sadece ilgili sorgu süresince var olan mantıksal bir görünümdür; Temporary Table ise tempdb/oturum içinde fiziksel olarak oluşturulur ve indekslenebilir.",
-                "isCorrect": true
-            },
-            {
-                "id": "C",
-                "text": "Temporary Table silinemez.",
-                "isCorrect": false
-            },
-            {
-                "id": "D",
                 "text": "CTE diskte yer kaplar, Temporary Table kaplamaz.",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "B",
+                "text": "CTE sadece PostgreSQL'de vardır.",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "CTE hafızada sadece ilgili sorgu süresince var olan mantıksal bir görünümdür; Temporary Table ise tempdb/oturum içinde fiziksel olarak oluşturulur ve indekslenebilir.",
+                "isCorrect": true
+            },
+            {
+                "id": "D",
                 "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Temporary Table silinemez.",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "B",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "CTE tek bir sorgunun çalışma anı (scope) boyunca geçerli mantıksal yapıdır. Temporary Table ise oturum kapanana kadar tempdb'de fiziksel yaşar ve indekslenebilir.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
@@ -4052,38 +4052,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Sorgunun sonucunun bellekte saklanması",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
-                "text": "Sorgunun otomatik olarak paralelleştirilmesi",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
-                "text": "Sorgudaki WHERE koşulunun indeksleri etkin bir şekilde kullanabilecek biçimde yazılmış olması",
-                "isCorrect": true
-            },
-            {
-                "id": "D",
                 "text": "Sorguda grafik çizilmesi",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "B",
+                "text": "Sorgunun sonucunun bellekte saklanması",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
                 "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Sorgunun otomatik olarak paralelleştirilmesi",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Sorgudaki WHERE koşulunun indeksleri etkin bir şekilde kullanabilecek biçimde yazılmış olması",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "C",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "SARGABLE sorgular, indeksli sütunların üzerinde fonksiyon veya tip dönüşümü yapılmadan yazıldığı için VTYS'nin Index Seek yapabilmesine olanak tanır.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Query Optimization - SARGABLE Queries",
             "keyTakeaway": "SQL İleri Seviye Soru #88 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -4103,32 +4103,32 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "B",
-                "text": "Sadece Boolean (TRUE/FALSE) değer",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
-                "text": "Sadece dizi (Array) verisi",
-                "isCorrect": false
-            },
-            {
-                "id": "D",
                 "text": "Tam olarak 1 satır ve 1 sütundan oluşan tek bir değer",
                 "isCorrect": true
             },
             {
-                "id": "E",
+                "id": "C",
                 "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Sadece dizi (Array) verisi",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Sadece Boolean (TRUE/FALSE) değer",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "Scalar subquery tek bir hücre (1 satır × 1 sütun) değer döndüren sorgudur. Bu yüzden SELECT listesinde veya matematiksel ifadelerde kullanılabilir.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Subquery - Scalar Subquery",
@@ -4149,7 +4149,7 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "B",
-                "text": "GROUP_CONCAT()",
+                "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
             },
             {
@@ -4159,7 +4159,7 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "D",
-                "text": "Yukarıdakilerin hiçbiri",
+                "text": "GROUP_CONCAT()",
                 "isCorrect": false
             },
             {
@@ -4190,8 +4190,8 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Filtered Index (Kısmi / Filtrelenmiş İndeks)",
-                "isCorrect": true
+                "text": "Bitmap Index",
+                "isCorrect": false
             },
             {
                 "id": "B",
@@ -4200,26 +4200,26 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "C",
-                "text": "Global Index",
-                "isCorrect": false
+                "text": "Filtered Index (Kısmi / Filtrelenmiş İndeks)",
+                "isCorrect": true
             },
             {
                 "id": "D",
-                "text": "Bitmap Index",
+                "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "Yukarıdakilerin hiçbiri",
+                "text": "Global Index",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "Filtered Index (Partial Index), tablonun tamamı yerine sadece WHERE koşuluna uyan satırları indeksleyerek disk alanı ve bakım maliyetinden tasarruf sağlar.",
             "whyOthersIncorrect": {
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
@@ -4236,38 +4236,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Livelock",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
-                "text": "Deadlock (Ölümcül Kilitlenme)",
-                "isCorrect": true
-            },
-            {
-                "id": "C",
                 "text": "Starvation",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "B",
                 "text": "Latch",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "C",
                 "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Livelock",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Deadlock (Ölümcül Kilitlenme)",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "B",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "Deadlock, Transaction A'nın Kaynak 1'i kilitleyip Kaynak 2'yi beklemesi, Transaction B'nin ise Kaynak 2'yi kilitleyip Kaynak 1'i beklemesi durumudur. VTYS birini kurban (victim) seçerek çözer.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Transaction - Deadlock (Kilitlenme)",
             "keyTakeaway": "SQL İleri Seviye Soru #92 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -4282,22 +4282,22 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Girdileri tırnak işaretlerinden arındırmak",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
-                "text": "Tüm sorguları büyük harfe çevirmek",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
                 "text": "Parametreli Sorgular (Prepared Statements / Parameterized Queries) kullanmak",
                 "isCorrect": true
             },
             {
-                "id": "D",
+                "id": "B",
                 "text": "Sadece GET istekleri kullanmak",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Girdileri tırnak işaretlerinden arındırmak",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Tüm sorguları büyük harfe çevirmek",
                 "isCorrect": false
             },
             {
@@ -4306,12 +4306,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "C",
+        "correctOptionId": "A",
         "explanation": {
             "whyCorrect": "Prepared Statements (Parametreli Sorgular), kullanıcı girdisini SQL komut kodundan ayırarak veri olarak işler ve SQL Injection'ı %100 engeller.",
             "whyOthersIncorrect": {
-                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
@@ -4328,8 +4328,8 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Tabloda tekrarlayan sütunların olmaması",
-                "isCorrect": false
+                "text": "Tablonun 2NF'de olması ve birincil anahtara geçişli (transitive) bağımlılığın olmaması",
+                "isCorrect": true
             },
             {
                 "id": "B",
@@ -4343,22 +4343,22 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "D",
-                "text": "Tablonun 2NF'de olması ve birincil anahtara geçişli (transitive) bağımlılığın olmaması",
-                "isCorrect": true
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "Yukarıdakilerin hiçbiri",
+                "text": "Tabloda tekrarlayan sütunların olmaması",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "A",
         "explanation": {
             "whyCorrect": "3NF kuralı: Tablo 2NF olmalı ve birincil anahtar olmayan bir alan, başka bir birincil anahtar olmayan alana bağımlı olmamalıdır (No Transitive Dependency).",
             "whyOthersIncorrect": {
-                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Database Normalization - 3NF",
@@ -4374,7 +4374,7 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Tabloda hiç NULL değer bulunmaması kuralı",
+                "text": "Tüm sütunların sayısal olması kuralı",
                 "isCorrect": false
             },
             {
@@ -4384,12 +4384,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "C",
-                "text": "Tüm sütunların sayısal olması kuralı",
+                "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
             },
             {
                 "id": "D",
-                "text": "Yukarıdakilerin hiçbiri",
+                "text": "Tabloda hiç NULL değer bulunmaması kuralı",
                 "isCorrect": false
             },
             {
@@ -4420,12 +4420,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "CHECK (yas >= 18)",
-                "isCorrect": true
+                "text": "UNIQUE (yas >= 18)",
+                "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "DEFAULT (yas >= 18)",
+                "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
             },
             {
@@ -4435,22 +4435,22 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "D",
-                "text": "UNIQUE (yas >= 18)",
-                "isCorrect": false
+                "text": "CHECK (yas >= 18)",
+                "isCorrect": true
             },
             {
                 "id": "E",
-                "text": "Yukarıdakilerin hiçbiri",
+                "text": "DEFAULT (yas >= 18)",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "CHECK kısıtlaması bir sütuna girilebilecek verilerin belirli bir mantıksal koşula (Boolean expression) uymasını zorunlu kılar.",
             "whyOthersIncorrect": {
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Constraint - CHECK Constraint",
@@ -4466,22 +4466,22 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "CTE sadece PostgreSQL'de vardır.",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
-                "text": "CTE hafızada sadece ilgili sorgu süresince var olan mantıksal bir görünümdür; Temporary Table ise tempdb/oturum içinde fiziksel olarak oluşturulur ve indekslenebilir.",
-                "isCorrect": true
-            },
-            {
-                "id": "C",
                 "text": "Temporary Table silinemez.",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "B",
                 "text": "CTE diskte yer kaplar, Temporary Table kaplamaz.",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "CTE hafızada sadece ilgili sorgu süresince var olan mantıksal bir görünümdür; Temporary Table ise tempdb/oturum içinde fiziksel olarak oluşturulur ve indekslenebilir.",
+                "isCorrect": true
+            },
+            {
+                "id": "D",
+                "text": "CTE sadece PostgreSQL'de vardır.",
                 "isCorrect": false
             },
             {
@@ -4490,12 +4490,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "B",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "CTE tek bir sorgunun çalışma anı (scope) boyunca geçerli mantıksal yapıdır. Temporary Table ise oturum kapanana kadar tempdb'de fiziksel yaşar ve indekslenebilir.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
@@ -4512,37 +4512,37 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Sorgunun sonucunun bellekte saklanması",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
-                "text": "Sorgunun otomatik olarak paralelleştirilmesi",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
-                "text": "Sorgudaki WHERE koşulunun indeksleri etkin bir şekilde kullanabilecek biçimde yazılmış olması",
-                "isCorrect": true
-            },
-            {
-                "id": "D",
                 "text": "Sorguda grafik çizilmesi",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "B",
                 "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Sorgunun sonucunun bellekte saklanması",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Sorgudaki WHERE koşulunun indeksleri etkin bir şekilde kullanabilecek biçimde yazılmış olması",
+                "isCorrect": true
+            },
+            {
+                "id": "E",
+                "text": "Sorgunun otomatik olarak paralelleştirilmesi",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "C",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "SARGABLE sorgular, indeksli sütunların üzerinde fonksiyon veya tip dönüşümü yapılmadan yazıldığı için VTYS'nin Index Seek yapabilmesine olanak tanır.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Query Optimization - SARGABLE Queries",
@@ -4558,38 +4558,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Bir tablo dolusu satır ve sütun",
+                "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "Sadece Boolean (TRUE/FALSE) değer",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
                 "text": "Sadece dizi (Array) verisi",
                 "isCorrect": false
             },
             {
+                "id": "C",
+                "text": "Sadece Boolean (TRUE/FALSE) değer",
+                "isCorrect": false
+            },
+            {
                 "id": "D",
-                "text": "Tam olarak 1 satır ve 1 sütundan oluşan tek bir değer",
-                "isCorrect": true
+                "text": "Bir tablo dolusu satır ve sütun",
+                "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "Yukarıdakilerin hiçbiri",
-                "isCorrect": false
+                "text": "Tam olarak 1 satır ve 1 sütundan oluşan tek bir değer",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "Scalar subquery tek bir hücre (1 satır × 1 sütun) değer döndüren sorgudur. Bu yüzden SELECT listesinde veya matematiksel ifadelerde kullanılabilir.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: Subquery - Scalar Subquery",
             "keyTakeaway": "SQL İleri Seviye Soru #99 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -4609,33 +4609,33 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "B",
-                "text": "GROUP_CONCAT()",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
-                "text": "STRING_SPLIT()",
-                "isCorrect": false
-            },
-            {
-                "id": "D",
                 "text": "Yukarıdakilerin hiçbiri",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "C",
+                "text": "GROUP_CONCAT()",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
                 "text": "PostgreSQL'de ->> operatörü / JSON_EXTRACT_TEXT",
                 "isCorrect": true
+            },
+            {
+                "id": "E",
+                "text": "STRING_SPLIT()",
+                "isCorrect": false
             }
         ],
-        "correctOptionId": "E",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "JSON alanlarından metin değeri çekmek için PostgreSQL'de `->>` operatörü, MySQL/SQLite'ta `JSON_EXTRACT()` veya `->>` kullanılır.",
             "whyOthersIncorrect": {
                 "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
                 "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
-                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "SQL Konu Analizi: JSON Data in SQL - JSON_EXTRACT / ->>",
             "keyTakeaway": "SQL İleri Seviye Soru #100 - Veritabanı ve sorgu optimizasyon kuralı."
@@ -4652,22 +4652,22 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "at the visitors",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
-                "text": "for the visitors",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
                 "text": "the visitors",
                 "isCorrect": true
             },
             {
-                "id": "D",
+                "id": "B",
                 "text": "to the visitors",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "for the visitors",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "at the visitors",
                 "isCorrect": false
             },
             {
@@ -4676,14 +4676,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "C",
+        "correctOptionId": "A",
         "explanation": {
             "whyCorrect": "Give fiili dolaylı nesne aldığında çift nesneli yapı (give someone something) kullanılır.",
             "whyOthersIncorrect": {
-                "A": "Give fiilinden sonra direkt yönelme edatı 'at' kullanılmaz.",
-                "B": "Give birine bir şey vermektir; 'for' yerine çift nesneli yapı kullanılır.",
-                "D": "Give a meal to the visitors biçiminde edatlı sıradır; şıklarda direkt nesne yapısı 'the visitors' uygundur.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Words and sentences - Give + indirect object",
             "keyTakeaway": "Oxford Grammar Test Soru #1 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -4698,38 +4698,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "I work",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
                 "text": "I'm work",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "I'm working",
                 "isCorrect": true
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "I working",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "D",
                 "text": "None of the above",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "I work",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "C",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "Şu anda gerçekleşmekte olan eylemler için Present Continuous (am/is/are + V-ing) kullanılır.",
             "whyOthersIncorrect": {
-                "A": "I work geniş zamandır; 'at the moment' şimdiki zaman gerektirir.",
-                "B": "I'm work gramer açısından hatalıdır; be fiilinden sonra V-ing gelir.",
-                "D": "I working eksik yapıdır; am yardımcı fiili eksiktir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Verbs - Present Continuous",
             "keyTakeaway": "Oxford Grammar Test Soru #2 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -4744,23 +4744,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "is know",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
-                "text": "know",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
                 "text": "knowing",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "B",
                 "text": "knows",
                 "isCorrect": true
+            },
+            {
+                "id": "C",
+                "text": "is know",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "know",
+                "isCorrect": false
             },
             {
                 "id": "E",
@@ -4768,14 +4768,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "Know (bilmek) bir durum fiilidir (stative verb) ve -ing takısı almaz; 3. tekil şahısta Simple Present (knows) kullanılır.",
             "whyOthersIncorrect": {
-                "A": "is know hatalı gramer yapısıdır.",
-                "B": "My friend 3. tekil şahıstır; -s takısı gerektirir (knows).",
-                "C": "knowing yardımcı fiilsiz yüklem olamaz.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Verbs - Stative Verbs",
             "keyTakeaway": "Oxford Grammar Test Soru #3 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -4790,8 +4790,8 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "They fit",
-                "isCorrect": true
+                "text": "They're fitting",
+                "isCorrect": false
             },
             {
                 "id": "B",
@@ -4800,13 +4800,13 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "C",
-                "text": "They're fitting",
+                "text": "They were fitting",
                 "isCorrect": false
             },
             {
                 "id": "D",
-                "text": "They were fitting",
-                "isCorrect": false
+                "text": "They fit",
+                "isCorrect": true
             },
             {
                 "id": "E",
@@ -4814,14 +4814,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "Fit (tam gelmek) genel durum bildirdiği için Present Simple (They fit) kullanılır.",
             "whyOthersIncorrect": {
-                "B": "Present Perfect bu durum için uygun değildir.",
-                "C": "Fitting geçici durum vurgusu yapmaz.",
-                "D": "Were fitting geçmiş zamandır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Verbs - Stative & Present Simple",
             "keyTakeaway": "Oxford Grammar Test Soru #4 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -4836,38 +4836,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "did you park",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "did you parked",
                 "isCorrect": false
             },
             {
-                "id": "C",
-                "text": "parked you",
-                "isCorrect": false
-            },
-            {
-                "id": "D",
+                "id": "B",
                 "text": "you parked",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "C",
+                "text": "did you park",
+                "isCorrect": true
+            },
+            {
+                "id": "D",
                 "text": "None of the above",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "parked you",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "Simple Past soru yapısında 'did + özne + V1' kullanılır.",
             "whyOthersIncorrect": {
-                "B": "did kullanıldıktan sonra fiil tekrar -ed takısı almaz.",
-                "C": "İngilizcede fiil özneden önce gelerek soru yapılmaz.",
-                "D": "Soru cümlesinde did yardımcı fiili zorunludur.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Verbs - Simple Past Question",
             "keyTakeaway": "Oxford Grammar Test Soru #5 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -4882,38 +4882,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "wait",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
-                "text": "waiting",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
                 "text": "was waiting",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "B",
                 "text": "were waiting",
                 "isCorrect": true
             },
             {
-                "id": "E",
+                "id": "C",
                 "text": "None of the above",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "wait",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "waiting",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "Geçmişte belirli bir anda devam eden eylemler için Past Continuous (were waiting) kullanılır.",
             "whyOthersIncorrect": {
-                "A": "Wait geniş zamandır.",
-                "B": "Yardımcı fiilsiz waiting yüklem olamaz.",
-                "C": "We öznesi için 'was' değil 'were' kullanılır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Verbs - Past Continuous",
             "keyTakeaway": "Oxford Grammar Test Soru #6 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -4928,22 +4928,22 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "is sleeping",
+                "text": "were sleeping",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "slept",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
                 "text": "was sleeping",
                 "isCorrect": true
             },
             {
+                "id": "C",
+                "text": "slept",
+                "isCorrect": false
+            },
+            {
                 "id": "D",
-                "text": "were sleeping",
+                "text": "is sleeping",
                 "isCorrect": false
             },
             {
@@ -4952,14 +4952,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "C",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "Geçmişte bir eylem gerçekleştiğinde devam etmekte olan eylem Past Continuous (was sleeping) ile anlatılır.",
             "whyOthersIncorrect": {
-                "A": "Is sleeping şimdiki zamandır.",
-                "B": "Slept anlık tamamlanan eylemdir; uyuma süreci devam etmektedir.",
-                "D": "The baby tekildir; 'were' kullanılmaz.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Verbs - Past Continuous vs Simple Past",
             "keyTakeaway": "Oxford Grammar Test Soru #7 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -4974,38 +4974,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "I finish",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "I finished",
+                "text": "I finish",
                 "isCorrect": false
             },
             {
                 "id": "C",
-                "text": "I'm finished",
+                "text": "I finished",
                 "isCorrect": false
             },
             {
                 "id": "D",
-                "text": "I've finished",
-                "isCorrect": true
+                "text": "I'm finished",
+                "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "None of the above",
-                "isCorrect": false
+                "text": "I've finished",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "Eylem geçmişte tamamlanmış ve sonucu şu an elde ise Present Perfect (I've finished) kullanılır.",
             "whyOthersIncorrect": {
-                "A": "I finish geniş zamandır.",
-                "B": "Simple Past raporun şu an elimizde olduğunu vurgulamaz.",
-                "C": "I'm finished eylemi ifade etmez.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Verbs - Present Perfect Result",
             "keyTakeaway": "Oxford Grammar Test Soru #8 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -5020,38 +5020,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "ever",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
-                "text": "just",
-                "isCorrect": true
-            },
-            {
-                "id": "C",
-                "text": "never",
-                "isCorrect": false
-            },
-            {
-                "id": "D",
                 "text": "yet",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "B",
+                "text": "never",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
                 "text": "None of the above",
                 "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "ever",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "just",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "B",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "Az önce/henüz yapılmış eylemler için Present Perfect kalıbında 'just' kullanılır.",
             "whyOthersIncorrect": {
-                "A": "Ever tecrübe sorgular.",
-                "C": "Never olumsuzluk katar.",
-                "D": "Yet cümlenin sonunda yer alır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Verbs - Present Perfect with Just",
             "keyTakeaway": "Oxford Grammar Test Soru #9 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -5066,17 +5066,17 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "goes",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "going",
+                "text": "goes",
                 "isCorrect": false
             },
             {
                 "id": "C",
-                "text": "have gone",
+                "text": "going",
                 "isCorrect": false
             },
             {
@@ -5086,7 +5086,7 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "E",
-                "text": "None of the above",
+                "text": "have gone",
                 "isCorrect": false
             }
         ],
@@ -5094,10 +5094,10 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "explanation": {
             "whyCorrect": "'Last year' gibi geçmişte zamanı belirli net ifadelerle Simple Past (went) kullanılır.",
             "whyOthersIncorrect": {
-                "A": "Goes geniş zamandır.",
-                "B": "Going yalnız yüklem olamaz.",
-                "C": "Have gone Present Perfecttir; last year ile kullanılmaz.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Verbs - Past Simple Time Adverb",
             "keyTakeaway": "Oxford Grammar Test Soru #10 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -5112,7 +5112,7 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "had been",
+                "text": "was",
                 "isCorrect": false
             },
             {
@@ -5127,12 +5127,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "D",
-                "text": "was",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "None of the above",
+                "text": "had been",
                 "isCorrect": false
             }
         ],
@@ -5140,10 +5140,10 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "explanation": {
             "whyCorrect": "Geçmişten başlayıp şu ana kadar devam eden ve hala süren durumlar için Present Perfect (has been) kullanılır.",
             "whyOthersIncorrect": {
-                "A": "Had been geçmiş öncesidir.",
-                "C": "Is 3 haftadır süren geçmiş bağlantısını kapsamaz.",
-                "D": "Was hastalığın bittiğini ima eder.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Verbs - Present Perfect Continuous State",
             "keyTakeaway": "Oxford Grammar Test Soru #11 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -5163,33 +5163,33 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "B",
-                "text": "I swam",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
                 "text": "I swim",
                 "isCorrect": false
             },
             {
+                "id": "C",
+                "text": "None of the above",
+                "isCorrect": false
+            },
+            {
                 "id": "D",
-                "text": "I've been swimming",
-                "isCorrect": true
+                "text": "I swam",
+                "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "None of the above",
-                "isCorrect": false
+                "text": "I've been swimming",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "Geçmişte başlayıp şu ana kadar süren ve fiziksel etkisi devam eden eylemlerde Present Perfect Continuous kullanılır.",
             "whyOthersIncorrect": {
-                "A": "I'm swimming şu andaki eylemdir.",
-                "B": "I swam geçmişte kalmıştır; since ile süreç vermez.",
-                "C": "I swim geniş zamandır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Verbs - Present Perfect Continuous Activity",
             "keyTakeaway": "Oxford Grammar Test Soru #12 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -5204,38 +5204,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "I drive",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
-                "text": "I'm driving",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
                 "text": "I've been driving",
                 "isCorrect": false
             },
             {
+                "id": "B",
+                "text": "None of the above",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "I drive",
+                "isCorrect": false
+            },
+            {
                 "id": "D",
-                "text": "I've driven",
-                "isCorrect": true
+                "text": "I'm driving",
+                "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "None of the above",
-                "isCorrect": false
+                "text": "I've driven",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "Bugün tamamlanan miktar/mesafe (400 miles) belirtildiğinde Present Perfect (I've driven) tercih edilir.",
             "whyOthersIncorrect": {
-                "A": "I drive geniş zamandır.",
-                "B": "I'm driving şu anki eylemdir.",
-                "C": "Miktar belirtildiğinde -ing yapısı yerine tamamlanmış Perfect yapı tercih edilir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Verbs - Present Perfect Quantity",
             "keyTakeaway": "Oxford Grammar Test Soru #13 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -5250,38 +5250,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "had repaired",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
-                "text": "has repaired",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
                 "text": "repaired",
                 "isCorrect": false
             },
             {
+                "id": "B",
+                "text": "had repaired",
+                "isCorrect": true
+            },
+            {
+                "id": "C",
+                "text": "None of the above",
+                "isCorrect": false
+            },
+            {
                 "id": "D",
-                "text": "was repairing",
+                "text": "has repaired",
                 "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "None of the above",
+                "text": "was repairing",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "Geçmişteki iki eylemden önce gerçekleşen eylem için Past Perfect (had repaired) kullanılır.",
             "whyOthersIncorrect": {
-                "B": "Has repaired şimdiki zamana bağlıdır.",
-                "C": "Repaired sıralı eylemlerde öncelik vurgusunu zayıflatır.",
-                "D": "Was repairing devam eden süreçtir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Verbs - Past Perfect Sequence",
             "keyTakeaway": "Oxford Grammar Test Soru #14 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -5296,12 +5296,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "she'd been running",
-                "isCorrect": true
+                "text": "she's run",
+                "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "she did run",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
@@ -5311,23 +5311,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "D",
-                "text": "she's run",
-                "isCorrect": false
+                "text": "she'd been running",
+                "isCorrect": true
             },
             {
                 "id": "E",
-                "text": "None of the above",
+                "text": "she did run",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "Geçmişteki bir durumun (was out of breath) öncesindeki fiziksel sebebini anlatırken Past Perfect Continuous (she'd been running) kullanılır.",
             "whyOthersIncorrect": {
-                "B": "She did run vurgulu geçmiş zamandır; süreç sebebini vermez.",
-                "C": "She's been running şimdiki zamana bağlıdır.",
-                "D": "She's run şimdiki zamandır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Verbs - Past Perfect Continuous Reason",
             "keyTakeaway": "Oxford Grammar Test Soru #15 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -5342,38 +5342,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "not",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
                 "text": "shall",
                 "isCorrect": true
             },
             {
+                "id": "B",
+                "text": "not",
+                "isCorrect": false
+            },
+            {
                 "id": "C",
-                "text": "willn't",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
                 "id": "D",
-                "text": "won't",
+                "text": "willn't",
                 "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "None of the above",
+                "text": "won't",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "B",
+        "correctOptionId": "A",
         "explanation": {
             "whyCorrect": "Birinci tekil şahısta (I) söz verme ve teklif için 'shall' (veya will) kullanılır.",
             "whyOthersIncorrect": {
-                "A": "not yalnız fiille birleşmez.",
-                "C": "willn't diye bir kelime yoktur.",
-                "D": "won't olumsuzdur; yardım edeceğim sözüyle çelişir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Verbs - Future Intent / Promise",
             "keyTakeaway": "Oxford Grammar Test Soru #16 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -5388,38 +5388,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "are",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
                 "text": "are going to",
                 "isCorrect": true
             },
             {
-                "id": "C",
-                "text": "go to",
-                "isCorrect": false
-            },
-            {
-                "id": "D",
+                "id": "B",
                 "text": "will be to",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "C",
+                "text": "are",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
                 "text": "None of the above",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "go to",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "B",
+        "correctOptionId": "A",
         "explanation": {
             "whyCorrect": "Önceden planlanmış ve kararlaştırılmış gelecek eylemleri için 'be going to' kullanılır.",
             "whyOthersIncorrect": {
-                "A": "are eksik yapıdır.",
-                "C": "go to geniş zamandır.",
-                "D": "will be to hatalı gramerdir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Verbs - Future Intention / Plan",
             "keyTakeaway": "Oxford Grammar Test Soru #17 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -5434,38 +5434,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "We had",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "We have",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
-                "text": "We'll have",
-                "isCorrect": false
-            },
-            {
-                "id": "D",
                 "text": "We're having",
                 "isCorrect": true
             },
             {
+                "id": "C",
+                "text": "We had",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "We'll have",
+                "isCorrect": false
+            },
+            {
                 "id": "E",
-                "text": "None of the above",
+                "text": "We have",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "Davetiyeler gönderildiği için kesinleşmiş organizasyonlarda Present Continuous (We're having) kullanılır.",
             "whyOthersIncorrect": {
-                "A": "We had geçmiş zamandır.",
-                "B": "We have geniş zamandır.",
-                "C": "We'll have anlık karardır; davetiye basılmış kesin organizasyondur.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Verbs - Present Continuous for Future Arrangement",
             "keyTakeaway": "Oxford Grammar Test Soru #18 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -5490,28 +5490,28 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "C",
-                "text": "I see",
-                "isCorrect": true
-            },
-            {
-                "id": "D",
                 "text": "I shall see",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "D",
                 "text": "None of the above",
                 "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "I see",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "C",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "When, as soon as, before gibi zaman bağlaçlarının bulunduğu yan cümlede future tense yerine Present Simple (I see) kullanılır.",
             "whyOthersIncorrect": {
-                "A": "When cümlesinde will kullanılmaz.",
-                "B": "When cümlesinde going to kullanılmaz.",
-                "D": "When cümlesinde shall kullanılmaz.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Verbs - Time Clauses",
             "keyTakeaway": "Oxford Grammar Test Soru #19 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -5526,38 +5526,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "we flying",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "we'll be flying",
-                "isCorrect": true
-            },
-            {
-                "id": "C",
-                "text": "we'll fly",
-                "isCorrect": false
-            },
-            {
-                "id": "D",
                 "text": "we to fly",
                 "isCorrect": false
             },
             {
+                "id": "C",
+                "text": "we flying",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "we'll be flying",
+                "isCorrect": true
+            },
+            {
                 "id": "E",
-                "text": "None of the above",
+                "text": "we'll fly",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "B",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "Gelecekte belirli bir anda (At this time tomorrow) devam ediyor olacak eylemler için Future Continuous (we'll be flying) kullanılır.",
             "whyOthersIncorrect": {
-                "A": "we flying eksik yapıdır.",
-                "C": "we'll fly anlık karardır; o andaki sürerliği vermez.",
-                "D": "we to fly gramer hatasıdır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Verbs - Future Continuous",
             "keyTakeaway": "Oxford Grammar Test Soru #20 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -5577,33 +5577,33 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "B",
-                "text": "Has he",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
                 "id": "C",
-                "text": "Has he got",
-                "isCorrect": false
-            },
-            {
-                "id": "D",
                 "text": "Is he having",
                 "isCorrect": true
             },
             {
+                "id": "D",
+                "text": "Has he",
+                "isCorrect": false
+            },
+            {
                 "id": "E",
-                "text": "None of the above",
+                "text": "Has he got",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "Şu an duş almakta olup olmadığını sormak için Present Continuous (Is he having a shower?) kullanılır.",
             "whyOthersIncorrect": {
-                "A": "Does he have alışkanlık sorar.",
-                "B": "Has he duş almak eyleminde İngilizcede yalnız kullanılmaz.",
-                "C": "Has he got sahip olmak demektir; duş alma eylemini kapsamaz.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Verbs - Temporary Action in Progress",
             "keyTakeaway": "Oxford Grammar Test Soru #21 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -5618,13 +5618,13 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "am",
+                "text": "yes",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "do",
-                "isCorrect": true
+                "text": "am",
+                "isCorrect": false
             },
             {
                 "id": "C",
@@ -5633,23 +5633,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "D",
-                "text": "yes",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "None of the above",
-                "isCorrect": false
+                "text": "do",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "B",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "Olumlu cümlede duyguyu ve beğeniyi vurgulamak için fiilin önüne 'do' getirilir (I do like...).",
             "whyOthersIncorrect": {
-                "A": "am like 'benzemek' anlamına gelir.",
-                "C": "very fiilden önce gelip fiili nitelemez.",
-                "D": "yes cümle ortasında fiilden önce kullanılmaz.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Verbs - Emphatic Do",
             "keyTakeaway": "Oxford Grammar Test Soru #22 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -5664,22 +5664,22 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "does it snow",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
-                "text": "does it snows",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
                 "text": "snow it",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "B",
                 "text": "snows it",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "does it snow",
+                "isCorrect": true
+            },
+            {
+                "id": "D",
+                "text": "does it snows",
                 "isCorrect": false
             },
             {
@@ -5688,14 +5688,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "Geniş zaman sorularında 'does + özne + V1' kullanılır.",
             "whyOthersIncorrect": {
-                "B": "does kullanıldıktan sonra fiile -s takısı gelmez (snows olamaz).",
-                "C": "snow it devriği Türkçe düşünme hatasıdır.",
-                "D": "snows it gramer hatasıdır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Questions - Present Simple Question",
             "keyTakeaway": "Oxford Grammar Test Soru #23 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -5710,38 +5710,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "did it win",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
-                "text": "did they win",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
                 "text": "won",
                 "isCorrect": true
             },
             {
-                "id": "D",
+                "id": "B",
+                "text": "None of the above",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
                 "text": "won it",
                 "isCorrect": false
             },
             {
+                "id": "D",
+                "text": "did it win",
+                "isCorrect": false
+            },
+            {
                 "id": "E",
-                "text": "None of the above",
+                "text": "did they win",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "C",
+        "correctOptionId": "A",
         "explanation": {
             "whyCorrect": "Soru kelimesi (Which team) cümlenin öznesi olduğunda 'did' yardımcı fiili kullanılmaz, direkt fiil (won) gelir.",
             "whyOthersIncorrect": {
-                "A": "Soru kelimesi özne iken did ve it zamiri kullanılmaz.",
-                "B": "Soru kelimesi özne olduğu için did kullanılmaz.",
-                "D": "won it nesne zamiri tekrarı hatasıdır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Questions - Subject Questions",
             "keyTakeaway": "Oxford Grammar Test Soru #24 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -5756,12 +5756,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "away",
+                "text": "because",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "because",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
@@ -5771,12 +5771,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "D",
-                "text": "like",
+                "text": "away",
                 "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "None of the above",
+                "text": "like",
                 "isCorrect": false
             }
         ],
@@ -5784,10 +5784,10 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "explanation": {
             "whyCorrect": "'What ... for?' kalıbı 'Ne için / Neden?' (Why?) sorusunun dengidir.",
             "whyOthersIncorrect": {
-                "A": "leave away kalıbı kullanılmaz.",
-                "B": "What ... because diye bir soru kalıbı yoktur.",
-                "D": "What ... like dış görünüş/özellik sorar.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Questions - Preposition at the End",
             "keyTakeaway": "Oxford Grammar Test Soru #25 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -5802,38 +5802,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "didn't saw",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
-                "text": "didn't see",
-                "isCorrect": true
-            },
-            {
-                "id": "C",
                 "text": "no saw",
                 "isCorrect": false
             },
             {
+                "id": "B",
+                "text": "None of the above",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "didn't see",
+                "isCorrect": true
+            },
+            {
                 "id": "D",
-                "text": "saw not",
+                "text": "didn't saw",
                 "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "None of the above",
+                "text": "saw not",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "B",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "Simple Past olumsuz cümlelerde 'didn't + V1' kullanılır.",
             "whyOthersIncorrect": {
-                "A": "didn't sonrasında V2 (saw) kullanılamaz, V1 (see) olmalıdır.",
-                "C": "no saw gramer hatasıdır.",
-                "D": "saw not İngilizcede olumsuz yapma kuralı değildir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Negatives - Simple Past Negative",
             "keyTakeaway": "Oxford Grammar Test Soru #26 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -5848,12 +5848,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Are you no want",
+                "text": "Do you no want",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "Do you no want",
+                "text": "Are you no want",
                 "isCorrect": false
             },
             {
@@ -5863,23 +5863,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "D",
-                "text": "Don't you want",
-                "isCorrect": true
+                "text": "None of the above",
+                "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "None of the above",
-                "isCorrect": false
+                "text": "Don't you want",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "Olumsuz soru cümlelerinde 'Don't + özne + V1' (Don't you want...?) kalıbı kullanılır.",
             "whyOthersIncorrect": {
-                "A": "Are you no want gramer hatasıdır.",
-                "B": "Do you no want hatalı olumsuzluktur.",
-                "C": "Don't want you kelime sırası yanlıştır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Questions - Negative Questions",
             "keyTakeaway": "Oxford Grammar Test Soru #27 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -5894,12 +5894,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "is it",
+                "text": "isn't it",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "isn't it",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
@@ -5909,23 +5909,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "D",
-                "text": "wasn't it",
-                "isCorrect": true
+                "text": "is it",
+                "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "None of the above",
-                "isCorrect": false
+                "text": "wasn't it",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "Ana cümle olumlu Past Simple (It was) ise, onaylama sorusu (Tag Question) olumsuz Past Simple (wasn't it?) olur.",
             "whyOthersIncorrect": {
-                "A": "is it şimdiki zamandır.",
-                "B": "isn't it şimdiki zamandır.",
-                "C": "was it olumludur; olumlu cümleye olumsuz tag gelir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Questions - Tag Questions",
             "keyTakeaway": "Oxford Grammar Test Soru #28 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -5940,38 +5940,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "indeed",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
                 "text": "it",
                 "isCorrect": false
             },
             {
+                "id": "B",
+                "text": "None of the above",
+                "isCorrect": false
+            },
+            {
                 "id": "C",
+                "text": "indeed",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
                 "text": "so",
                 "isCorrect": true
             },
             {
-                "id": "D",
-                "text": "yes",
-                "isCorrect": false
-            },
-            {
                 "id": "E",
-                "text": "None of the above",
+                "text": "yes",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "C",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "Bir soruya 'Öyle sanıyorum / Sanırım öyle' demek için 'I think so' kalıbı kullanılır.",
             "whyOthersIncorrect": {
-                "A": "indeed 'gerçekten' demektir; sanı bildiren think ile kalıp oluşturmaz.",
-                "B": "I think it cümlesi eksiktir.",
-                "D": "I think yes hatalı ifadedir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Answers - So after Think",
             "keyTakeaway": "Oxford Grammar Test Soru #29 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -5991,33 +5991,33 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "B",
-                "text": "can't",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
-                "text": "did can",
-                "isCorrect": false
-            },
-            {
-                "id": "D",
                 "text": "was able to",
                 "isCorrect": true
             },
             {
-                "id": "E",
+                "id": "C",
                 "text": "None of the above",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "did can",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "can't",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "Geçmişte belirli bir anda başarmak/yapa bilmek için 'was/were able to' kullanılır.",
             "whyOthersIncorrect": {
-                "A": "can şimdiki zamandır.",
-                "B": "can't olumsuzdur.",
-                "C": "did can gramer hatasıdır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Modal verbs - Past Ability Specific Event",
             "keyTakeaway": "Oxford Grammar Test Soru #30 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -6032,7 +6032,7 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "can't",
+                "text": "don't",
                 "isCorrect": false
             },
             {
@@ -6042,7 +6042,7 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "C",
-                "text": "don't",
+                "text": "can't",
                 "isCorrect": false
             },
             {
@@ -6060,10 +6060,10 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "explanation": {
             "whyCorrect": "Varsayımsal olarak 'ben onun işini yapamazdım' derken 'couldn't' kullanılır.",
             "whyOthersIncorrect": {
-                "A": "can't genel imkansızlıktır; varsayımda couldn't daha uygundur.",
-                "C": "don't fiilizdir.",
-                "D": "shouldn't tavsiyedir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Modal verbs - Hypothesis / Impossibility",
             "keyTakeaway": "Oxford Grammar Test Soru #31 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -6078,38 +6078,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "I must have",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "I've been to",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
                 "text": "I've had to",
                 "isCorrect": true
             },
             {
+                "id": "C",
+                "text": "I must have",
+                "isCorrect": false
+            },
+            {
                 "id": "D",
-                "text": "I've must",
+                "text": "I've been to",
                 "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "None of the above",
+                "text": "I've must",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "C",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "Geçmişteki eylemden dolayı şu an zorunda kalma durumu 'I've had to' ile ifade edilir.",
             "whyOthersIncorrect": {
-                "A": "I must have geçmiş çıkarımdır.",
-                "B": "I've been to bir yerde bulunmaktır.",
-                "D": "I've must hatalı gramerdir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Modal verbs - Present Result of Past Obligation",
             "keyTakeaway": "Oxford Grammar Test Soru #32 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -6124,38 +6124,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
+                "text": "None of the above",
+                "isCorrect": false
+            },
+            {
+                "id": "B",
                 "text": "didn't need to wait",
                 "isCorrect": true
             },
             {
-                "id": "B",
+                "id": "C",
                 "text": "mustn't wait",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "D",
                 "text": "needn't have waited",
                 "isCorrect": false
             },
             {
-                "id": "D",
-                "text": "needn't wait",
-                "isCorrect": false
-            },
-            {
                 "id": "E",
-                "text": "None of the above",
+                "text": "needn't wait",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "Geçmişte bir zorunluluk olmadığını ve bu yüzden yapılmadığını belirtmek için 'didn't need to wait' kullanılır.",
             "whyOthersIncorrect": {
-                "B": "mustn't wait yasaktır.",
-                "C": "needn't have waited lüzumsuz yere yapıldı anlamı katar (gişede kimse yokken beklenmedi).",
-                "D": "needn't wait şimdiki zamandır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Modal verbs - Past Absence of Obligation",
             "keyTakeaway": "Oxford Grammar Test Soru #33 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -6170,23 +6170,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Do",
+                "text": "Would",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "Shall",
-                "isCorrect": true
-            },
-            {
-                "id": "C",
                 "text": "Will",
                 "isCorrect": false
             },
             {
-                "id": "D",
-                "text": "Would",
+                "id": "C",
+                "text": "Do",
                 "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Shall",
+                "isCorrect": true
             },
             {
                 "id": "E",
@@ -6194,14 +6194,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "B",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "Birinci şahısta (I) yardım teklif ederken 'Shall I ...?' kalıbı kullanılır.",
             "whyOthersIncorrect": {
-                "A": "Do I carry alışkanlık sorar.",
-                "C": "Will I kendime soru sormak gibidir.",
-                "D": "Would I nazik teklif yapmaz.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Modal verbs - Offers",
             "keyTakeaway": "Oxford Grammar Test Soru #34 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -6216,12 +6216,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "that I put",
+                "text": "to be putting",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "to be putting",
+                "text": "that I put",
                 "isCorrect": false
             },
             {
@@ -6234,10 +6234,8 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "explanation": {
             "whyCorrect": "Geçmişte yapılması gerekip de yapılmayan eylemler için 'ought to have + V3' kullanılır.",
             "whyOthersIncorrect": {
-                "A": "that I put gramer hatasıdır.",
-                "B": "to be putting devam eden eylemdir.",
-                "D": "to put şimdiki/gelecek zamandır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Modal verbs - Past Unfulfilled Expectation",
             "keyTakeaway": "Oxford Grammar Test Soru #35 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -6252,7 +6250,7 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "been repaired",
+                "text": "repair",
                 "isCorrect": false
             },
             {
@@ -6262,7 +6260,7 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "C",
-                "text": "repair",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
@@ -6272,7 +6270,7 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "E",
-                "text": "None of the above",
+                "text": "been repaired",
                 "isCorrect": false
             }
         ],
@@ -6280,10 +6278,10 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "explanation": {
             "whyCorrect": "Şu an tamir edilmekte olduğunu anlatmak için Present Continuous Passive (is being repaired) kullanılır.",
             "whyOthersIncorrect": {
-                "A": "been repaired Present Perfect Passivedir.",
-                "C": "repair etken fiildir.",
-                "D": "repaired Simple Past Passivedir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: The Passive - Present Continuous Passive",
             "keyTakeaway": "Oxford Grammar Test Soru #36 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -6298,7 +6296,7 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "was written",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
@@ -6313,12 +6311,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "D",
-                "text": "wrote",
+                "text": "was written",
                 "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "None of the above",
+                "text": "wrote",
                 "isCorrect": false
             }
         ],
@@ -6326,10 +6324,10 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "explanation": {
             "whyCorrect": "Edilgen cümlelerde eylemi yapan kişi 'by' edatı ile belirtilir (was written by).",
             "whyOthersIncorrect": {
-                "A": "was written yapan kişiyi bağlayan edattan yoksundur.",
-                "C": "from kaynak bildirir, yapan kişiyi bildirmez.",
-                "D": "wrote etken fiildir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: The Passive - Agent with By",
             "keyTakeaway": "Oxford Grammar Test Soru #37 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -6344,7 +6342,7 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "are said",
+                "text": "say",
                 "isCorrect": false
             },
             {
@@ -6354,17 +6352,17 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "C",
-                "text": "say",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
                 "id": "D",
-                "text": "say to",
+                "text": "are said",
                 "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "None of the above",
+                "text": "say to",
                 "isCorrect": false
             }
         ],
@@ -6372,10 +6370,10 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "explanation": {
             "whyCorrect": "Söylenti ve genel görüş belirtirken 'Subject + are said + to-infinitive' kalıbı kullanılır.",
             "whyOthersIncorrect": {
-                "A": "are said arkasından to-infinitive almalıdır.",
-                "C": "say etken fiildir.",
-                "D": "say to hatalı yapıdır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: The Passive - Personal Structure",
             "keyTakeaway": "Oxford Grammar Test Soru #38 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -6390,22 +6388,22 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "have cut my hair",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
-                "text": "have my hair cut",
-                "isCorrect": true
-            },
-            {
-                "id": "C",
                 "text": "let my hair cut",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "B",
                 "text": "my hair be cut",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "have my hair cut",
+                "isCorrect": true
+            },
+            {
+                "id": "D",
+                "text": "have cut my hair",
                 "isCorrect": false
             },
             {
@@ -6414,14 +6412,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "B",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "Bir işi başkasına yaptırma (ettirgen) kalıbı 'have + nesne + V3' (have my hair cut) şeklindedir.",
             "whyOthersIncorrect": {
-                "A": "have cut my hair kendim kestim demektir.",
-                "C": "let my hair cut izin vermektir.",
-                "D": "my hair be cut gramer hatasıdır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: The Passive - Causative Have Something Done",
             "keyTakeaway": "Oxford Grammar Test Soru #39 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -6436,38 +6434,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "of report",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "report",
+                "text": "of report",
                 "isCorrect": false
             },
             {
                 "id": "C",
-                "text": "reporting",
+                "text": "report",
                 "isCorrect": false
             },
             {
                 "id": "D",
-                "text": "to report",
-                "isCorrect": true
+                "text": "reporting",
+                "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "None of the above",
-                "isCorrect": false
+                "text": "to report",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "Fail fiili arkasından her zaman to-infinitive (fail to do something) alır.",
             "whyOthersIncorrect": {
-                "A": "of report hatalı edattır.",
-                "B": "report yalın fiildir.",
-                "C": "reporting gerund yapısıdır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: The Infinitive - Verb + To-Infinitive",
             "keyTakeaway": "Oxford Grammar Test Soru #40 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -6482,23 +6480,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "go",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
-                "text": "going",
-                "isCorrect": true
-            },
-            {
-                "id": "C",
                 "text": "of going",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "B",
+                "text": "go",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
                 "text": "to go",
                 "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "going",
+                "isCorrect": true
             },
             {
                 "id": "E",
@@ -6506,14 +6504,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "B",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "Suggest fiilinden sonra nesne/cümle gelmiyorsa doğrudan Gerund (-ing) kullanılır (suggest going).",
             "whyOthersIncorrect": {
-                "A": "go yalın fiildir.",
-                "C": "of going hatalı edattır.",
-                "D": "to go suggest fiili ile kullanılmaz.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: The Infinitive and -ing - Suggest + Gerund",
             "keyTakeaway": "Oxford Grammar Test Soru #41 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -6528,7 +6526,7 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "hear",
+                "text": "to hear",
                 "isCorrect": false
             },
             {
@@ -6543,7 +6541,7 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "D",
-                "text": "to hear",
+                "text": "hear",
                 "isCorrect": false
             },
             {
@@ -6556,10 +6554,10 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "explanation": {
             "whyCorrect": "Geçmişte yaşanmış bir anıyı hatırlarken 'remember + V-ing' (hearing) kullanılır.",
             "whyOthersIncorrect": {
-                "A": "hear yalın fiildir.",
-                "B": "heard geçmiş zaman fiilidir.",
-                "D": "to hear yapılması gereken bir görevi hatırlamaktır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: The Infinitive and -ing - Remember + Gerund",
             "keyTakeaway": "Oxford Grammar Test Soru #42 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -6574,38 +6572,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "that we report",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
-                "text": "us reporting",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
                 "text": "us to report",
                 "isCorrect": true
             },
             {
+                "id": "B",
+                "text": "that we report",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "us reporting",
+                "isCorrect": false
+            },
+            {
                 "id": "D",
-                "text": "we report",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "None of the above",
+                "text": "we report",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "C",
+        "correctOptionId": "A",
         "explanation": {
             "whyCorrect": "Want fiili 'want + someone + to V1' yapısını alır (want us to report).",
             "whyOthersIncorrect": {
-                "A": "that we report İngilizcede want ile kullanılmaz.",
-                "B": "us reporting gerund almaz.",
-                "D": "we report hatalı gramerdir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: The Infinitive and -ing - Want + Object + To-Infinitive",
             "keyTakeaway": "Oxford Grammar Test Soru #43 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -6620,38 +6618,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "should knock",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "to knock",
+                "text": "should knock",
                 "isCorrect": false
             },
             {
                 "id": "C",
-                "text": "whether knock",
+                "text": "to knock",
                 "isCorrect": false
             },
             {
                 "id": "D",
-                "text": "whether to knock",
-                "isCorrect": true
+                "text": "whether knock",
+                "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "None of the above",
-                "isCorrect": false
+                "text": "whether to knock",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "Emin olamama durumlarında 'whether + to-infinitive' (whether to knock) kullanılır.",
             "whyOthersIncorrect": {
-                "A": "should knock bağlaçsız gelemez.",
-                "B": "to knock alternatifli 'or' durumunda whether gerektirir.",
-                "C": "whether knock to-infinitive gerektirir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: The Infinitive - Question Word + To-Infinitive",
             "keyTakeaway": "Oxford Grammar Test Soru #44 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -6666,13 +6664,13 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "the guests eating",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "for the guests to eat",
-                "isCorrect": true
+                "text": "that the guests eat",
+                "isCorrect": false
             },
             {
                 "id": "C",
@@ -6681,23 +6679,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "D",
-                "text": "that the guests eat",
+                "text": "the guests eating",
                 "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "None of the above",
-                "isCorrect": false
+                "text": "for the guests to eat",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "B",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "'Too + sıfat + for someone + to V1' kalıbı kullanılır.",
             "whyOthersIncorrect": {
-                "A": "the guests eating hatalı yapıdır.",
-                "C": "that the guests should eat kalıba uymaz.",
-                "D": "that the guests eat kalıba uymaz.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: The Infinitive - Too + Adjective + For + Object + To-Infinitive",
             "keyTakeaway": "Oxford Grammar Test Soru #45 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -6717,33 +6715,33 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "B",
-                "text": "on passing",
-                "isCorrect": true
-            },
-            {
-                "id": "C",
-                "text": "passing",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "to pass",
                 "isCorrect": false
             },
             {
-                "id": "E",
-                "text": "None of the above",
+                "id": "D",
+                "text": "passing",
                 "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "on passing",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "B",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "Congratulate fiili 'congratulate someone ON doing something' yapısını alır.",
             "whyOthersIncorrect": {
-                "A": "of passing hatalı edattır.",
-                "C": "passing edatsız gelemez.",
-                "D": "to pass congratulate ile kullanılmaz.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: The Infinitive and -ing - Preposition + Gerund",
             "keyTakeaway": "Oxford Grammar Test Soru #46 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -6758,13 +6756,13 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "I got used to living",
-                "isCorrect": false
+                "text": "I'm used to living",
+                "isCorrect": true
             },
             {
                 "id": "B",
-                "text": "I'm used to living",
-                "isCorrect": true
+                "text": "I got used to living",
+                "isCorrect": false
             },
             {
                 "id": "C",
@@ -6782,14 +6780,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "B",
+        "correctOptionId": "A",
         "explanation": {
             "whyCorrect": "Alışkın olma durumunu anlatırken 'be used to + V-ing' (I'm used to living) kullanılır.",
             "whyOthersIncorrect": {
-                "A": "I got used to living alışma sürecini tamamlamayı anlatır; 'now' ile alışkın olma hali 'I'm used to' uygundur.",
-                "C": "I used to live geçmişteki eski alışkanlıktır.",
-                "D": "I used to living hatalı gramerdir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: The Infinitive and -ing - Be Used To",
             "keyTakeaway": "Oxford Grammar Test Soru #47 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -6804,13 +6802,13 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "asking",
+                "text": "with asking",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "by asking",
-                "isCorrect": true
+                "text": "asking",
+                "isCorrect": false
             },
             {
                 "id": "C",
@@ -6819,23 +6817,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "D",
-                "text": "with asking",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "None of the above",
-                "isCorrect": false
+                "text": "by asking",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "B",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "Bir şeyin nasıl yapıldığını/yöntemini anlatırken 'by + V-ing' (by asking) kullanılır.",
             "whyOthersIncorrect": {
-                "A": "asking edatsız yöntemi belirtmez.",
-                "C": "of asking hatalıdır.",
-                "D": "with asking yöntemde kullanılmaz.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: The Infinitive and -ing - By + V-ing (Means)",
             "keyTakeaway": "Oxford Grammar Test Soru #48 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -6850,38 +6848,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "in washing",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
-                "text": "to wash",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
                 "text": "wash",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "B",
                 "text": "washing",
                 "isCorrect": true
             },
             {
-                "id": "E",
+                "id": "C",
                 "text": "None of the above",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "in washing",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "to wash",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "Görsel veya işitsel algı fiillerinden (see, hear, watch) sonra eylemin bir kısmına tanık olunduysa V-ing (washing) kullanılır.",
             "whyOthersIncorrect": {
-                "A": "in washing hatalı edattır.",
-                "B": "to wash algı fiillerinden sonra kullanılmaz.",
-                "C": "wash tüm eyleme baştan sona tanık olunduğunda kullanılır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: The Infinitive and -ing - Sense Verbs",
             "keyTakeaway": "Oxford Grammar Test Soru #49 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -6896,38 +6894,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "a bread",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
-                "text": "a loaf bread",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
                 "text": "a loaf of bread",
                 "isCorrect": true
             },
             {
-                "id": "D",
+                "id": "B",
                 "text": "breads",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "C",
+                "text": "a loaf bread",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
                 "text": "None of the above",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "a bread",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "C",
+        "correctOptionId": "A",
         "explanation": {
             "whyCorrect": "Bread sayılamayan bir isimdir; birim belirtmek için 'a loaf of bread' denir.",
             "whyOthersIncorrect": {
-                "A": "a bread denmez.",
-                "B": "of edatı eksiktir.",
-                "D": "breads çoğul yapılamaz.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Nouns and articles - Uncountable Nouns",
             "keyTakeaway": "Oxford Grammar Test Soru #50 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -6942,8 +6940,8 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "a business",
-                "isCorrect": true
+                "text": "business",
+                "isCorrect": false
             },
             {
                 "id": "B",
@@ -6952,8 +6950,8 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "C",
-                "text": "business",
-                "isCorrect": false
+                "text": "a business",
+                "isCorrect": true
             },
             {
                 "id": "D",
@@ -6966,14 +6964,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "Ticari işletme/şirket anlamındaki 'business' sayılabilir (a business).",
             "whyOthersIncorrect": {
-                "B": "a piece of business iş/işlem anlamındadır.",
-                "C": "business genel ticaret anlamındadır.",
-                "D": "some business bazı işler anlamındadır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Nouns and articles - Countable vs Uncountable Business",
             "keyTakeaway": "Oxford Grammar Test Soru #51 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -6993,33 +6991,33 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "B",
-                "text": "good is",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
                 "id": "C",
+                "text": "good is",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
                 "text": "goods are",
                 "isCorrect": true
             },
             {
-                "id": "D",
-                "text": "goods is",
-                "isCorrect": false
-            },
-            {
                 "id": "E",
-                "text": "None of the above",
+                "text": "goods is",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "C",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "'Goods' (mallar/ürünler) her zaman çoğuldur ve çoğul fiil alarak 'goods are' şeklinde kullanılır.",
             "whyOthersIncorrect": {
-                "A": "good sıfattır.",
-                "B": "good sıfattır.",
-                "D": "goods tekil fiil (is) almaz.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Nouns and articles - Plural Nouns",
             "keyTakeaway": "Oxford Grammar Test Soru #52 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -7034,38 +7032,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "a pair scissors",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
-                "text": "a scissor",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
                 "text": "a scissors",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "B",
                 "text": "some scissors",
                 "isCorrect": true
             },
             {
-                "id": "E",
+                "id": "C",
+                "text": "a scissor",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
                 "text": "None of the above",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "a pair scissors",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "Scissors çift parçalı çoğul isimdir; 'some scissors' veya 'a pair of scissors' denir.",
             "whyOthersIncorrect": {
-                "A": "of edatı eksiktir.",
-                "B": "tekil 'a scissor' denmez.",
-                "C": "a scissors gramer hatasıdır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Nouns and articles - Pair Nouns",
             "keyTakeaway": "Oxford Grammar Test Soru #53 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -7085,33 +7083,33 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "B",
-                "text": "an doorbell",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
-                "text": "doorbell",
-                "isCorrect": false
-            },
-            {
-                "id": "D",
                 "text": "the doorbell",
                 "isCorrect": true
             },
             {
-                "id": "E",
+                "id": "C",
                 "text": "None of the above",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "an doorbell",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "doorbell",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "Evdeki bilinen zil olduğu için belirli nesne 'the doorbell' kullanılır.",
             "whyOthersIncorrect": {
-                "A": "a doorbell belirsizdir.",
-                "B": "an sessiz harfle başlayan kelimeden önce gelmez.",
-                "C": "artikelsiz kullanılamaz.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Nouns and articles - Definite Article The",
             "keyTakeaway": "Oxford Grammar Test Soru #54 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -7126,38 +7124,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Chinese food",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
                 "text": "food of China",
                 "isCorrect": false
             },
             {
-                "id": "C",
-                "text": "some food of China",
-                "isCorrect": false
-            },
-            {
-                "id": "D",
+                "id": "B",
                 "text": "the Chinese food",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "C",
+                "text": "Chinese food",
+                "isCorrect": true
+            },
+            {
+                "id": "D",
                 "text": "None of the above",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "some food of China",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "Genel olarak mutfak veya yemek türlerinden bahsederken artikel kullanılmaz (Chinese food).",
             "whyOthersIncorrect": {
-                "B": "food of China yapay ifadedir.",
-                "C": "some food of China yapay ifadedir.",
-                "D": "the artikel genel genellemede kullanılmaz.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Nouns and articles - Generalizations",
             "keyTakeaway": "Oxford Grammar Test Soru #55 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -7172,38 +7170,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "school",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
-                "text": "to school",
-                "isCorrect": true
-            },
-            {
-                "id": "C",
                 "text": "to some schools",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "B",
                 "text": "to the school",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "C",
                 "text": "None of the above",
                 "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "school",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "to school",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "B",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "Okul, hastane, hapishane gibi kurumlara esas amacı için gidildiğinde artikel kullanılmaz (go to school).",
             "whyOthersIncorrect": {
-                "A": "to yönelme edatı eksiktir.",
-                "C": "to some schools anlamı bozar.",
-                "D": "to the school belirli bir bina vurgusudur.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Nouns and articles - Institutions without Article",
             "keyTakeaway": "Oxford Grammar Test Soru #56 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -7218,38 +7216,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "a so long",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
-                "text": "so a long",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
-                "text": "such a long",
-                "isCorrect": true
-            },
-            {
-                "id": "D",
                 "text": "such long",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "B",
+                "text": "a so long",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "so a long",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
                 "text": "None of the above",
                 "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "such a long",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "C",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "'Such + a/an + sıfat + tekil sayılabilir isim' (such a long time) kalıbı kullanılır.",
             "whyOthersIncorrect": {
-                "A": "a so long hatalı sıradır.",
-                "B": "so a long hatalı sıradır.",
-                "D": "such long tekil isimde 'a' gerektirir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Nouns and articles - Such a + Adjective + Noun",
             "keyTakeaway": "Oxford Grammar Test Soru #57 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -7264,23 +7262,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "a West London",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
                 "text": "the West London",
                 "isCorrect": false
             },
             {
+                "id": "B",
+                "text": "a West London",
+                "isCorrect": false
+            },
+            {
                 "id": "C",
-                "text": "West London",
-                "isCorrect": true
+                "text": "West of London",
+                "isCorrect": false
             },
             {
                 "id": "D",
-                "text": "West of London",
-                "isCorrect": false
+                "text": "West London",
+                "isCorrect": true
             },
             {
                 "id": "E",
@@ -7288,14 +7286,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "C",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "Şehir bölgesi isimlerinden önce (West London) artikel kullanılmaz.",
             "whyOthersIncorrect": {
-                "A": "a kullanılamaz.",
-                "B": "the kullanılmaz.",
-                "D": "West of London ifadesi 'the west of London' olmalıdır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Nouns and articles - Geographical Names",
             "keyTakeaway": "Oxford Grammar Test Soru #58 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -7310,23 +7308,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "that",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
                 "text": "these",
                 "isCorrect": false
             },
             {
+                "id": "B",
+                "text": "those",
+                "isCorrect": false
+            },
+            {
                 "id": "C",
-                "text": "this",
-                "isCorrect": true
+                "text": "that",
+                "isCorrect": false
             },
             {
                 "id": "D",
-                "text": "those",
-                "isCorrect": false
+                "text": "this",
+                "isCorrect": true
             },
             {
                 "id": "E",
@@ -7334,14 +7332,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "C",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "Konuşulan bulunulan yer 'here' olduğu için işaret zamiri 'this' (this place) olur.",
             "whyOthersIncorrect": {
-                "A": "that uzaktaki yerdir.",
-                "B": "these çoğuldur.",
-                "D": "those çoğul uzaktır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: This, my, some, all - Demonstratives",
             "keyTakeaway": "Oxford Grammar Test Soru #59 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -7356,12 +7354,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "the yours",
-                "isCorrect": false
+                "text": "yours",
+                "isCorrect": true
             },
             {
                 "id": "B",
-                "text": "the your's",
+                "text": "the yours",
                 "isCorrect": false
             },
             {
@@ -7371,23 +7369,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "D",
-                "text": "yours",
-                "isCorrect": true
+                "text": "None of the above",
+                "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "None of the above",
+                "text": "the your's",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "A",
         "explanation": {
             "whyCorrect": "İsimsiz iyelik zamiri 'yours' (seninki) şeklindedir.",
             "whyOthersIncorrect": {
-                "A": "the kullanılamaz.",
-                "B": "the ve kesme işareti hatalıdır.",
-                "C": "your arkasından isim gerektirir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: This, my, some, all - Possessive Pronouns",
             "keyTakeaway": "Oxford Grammar Test Soru #60 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -7407,17 +7405,17 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "B",
+                "text": "thing",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
                 "text": "anything",
                 "isCorrect": true
             },
             {
-                "id": "C",
-                "text": "something",
-                "isCorrect": false
-            },
-            {
                 "id": "D",
-                "text": "thing",
+                "text": "something",
                 "isCorrect": false
             },
             {
@@ -7426,14 +7424,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "B",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "Fark etmez/herhangi bir şey anlamında olumlu cümlede 'anything' kullanılır.",
             "whyOthersIncorrect": {
-                "A": "a thing sınırlıdır.",
-                "C": "something belirli bir şeydir.",
-                "D": "thing artikelsiz kullanılamaz.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: This, my, some, all - Indefinite Pronouns",
             "keyTakeaway": "Oxford Grammar Test Soru #61 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -7453,8 +7451,8 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "B",
-                "text": "a little",
-                "isCorrect": false
+                "text": "little",
+                "isCorrect": true
             },
             {
                 "id": "C",
@@ -7463,23 +7461,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "D",
-                "text": "little",
-                "isCorrect": true
+                "text": "None of the above",
+                "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "None of the above",
+                "text": "a little",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "Sayılamayan 'use' ismi ile 'hiç yok kadar az / faydasız' anlamında olumsuz 'little' (little use) kullanılır.",
             "whyOthersIncorrect": {
-                "A": "a few sayılabilenler içindir.",
-                "B": "a little olumlu az miktardır.",
-                "C": "few sayılabilenler içindir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: This, my, some, all - Little vs A Little",
             "keyTakeaway": "Oxford Grammar Test Soru #62 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -7494,12 +7492,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "all",
-                "isCorrect": false
+                "text": "them all",
+                "isCorrect": true
             },
             {
                 "id": "B",
-                "text": "all them",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
@@ -7509,23 +7507,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "D",
-                "text": "them all",
-                "isCorrect": true
+                "text": "all",
+                "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "None of the above",
+                "text": "all them",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "A",
         "explanation": {
             "whyCorrect": "Zamirle kullanımda 'them all' veya 'all of them' kalıbı geçerlidir.",
             "whyOthersIncorrect": {
-                "A": "all tek başına 'onların hepsi' anlamını tam karşılamaz.",
-                "B": "all them sırası terstir (them all olmalı).",
-                "C": "everything cansız genel şeylerdir, kitapları kapsamaz.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: This, my, some, all - Pronoun + All",
             "keyTakeaway": "Oxford Grammar Test Soru #63 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -7540,7 +7538,7 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "Is",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
@@ -7550,28 +7548,28 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "C",
-                "text": "There",
-                "isCorrect": false
-            },
-            {
-                "id": "D",
                 "text": "There's",
                 "isCorrect": true
             },
             {
+                "id": "D",
+                "text": "There",
+                "isCorrect": false
+            },
+            {
                 "id": "E",
-                "text": "None of the above",
+                "text": "Is",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "Var olduğunu bildirmek için 'There's a café' kullanılır.",
             "whyOthersIncorrect": {
-                "A": "Is soru fiilidir.",
-                "B": "It's a café tanım yapar fakat varlık bildirmede There's esastır.",
-                "C": "There tek başına yüklemsizdir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Pronouns - There is / There are",
             "keyTakeaway": "Oxford Grammar Test Soru #64 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -7586,38 +7584,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "each other",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
-                "text": "one other",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
                 "text": "one the other",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "B",
+                "text": "None of the above",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
                 "text": "themselves",
                 "isCorrect": false
             },
             {
+                "id": "D",
+                "text": "each other",
+                "isCorrect": true
+            },
+            {
                 "id": "E",
-                "text": "None of the above",
+                "text": "one other",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "Karşılıklı tokalaşma eyleminde 'each other' (birbiriyle) kullanılır.",
             "whyOthersIncorrect": {
-                "B": "one other hatalıdır.",
-                "C": "one the other hatalıdır.",
-                "D": "themselves kendi kendileriyle demektir; el sıkışmada kullanılmaz.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Pronouns - Reciprocal Pronouns",
             "keyTakeaway": "Oxford Grammar Test Soru #65 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -7632,7 +7630,7 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "a new",
+                "text": "new one",
                 "isCorrect": false
             },
             {
@@ -7642,17 +7640,17 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "C",
-                "text": "new",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
                 "id": "D",
-                "text": "new one",
+                "text": "new",
                 "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "None of the above",
+                "text": "a new",
                 "isCorrect": false
             }
         ],
@@ -7660,10 +7658,10 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "explanation": {
             "whyCorrect": "Tekil bir ismin (washing machine) tekrarını önlemek için 'a new one' kullanılır.",
             "whyOthersIncorrect": {
-                "A": "a new sıfatta biter, isim/zamir almalıdır.",
-                "C": "new tek başına artikel almadan nesne olamaz.",
-                "D": "a artikeli eksiktir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Pronouns - One / Ones",
             "keyTakeaway": "Oxford Grammar Test Soru #66 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -7678,22 +7676,22 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "All were",
+                "text": "Someone were",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "Every was",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
                 "text": "Everyone was",
                 "isCorrect": true
             },
             {
+                "id": "C",
+                "text": "All were",
+                "isCorrect": false
+            },
+            {
                 "id": "D",
-                "text": "Someone were",
+                "text": "Every was",
                 "isCorrect": false
             },
             {
@@ -7702,14 +7700,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "C",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "Herkes anlamındaki 'Everyone' tekil fiil alır (Everyone was).",
             "whyOthersIncorrect": {
-                "A": "All were having de mümkündür fakat şıklarda 'Everyone was' standart kullanımdır.",
-                "B": "Every tek başına zamir olamaz.",
-                "D": "Someone 'birisi' demektir ve tekildir (were almaz).",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Pronouns - Everyone + Singular Verb",
             "keyTakeaway": "Oxford Grammar Test Soru #67 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -7724,8 +7722,8 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "a nice old stone",
-                "isCorrect": true
+                "text": "an old nice stone",
+                "isCorrect": false
             },
             {
                 "id": "B",
@@ -7739,23 +7737,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "D",
-                "text": "an old nice stone",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "None of the above",
-                "isCorrect": false
+                "text": "a nice old stone",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "Sıfat sıralaması: Opinion (nice) + Age (old) + Material (stone) -> a nice old stone building.",
             "whyOthersIncorrect": {
-                "B": "stone (malzeme) old (yaş) önüne geçemez.",
-                "C": "stone en başa geçemez.",
-                "D": "nice (görüş) old (yaş) önündedir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Adjectives and adverbs - Order of Adjectives",
             "keyTakeaway": "Oxford Grammar Test Soru #68 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -7775,33 +7773,33 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "B",
-                "text": "the poor",
-                "isCorrect": true
-            },
-            {
-                "id": "C",
                 "text": "the poors",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "the poor ones",
                 "isCorrect": false
             },
             {
-                "id": "E",
+                "id": "D",
                 "text": "None of the above",
                 "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "the poor",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "B",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "Belirli bir insan grubunu anlatmak için 'The + Sıfat' (the poor = yoksullar) kullanılır.",
             "whyOthersIncorrect": {
-                "A": "poor isimleşemez.",
-                "C": "the poors -s takısı alamaz.",
-                "D": "the poor ones yerine the poor esastır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Adjectives and adverbs - The + Adjective for Groups",
             "keyTakeaway": "Oxford Grammar Test Soru #69 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -7816,22 +7814,22 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
+                "text": "sensibly",
+                "isCorrect": false
+            },
+            {
+                "id": "B",
                 "text": "sensible",
                 "isCorrect": true
             },
             {
-                "id": "B",
+                "id": "C",
                 "text": "sensiblely",
                 "isCorrect": false
             },
             {
-                "id": "C",
-                "text": "sensibley",
-                "isCorrect": false
-            },
-            {
                 "id": "D",
-                "text": "sensibly",
+                "text": "sensibley",
                 "isCorrect": false
             },
             {
@@ -7840,14 +7838,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "Seem (görünmek) bağlama fiilinden (linking verb) sonra zarf değil sıfat (sensible) gelir.",
             "whyOthersIncorrect": {
-                "B": "sensiblely hatalı yazımdır.",
-                "C": "sensibley hatalı yazımdır.",
-                "D": "sensibly zarftır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Adjectives and adverbs - Linking Verbs",
             "keyTakeaway": "Oxford Grammar Test Soru #70 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -7862,12 +7860,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "mostly",
-                "isCorrect": false
+                "text": "nearly",
+                "isCorrect": true
             },
             {
                 "id": "B",
-                "text": "near",
+                "text": "mostly",
                 "isCorrect": false
             },
             {
@@ -7877,8 +7875,8 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "D",
-                "text": "nearly",
-                "isCorrect": true
+                "text": "near",
+                "isCorrect": false
             },
             {
                 "id": "E",
@@ -7886,14 +7884,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "A",
         "explanation": {
             "whyCorrect": "Neredeyse/az kalsın anlamında 'nearly' zarfı kullanılır.",
             "whyOthersIncorrect": {
-                "A": "mostly çoğunlukla demektir.",
-                "B": "near yakın edatıdır.",
-                "C": "nearest en yakın sıfatıdır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Adjectives and adverbs - Nearly",
             "keyTakeaway": "Oxford Grammar Test Soru #71 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -7908,13 +7906,13 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "more useful as",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "more useful than",
-                "isCorrect": true
+                "text": "usefuller than",
+                "isCorrect": false
             },
             {
                 "id": "C",
@@ -7923,23 +7921,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "D",
-                "text": "usefuller than",
+                "text": "more useful as",
                 "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "None of the above",
-                "isCorrect": false
+                "text": "more useful than",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "B",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "Uzun sıfatların karşılaştırmasında 'more + sıfat + THAN' (more useful than) kullanılır.",
             "whyOthersIncorrect": {
-                "A": "as yerine than olmalıdır.",
-                "C": "usefuller hatalıdır.",
-                "D": "usefuller hatalıdır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Adjectives and adverbs - Comparative Tense",
             "keyTakeaway": "Oxford Grammar Test Soru #72 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -7954,17 +7952,17 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "always more",
+                "text": "from more to more",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "crowded and more",
+                "text": "always more",
                 "isCorrect": false
             },
             {
                 "id": "C",
-                "text": "from more to more",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
@@ -7974,7 +7972,7 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "E",
-                "text": "None of the above",
+                "text": "crowded and more",
                 "isCorrect": false
             }
         ],
@@ -7982,10 +7980,10 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "explanation": {
             "whyCorrect": "Giderek/gittikçe artan durumlar için 'more and more + sıfat' kalıbı kullanılır.",
             "whyOthersIncorrect": {
-                "A": "always more kalıbı karşılamaz.",
-                "B": "crowded and more hatalı sıradır.",
-                "C": "from more to more hatalı kalıptır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Adjectives and adverbs - Gradual Increase",
             "keyTakeaway": "Oxford Grammar Test Soru #73 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -8000,23 +7998,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "I just am reading",
+                "text": "Just I'm reading",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "I'm just reading",
-                "isCorrect": true
-            },
-            {
-                "id": "C",
                 "text": "I'm reading just",
                 "isCorrect": false
             },
             {
-                "id": "D",
-                "text": "Just I'm reading",
+                "id": "C",
+                "text": "I just am reading",
                 "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "I'm just reading",
+                "isCorrect": true
             },
             {
                 "id": "E",
@@ -8024,14 +8022,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "B",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "Just zarfı yardımcı fiil ile ana fiil arasında yer alır (I'm just reading).",
             "whyOthersIncorrect": {
-                "A": "just kelimesi am kelimesinden önce gelmez.",
-                "C": "just sonda yer almaz.",
-                "D": "just cümle başında bu yapıda kullanılmaz.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Adjectives and adverbs - Adverb Position",
             "keyTakeaway": "Oxford Grammar Test Soru #74 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -8046,22 +8044,22 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "can't still",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
-                "text": "can't yet",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
                 "text": "still can't",
                 "isCorrect": true
             },
             {
-                "id": "D",
+                "id": "B",
                 "text": "yet can't",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "can't still",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "can't yet",
                 "isCorrect": false
             },
             {
@@ -8070,14 +8068,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "C",
+        "correctOptionId": "A",
         "explanation": {
             "whyCorrect": "Still zarfı olumsuz modal/yardımcı fiillerden ÖNCE gelir (still can't).",
             "whyOthersIncorrect": {
-                "A": "can't still hatalı sıradır.",
-                "B": "yet olumsuz cümlenin sonunda yer alır.",
-                "D": "yet can't hatalı sıradır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Adjectives and adverbs - Position of Still",
             "keyTakeaway": "Oxford Grammar Test Soru #75 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -8092,17 +8090,17 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "a bit",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
                 "text": "much",
                 "isCorrect": false
             },
             {
+                "id": "B",
+                "text": "a bit",
+                "isCorrect": false
+            },
+            {
                 "id": "C",
-                "text": "very",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
@@ -8112,7 +8110,7 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "E",
-                "text": "None of the above",
+                "text": "very",
                 "isCorrect": false
             }
         ],
@@ -8120,10 +8118,10 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "explanation": {
             "whyCorrect": "Fiilleri kuvvetlendirmek için olumlu cümle sonunda 'very much' kullanılır.",
             "whyOthersIncorrect": {
-                "A": "a bit hafifletir.",
-                "B": "much olumlu düz cümlede tek başına fiili nitelemez.",
-                "C": "very direkt fiili nitelemez (very much olmalıdır).",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Adjectives and adverbs - Very much with verbs",
             "keyTakeaway": "Oxford Grammar Test Soru #76 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -8138,12 +8136,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "along",
+                "text": "by",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "by",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
@@ -8153,12 +8151,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "D",
-                "text": "next",
+                "text": "along",
                 "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "None of the above",
+                "text": "next",
                 "isCorrect": false
             }
         ],
@@ -8166,10 +8164,10 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "explanation": {
             "whyCorrect": "Bir yere yakınlığı ifade etmek için 'near' edatı kullanılır.",
             "whyOthersIncorrect": {
-                "A": "along boyunca demektir.",
-                "B": "by kenarında/yanında demektir.",
-                "D": "next arkasından 'to' edatı ister (next to).",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Prepositions - Near",
             "keyTakeaway": "Oxford Grammar Test Soru #77 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -8184,38 +8182,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "at",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "by",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
-                "text": "in",
-                "isCorrect": false
-            },
-            {
-                "id": "D",
                 "text": "on",
                 "isCorrect": true
             },
             {
+                "id": "C",
+                "text": "by",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "in",
+                "isCorrect": false
+            },
+            {
                 "id": "E",
-                "text": "None of the above",
+                "text": "at",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "Ekran üzerindeki görüntüler için 'ON the screen' edatı kullanılır.",
             "whyOthersIncorrect": {
-                "A": "at the screen yönelmedir.",
-                "B": "by vasıtasıyla demektir.",
-                "C": "in içindedir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Prepositions - On the screen",
             "keyTakeaway": "Oxford Grammar Test Soru #78 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -8230,8 +8228,8 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "at",
-                "isCorrect": false
+                "text": "on",
+                "isCorrect": true
             },
             {
                 "id": "B",
@@ -8240,28 +8238,28 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "C",
-                "text": "on",
-                "isCorrect": true
+                "text": "None of the above",
+                "isCorrect": false
             },
             {
                 "id": "D",
-                "text": "to",
+                "text": "at",
                 "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "None of the above",
+                "text": "to",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "C",
+        "correctOptionId": "A",
         "explanation": {
             "whyCorrect": "Günler ve günlerin bölümleri (Thursday afternoon) için 'ON' edatı kullanılır.",
             "whyOthersIncorrect": {
-                "A": "at saatlerde kullanılır.",
-                "B": "in aylarda/yıllarda kullanılır.",
-                "D": "to yönelmedir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Prepositions - Days of the week",
             "keyTakeaway": "Oxford Grammar Test Soru #79 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -8276,38 +8274,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "ago",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
                 "text": "already",
                 "isCorrect": false
             },
             {
-                "id": "C",
-                "text": "for",
-                "isCorrect": true
+                "id": "B",
+                "text": "None of the above",
+                "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "since",
                 "isCorrect": false
             },
             {
+                "id": "D",
+                "text": "for",
+                "isCorrect": true
+            },
+            {
                 "id": "E",
-                "text": "None of the above",
+                "text": "ago",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "C",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "Süreç ve zaman aralığı (five years) belirten durumlarda 'FOR' edatı kullanılır.",
             "whyOthersIncorrect": {
-                "A": "ago Simple Past ile cümlenin sonunda kullanılır.",
-                "B": "already henüz/zaten demektir.",
-                "D": "since başlangıç noktası ister (since 2018).",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Prepositions - For + Period of time",
             "keyTakeaway": "Oxford Grammar Test Soru #80 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -8322,38 +8320,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "for sale",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
-                "text": "in sale",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
                 "text": "at sale",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "B",
+                "text": "None of the above",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
                 "text": "to sell",
                 "isCorrect": false
             },
             {
+                "id": "D",
+                "text": "for sale",
+                "isCorrect": true
+            },
+            {
                 "id": "E",
-                "text": "None of the above",
+                "text": "in sale",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "Satılık anlamındaki sabit edat öbeği 'FOR sale'dir.",
             "whyOthersIncorrect": {
-                "B": "in sale indirimde demektir (on sale / in the sale).",
-                "C": "at sale kullanılmaz.",
-                "D": "to sell sabit kalıp değildir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Prepositions - For sale",
             "keyTakeaway": "Oxford Grammar Test Soru #81 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -8368,7 +8366,7 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "about",
+                "text": "with",
                 "isCorrect": false
             },
             {
@@ -8378,28 +8376,28 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "C",
+                "text": "None of the above",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
                 "text": "on",
                 "isCorrect": true
             },
             {
-                "id": "D",
-                "text": "with",
-                "isCorrect": false
-            },
-            {
                 "id": "E",
-                "text": "None of the above",
+                "text": "about",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "C",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "Keen sıfatı her zaman 'ON' edatı alır (keen on something = bir şeye meraklı/hevesli).",
             "whyOthersIncorrect": {
-                "A": "about keen ile kullanılmaz.",
-                "B": "for keen ile kullanılmaz.",
-                "D": "with keen ile kullanılmaz.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Prepositions - Keen on",
             "keyTakeaway": "Oxford Grammar Test Soru #82 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -8414,12 +8412,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "from",
+                "text": "over",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "over",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
@@ -8429,23 +8427,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "D",
-                "text": "to",
-                "isCorrect": true
+                "text": "from",
+                "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "None of the above",
-                "isCorrect": false
+                "text": "to",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "Prefer fiili iki şey arasında tercih yaparken 'prefer A TO B' kalıbını alır.",
             "whyOthersIncorrect": {
-                "A": "from kullanılmaz.",
-                "B": "over informal konuşmada geçse de standart gramerde TO esastır.",
-                "C": "than 'would rather' ile kullanılır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Verbs with prepositions - Prefer to",
             "keyTakeaway": "Oxford Grammar Test Soru #83 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -8460,23 +8458,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "forward",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
-                "text": "on",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
                 "text": "out",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "B",
                 "text": "up",
                 "isCorrect": true
+            },
+            {
+                "id": "C",
+                "text": "forward",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "on",
+                "isCorrect": false
             },
             {
                 "id": "E",
@@ -8484,14 +8482,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "Şirket/iş kurmak anlamındaki deyimsel fiil (phrasal verb) 'set UP'tır.",
             "whyOthersIncorrect": {
-                "A": "set forward öne sürmektir.",
-                "B": "set on saldırtmaktır.",
-                "C": "set out yola çıkmaktır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Verbs with prepositions - Set up",
             "keyTakeaway": "Oxford Grammar Test Soru #84 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -8506,38 +8504,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "on to",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "on with",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
                 "text": "up to",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "up with",
                 "isCorrect": true
             },
             {
+                "id": "D",
+                "text": "on with",
+                "isCorrect": false
+            },
+            {
                 "id": "E",
-                "text": "None of the above",
+                "text": "on to",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "Birinin hızına yetişmek/ayak uydurmak 'keep UP WITH someone' phrasal verb'üdür.",
             "whyOthersIncorrect": {
-                "A": "keep on to hatalıdır.",
-                "B": "keep on with devam etmektir.",
-                "C": "keep up to edat eksiktir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Verbs with prepositions - Keep up with",
             "keyTakeaway": "Oxford Grammar Test Soru #85 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -8552,38 +8550,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "said me",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "said me that",
+                "text": "said me",
                 "isCorrect": false
             },
             {
                 "id": "C",
+                "text": "said me that",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
                 "text": "told me",
                 "isCorrect": true
             },
             {
-                "id": "D",
-                "text": "told to me",
-                "isCorrect": false
-            },
-            {
                 "id": "E",
-                "text": "None of the above",
+                "text": "told to me",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "C",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "Tell fiili doğrudan şahıs nesnesi alır (told me). Say fiili şahıs nesnesi alırken 'said TO me' ister.",
             "whyOthersIncorrect": {
-                "A": "said me edatsız şahıs alamaz.",
-                "B": "said me that edatsız şahıs alamaz.",
-                "D": "told to me 'to' edatı almaz.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Reported speech - Say vs Tell",
             "keyTakeaway": "Oxford Grammar Test Soru #86 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -8598,22 +8596,22 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "the following day",
-                "isCorrect": true
-            },
-            {
-                "id": "B",
-                "text": "the previous day",
+                "text": "yesterday",
                 "isCorrect": false
             },
             {
-                "id": "C",
+                "id": "B",
                 "text": "tomorrow",
                 "isCorrect": false
             },
             {
+                "id": "C",
+                "text": "the following day",
+                "isCorrect": true
+            },
+            {
                 "id": "D",
-                "text": "yesterday",
+                "text": "the previous day",
                 "isCorrect": false
             },
             {
@@ -8622,14 +8620,14 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "A",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "Dolaylı anlatımda (Reported Speech) 'tomorrow' kelimesi 'the following day' veya 'the next day'e dönüşür.",
             "whyOthersIncorrect": {
-                "B": "the previous day bir önceki gündür.",
-                "C": "tomorrow doğrudan aktarımda kalır.",
-                "D": "yesterday dündür.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Reported speech - Time Shifts",
             "keyTakeaway": "Oxford Grammar Test Soru #87 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -8644,18 +8642,18 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "be",
-                "isCorrect": false
+                "text": "was",
+                "isCorrect": true
             },
             {
                 "id": "B",
-                "text": "is",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
                 "id": "C",
-                "text": "was",
-                "isCorrect": true
+                "text": "is",
+                "isCorrect": false
             },
             {
                 "id": "D",
@@ -8664,18 +8662,18 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "E",
-                "text": "None of the above",
+                "text": "be",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "C",
+        "correctOptionId": "A",
         "explanation": {
             "whyCorrect": "Aktaran fiil geçmiş zaman (said) olduğunda am/is/are kalıbı geçmişe (was/were) kayar.",
             "whyOthersIncorrect": {
-                "A": "be yalın fiildir.",
-                "B": "is zaman kaymasına uğramamıştır.",
-                "D": "would going gramer hatasıdır.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Reported speech - Tense Backshift",
             "keyTakeaway": "Oxford Grammar Test Soru #88 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -8690,38 +8688,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "don't make",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
                 "text": "not make",
                 "isCorrect": false
             },
             {
-                "id": "C",
-                "text": "not making",
+                "id": "B",
+                "text": "don't make",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "not to make",
                 "isCorrect": true
             },
             {
-                "id": "E",
+                "id": "D",
                 "text": "None of the above",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "not making",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "Dolaylı emir ve ricalarda olumsuz yapı 'ask + someone + NOT TO + V1' (not to make) şeklindedir.",
             "whyOthersIncorrect": {
-                "A": "don't make dolaylı anlatımda kullanılmaz.",
-                "B": "not make 'to' eksiktir.",
-                "C": "not making gerund almaz.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Reported speech - Reported Imperatives",
             "keyTakeaway": "Oxford Grammar Test Soru #89 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -8736,8 +8734,8 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "he",
-                "isCorrect": false
+                "text": "who",
+                "isCorrect": true
             },
             {
                 "id": "B",
@@ -8746,28 +8744,28 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "C",
-                "text": "which",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
                 "id": "D",
-                "text": "who",
-                "isCorrect": true
+                "text": "he",
+                "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "None of the above",
+                "text": "which",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "A",
         "explanation": {
             "whyCorrect": "İnsanları niteleyen özne konumundaki ilgi zamiri 'WHO'dur.",
             "whyOthersIncorrect": {
-                "A": "he zamir tekrarıdır.",
-                "B": "what relative clause niteleyicisi değildir.",
-                "C": "which cansızlar içindir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Relative clauses - Relative Pronoun for Persons",
             "keyTakeaway": "Oxford Grammar Test Soru #90 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -8782,38 +8780,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "at that you were looking",
-                "isCorrect": false
-            },
-            {
-                "id": "B",
-                "text": "you were looking at",
-                "isCorrect": true
-            },
-            {
-                "id": "C",
                 "text": "you were looking at it",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "B",
+                "text": "None of the above",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
                 "text": "which you were looking",
                 "isCorrect": false
             },
             {
+                "id": "D",
+                "text": "you were looking at",
+                "isCorrect": true
+            },
+            {
                 "id": "E",
-                "text": "None of the above",
+                "text": "at that you were looking",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "B",
+        "correctOptionId": "D",
         "explanation": {
             "whyCorrect": "Preposition cümlenin sonunda kalabilir ve ilgi zamiri (that/which) düşürülebilir (you were looking at).",
             "whyOthersIncorrect": {
-                "A": "at that kalıbı edattan sonra that almaz.",
-                "C": "it zamir tekrarı hatasıdır.",
-                "D": "looking at edatı eksiktir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Relative clauses - Preposition Placement & Omission",
             "keyTakeaway": "Oxford Grammar Test Soru #91 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -8828,38 +8826,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "her",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "hers the",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
                 "text": "whose",
                 "isCorrect": true
             },
             {
+                "id": "C",
+                "text": "her",
+                "isCorrect": false
+            },
+            {
                 "id": "D",
-                "text": "whose the",
+                "text": "hers the",
                 "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "None of the above",
+                "text": "whose the",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "C",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "Aitlik/sahiplik niteleyen ilgi zamiri 'WHOSE'dur (whose husband).",
             "whyOthersIncorrect": {
-                "A": "her iki bağımsız cümle yapar.",
-                "B": "hers the gramer hatasıdır.",
-                "D": "whose kelimesinden sonra artikel (the) gelmez.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Relative clauses - Whose for Possession",
             "keyTakeaway": "Oxford Grammar Test Soru #92 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -8874,18 +8872,18 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "I visited",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "that I visited",
-                "isCorrect": false
+                "text": "which I visited",
+                "isCorrect": true
             },
             {
                 "id": "C",
-                "text": "which I visited",
-                "isCorrect": true
+                "text": "that I visited",
+                "isCorrect": false
             },
             {
                 "id": "D",
@@ -8894,18 +8892,18 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "E",
-                "text": "None of the above",
+                "text": "I visited",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "C",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "Virgülle ayrılan Non-defining Relative Clause yapısında nesneler için 'WHICH' kullanılır ('that' virgüllü yapıda kullanılamaz).",
             "whyOthersIncorrect": {
-                "A": "virgüllü yapıda pronoun düşürülemez.",
-                "B": "that virgüllü non-defining yapıda kullanılamaz.",
-                "D": "whom insanlar içindir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Relative clauses - Non-defining Relative Clauses",
             "keyTakeaway": "Oxford Grammar Test Soru #93 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -8920,38 +8918,38 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "waited",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "waiting",
-                "isCorrect": true
-            },
-            {
-                "id": "C",
-                "text": "were waiting",
+                "text": "waited",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "who waiting",
                 "isCorrect": false
             },
             {
-                "id": "E",
-                "text": "None of the above",
+                "id": "D",
+                "text": "were waiting",
                 "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "waiting",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "B",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "Etken sıfat cümlesi kısaltmasında (who were waiting -> waiting) Present Participle kullanılır.",
             "whyOthersIncorrect": {
-                "A": "waited edilgen kısaltmadır.",
-                "C": "were waiting iki tane ana yüklem oluşturur.",
-                "D": "who waiting 'were' eksiktir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Relative clauses - Reduced Relative Clause",
             "keyTakeaway": "Oxford Grammar Test Soru #94 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -8971,7 +8969,7 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "B",
-                "text": "I'll lose",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
@@ -8981,12 +8979,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "D",
-                "text": "I would lose",
+                "text": "I'll lose",
                 "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "None of the above",
+                "text": "I would lose",
                 "isCorrect": false
             }
         ],
@@ -8994,10 +8992,10 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "explanation": {
             "whyCorrect": "Type 1 Koşul cümlesinde If yan cümlesinde Present Simple (I lose), ana cümlede Future (will) kullanılır.",
             "whyOthersIncorrect": {
-                "B": "If cümlesinde 'will' kullanılmaz.",
-                "C": "I lost Type 2'dir; ana cümle will ile uyusmaz.",
-                "D": "I would lose Type 2/3'tür.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Conditionals - Type 1 Conditional",
             "keyTakeaway": "Oxford Grammar Test Soru #95 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -9012,7 +9010,7 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "I'd have",
+                "text": "I've got",
                 "isCorrect": false
             },
             {
@@ -9022,17 +9020,17 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "C",
-                "text": "I have",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
                 "id": "D",
-                "text": "I've got",
+                "text": "I have",
                 "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "None of the above",
+                "text": "I'd have",
                 "isCorrect": false
             }
         ],
@@ -9040,10 +9038,10 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "explanation": {
             "whyCorrect": "Şu anki gerçek dışı durumu (Unreal Present) ifade eden Type 2 koşulda If kısmında Past Simple (I had) kullanılır.",
             "whyOthersIncorrect": {
-                "A": "If kısmında 'would' kullanılmaz.",
-                "C": "I have gerçek durumdur; biletinin olmadığını söylemiştir.",
-                "D": "I've got gerçektir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Conditionals - Type 2 Conditional",
             "keyTakeaway": "Oxford Grammar Test Soru #96 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -9063,33 +9061,33 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "B",
-                "text": "had caught",
-                "isCorrect": false
-            },
-            {
-                "id": "C",
                 "text": "would catch",
                 "isCorrect": false
             },
             {
-                "id": "D",
+                "id": "C",
                 "text": "would have caught",
                 "isCorrect": true
             },
             {
-                "id": "E",
+                "id": "D",
                 "text": "None of the above",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "had caught",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "C",
         "explanation": {
             "whyCorrect": "Geçmişteki pişmanlık/gerçek dışı durumu ifade eden Type 3 koşulda ana cümlede 'would have + V3' (would have caught) kullanılır.",
             "whyOthersIncorrect": {
-                "A": "caught Simple Pasttir.",
-                "B": "had caught Past Perfecttir.",
-                "C": "would catch Type 2'dir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Conditionals - Type 3 Conditional",
             "keyTakeaway": "Oxford Grammar Test Soru #97 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -9104,12 +9102,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "don't",
-                "isCorrect": false
+                "text": "wouldn't",
+                "isCorrect": true
             },
             {
                 "id": "B",
-                "text": "shouldn't",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
@@ -9119,23 +9117,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "D",
-                "text": "wouldn't",
-                "isCorrect": true
+                "text": "don't",
+                "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "None of the above",
+                "text": "shouldn't",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "A",
         "explanation": {
             "whyCorrect": "Başkalarının rahatsız edici davranışlarının değişmesi isteğinde 'If only / I wish + WOULDN'T + V1' kullanılır.",
             "whyOthersIncorrect": {
-                "A": "don't dilek cümlelerinde kullanılmaz.",
-                "B": "shouldn't tavsiyedir.",
-                "C": "weren't durum sıfatlarında kullanılır; eylemde wouldn't tercih edilir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Conditionals - Wish / If Only for Annoyance",
             "keyTakeaway": "Oxford Grammar Test Soru #98 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -9155,8 +9153,8 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "B",
-                "text": "despite",
-                "isCorrect": false
+                "text": "in spite of",
+                "isCorrect": true
             },
             {
                 "id": "C",
@@ -9165,23 +9163,23 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "D",
-                "text": "in spite of",
-                "isCorrect": true
+                "text": "None of the above",
+                "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "None of the above",
+                "text": "despite",
                 "isCorrect": false
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "B",
         "explanation": {
             "whyCorrect": "Arkasından 'of' edatı alan zıtlık bağlacı 'IN SPITE OF'tur.",
             "whyOthersIncorrect": {
-                "A": "although of edatı almaz, tam cümle gerektirir.",
-                "B": "despite 'of' edatı almaz (despite the weather).",
-                "C": "even though cümle gerektirir.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "E": "E şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Linking words - In Spite Of",
             "keyTakeaway": "Oxford Grammar Test Soru #99 - Dikkat edilmesi gereken dilbilgisi kuralı."
@@ -9196,12 +9194,12 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
         "options": [
             {
                 "id": "A",
-                "text": "for getting",
+                "text": "None of the above",
                 "isCorrect": false
             },
             {
                 "id": "B",
-                "text": "in order get",
+                "text": "for getting",
                 "isCorrect": false
             },
             {
@@ -9211,30 +9209,30 @@ const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
             },
             {
                 "id": "D",
-                "text": "to get",
-                "isCorrect": true
+                "text": "in order get",
+                "isCorrect": false
             },
             {
                 "id": "E",
-                "text": "None of the above",
-                "isCorrect": false
+                "text": "to get",
+                "isCorrect": true
             }
         ],
-        "correctOptionId": "D",
+        "correctOptionId": "E",
         "explanation": {
             "whyCorrect": "Amaç bildirmek için fiilin yalın haliyle 'to + V1' (to get) veya 'in order to + V1' kullanılır.",
             "whyOthersIncorrect": {
-                "A": "for getting amaç bildirmede eylem için tercih edilmez.",
-                "B": "in order sonrasında 'to' eksiktir.",
-                "C": "so she gets geniş zamandır; geçmişteki amaçla zaman uyumsuzdur.",
-                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+                "A": "A şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "B": "B şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "C": "C şıkkı bu soru için çeldirici veya yanlış seçenektir.",
+                "D": "D şıkkı bu soru için çeldirici veya yanlış seçenektir."
             },
             "topicSummary": "Oxford Practice Grammar Test: Linking words - Infinitive of Purpose",
             "keyTakeaway": "Oxford Grammar Test Soru #100 - Dikkat edilmesi gereken dilbilgisi kuralı."
         },
         "createdAt": 1700000000100
     }
-  ]
+]
 };
 
 // Procedural question templates generator for fallback mode
