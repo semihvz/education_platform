@@ -9,8 +9,9 @@ import { FlashcardDeckView } from './components/FlashcardDeckView';
 import { SettingsModal } from './components/SettingsModal';
 import { SavedQuestionsModal } from './components/SavedQuestionsModal';
 import { StatsDashboard } from './components/StatsDashboard';
+import { AuthModal } from './components/AuthModal';
 
-import type { Question, Difficulty, AppSettings, UserStats, SavedQuestionItem, Flashcard, SavedFlashcardItem } from './types/quiz';
+import type { Question, Difficulty, AppSettings, UserStats, SavedQuestionItem, Flashcard, SavedFlashcardItem, UserProfile } from './types/quiz';
 import { generateQuestionFromAI, generateFlashcardsFromAI, getPreloadedQuestions } from './services/aiService';
 import { 
   loadSettings, 
@@ -20,13 +21,16 @@ import {
   loadSavedQuestionsFromDB, 
   toggleSaveQuestionToDB,
   loadSavedFlashcardsFromDB,
-  toggleSaveFlashcardToDB
+  toggleSaveFlashcardToDB,
+  loadActiveUser,
+  logoutUserAccount
 } from './services/storageService';
 import { audioService } from './services/audioService';
 
 export function App() {
   const [settings, setSettings] = useState<AppSettings>(loadSettings);
   const [stats, setStats] = useState<UserStats>(loadUserStats);
+  const [currentUser, setCurrentUser] = useState<UserProfile | null>(loadActiveUser);
   const [savedQuestions, setSavedQuestions] = useState<SavedQuestionItem[]>([]);
   const [savedFlashcards, setSavedFlashcards] = useState<SavedFlashcardItem[]>([]);
 
@@ -50,6 +54,7 @@ export function App() {
   const [showSettings, setShowSettings] = useState<boolean>(false);
   const [showBookmarks, setShowBookmarks] = useState<boolean>(false);
   const [showStats, setShowStats] = useState<boolean>(false);
+  const [showAuthModal, setShowAuthModal] = useState<boolean>(false);
 
   // Sync theme attribute & load DB saved items
   useEffect(() => {
@@ -178,6 +183,7 @@ export function App() {
       <Header
         stats={stats}
         settings={settings}
+        currentUser={currentUser}
         activeMode={activeMode}
         onSwitchMode={(mode) => {
           audioService.playClickSound(settings.soundEnabled);
@@ -187,6 +193,13 @@ export function App() {
         onOpenSettings={() => setShowSettings(true)}
         onOpenBookmarks={() => setShowBookmarks(true)}
         onOpenStats={() => setShowStats(true)}
+        onOpenAuth={() => setShowAuthModal(true)}
+        onLogout={() => {
+          logoutUserAccount();
+          setCurrentUser(null);
+          setSaveToast('Çıkış yapıldı.');
+          setTimeout(() => setSaveToast(null), 2500);
+        }}
       />
 
       {/* Database Save Notification Toast */}
@@ -295,6 +308,18 @@ export function App() {
         <StatsDashboard
           stats={stats}
           onClose={() => setShowStats(false)}
+        />
+      )}
+
+      {showAuthModal && (
+        <AuthModal
+          onLoginSuccess={(user) => {
+            setCurrentUser(user);
+            setShowAuthModal(false);
+            setSaveToast(`Hoş geldin, ${user.name}! 👋`);
+            setTimeout(() => setSaveToast(null), 2500);
+          }}
+          onClose={() => setShowAuthModal(false)}
         />
       )}
     </div>

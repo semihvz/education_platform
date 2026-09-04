@@ -4,11 +4,14 @@ const SETTINGS_KEY = 'mindpulse_settings';
 const STATS_KEY = 'mindpulse_stats';
 const SAVED_QUESTIONS_KEY = 'mindpulse_saved_questions';
 const SAVED_FLASHCARDS_KEY = 'mindpulse_saved_flashcards';
+const ACTIVE_USER_KEY = 'mindpulse_active_user';
+const USERS_LIST_KEY = 'mindpulse_users';
 
 const DB_NAME = 'MindPulseDB';
-const DB_VERSION = 2; // Incremented for flashcards store
+const DB_VERSION = 3; // Incremented for users store
 const QUESTIONS_STORE = 'saved_questions';
 const FLASHCARDS_STORE = 'saved_flashcards';
+const USERS_STORE = 'users';
 
 // IndexedDB Helper
 function openDB(): Promise<IDBDatabase> {
@@ -26,6 +29,9 @@ function openDB(): Promise<IDBDatabase> {
       }
       if (!db.objectStoreNames.contains(FLASHCARDS_STORE)) {
         db.createObjectStore(FLASHCARDS_STORE, { keyPath: 'card.id' });
+      }
+      if (!db.objectStoreNames.contains(USERS_STORE)) {
+        db.createObjectStore(USERS_STORE, { keyPath: 'email' });
       }
     };
 
@@ -266,4 +272,129 @@ export const toggleSaveFlashcardToDB = async (card: Flashcard): Promise<{ isSave
   }
 
   return { isSaved, updatedList: currentList };
+};
+
+// USER AUTHENTICATION & SESSION MANAGEMENT
+import type { UserProfile } from '../types/quiz';
+
+export const loadActiveUser = (): UserProfile | null => {
+  try {
+    const raw = localStorage.getItem(ACTIVE_USER_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch (e) {
+    console.error('Error loading active user session:', e);
+    return null;
+  }
+};
+
+export const saveActiveUserSession = (user: UserProfile | null): void => {
+  try {
+    if (user) {
+      localStorage.setItem(ACTIVE_USER_KEY, JSON.stringify(user));
+    } else {
+      localStorage.removeItem(ACTIVE_USER_KEY);
+    }
+  } catch (e) {
+    console.error('Error saving active user session:', e);
+  }
+};
+
+export const registerUserAccount = async (name: string, email: string, password: string): Promise<UserProfile> => {
+  const normalizedEmail = email.trim().toLowerCase();
+  
+  const newUser: UserProfile = {
+    id: `usr_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`,
+    name: name.trim(),
+    email: normalizedEmail,
+    avatar: '🎓',
+    createdAt: Date.now()
+  };
+
+  let users: any[] = [];
+  try {
+    const raw = localStorage.getItem(USERS_LIST_KEY);
+    users = raw ? JSON.parse(raw) : [];
+  } catch (e) {
+    users = [];
+  }
+
+  const existing = users.find((u: any) => u.email === normalizedEmail);
+  if (existing) {
+    throw new Error('Bu e-posta adresiyle kayıtlı zaten bir hesap var.');
+  }
+
+  users.push({ ...newUser, password });
+  localStorage.setItem(USERS_LIST_KEY, JSON.stringify(users));
+
+  try {
+    const db = await openDB();
+    const tx = db.transaction(USERS_STORE, 'readwrite');
+    const store = tx.objectStore(USERS_STORE);
+    store.put({ ...newUser, password });
+  } catch (e) {
+    console.warn('IndexedDB user save error:', e);
+  }
+
+  saveActiveUserSession(newUser);
+  return newUser;
+};
+
+export const loginUserAccount = async (email: string, password: string): Promise<UserProfile> => {
+  const normalizedEmail = email.trim().toLowerCase();
+  
+  let users: any[] = [];
+  try {
+    const raw = localStorage.getItem(USERS_LIST_KEY);
+    users = raw ? JSON.parse(raw) : [];
+  } catch (e) {
+    users = [];
+  }
+
+  let foundUser = users.find((u: any) => u.email === normalizedEmail && u.password === password);
+
+  if (!foundUser) {
+    try {
+      const db = await openDB();
+      foundUser = await new Promise((resolve) => {
+        const tx = db.transaction(USERS_STORE, 'readonly');
+        const store = tx.objectStore(USERS_STORE);
+        const req = store.get(normalizedEmail);
+        req.onsuccess = () => resolve(req.result && req.result.password === password ? req.result : null);
+        req.onerror = () => resolve(null);
+      });
+    } catch (e) {
+      console.warn('IndexedDB login fetch error:', e);
+    }
+  }
+
+  if (!foundUser) {
+    throw new Error('E-posta adresi veya şifre hatalı!');
+  }
+
+  const profile: UserProfile = {
+    id: foundUser.id,
+    name: foundUser.name,
+    email: foundUser.email,
+    avatar: foundUser.avatar || '🎓',
+    createdAt: foundUser.createdAt || Date.now()
+  };
+
+  saveActiveUserSession(profile);
+  return profile;
+};
+
+export const quickDemoLogin = (): UserProfile => {
+  const demoUser: UserProfile = {
+    id: 'usr_demo_888',
+    name: 'Öğrenci Kullanıcı',
+    email: 'demo@mindpulse.ai',
+    avatar: '⚡',
+    createdAt: Date.now()
+  };
+  saveActiveUserSession(demoUser);
+  return demoUser;
+};
+
+export const logoutUserAccount = (): void => {
+  saveActiveUserSession(null);
 };

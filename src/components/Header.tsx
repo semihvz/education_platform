@@ -1,27 +1,33 @@
 import React from 'react';
-import { Brain, Flame, Award, Bookmark, Settings, Moon, Sun, BarChart2, HelpCircle, Layers, BookOpen } from 'lucide-react';
-import type { UserStats, AppSettings } from '../types/quiz';
+import { Brain, Flame, Award, Bookmark, Settings, Moon, Sun, BarChart2, HelpCircle, Layers, BookOpen, LogIn, LogOut } from 'lucide-react';
+import type { UserStats, AppSettings, UserProfile } from '../types/quiz';
 
 interface HeaderProps {
   stats: UserStats;
   settings: AppSettings;
+  currentUser: UserProfile | null;
   activeMode: 'ai-quiz' | 'embedded-bank' | 'flashcards';
   onSwitchMode: (mode: 'ai-quiz' | 'embedded-bank' | 'flashcards') => void;
   onUpdateSettings: (newSettings: AppSettings) => void;
   onOpenSettings: () => void;
   onOpenBookmarks: () => void;
   onOpenStats: () => void;
+  onOpenAuth: () => void;
+  onLogout: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
   stats,
   settings,
+  currentUser,
   activeMode,
   onSwitchMode,
   onUpdateSettings,
   onOpenSettings,
   onOpenBookmarks,
   onOpenStats,
+  onOpenAuth,
+  onLogout,
 }) => {
   const toggleTheme = () => {
     const nextTheme = settings.theme === 'dark' ? 'light' : 'dark';
@@ -116,6 +122,22 @@ export const Header: React.FC<HeaderProps> = ({
           >
             <Settings className="icon" />
           </button>
+
+          {/* User Auth Profile / Login Button */}
+          {currentUser ? (
+            <div className="user-profile-badge" title={`Giriş Yapıldı: ${currentUser.email}`}>
+              <span className="user-avatar">{currentUser.avatar || '🎓'}</span>
+              <span className="user-name">{currentUser.name}</span>
+              <button className="user-logout-btn" onClick={onLogout} title="Çıkış Yap">
+                <LogOut className="icon-sm" />
+              </button>
+            </div>
+          ) : (
+            <button className="auth-login-btn" onClick={onOpenAuth} title="Giriş Yap / Kayıt Ol">
+              <LogIn className="btn-icon" />
+              <span>Giriş Yap</span>
+            </button>
+          )}
         </div>
       </div>
     </header>

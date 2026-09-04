@@ -63,3 +63,11 @@ export interface SavedFlashcardItem {
   card: Flashcard;
   savedAt: number;
 }
+
+export interface UserProfile {
+  id: string;
+  name: string;
+  email: string;
+  avatar?: string;
+  createdAt: number;
+}
