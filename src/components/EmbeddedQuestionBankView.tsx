@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { BookOpen, ChevronLeft, ChevronRight } from 'lucide-react';
+import React, { useState, useMemo } from 'react';
+import { BookOpen, ChevronLeft, ChevronRight, Database, Globe } from 'lucide-react';
 import type { Question } from '../types/quiz';
 import { QuestionCard } from './QuestionCard';
 import { ExplanationCard } from './ExplanationCard';
@@ -17,10 +17,21 @@ export const EmbeddedQuestionBankView: React.FC<EmbeddedQuestionBankViewProps> =
   onSaveQuestion,
   isQuestionSaved,
 }) => {
+  const [selectedTopic, setSelectedTopic] = useState<string>('SQL Database');
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [userAnswers, setUserAnswers] = useState<Record<string, string>>({});
 
-  if (!questions || questions.length === 0) {
+  const filteredQuestions = useMemo(() => {
+    if (!selectedTopic || selectedTopic === 'ALL') return questions;
+    return questions.filter(q => q.topic.toLowerCase() === selectedTopic.toLowerCase());
+  }, [questions, selectedTopic]);
+
+  const handleTopicChange = (topicKey: string) => {
+    setSelectedTopic(topicKey);
+    setCurrentIndex(0);
+  };
+
+  if (!questions || questions.length === 0 || filteredQuestions.length === 0) {
     return (
       <div className="embedded-empty-box">
         <BookOpen className="icon" />
@@ -30,7 +41,7 @@ export const EmbeddedQuestionBankView: React.FC<EmbeddedQuestionBankViewProps> =
     );
   }
 
-  const currentQ = questions[currentIndex];
+  const currentQ = filteredQuestions[currentIndex];
   const currentAnswer = userAnswers[currentQ.id] || null;
   const isSaved = isQuestionSaved(currentQ.id);
 
@@ -47,7 +58,7 @@ export const EmbeddedQuestionBankView: React.FC<EmbeddedQuestionBankViewProps> =
   };
 
   const handleNext = () => {
-    if (currentIndex < questions.length - 1) {
+    if (currentIndex < filteredQuestions.length - 1) {
       setCurrentIndex(currentIndex + 1);
     }
   };
@@ -58,14 +69,39 @@ export const EmbeddedQuestionBankView: React.FC<EmbeddedQuestionBankViewProps> =
 
   return (
     <div className="embedded-bank-container">
+      {/* Category Filter Pills */}
+      <div className="bank-topic-filter-tabs">
+        <button
+          className={`filter-tab-btn ${selectedTopic === 'SQL Database' ? 'active' : ''}`}
+          onClick={() => handleTopicChange('SQL Database')}
+        >
+          <Database className="tab-icon" />
+          <span>💾 SQL Database (100 Zor Soru)</span>
+        </button>
+        <button
+          className={`filter-tab-btn ${selectedTopic === 'İngilizce Grammar' ? 'active' : ''}`}
+          onClick={() => handleTopicChange('İngilizce Grammar')}
+        >
+          <Globe className="tab-icon" />
+          <span>🇬🇧 İngilizce Grammar (100 Oxford)</span>
+        </button>
+        <button
+          className={`filter-tab-btn ${selectedTopic === 'ALL' ? 'active' : ''}`}
+          onClick={() => handleTopicChange('ALL')}
+        >
+          <BookOpen className="tab-icon" />
+          <span>Tüm Sorular ({questions.length})</span>
+        </button>
+      </div>
+
       {/* Top Bank Info Bar */}
       <div className="embedded-bank-header">
         <div className="bank-title-info">
           <BookOpen className="bank-icon" />
           <div>
-            <h2>📚 Gömülü Soru Bankası (Oxford 100 Sınavı)</h2>
+            <h2>📚 Gömülü Soru Bankası</h2>
             <p className="bank-subtitle">
-              Soru {currentIndex + 1} / {questions.length} • {currentQ.topic}
+              Soru {currentIndex + 1} / {filteredQuestions.length} • {currentQ.topic}
             </p>
           </div>
         </div>
@@ -86,7 +122,7 @@ export const EmbeddedQuestionBankView: React.FC<EmbeddedQuestionBankViewProps> =
             value={currentIndex}
             onChange={(e) => handleJumpToIndex(Number(e.target.value))}
           >
-            {questions.map((q, idx) => {
+            {filteredQuestions.map((q, idx) => {
               const isAns = userAnswers[q.id] !== undefined;
               return (
                 <option key={q.id} value={idx}>
@@ -99,7 +135,7 @@ export const EmbeddedQuestionBankView: React.FC<EmbeddedQuestionBankViewProps> =
           <button 
             className="nav-arrow-btn" 
             onClick={handleNext} 
-            disabled={currentIndex === questions.length - 1}
+            disabled={currentIndex === filteredQuestions.length - 1}
             title="Sonraki Soru"
           >
             <ChevronRight />

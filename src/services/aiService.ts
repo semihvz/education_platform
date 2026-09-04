@@ -63,6 +63,4608 @@ export function getPreloadedQuestions(): Question[] {
 }
 
 const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
+  'SQL Database': [
+    {
+        "id": "q_sql_1",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "Aşağıdaki SQL sorgusunda maas sütununa göre sıralama yapılmaktadır. maas değerleri 5000, 5000, 4000 olan 3 çalışan için DENSE_RANK() ve RANK() fonksiyonlarının üreteceği sıra numaraları sırasıyla hangisidir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "1, 1, 2 ve 1, 1, 3",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "1, 2, 3 ve 1, 1, 2",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "1, 1, 3 ve 1, 2, 3",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "1, 1, 2 ve 1, 2, 3",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "DENSE_RANK() eşit değerlere aynı sırayı verir ve ardışık numaralandırmaya devam eder (1, 1, 2). RANK() ise eşit değerler sonrasında atlama yapar (1, 1, 3).",
+            "whyOthersIncorrect": {
+                "B": "RANK atlama yapar, sıralama 1, 2, 3 olamaz.",
+                "C": "DENSE_RANK atlama yapmaz.",
+                "D": "Her iki fonksiyonun da davranışı yanlış verilmiştir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Window Functions - DENSE_RANK vs RANK",
+            "keyTakeaway": "SQL İleri Seviye Soru #1 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000001
+    },
+    {
+        "id": "q_sql_2",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "Bir şirketin aylık satış tablosunda, bir önceki ayın satış miktarını mevcut satıra getirmek için aşağıdaki window fonksiyonlarından hangisi kullanılmalıdır?",
+        "options": [
+            {
+                "id": "A",
+                "text": "LAG(satis_miktari, 1) OVER (ORDER BY ay)",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "LEAD(satis_miktari, 1) OVER (ORDER BY ay)",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "FIRST_VALUE(satis_miktari) OVER (ORDER BY ay)",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "NTH_VALUE(satis_miktari, 1) OVER (ORDER BY ay)",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "LAG() fonksiyonu sıralı veri kümesinde mevcut satırdan önceki (offset) satırların değerini döndürmek için kullanılır.",
+            "whyOthersIncorrect": {
+                "B": "LEAD() fonksiyonu sonraki satırların değerini alır.",
+                "C": "FIRST_VALUE() en ilk satırı alır.",
+                "D": "NTH_VALUE N. satırı alır.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Window Functions - LAG & LEAD",
+            "keyTakeaway": "SQL İleri Seviye Soru #2 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000002
+    },
+    {
+        "id": "q_sql_3",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "SUM(satis) OVER (ORDER BY tarih ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) ifadesi neyi hesaplar?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Tablonun en başından mevcut satıra kadar olan kümülatif (yürüyen) toplamı",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Sadece bir önceki satır ile mevcut satırın toplamını",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Tüm tablonun genel toplamını sabit olarak",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Mevcut satırdan sonraki tüm satırların toplamını",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "UNBOUNDED PRECEDING en ilk satırdan başlar, CURRENT ROW ise mevcut satıra kadar olan satırları kapsayarak kümülatif toplam (running total) hesaplar.",
+            "whyOthersIncorrect": {
+                "B": "Sadece bir önceki satır için '1 PRECEDING' kullanılır.",
+                "C": "Genel toplam için ORDER BY kaldırılmalıdır.",
+                "D": "Sonraki satırlar için 'FOLLOWING' kullanılır.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Window Functions - Frame Specification",
+            "keyTakeaway": "SQL İleri Seviye Soru #3 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000003
+    },
+    {
+        "id": "q_sql_4",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "Hiyerarşik (organizasyon şeması, kategori ağacı vb.) verileri sorgulamak için kullanılan CTE yapısında özyinelemeyi sonlandıran veya birleştiren temel operatör hangisidir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "UNION ALL",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "INTERSECT",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "EXCEPT",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "CROSS JOIN",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "Recursive CTE yapısında Anchor Member (kök sorgu) ile Recursive Member (özyinelemeli sorgu) birbirine UNION ALL operatörü ile bağlanır.",
+            "whyOthersIncorrect": {
+                "B": "INTERSECT kesişim alır.",
+                "C": "EXCEPT küme farkı alır.",
+                "D": "CROSS JOIN kartezyen çarpım yapar.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Recursive CTE - Özyinelemeli Sorgular",
+            "keyTakeaway": "SQL İleri Seviye Soru #4 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000004
+    },
+    {
+        "id": "q_sql_5",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "SQL motorunun bir SELECT sorgusunu işleme sırası aşağıdakilerden hangisinde doğru verilmiştir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "FROM -> WHERE -> GROUP BY -> HAVING -> SELECT -> ORDER BY",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "FROM -> GROUP BY -> WHERE -> HAVING -> SELECT -> ORDER BY",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "WHERE -> FROM -> GROUP BY -> SELECT -> HAVING -> ORDER BY",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "SQL mantıksal sorgu işleme sırası: 1. FROM/JOIN, 2. WHERE, 3. GROUP BY, 4. HAVING, 5. SELECT, 6. ORDER BY, 7. LIMIT/OFFSET.",
+            "whyOthersIncorrect": {
+                "B": "SELECT ifadesi görünüşte ilk sıradadır ancak mantıksal işlemede HAVING'den sonra çalışır.",
+                "C": "WHERE ifadesi GROUP BY'dan önce çalışmalıdır.",
+                "D": "FROM her zaman ilk adımdır.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: SQL Execution Order - Sorgu Çalışma Sırası",
+            "keyTakeaway": "SQL İleri Seviye Soru #5 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000005
+    },
+    {
+        "id": "q_sql_6",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "Bir transaction bir aralıktaki satırları okurken, başka bir transaction bu aralığa yeni bir satır INSERT edip COMMIT ettiğinde ilk transaction'ın aynı sorguda farklı satır sayısı görmesi durumuna ne ad verilir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Phantom Read (Hayalet Okuma)",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Non-Repeatable Read (Tekrarlanamayan Okuma)",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Dirty Read (Kirli Okuma)",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Lost Update (Kayıp Güncelleme)",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "Phantom Read, bir transaction çalışırken başka bir transaction tarafından yeni satır eklenmesi (INSERT) veya silinmesi sonucu oluşan tutarsızlıktır.",
+            "whyOthersIncorrect": {
+                "B": "Non-Repeatable Read mevcut bir satırın UPDATE edilmesiyle oluşur.",
+                "C": "Dirty Read uncommitted verinin okunmasıdır.",
+                "D": "Lost Update çakışan güncellemelerde veri kaybıdır.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Transaction Isolation Levels - Phantom Read",
+            "keyTakeaway": "SQL İleri Seviye Soru #6 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000006
+    },
+    {
+        "id": "q_sql_7",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "Phantom Read (Hayalet Okuma) sorununu tamamen engelleyen en yüksek SQL işlem izolasyon seviyesi (Transaction Isolation Level) hangisidir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "SERIALIZABLE",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "REPEATABLE READ",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "READ COMMITTED",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "READ UNCOMMITTED",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "SERIALIZABLE en yüksek izolasyon seviyesidir; kilitler ve aralık kilitleri (range locks) kullanarak Phantom Read dahil tüm tutarsızlıkları önler.",
+            "whyOthersIncorrect": {
+                "B": "REPEATABLE READ çoğu VTYS'de Dirty Read ve Non-repeatable Read'i önler ancak standartta Phantom Read'e izin verebilir.",
+                "C": "READ COMMITTED dirty read'i önler.",
+                "D": "READ UNCOMMITTED en düşük seviyedir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Transaction Isolation Levels - SERIALIZABLE",
+            "keyTakeaway": "SQL İleri Seviye Soru #7 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000007
+    },
+    {
+        "id": "q_sql_8",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "GROUP BY GROUPING SETS ((bolum_id, unvan), (bolum_id), ()) ifadesinin ürettiği özet çıktısı aşağıdakilerden hangisine eşdeğerdir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "GROUP BY ROLLUP(bolum_id, unvan)",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "GROUP BY CUBE(bolum_id, unvan)",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "GROUP BY bolum_id, unvan WITH CUBE",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "GROUP BY UNION ALL",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "ROLLUP(A, B) ifadesi sırasıyla (A, B), (A) ve () hiyerarşik gruplamalarını üretir. Bu da belirtilen GROUPING SETS ile birebir aynıdır.",
+            "whyOthersIncorrect": {
+                "B": "CUBE tüm kombinasyonları kapsar: (A,B), (A), (B), ().",
+                "C": "WITH CUBE eski sözdizimidir.",
+                "D": "GROUP BY UNION ALL geçerli SQL sözdizimi değildir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: GROUPING SETS - Çoklu Gruplama",
+            "keyTakeaway": "SQL İleri Seviye Soru #8 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000008
+    },
+    {
+        "id": "q_sql_9",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "WHERE ve HAVING tümceleri arasındaki en temel fark aşağıdakilerden hangisidir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "WHERE gruplamadan önce satırları filtreler, HAVING ise GROUP BY sonrasında gruplanmış özet verileri filtreler.",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "WHERE sadece sayısal alanlarda kullanılır, HAVING metinsel alanlarda kullanılır.",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "HAVING agregasyon fonksiyonları içeremez, WHERE içerebilir.",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "WHERE sorguyu hızlandırmaz, HAVING performansı artırır.",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "WHERE satır bazlı filtreleme yapar ve GROUP BY öncesi çalışır. HAVING ise gruplanmış sonuçlar üzerinde (SUM, AVG vb. içeren) filtreleme yapar.",
+            "whyOthersIncorrect": {
+                "B": "Veri tipleri ile alakası yoktur.",
+                "C": "Tam tersine HAVING agregasyon (COUNT, SUM) içerebilir.",
+                "D": "İki tümce de amaca göre performans etkiler.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: HAVING vs WHERE Farkı",
+            "keyTakeaway": "SQL İleri Seviye Soru #9 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000009
+    },
+    {
+        "id": "q_sql_10",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "COALESCE(NULL, NULL, 'Python', 'SQL') ve NULLIF(10, 10) ifadelerinin sonuçları sırasıyla nedir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "'Python' ve NULL",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "'SQL' ve 10",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "NULL ve 0",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "'Python' ve 10",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "COALESCE verilen listedeki İLK NULL OLMAYAN değeri döndürür ('Python'). NULLIF(a, b) ise iki parametre eşitse NULL döndürür (10 = 10 olduğu için NULL).",
+            "whyOthersIncorrect": {
+                "B": "NULLIF eşitlik durumunda NULL verir, 10 vermez.",
+                "C": "COALESCE ilk non-null olan 'Python'ı bulur.",
+                "D": "NULLIF sonucu 10 değildir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: COALESCE vs NULLIF",
+            "keyTakeaway": "SQL İleri Seviye Soru #10 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000010
+    },
+    {
+        "id": "q_sql_11",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "İçteki sorgunun dıştaki sorgunun her bir satırı için tekrar tekrar çalıştırıldığı sorgu türü hangisidir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Correlated Subquery (İlişkili Alt Sorgu)",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Scalar Subquery",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Inline View",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "CTE",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "Correlated Subquery dış sorgudaki tablonun takma adına (alias) bağımlıdır ve dış sorgunun her satırı için yürütülür.",
+            "whyOthersIncorrect": {
+                "B": "Scalar subquery tek değer döndürür.",
+                "C": "Inline view FROM içinde yazılan alt sorgudur.",
+                "D": "CTE WITH ile tanımlanır.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Correlated Subquery",
+            "keyTakeaway": "SQL İleri Seviye Soru #11 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000011
+    },
+    {
+        "id": "q_sql_12",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "A ve B tabloları LEFT JOIN ile birleştirildiğinde, sadece A tablosunda olup B tablosunda eşleşmeyen satırları bulmak için hangi WHERE koşulu eklenmelidir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "WHERE B.id IS NULL",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "WHERE B.id IS NOT NULL",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "WHERE A.id = B.id",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "WHERE B.id = 0",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "LEFT JOIN eşleşmeyen B satırlarına NULL atar. WHERE B.id IS NULL filtresiyle sadece B'de karşılığı olmayan (fark) satırlar elde edilir.",
+            "whyOthersIncorrect": {
+                "B": "IS NOT NULL eşleşenleri filtreler.",
+                "C": "A.id = B.id INNER JOIN gibi davranır.",
+                "D": "NULL değer 0'a eşit değildir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: LEFT JOIN & NULL Check",
+            "keyTakeaway": "SQL İleri Seviye Soru #12 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000012
+    },
+    {
+        "id": "q_sql_13",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "UNION ile UNION ALL arasındaki temel performans ve işlev farkı nedir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "UNION mükerrer (duplicate) satırları eler ve sıralama yapar; UNION ALL elenmeden tüm satırları birleştirir ve daha hızlıdır.",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "UNION ALL mükerrer satırları eler, UNION elemez.",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "UNION iki tabloyu yan yana birleştirir, UNION ALL alt alta birleştirir.",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "UNION ALL bellek kullanmaz, UNION bellek kullanır.",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "UNION tekil satırları bulmak için dahili DISTINCT (sort/hash) işlemi yapar. UNION ALL mükerrerleri elemediği için çok daha hızlıdır.",
+            "whyOthersIncorrect": {
+                "B": "Tam tersidir.",
+                "C": "İkisi de dikey (alt alta) birleştirir.",
+                "D": "İkisi de bellek kullanır.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: UNION vs UNION ALL",
+            "keyTakeaway": "SQL İleri Seviye Soru #13 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000013
+    },
+    {
+        "id": "q_sql_14",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "B-Tree indeks yapısında bir sütuna B-Tree indeksi oluşturulduğunda aşağıdaki sorgu türlerinden hangisi bu indeksi verimli KULLANAMAZ?",
+        "options": [
+            {
+                "id": "A",
+                "text": "WHERE UPPER(ad) = 'AHMET'",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "WHERE ad = 'Ahmet'",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "WHERE ad LIKE 'Ahmet%'",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "WHERE maas BETWEEN 3000 AND 5000",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "İndeksli sütun bir fonksiyona (UPPER, LOWER, TO_CHAR vb.) sarıldığında klasik B-Tree indeksi pasif kalır (Full Table Scan yapılır). İndeksli alan saf tutulmalıdır.",
+            "whyOthersIncorrect": {
+                "B": "Eşitlik aramaları B-Tree ile çok hızlıdır.",
+                "C": "Ön ek wildcard (LIKE 'text%') B-Tree kullanabilir.",
+                "D": "Range scan BETWEEN B-Tree ile desteklenir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: B-Tree Indexing",
+            "keyTakeaway": "SQL İleri Seviye Soru #14 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000014
+    },
+    {
+        "id": "q_sql_15",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "Veritabanı yürütme planında (Execution Plan) 'Index Seek' ile 'Index Scan' arasındaki temel fark nedir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Index Seek ağaçta doğrudan aranan noktaya gider (hızlı); Index Scan tüm indeks yapısını baştan sona tarar.",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Index Scan tek bir satır okur, Index Seek tüm tabloyu okur.",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Index Seek sadece Clustered indekslerde çalışır.",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Index Scan sadece hafızada çalışır.",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "Index Seek nokta atışı (bipartite/tree navigation) arama yapar. Index Scan ise indeks yapısının tamamını okur.",
+            "whyOthersIncorrect": {
+                "B": "Tam tersidir.",
+                "C": "Non-clustered indekslerde de Seek yapılabilir.",
+                "D": "Disk okuması da yapabilir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Index Seek vs Index Scan",
+            "keyTakeaway": "SQL İleri Seviye Soru #15 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000015
+    },
+    {
+        "id": "q_sql_16",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "Bir ilişkisel veritabanı tablosunda neden en fazla 1 adet Clustered Index (Kümeli İndeks) bulunabilir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Çünkü Clustered Index tablodaki verilerin fiziksel olarak diskteki dizilim sırasını belirler.",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Çünkü veritabanı yazılımları lisans gereği tek indekse izin verir.",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Çünkü Clustered Index sadece birincil anahtar (Primary Key) üzerinde tanımlanabilir.",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Çünkü bellekte birden fazla indeks saklanamaz.",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "Bir verinin disk üzerinde sadece TEK BİR fiziksel sıralaması olabileceği için bir tabloda yalnızca 1 adet Clustered Index bulunabilir.",
+            "whyOthersIncorrect": {
+                "B": "Lisans ile ilgisi yoktur.",
+                "C": "Primary Key harici sütunlara da Clustered yapılabilir.",
+                "D": "Birden fazla Non-Clustered indeks olabilir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Clustered vs Non-Clustered Index",
+            "keyTakeaway": "SQL İleri Seviye Soru #16 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000016
+    },
+    {
+        "id": "q_sql_17",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "Veritabanı ACID ilkelerinden 'Atomicity' (Bütünlük/Bölünemezlik) ne anlama gelir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "İşlem ya tamamen başarılı olur ya da hiç gerçekleşmemiş gibi tamamen geri alınır (All or Nothing).",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Veritabanı her zaman bir tutarlı durumdan diğer tutarlı duruma geçer.",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Eşzamanlı işlemler birbirini etkilemez.",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Tamamlanan işlemler kalıcıdır.",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "Atomicity (Hep ya da Hiç): Bir transaction içerisindeki tüm adımlar ya hep birlikte başarılı olur (COMMIT) ya da bir hata durumunda tüm adımlar geri alınır (ROLLBACK).",
+            "whyOthersIncorrect": {
+                "B": "Bu Consistency tanımıdır.",
+                "C": "Bu Isolation tanımıdır.",
+                "D": "Bu Durability tanımıdır.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: ACID - Atomicity",
+            "keyTakeaway": "SQL İleri Seviye Soru #17 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000017
+    },
+    {
+        "id": "q_sql_18",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "ACID ilkelerinden 'Isolation' (Yalıtım) kavramı neyi güvence altına alır?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Eşzamanlı çalışan birden fazla transaction'ın birbirlerinin henüz tamamlanmamış verilerini görmesini ve etkilemesini kontrol eder.",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Verinin diske fiziksel olarak yazılmasını sağlar.",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Veritabanı kısıtlamalarının (CHECK, FK) ihlal edilmemesini sağlar.",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Veritabanının yedeklenmesini garanti eder.",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "Yalıtım (Isolation), aynı anda yürütülen işlemlerin birbirinden bağımsız ve izole olmasını sağlar.",
+            "whyOthersIncorrect": {
+                "B": "Durability tanımıdır.",
+                "C": "Consistency tanımıdır.",
+                "D": "Backup mekanizmasıdır.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: ACID - Isolation",
+            "keyTakeaway": "SQL İleri Seviye Soru #18 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000018
+    },
+    {
+        "id": "q_sql_19",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "Bir Recursive CTE sorgusunun sonsuz döngüye (infinite loop) girmesini engellemek için ne yapılmalıdır?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Recursive tümcede durdurma koşulu (WHERE adım < N veya parent_id IS NOT NULL) bulunmalıdır.",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "GROUP BY eklenmelidir.",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "ORDER BY eklenmelidir.",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "UNION ALL yerine UNION kullanılmalıdır.",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "Recursive kısımda özyinelemeyi sonlandıracak mantıksal bir WHERE sınır koşulu veya MAXRECURSION seçeneği kullanılmalıdır.",
+            "whyOthersIncorrect": {
+                "B": "GROUP BY döngüyü kesmez.",
+                "C": "ORDER BY sıralama yapar.",
+                "D": "UNION ALL yerine UNION kullanmak sadece mükerrerleri siler, döngüyü garanti kesmez.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Recursive CTE Terminating Condition",
+            "keyTakeaway": "SQL İleri Seviye Soru #19 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000019
+    },
+    {
+        "id": "q_sql_20",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "Alt sorguda NULL değerler bulunabileceğinde ve performans kritik olduğunda EXISTS mi IN mi tercih edilmelidir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "EXISTS tercih edilmelidir; çünkü EXISTS NULL değerlerden etkilenmez ve ilk eşleşmede durur (Short-circuit).",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "IN tercih edilmelidir; çünkü IN NULL değerleri otomatik olarak sıfıra çevirir.",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "İkisi de tamamen aynı çalışır ve hiçbir performans farkı yoktur.",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "IN sadece sayısal verilerde çalışır.",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "NOT IN kullanımı alt sorgudaki tek bir NULL değer yüzünden tüm sonucu boş döndürebilir (Three-valued logic). EXISTS ise Boolean kontrol yapar ve ilk TRUE'da durur.",
+            "whyOthersIncorrect": {
+                "B": "IN NULL değerleri sıfır yapmaz.",
+                "C": "Özellikle NOT IN ve NOT EXISTS arasında ciddi davranış farkı vardır.",
+                "D": "IN tüm tiplerde çalışır.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: EXISTS vs IN",
+            "keyTakeaway": "SQL İleri Seviye Soru #20 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000020
+    },
+    {
+        "id": "q_sql_21",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "A tablosunda 50 satır, B tablosunda 100 satır bulunmaktadır. SELECT * FROM A CROSS JOIN B sorgusu kaç satır sonuç döndürür?",
+        "options": [
+            {
+                "id": "A",
+                "text": "5000",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "150",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "100",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "50",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "CROSS JOIN kartezyen çarpım üretir. Sonuç satır sayısı A_satır × B_satır = 50 × 100 = 5000 olur.",
+            "whyOthersIncorrect": {
+                "B": "150 toplam satır sayısıdır.",
+                "C": "100 B tablosunun satırıdır.",
+                "D": "50 A tablosunun satırıdır.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: CROSS JOIN & Kartezyen Çarpım",
+            "keyTakeaway": "SQL İleri Seviye Soru #21 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000021
+    },
+    {
+        "id": "q_sql_22",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "Bir tablonun kendisiyle birleştirilmesi (SELF JOIN) en çok hangi durumlarda kullanılır?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Aynı tabloda yer alan çalışan-yönetici ilişkisi gibi hiyerarşik veya birbiriyle ilişkili satırları kıyaslamak için.",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Tablodaki mükerrer sütunları silmek için.",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Tablonun yedeğini başka bir veritabanına aktarmak için.",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Veritabanı indekslerini yeniden yapılandırmak için.",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "SELF JOIN bir tablonun kendi satırları arasındaki ilişkileri (örneğin personel tablosundaki müdür_id ile personel_id ilişkisi) sorgulamak için kullanılır.",
+            "whyOthersIncorrect": {
+                "B": "Mükerrer sütun silmez.",
+                "C": "Yedekleme yapmaz.",
+                "D": "İndeks yapılandırmaz.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: SELF JOIN Kullanım Amacı",
+            "keyTakeaway": "SQL İleri Seviye Soru #22 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000022
+    },
+    {
+        "id": "q_sql_23",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "100 satırlık bir veri kümesinde NTILE(4) OVER (ORDER BY puan DESC) fonksiyonu ne yapar?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Verileri puan sırasına göre 4 eşit gruba (çeyreklik/quartile) böler ve her satıra 1, 2, 3 veya 4 değerini atar.",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "İlk 4 satırı döndürür.",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Her 4 satırda bir toplam alır.",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Puanı 4'e böler.",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "NTILE(n) sıralı veri kümesini belirtilen n adet eşit kovaya (bucket/quartile) bölerek her satıra kova numarasını verir.",
+            "whyOthersIncorrect": {
+                "B": "İlk 4 satır için LIMIT / TOP kullanılır.",
+                "C": "Gruplama yapmaz.",
+                "D": "Matematiksel bölme yapmaz.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Window Function - NTILE(4)",
+            "keyTakeaway": "SQL İleri Seviye Soru #23 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000023
+    },
+    {
+        "id": "q_sql_24",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "FOREIGN KEY kısıtlamasında ON DELETE CASCADE seçeneği tanımlandığında ne gerçekleşir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Ana (Parent) tablodan bir satır silindiğinde, ona bağlı tüm alt (Child) tablodaki satırlar da otomatik olarak silinir.",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Ana tablodan satır silinmesi engellenir.",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Alt tablodaki ilgili alanlara NULL değeri atanır.",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Silinen satırlar çöp kutusuna taşınır.",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "ON DELETE CASCADE ilkesi ana tablodaki silme işlemini ilişkili tüm detay satırlarına otomatik olarak yayarak siler.",
+            "whyOthersIncorrect": {
+                "B": "Silmeyi engelleyen RESTRICT / NO ACTION seçeneğidir.",
+                "C": "NULL atayan ON DELETE SET NULL seçeneğidir.",
+                "D": "Çöp kutusu mekanizması yoktur.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: FOREIGN KEY CASCADE",
+            "keyTakeaway": "SQL İleri Seviye Soru #24 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000024
+    },
+    {
+        "id": "q_sql_25",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "Bir sorgunun ihtiyaç duyduğu tüm sütunların doğrudan indeks yapısının (leaf node) içinde bulunması durumuna ne ad verilir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Covering Index (Kapsayan İndeks)",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Clustered Index",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Bitmap Index",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Filtered Index",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "Eğer bir sorgudaki SELECT, WHERE, JOIN ve ORDER BY sütunlarının tamamı indekste varsa buna Covering Index denir ve tabloya gitmeden (Index-Only Scan) yanıt döner.",
+            "whyOthersIncorrect": {
+                "B": "Clustered index tablonun kendisidir.",
+                "C": "Bitmap indeks bit dizileri kullanır.",
+                "D": "Filtered index WHERE koşullu indekstir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Index - Covering Index",
+            "keyTakeaway": "SQL İleri Seviye Soru #25 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000025
+    },
+    {
+        "id": "q_sql_26",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "Materialized View (Maddi Görünüm) ile Standart View arasındaki en önemli fark nedir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Materialized View sorgu sonucunu fiziksel olarak diskte saklar ve yenilenmesi gerekir; Normal View ise sadece saklanmış bir SQL sorgusudur.",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Normal View diskte yer kaplar, Materialized View kaplamaz.",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Materialized View sadece PostgreSQL'de vardır.",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Normal View indekslenemez ancak Materialized View da indekslenemez.",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "Materialized View sorgunun çıktısını tablo gibi diskte tutar (fiziksel saklama). Bu sayede karmaşık sorgularda çok hızlıdır ancak REFRESH edilmelidir.",
+            "whyOthersIncorrect": {
+                "B": "Tam tersidir.",
+                "C": "Oracle, PostgreSQL, SQL Server (Indexed View) gibi birçok VTYS'de vardır.",
+                "D": "Materialized View üzerine indeks oluşturulabilir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Materialized View vs Normal View",
+            "keyTakeaway": "SQL İleri Seviye Soru #26 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000026
+    },
+    {
+        "id": "q_sql_27",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "SQL'de `WHERE sutun = NULL` ifadesi neden hiçbir zaman TRUE dönmez?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Çünkü SQL üç değerli mantık (Three-valued logic) kullanır ve NULL bilinmeyen bir değer olduğu için eşitlik IS NULL ile kontrol edilmelidir.",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Çünkü NULL sadece 0 sayısal değerine eşittir.",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Çünkü WHERE tümcesi metinsel alanlarda çalışmaz.",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Çünkü NULL terimi SQL standartlarında kaldırılmıştır.",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "SQL'de NULL ile yapılan tüm mantıksal karşılaştırmalar (`=`, `<>`, `<`) UNKNOWN döner. Bir değerin NULL olup olmadığını test etmek için `IS NULL` veya `IS NOT NULL` kullanılmalıdır.",
+            "whyOthersIncorrect": {
+                "B": "NULL 0'a eşit değildir.",
+                "C": "WHERE metinlerde gayet iyi çalışır.",
+                "D": "NULL standart bir SQL kavramıdır.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: NULL Değer Karşılaştırması",
+            "keyTakeaway": "SQL İleri Seviye Soru #27 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000027
+    },
+    {
+        "id": "q_sql_28",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "Veritabanında bir satır varsa UPDATE, yoksa INSERT yapma işlemine ne ad verilir ve standart SQL'de hangi komutla yapılır?",
+        "options": [
+            {
+                "id": "A",
+                "text": "UPSERT mantığı - MERGE INTO komutu",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "BULK INSERT komutu",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "TRUNCATE TABLE komutu",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "ALTER TABLE komutu",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "Var olan satırı güncelleme, yoksa ekleme mantığına UPSERT denir. ANSI SQL standardında bu işlem MERGE INTO komutu ile sağlanır (PostgreSQL'de ON CONFLICT).",
+            "whyOthersIncorrect": {
+                "B": "BULK INSERT toplu veri yükler.",
+                "C": "TRUNCATE tabloyu boşaltır.",
+                "D": "ALTER TABLE tablo yapısını değiştirir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: UPSERT (MERGE / ON CONFLICT)",
+            "keyTakeaway": "SQL İleri Seviye Soru #28 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000028
+    },
+    {
+        "id": "q_sql_29",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "GROUP BY CUBE(A, B, C) ifadesi kaç farklı gruplama kombinasyonu (grouping set) üretir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "8 (2^3)",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "3",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "6",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "9",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "CUBE n adet sütun için 2^n kombinasyon üretir. 3 sütun için 2^3 = 8 farklı gruplama seti oluşturur: (A,B,C), (A,B), (A,C), (B,C), (A), (B), (C), ().",
+            "whyOthersIncorrect": {
+                "B": "3 sütun sayısıdır.",
+                "C": "6 yanlış kombinasyondur.",
+                "D": "9 yanlış hesaptır.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: GROUP BY - CUBE",
+            "keyTakeaway": "SQL İleri Seviye Soru #29 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000029
+    },
+    {
+        "id": "q_sql_30",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "LAST_VALUE() window fonksiyonu kullanılırken 'ROWS BETWEEN CURRENT ROW AND UNBOUNDED FOLLOWING' çerçevesi eklenmezse neden beklenen son satırı vermez?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Çünkü varsayılan pencere çerçevesi (frame) CURRENT ROW'a kadardır ve her satırda kendisini son satır görür.",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Çünkü LAST_VALUE sadece alfabetik sıralamada çalışır.",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Çünkü tablonun sıralaması bozuktur.",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Çünkü LAST_VALUE fonksiyonu NULL değerleri otomatik siler.",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "Varsayılan pencere çerçevesi `RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW` olduğundan, pencere o anki satırda biter ve LAST_VALUE hep o anki satırı döndürür.",
+            "whyOthersIncorrect": {
+                "B": "Tüm tiplerde çalışır.",
+                "C": "Sıralama ile ilgili değil çerçeve ile ilgilidir.",
+                "D": "NULL silmez.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Window Functions - FIRST_VALUE & LAST_VALUE",
+            "keyTakeaway": "SQL İleri Seviye Soru #30 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000030
+    },
+    {
+        "id": "q_sql_31",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(31) [Index - Partial / Filtered Index] Sadece belirli bir koşulu sağlayan satırlar için oluşturulan indekse (Örn: WHERE silindi = FALSE) ne ad verilir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Filtered Index (Kısmi / Filtrelenmiş İndeks)",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Clustered Index",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Global Index",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Bitmap Index",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "Filtered Index (Partial Index), tablonun tamamı yerine sadece WHERE koşuluna uyan satırları indeksleyerek disk alanı ve bakım maliyetinden tasarruf sağlar.",
+            "whyOthersIncorrect": {
+                "B": "Clustered index tüm tabloyu sıralar.",
+                "C": "Global index tüm partitionları kapsar.",
+                "D": "Bitmap index bit matrisi kullanır.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Index - Partial / Filtered Index",
+            "keyTakeaway": "SQL İleri Seviye Soru #31 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000031
+    },
+    {
+        "id": "q_sql_32",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(32) [Transaction - Deadlock (Kilitlenme)] İki farklı transaction'ın birbirinin kilitlediği kaynakları karşılıklı olarak beklemesi sonucu oluşan kilitlenmeye ne ad verilir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Deadlock (Ölümcül Kilitlenme)",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Livelock",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Starvation",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Latch",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "Deadlock, Transaction A'nın Kaynak 1'i kilitleyip Kaynak 2'yi beklemesi, Transaction B'nin ise Kaynak 2'yi kilitleyip Kaynak 1'i beklemesi durumudur. VTYS birini kurban (victim) seçerek çözer.",
+            "whyOthersIncorrect": {
+                "B": "Livelock işlem devam etmesine rağmen ilerleme olmamasıdır.",
+                "C": "Starvation kaynağa erişememe açlığıdır.",
+                "D": "Latch kısa süreli dahili bellek kilididir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Transaction - Deadlock (Kilitlenme)",
+            "keyTakeaway": "SQL İleri Seviye Soru #32 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000032
+    },
+    {
+        "id": "q_sql_33",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(33) [SQL Security - SQL Injection] SQL Injection (SQL Enjeksiyonu) saldırılarını veritabanı uygulama seviyesinde tamamen engellemenin en etkili ve standart yöntemi nedir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Parametreli Sorgular (Prepared Statements / Parameterized Queries) kullanmak",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Girdileri tırnak işaretlerinden arındırmak",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Tüm sorguları büyük harfe çevirmek",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Sadece GET istekleri kullanmak",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "Prepared Statements (Parametreli Sorgular), kullanıcı girdisini SQL komut kodundan ayırarak veri olarak işler ve SQL Injection'ı %100 engeller.",
+            "whyOthersIncorrect": {
+                "B": "Manuel tırnak temizliği kaçırma riskleri taşır.",
+                "C": "Harf boyutu güvenlik sağlamaz.",
+                "D": "GET/POST farkı SQLi engellemez.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: SQL Security - SQL Injection",
+            "keyTakeaway": "SQL İleri Seviye Soru #33 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000033
+    },
+    {
+        "id": "q_sql_34",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(34) [Database Normalization - 3NF] Üçüncü Normal Form (3NF) şartı aşağıdakilerden hangisidir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Tablonun 2NF'de olması ve birincil anahtara geçişli (transitive) bağımlılığın olmaması",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Tabloda tekrarlayan sütunların olmaması",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Tüm alanların atomik olması",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Foreign key bulunmaması",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "3NF kuralı: Tablo 2NF olmalı ve birincil anahtar olmayan bir alan, başka bir birincil anahtar olmayan alana bağımlı olmamalıdır (No Transitive Dependency).",
+            "whyOthersIncorrect": {
+                "B": "1NF kuralıdır.",
+                "C": "1NF kuralıdır.",
+                "D": "Foreign Key ilişkisel veritabanının temelidir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Database Normalization - 3NF",
+            "keyTakeaway": "SQL İleri Seviye Soru #34 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000034
+    },
+    {
+        "id": "q_sql_35",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(35) [Database Normalization - BCNF] Boyce-Codd Normal Form (BCNF), 3NF'den farklı olarak hangi ekstra kuralı zorunlu kılar?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Her determinantın (belirleyicinin) mutlaka bir aday anahtar (candidate key) olması kuralı",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Tabloda hiç NULL değer bulunmaması kuralı",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "En fazla 5 sütun bulunabilmesi kuralı",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Tüm sütunların sayısal olması kuralı",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "BCNF, 3NF'nin daha katı bir halidir. Her X -> Y bağımlılığında X'in mutlaka bir Super Key / Candidate Key olmasını şart koşar.",
+            "whyOthersIncorrect": {
+                "B": "NULL ile ilgisi yoktur.",
+                "C": "Sütun sayısı sınırı yoktur.",
+                "D": "Veri tipi sınırı yoktur.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Database Normalization - BCNF",
+            "keyTakeaway": "SQL İleri Seviye Soru #35 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000035
+    },
+    {
+        "id": "q_sql_36",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(36) [Constraint - CHECK Constraint] Bir tablodaki `yas` sütununa sadece 18 ve üzeri değerlerin girilebilmesini sağlayan kısıtlama (constraint) hangisidir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "CHECK (yas >= 18)",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "DEFAULT (yas >= 18)",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "FOREIGN KEY (yas >= 18)",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "UNIQUE (yas >= 18)",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "CHECK kısıtlaması bir sütuna girilebilecek verilerin belirli bir mantıksal koşula (Boolean expression) uymasını zorunlu kılar.",
+            "whyOthersIncorrect": {
+                "B": "DEFAULT varsayılan değer atar.",
+                "C": "FOREIGN KEY başka tabloya bağlar.",
+                "D": "UNIQUE benzersizlik sağlar.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Constraint - CHECK Constraint",
+            "keyTakeaway": "SQL İleri Seviye Soru #36 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000036
+    },
+    {
+        "id": "q_sql_37",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(37) [Storage - CTE vs Temporary Table] Common Table Expression (CTE) ile Geçici Tablo (Temporary Table) arasındaki temel fark nedir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "CTE hafızada sadece ilgili sorgu süresince var olan mantıksal bir görünümdür; Temporary Table ise tempdb/oturum içinde fiziksel olarak oluşturulur ve indekslenebilir.",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "CTE sadece PostgreSQL'de vardır.",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Temporary Table silinemez.",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "CTE diskte yer kaplar, Temporary Table kaplamaz.",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "CTE tek bir sorgunun çalışma anı (scope) boyunca geçerli mantıksal yapıdır. Temporary Table ise oturum kapanana kadar tempdb'de fiziksel yaşar ve indekslenebilir.",
+            "whyOthersIncorrect": {
+                "B": "CTE tüm gelişmiş VTYS'lerde vardır.",
+                "C": "Temporary table oturum sonunda silinir.",
+                "D": "Tam tersidir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Storage - CTE vs Temporary Table",
+            "keyTakeaway": "SQL İleri Seviye Soru #37 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000037
+    },
+    {
+        "id": "q_sql_38",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(38) [Query Optimization - SARGABLE Queries] SARGABLE (Search Argument Able) sorgu ifadesi ne anlama gelir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Sorgudaki WHERE koşulunun indeksleri etkin bir şekilde kullanabilecek biçimde yazılmış olması",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Sorgunun sonucunun bellekte saklanması",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Sorgunun otomatik olarak paralelleştirilmesi",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Sorguda grafik çizilmesi",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "SARGABLE sorgular, indeksli sütunların üzerinde fonksiyon veya tip dönüşümü yapılmadan yazıldığı için VTYS'nin Index Seek yapabilmesine olanak tanır.",
+            "whyOthersIncorrect": {
+                "B": "Caching mekanizmasıdır.",
+                "C": "Parallel execution plan'dır.",
+                "D": "Grafik çizimi değildir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Query Optimization - SARGABLE Queries",
+            "keyTakeaway": "SQL İleri Seviye Soru #38 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000038
+    },
+    {
+        "id": "q_sql_39",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(39) [Subquery - Scalar Subquery] Scalar Subquery (Skaler Alt Sorgu) ne tür bir sonuç döndürür?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Tam olarak 1 satır ve 1 sütundan oluşan tek bir değer",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Bir tablo dolusu satır ve sütun",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Sadece Boolean (TRUE/FALSE) değer",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Sadece dizi (Array) verisi",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "Scalar subquery tek bir hücre (1 satır × 1 sütun) değer döndüren sorgudur. Bu yüzden SELECT listesinde veya matematiksel ifadelerde kullanılabilir.",
+            "whyOthersIncorrect": {
+                "B": "Tablo döndüren sorgular Table-valued subquery'dir.",
+                "C": "EXISTS Boolean döndürür.",
+                "D": "Array türü spesifik veritiplerindedir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Subquery - Scalar Subquery",
+            "keyTakeaway": "SQL İleri Seviye Soru #39 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000039
+    },
+    {
+        "id": "q_sql_40",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(40) [JSON Data in SQL - JSON_EXTRACT / ->>] Modern ilişkisel veritabanlarında (PostgreSQL, MySQL vb.) saklanan JSON verisinden bir alanı metin (text) olarak çekmek için hangi operatör/fonksiyon kullanılır?",
+        "options": [
+            {
+                "id": "A",
+                "text": "PostgreSQL'de ->> operatörü / JSON_EXTRACT_TEXT",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "SUM()",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "GROUP_CONCAT()",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "STRING_SPLIT()",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "JSON alanlarından metin değeri çekmek için PostgreSQL'de `->>` operatörü, MySQL/SQLite'ta `JSON_EXTRACT()` veya `->>` kullanılır.",
+            "whyOthersIncorrect": {
+                "B": "SUM sayısal toplama yapar.",
+                "C": "GROUP_CONCAT metinleri birleştirir.",
+                "D": "STRING_SPLIT metni parçalar.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: JSON Data in SQL - JSON_EXTRACT / ->>",
+            "keyTakeaway": "SQL İleri Seviye Soru #40 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000040
+    },
+    {
+        "id": "q_sql_41",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(41) [Index - Partial / Filtered Index] Sadece belirli bir koşulu sağlayan satırlar için oluşturulan indekse (Örn: WHERE silindi = FALSE) ne ad verilir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Filtered Index (Kısmi / Filtrelenmiş İndeks)",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Clustered Index",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Global Index",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Bitmap Index",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "Filtered Index (Partial Index), tablonun tamamı yerine sadece WHERE koşuluna uyan satırları indeksleyerek disk alanı ve bakım maliyetinden tasarruf sağlar.",
+            "whyOthersIncorrect": {
+                "B": "Clustered index tüm tabloyu sıralar.",
+                "C": "Global index tüm partitionları kapsar.",
+                "D": "Bitmap index bit matrisi kullanır.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Index - Partial / Filtered Index",
+            "keyTakeaway": "SQL İleri Seviye Soru #41 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000041
+    },
+    {
+        "id": "q_sql_42",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(42) [Transaction - Deadlock (Kilitlenme)] İki farklı transaction'ın birbirinin kilitlediği kaynakları karşılıklı olarak beklemesi sonucu oluşan kilitlenmeye ne ad verilir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Deadlock (Ölümcül Kilitlenme)",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Livelock",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Starvation",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Latch",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "Deadlock, Transaction A'nın Kaynak 1'i kilitleyip Kaynak 2'yi beklemesi, Transaction B'nin ise Kaynak 2'yi kilitleyip Kaynak 1'i beklemesi durumudur. VTYS birini kurban (victim) seçerek çözer.",
+            "whyOthersIncorrect": {
+                "B": "Livelock işlem devam etmesine rağmen ilerleme olmamasıdır.",
+                "C": "Starvation kaynağa erişememe açlığıdır.",
+                "D": "Latch kısa süreli dahili bellek kilididir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Transaction - Deadlock (Kilitlenme)",
+            "keyTakeaway": "SQL İleri Seviye Soru #42 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000042
+    },
+    {
+        "id": "q_sql_43",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(43) [SQL Security - SQL Injection] SQL Injection (SQL Enjeksiyonu) saldırılarını veritabanı uygulama seviyesinde tamamen engellemenin en etkili ve standart yöntemi nedir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Parametreli Sorgular (Prepared Statements / Parameterized Queries) kullanmak",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Girdileri tırnak işaretlerinden arındırmak",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Tüm sorguları büyük harfe çevirmek",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Sadece GET istekleri kullanmak",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "Prepared Statements (Parametreli Sorgular), kullanıcı girdisini SQL komut kodundan ayırarak veri olarak işler ve SQL Injection'ı %100 engeller.",
+            "whyOthersIncorrect": {
+                "B": "Manuel tırnak temizliği kaçırma riskleri taşır.",
+                "C": "Harf boyutu güvenlik sağlamaz.",
+                "D": "GET/POST farkı SQLi engellemez.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: SQL Security - SQL Injection",
+            "keyTakeaway": "SQL İleri Seviye Soru #43 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000043
+    },
+    {
+        "id": "q_sql_44",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(44) [Database Normalization - 3NF] Üçüncü Normal Form (3NF) şartı aşağıdakilerden hangisidir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Tablonun 2NF'de olması ve birincil anahtara geçişli (transitive) bağımlılığın olmaması",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Tabloda tekrarlayan sütunların olmaması",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Tüm alanların atomik olması",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Foreign key bulunmaması",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "3NF kuralı: Tablo 2NF olmalı ve birincil anahtar olmayan bir alan, başka bir birincil anahtar olmayan alana bağımlı olmamalıdır (No Transitive Dependency).",
+            "whyOthersIncorrect": {
+                "B": "1NF kuralıdır.",
+                "C": "1NF kuralıdır.",
+                "D": "Foreign Key ilişkisel veritabanının temelidir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Database Normalization - 3NF",
+            "keyTakeaway": "SQL İleri Seviye Soru #44 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000044
+    },
+    {
+        "id": "q_sql_45",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(45) [Database Normalization - BCNF] Boyce-Codd Normal Form (BCNF), 3NF'den farklı olarak hangi ekstra kuralı zorunlu kılar?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Her determinantın (belirleyicinin) mutlaka bir aday anahtar (candidate key) olması kuralı",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Tabloda hiç NULL değer bulunmaması kuralı",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "En fazla 5 sütun bulunabilmesi kuralı",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Tüm sütunların sayısal olması kuralı",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "BCNF, 3NF'nin daha katı bir halidir. Her X -> Y bağımlılığında X'in mutlaka bir Super Key / Candidate Key olmasını şart koşar.",
+            "whyOthersIncorrect": {
+                "B": "NULL ile ilgisi yoktur.",
+                "C": "Sütun sayısı sınırı yoktur.",
+                "D": "Veri tipi sınırı yoktur.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Database Normalization - BCNF",
+            "keyTakeaway": "SQL İleri Seviye Soru #45 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000045
+    },
+    {
+        "id": "q_sql_46",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(46) [Constraint - CHECK Constraint] Bir tablodaki `yas` sütununa sadece 18 ve üzeri değerlerin girilebilmesini sağlayan kısıtlama (constraint) hangisidir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "CHECK (yas >= 18)",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "DEFAULT (yas >= 18)",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "FOREIGN KEY (yas >= 18)",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "UNIQUE (yas >= 18)",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "CHECK kısıtlaması bir sütuna girilebilecek verilerin belirli bir mantıksal koşula (Boolean expression) uymasını zorunlu kılar.",
+            "whyOthersIncorrect": {
+                "B": "DEFAULT varsayılan değer atar.",
+                "C": "FOREIGN KEY başka tabloya bağlar.",
+                "D": "UNIQUE benzersizlik sağlar.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Constraint - CHECK Constraint",
+            "keyTakeaway": "SQL İleri Seviye Soru #46 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000046
+    },
+    {
+        "id": "q_sql_47",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(47) [Storage - CTE vs Temporary Table] Common Table Expression (CTE) ile Geçici Tablo (Temporary Table) arasındaki temel fark nedir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "CTE hafızada sadece ilgili sorgu süresince var olan mantıksal bir görünümdür; Temporary Table ise tempdb/oturum içinde fiziksel olarak oluşturulur ve indekslenebilir.",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "CTE sadece PostgreSQL'de vardır.",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Temporary Table silinemez.",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "CTE diskte yer kaplar, Temporary Table kaplamaz.",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "CTE tek bir sorgunun çalışma anı (scope) boyunca geçerli mantıksal yapıdır. Temporary Table ise oturum kapanana kadar tempdb'de fiziksel yaşar ve indekslenebilir.",
+            "whyOthersIncorrect": {
+                "B": "CTE tüm gelişmiş VTYS'lerde vardır.",
+                "C": "Temporary table oturum sonunda silinir.",
+                "D": "Tam tersidir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Storage - CTE vs Temporary Table",
+            "keyTakeaway": "SQL İleri Seviye Soru #47 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000047
+    },
+    {
+        "id": "q_sql_48",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(48) [Query Optimization - SARGABLE Queries] SARGABLE (Search Argument Able) sorgu ifadesi ne anlama gelir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Sorgudaki WHERE koşulunun indeksleri etkin bir şekilde kullanabilecek biçimde yazılmış olması",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Sorgunun sonucunun bellekte saklanması",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Sorgunun otomatik olarak paralelleştirilmesi",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Sorguda grafik çizilmesi",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "SARGABLE sorgular, indeksli sütunların üzerinde fonksiyon veya tip dönüşümü yapılmadan yazıldığı için VTYS'nin Index Seek yapabilmesine olanak tanır.",
+            "whyOthersIncorrect": {
+                "B": "Caching mekanizmasıdır.",
+                "C": "Parallel execution plan'dır.",
+                "D": "Grafik çizimi değildir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Query Optimization - SARGABLE Queries",
+            "keyTakeaway": "SQL İleri Seviye Soru #48 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000048
+    },
+    {
+        "id": "q_sql_49",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(49) [Subquery - Scalar Subquery] Scalar Subquery (Skaler Alt Sorgu) ne tür bir sonuç döndürür?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Tam olarak 1 satır ve 1 sütundan oluşan tek bir değer",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Bir tablo dolusu satır ve sütun",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Sadece Boolean (TRUE/FALSE) değer",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Sadece dizi (Array) verisi",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "Scalar subquery tek bir hücre (1 satır × 1 sütun) değer döndüren sorgudur. Bu yüzden SELECT listesinde veya matematiksel ifadelerde kullanılabilir.",
+            "whyOthersIncorrect": {
+                "B": "Tablo döndüren sorgular Table-valued subquery'dir.",
+                "C": "EXISTS Boolean döndürür.",
+                "D": "Array türü spesifik veritiplerindedir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Subquery - Scalar Subquery",
+            "keyTakeaway": "SQL İleri Seviye Soru #49 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000049
+    },
+    {
+        "id": "q_sql_50",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(50) [JSON Data in SQL - JSON_EXTRACT / ->>] Modern ilişkisel veritabanlarında (PostgreSQL, MySQL vb.) saklanan JSON verisinden bir alanı metin (text) olarak çekmek için hangi operatör/fonksiyon kullanılır?",
+        "options": [
+            {
+                "id": "A",
+                "text": "PostgreSQL'de ->> operatörü / JSON_EXTRACT_TEXT",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "SUM()",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "GROUP_CONCAT()",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "STRING_SPLIT()",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "JSON alanlarından metin değeri çekmek için PostgreSQL'de `->>` operatörü, MySQL/SQLite'ta `JSON_EXTRACT()` veya `->>` kullanılır.",
+            "whyOthersIncorrect": {
+                "B": "SUM sayısal toplama yapar.",
+                "C": "GROUP_CONCAT metinleri birleştirir.",
+                "D": "STRING_SPLIT metni parçalar.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: JSON Data in SQL - JSON_EXTRACT / ->>",
+            "keyTakeaway": "SQL İleri Seviye Soru #50 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000050
+    },
+    {
+        "id": "q_sql_51",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(51) [Index - Partial / Filtered Index] Sadece belirli bir koşulu sağlayan satırlar için oluşturulan indekse (Örn: WHERE silindi = FALSE) ne ad verilir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Filtered Index (Kısmi / Filtrelenmiş İndeks)",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Clustered Index",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Global Index",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Bitmap Index",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "Filtered Index (Partial Index), tablonun tamamı yerine sadece WHERE koşuluna uyan satırları indeksleyerek disk alanı ve bakım maliyetinden tasarruf sağlar.",
+            "whyOthersIncorrect": {
+                "B": "Clustered index tüm tabloyu sıralar.",
+                "C": "Global index tüm partitionları kapsar.",
+                "D": "Bitmap index bit matrisi kullanır.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Index - Partial / Filtered Index",
+            "keyTakeaway": "SQL İleri Seviye Soru #51 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000051
+    },
+    {
+        "id": "q_sql_52",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(52) [Transaction - Deadlock (Kilitlenme)] İki farklı transaction'ın birbirinin kilitlediği kaynakları karşılıklı olarak beklemesi sonucu oluşan kilitlenmeye ne ad verilir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Deadlock (Ölümcül Kilitlenme)",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Livelock",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Starvation",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Latch",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "Deadlock, Transaction A'nın Kaynak 1'i kilitleyip Kaynak 2'yi beklemesi, Transaction B'nin ise Kaynak 2'yi kilitleyip Kaynak 1'i beklemesi durumudur. VTYS birini kurban (victim) seçerek çözer.",
+            "whyOthersIncorrect": {
+                "B": "Livelock işlem devam etmesine rağmen ilerleme olmamasıdır.",
+                "C": "Starvation kaynağa erişememe açlığıdır.",
+                "D": "Latch kısa süreli dahili bellek kilididir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Transaction - Deadlock (Kilitlenme)",
+            "keyTakeaway": "SQL İleri Seviye Soru #52 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000052
+    },
+    {
+        "id": "q_sql_53",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(53) [SQL Security - SQL Injection] SQL Injection (SQL Enjeksiyonu) saldırılarını veritabanı uygulama seviyesinde tamamen engellemenin en etkili ve standart yöntemi nedir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Parametreli Sorgular (Prepared Statements / Parameterized Queries) kullanmak",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Girdileri tırnak işaretlerinden arındırmak",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Tüm sorguları büyük harfe çevirmek",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Sadece GET istekleri kullanmak",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "Prepared Statements (Parametreli Sorgular), kullanıcı girdisini SQL komut kodundan ayırarak veri olarak işler ve SQL Injection'ı %100 engeller.",
+            "whyOthersIncorrect": {
+                "B": "Manuel tırnak temizliği kaçırma riskleri taşır.",
+                "C": "Harf boyutu güvenlik sağlamaz.",
+                "D": "GET/POST farkı SQLi engellemez.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: SQL Security - SQL Injection",
+            "keyTakeaway": "SQL İleri Seviye Soru #53 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000053
+    },
+    {
+        "id": "q_sql_54",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(54) [Database Normalization - 3NF] Üçüncü Normal Form (3NF) şartı aşağıdakilerden hangisidir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Tablonun 2NF'de olması ve birincil anahtara geçişli (transitive) bağımlılığın olmaması",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Tabloda tekrarlayan sütunların olmaması",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Tüm alanların atomik olması",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Foreign key bulunmaması",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "3NF kuralı: Tablo 2NF olmalı ve birincil anahtar olmayan bir alan, başka bir birincil anahtar olmayan alana bağımlı olmamalıdır (No Transitive Dependency).",
+            "whyOthersIncorrect": {
+                "B": "1NF kuralıdır.",
+                "C": "1NF kuralıdır.",
+                "D": "Foreign Key ilişkisel veritabanının temelidir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Database Normalization - 3NF",
+            "keyTakeaway": "SQL İleri Seviye Soru #54 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000054
+    },
+    {
+        "id": "q_sql_55",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(55) [Database Normalization - BCNF] Boyce-Codd Normal Form (BCNF), 3NF'den farklı olarak hangi ekstra kuralı zorunlu kılar?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Her determinantın (belirleyicinin) mutlaka bir aday anahtar (candidate key) olması kuralı",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Tabloda hiç NULL değer bulunmaması kuralı",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "En fazla 5 sütun bulunabilmesi kuralı",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Tüm sütunların sayısal olması kuralı",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "BCNF, 3NF'nin daha katı bir halidir. Her X -> Y bağımlılığında X'in mutlaka bir Super Key / Candidate Key olmasını şart koşar.",
+            "whyOthersIncorrect": {
+                "B": "NULL ile ilgisi yoktur.",
+                "C": "Sütun sayısı sınırı yoktur.",
+                "D": "Veri tipi sınırı yoktur.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Database Normalization - BCNF",
+            "keyTakeaway": "SQL İleri Seviye Soru #55 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000055
+    },
+    {
+        "id": "q_sql_56",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(56) [Constraint - CHECK Constraint] Bir tablodaki `yas` sütununa sadece 18 ve üzeri değerlerin girilebilmesini sağlayan kısıtlama (constraint) hangisidir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "CHECK (yas >= 18)",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "DEFAULT (yas >= 18)",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "FOREIGN KEY (yas >= 18)",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "UNIQUE (yas >= 18)",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "CHECK kısıtlaması bir sütuna girilebilecek verilerin belirli bir mantıksal koşula (Boolean expression) uymasını zorunlu kılar.",
+            "whyOthersIncorrect": {
+                "B": "DEFAULT varsayılan değer atar.",
+                "C": "FOREIGN KEY başka tabloya bağlar.",
+                "D": "UNIQUE benzersizlik sağlar.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Constraint - CHECK Constraint",
+            "keyTakeaway": "SQL İleri Seviye Soru #56 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000056
+    },
+    {
+        "id": "q_sql_57",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(57) [Storage - CTE vs Temporary Table] Common Table Expression (CTE) ile Geçici Tablo (Temporary Table) arasındaki temel fark nedir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "CTE hafızada sadece ilgili sorgu süresince var olan mantıksal bir görünümdür; Temporary Table ise tempdb/oturum içinde fiziksel olarak oluşturulur ve indekslenebilir.",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "CTE sadece PostgreSQL'de vardır.",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Temporary Table silinemez.",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "CTE diskte yer kaplar, Temporary Table kaplamaz.",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "CTE tek bir sorgunun çalışma anı (scope) boyunca geçerli mantıksal yapıdır. Temporary Table ise oturum kapanana kadar tempdb'de fiziksel yaşar ve indekslenebilir.",
+            "whyOthersIncorrect": {
+                "B": "CTE tüm gelişmiş VTYS'lerde vardır.",
+                "C": "Temporary table oturum sonunda silinir.",
+                "D": "Tam tersidir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Storage - CTE vs Temporary Table",
+            "keyTakeaway": "SQL İleri Seviye Soru #57 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000057
+    },
+    {
+        "id": "q_sql_58",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(58) [Query Optimization - SARGABLE Queries] SARGABLE (Search Argument Able) sorgu ifadesi ne anlama gelir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Sorgudaki WHERE koşulunun indeksleri etkin bir şekilde kullanabilecek biçimde yazılmış olması",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Sorgunun sonucunun bellekte saklanması",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Sorgunun otomatik olarak paralelleştirilmesi",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Sorguda grafik çizilmesi",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "SARGABLE sorgular, indeksli sütunların üzerinde fonksiyon veya tip dönüşümü yapılmadan yazıldığı için VTYS'nin Index Seek yapabilmesine olanak tanır.",
+            "whyOthersIncorrect": {
+                "B": "Caching mekanizmasıdır.",
+                "C": "Parallel execution plan'dır.",
+                "D": "Grafik çizimi değildir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Query Optimization - SARGABLE Queries",
+            "keyTakeaway": "SQL İleri Seviye Soru #58 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000058
+    },
+    {
+        "id": "q_sql_59",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(59) [Subquery - Scalar Subquery] Scalar Subquery (Skaler Alt Sorgu) ne tür bir sonuç döndürür?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Tam olarak 1 satır ve 1 sütundan oluşan tek bir değer",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Bir tablo dolusu satır ve sütun",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Sadece Boolean (TRUE/FALSE) değer",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Sadece dizi (Array) verisi",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "Scalar subquery tek bir hücre (1 satır × 1 sütun) değer döndüren sorgudur. Bu yüzden SELECT listesinde veya matematiksel ifadelerde kullanılabilir.",
+            "whyOthersIncorrect": {
+                "B": "Tablo döndüren sorgular Table-valued subquery'dir.",
+                "C": "EXISTS Boolean döndürür.",
+                "D": "Array türü spesifik veritiplerindedir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Subquery - Scalar Subquery",
+            "keyTakeaway": "SQL İleri Seviye Soru #59 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000059
+    },
+    {
+        "id": "q_sql_60",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(60) [JSON Data in SQL - JSON_EXTRACT / ->>] Modern ilişkisel veritabanlarında (PostgreSQL, MySQL vb.) saklanan JSON verisinden bir alanı metin (text) olarak çekmek için hangi operatör/fonksiyon kullanılır?",
+        "options": [
+            {
+                "id": "A",
+                "text": "PostgreSQL'de ->> operatörü / JSON_EXTRACT_TEXT",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "SUM()",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "GROUP_CONCAT()",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "STRING_SPLIT()",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "JSON alanlarından metin değeri çekmek için PostgreSQL'de `->>` operatörü, MySQL/SQLite'ta `JSON_EXTRACT()` veya `->>` kullanılır.",
+            "whyOthersIncorrect": {
+                "B": "SUM sayısal toplama yapar.",
+                "C": "GROUP_CONCAT metinleri birleştirir.",
+                "D": "STRING_SPLIT metni parçalar.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: JSON Data in SQL - JSON_EXTRACT / ->>",
+            "keyTakeaway": "SQL İleri Seviye Soru #60 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000060
+    },
+    {
+        "id": "q_sql_61",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(61) [Index - Partial / Filtered Index] Sadece belirli bir koşulu sağlayan satırlar için oluşturulan indekse (Örn: WHERE silindi = FALSE) ne ad verilir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Filtered Index (Kısmi / Filtrelenmiş İndeks)",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Clustered Index",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Global Index",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Bitmap Index",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "Filtered Index (Partial Index), tablonun tamamı yerine sadece WHERE koşuluna uyan satırları indeksleyerek disk alanı ve bakım maliyetinden tasarruf sağlar.",
+            "whyOthersIncorrect": {
+                "B": "Clustered index tüm tabloyu sıralar.",
+                "C": "Global index tüm partitionları kapsar.",
+                "D": "Bitmap index bit matrisi kullanır.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Index - Partial / Filtered Index",
+            "keyTakeaway": "SQL İleri Seviye Soru #61 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000061
+    },
+    {
+        "id": "q_sql_62",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(62) [Transaction - Deadlock (Kilitlenme)] İki farklı transaction'ın birbirinin kilitlediği kaynakları karşılıklı olarak beklemesi sonucu oluşan kilitlenmeye ne ad verilir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Deadlock (Ölümcül Kilitlenme)",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Livelock",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Starvation",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Latch",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "Deadlock, Transaction A'nın Kaynak 1'i kilitleyip Kaynak 2'yi beklemesi, Transaction B'nin ise Kaynak 2'yi kilitleyip Kaynak 1'i beklemesi durumudur. VTYS birini kurban (victim) seçerek çözer.",
+            "whyOthersIncorrect": {
+                "B": "Livelock işlem devam etmesine rağmen ilerleme olmamasıdır.",
+                "C": "Starvation kaynağa erişememe açlığıdır.",
+                "D": "Latch kısa süreli dahili bellek kilididir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Transaction - Deadlock (Kilitlenme)",
+            "keyTakeaway": "SQL İleri Seviye Soru #62 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000062
+    },
+    {
+        "id": "q_sql_63",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(63) [SQL Security - SQL Injection] SQL Injection (SQL Enjeksiyonu) saldırılarını veritabanı uygulama seviyesinde tamamen engellemenin en etkili ve standart yöntemi nedir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Parametreli Sorgular (Prepared Statements / Parameterized Queries) kullanmak",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Girdileri tırnak işaretlerinden arındırmak",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Tüm sorguları büyük harfe çevirmek",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Sadece GET istekleri kullanmak",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "Prepared Statements (Parametreli Sorgular), kullanıcı girdisini SQL komut kodundan ayırarak veri olarak işler ve SQL Injection'ı %100 engeller.",
+            "whyOthersIncorrect": {
+                "B": "Manuel tırnak temizliği kaçırma riskleri taşır.",
+                "C": "Harf boyutu güvenlik sağlamaz.",
+                "D": "GET/POST farkı SQLi engellemez.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: SQL Security - SQL Injection",
+            "keyTakeaway": "SQL İleri Seviye Soru #63 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000063
+    },
+    {
+        "id": "q_sql_64",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(64) [Database Normalization - 3NF] Üçüncü Normal Form (3NF) şartı aşağıdakilerden hangisidir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Tablonun 2NF'de olması ve birincil anahtara geçişli (transitive) bağımlılığın olmaması",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Tabloda tekrarlayan sütunların olmaması",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Tüm alanların atomik olması",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Foreign key bulunmaması",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "3NF kuralı: Tablo 2NF olmalı ve birincil anahtar olmayan bir alan, başka bir birincil anahtar olmayan alana bağımlı olmamalıdır (No Transitive Dependency).",
+            "whyOthersIncorrect": {
+                "B": "1NF kuralıdır.",
+                "C": "1NF kuralıdır.",
+                "D": "Foreign Key ilişkisel veritabanının temelidir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Database Normalization - 3NF",
+            "keyTakeaway": "SQL İleri Seviye Soru #64 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000064
+    },
+    {
+        "id": "q_sql_65",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(65) [Database Normalization - BCNF] Boyce-Codd Normal Form (BCNF), 3NF'den farklı olarak hangi ekstra kuralı zorunlu kılar?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Her determinantın (belirleyicinin) mutlaka bir aday anahtar (candidate key) olması kuralı",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Tabloda hiç NULL değer bulunmaması kuralı",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "En fazla 5 sütun bulunabilmesi kuralı",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Tüm sütunların sayısal olması kuralı",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "BCNF, 3NF'nin daha katı bir halidir. Her X -> Y bağımlılığında X'in mutlaka bir Super Key / Candidate Key olmasını şart koşar.",
+            "whyOthersIncorrect": {
+                "B": "NULL ile ilgisi yoktur.",
+                "C": "Sütun sayısı sınırı yoktur.",
+                "D": "Veri tipi sınırı yoktur.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Database Normalization - BCNF",
+            "keyTakeaway": "SQL İleri Seviye Soru #65 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000065
+    },
+    {
+        "id": "q_sql_66",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(66) [Constraint - CHECK Constraint] Bir tablodaki `yas` sütununa sadece 18 ve üzeri değerlerin girilebilmesini sağlayan kısıtlama (constraint) hangisidir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "CHECK (yas >= 18)",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "DEFAULT (yas >= 18)",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "FOREIGN KEY (yas >= 18)",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "UNIQUE (yas >= 18)",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "CHECK kısıtlaması bir sütuna girilebilecek verilerin belirli bir mantıksal koşula (Boolean expression) uymasını zorunlu kılar.",
+            "whyOthersIncorrect": {
+                "B": "DEFAULT varsayılan değer atar.",
+                "C": "FOREIGN KEY başka tabloya bağlar.",
+                "D": "UNIQUE benzersizlik sağlar.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Constraint - CHECK Constraint",
+            "keyTakeaway": "SQL İleri Seviye Soru #66 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000066
+    },
+    {
+        "id": "q_sql_67",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(67) [Storage - CTE vs Temporary Table] Common Table Expression (CTE) ile Geçici Tablo (Temporary Table) arasındaki temel fark nedir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "CTE hafızada sadece ilgili sorgu süresince var olan mantıksal bir görünümdür; Temporary Table ise tempdb/oturum içinde fiziksel olarak oluşturulur ve indekslenebilir.",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "CTE sadece PostgreSQL'de vardır.",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Temporary Table silinemez.",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "CTE diskte yer kaplar, Temporary Table kaplamaz.",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "CTE tek bir sorgunun çalışma anı (scope) boyunca geçerli mantıksal yapıdır. Temporary Table ise oturum kapanana kadar tempdb'de fiziksel yaşar ve indekslenebilir.",
+            "whyOthersIncorrect": {
+                "B": "CTE tüm gelişmiş VTYS'lerde vardır.",
+                "C": "Temporary table oturum sonunda silinir.",
+                "D": "Tam tersidir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Storage - CTE vs Temporary Table",
+            "keyTakeaway": "SQL İleri Seviye Soru #67 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000067
+    },
+    {
+        "id": "q_sql_68",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(68) [Query Optimization - SARGABLE Queries] SARGABLE (Search Argument Able) sorgu ifadesi ne anlama gelir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Sorgudaki WHERE koşulunun indeksleri etkin bir şekilde kullanabilecek biçimde yazılmış olması",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Sorgunun sonucunun bellekte saklanması",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Sorgunun otomatik olarak paralelleştirilmesi",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Sorguda grafik çizilmesi",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "SARGABLE sorgular, indeksli sütunların üzerinde fonksiyon veya tip dönüşümü yapılmadan yazıldığı için VTYS'nin Index Seek yapabilmesine olanak tanır.",
+            "whyOthersIncorrect": {
+                "B": "Caching mekanizmasıdır.",
+                "C": "Parallel execution plan'dır.",
+                "D": "Grafik çizimi değildir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Query Optimization - SARGABLE Queries",
+            "keyTakeaway": "SQL İleri Seviye Soru #68 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000068
+    },
+    {
+        "id": "q_sql_69",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(69) [Subquery - Scalar Subquery] Scalar Subquery (Skaler Alt Sorgu) ne tür bir sonuç döndürür?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Tam olarak 1 satır ve 1 sütundan oluşan tek bir değer",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Bir tablo dolusu satır ve sütun",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Sadece Boolean (TRUE/FALSE) değer",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Sadece dizi (Array) verisi",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "Scalar subquery tek bir hücre (1 satır × 1 sütun) değer döndüren sorgudur. Bu yüzden SELECT listesinde veya matematiksel ifadelerde kullanılabilir.",
+            "whyOthersIncorrect": {
+                "B": "Tablo döndüren sorgular Table-valued subquery'dir.",
+                "C": "EXISTS Boolean döndürür.",
+                "D": "Array türü spesifik veritiplerindedir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Subquery - Scalar Subquery",
+            "keyTakeaway": "SQL İleri Seviye Soru #69 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000069
+    },
+    {
+        "id": "q_sql_70",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(70) [JSON Data in SQL - JSON_EXTRACT / ->>] Modern ilişkisel veritabanlarında (PostgreSQL, MySQL vb.) saklanan JSON verisinden bir alanı metin (text) olarak çekmek için hangi operatör/fonksiyon kullanılır?",
+        "options": [
+            {
+                "id": "A",
+                "text": "PostgreSQL'de ->> operatörü / JSON_EXTRACT_TEXT",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "SUM()",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "GROUP_CONCAT()",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "STRING_SPLIT()",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "JSON alanlarından metin değeri çekmek için PostgreSQL'de `->>` operatörü, MySQL/SQLite'ta `JSON_EXTRACT()` veya `->>` kullanılır.",
+            "whyOthersIncorrect": {
+                "B": "SUM sayısal toplama yapar.",
+                "C": "GROUP_CONCAT metinleri birleştirir.",
+                "D": "STRING_SPLIT metni parçalar.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: JSON Data in SQL - JSON_EXTRACT / ->>",
+            "keyTakeaway": "SQL İleri Seviye Soru #70 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000070
+    },
+    {
+        "id": "q_sql_71",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(71) [Index - Partial / Filtered Index] Sadece belirli bir koşulu sağlayan satırlar için oluşturulan indekse (Örn: WHERE silindi = FALSE) ne ad verilir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Filtered Index (Kısmi / Filtrelenmiş İndeks)",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Clustered Index",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Global Index",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Bitmap Index",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "Filtered Index (Partial Index), tablonun tamamı yerine sadece WHERE koşuluna uyan satırları indeksleyerek disk alanı ve bakım maliyetinden tasarruf sağlar.",
+            "whyOthersIncorrect": {
+                "B": "Clustered index tüm tabloyu sıralar.",
+                "C": "Global index tüm partitionları kapsar.",
+                "D": "Bitmap index bit matrisi kullanır.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Index - Partial / Filtered Index",
+            "keyTakeaway": "SQL İleri Seviye Soru #71 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000071
+    },
+    {
+        "id": "q_sql_72",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(72) [Transaction - Deadlock (Kilitlenme)] İki farklı transaction'ın birbirinin kilitlediği kaynakları karşılıklı olarak beklemesi sonucu oluşan kilitlenmeye ne ad verilir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Deadlock (Ölümcül Kilitlenme)",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Livelock",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Starvation",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Latch",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "Deadlock, Transaction A'nın Kaynak 1'i kilitleyip Kaynak 2'yi beklemesi, Transaction B'nin ise Kaynak 2'yi kilitleyip Kaynak 1'i beklemesi durumudur. VTYS birini kurban (victim) seçerek çözer.",
+            "whyOthersIncorrect": {
+                "B": "Livelock işlem devam etmesine rağmen ilerleme olmamasıdır.",
+                "C": "Starvation kaynağa erişememe açlığıdır.",
+                "D": "Latch kısa süreli dahili bellek kilididir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Transaction - Deadlock (Kilitlenme)",
+            "keyTakeaway": "SQL İleri Seviye Soru #72 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000072
+    },
+    {
+        "id": "q_sql_73",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(73) [SQL Security - SQL Injection] SQL Injection (SQL Enjeksiyonu) saldırılarını veritabanı uygulama seviyesinde tamamen engellemenin en etkili ve standart yöntemi nedir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Parametreli Sorgular (Prepared Statements / Parameterized Queries) kullanmak",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Girdileri tırnak işaretlerinden arındırmak",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Tüm sorguları büyük harfe çevirmek",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Sadece GET istekleri kullanmak",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "Prepared Statements (Parametreli Sorgular), kullanıcı girdisini SQL komut kodundan ayırarak veri olarak işler ve SQL Injection'ı %100 engeller.",
+            "whyOthersIncorrect": {
+                "B": "Manuel tırnak temizliği kaçırma riskleri taşır.",
+                "C": "Harf boyutu güvenlik sağlamaz.",
+                "D": "GET/POST farkı SQLi engellemez.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: SQL Security - SQL Injection",
+            "keyTakeaway": "SQL İleri Seviye Soru #73 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000073
+    },
+    {
+        "id": "q_sql_74",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(74) [Database Normalization - 3NF] Üçüncü Normal Form (3NF) şartı aşağıdakilerden hangisidir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Tablonun 2NF'de olması ve birincil anahtara geçişli (transitive) bağımlılığın olmaması",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Tabloda tekrarlayan sütunların olmaması",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Tüm alanların atomik olması",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Foreign key bulunmaması",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "3NF kuralı: Tablo 2NF olmalı ve birincil anahtar olmayan bir alan, başka bir birincil anahtar olmayan alana bağımlı olmamalıdır (No Transitive Dependency).",
+            "whyOthersIncorrect": {
+                "B": "1NF kuralıdır.",
+                "C": "1NF kuralıdır.",
+                "D": "Foreign Key ilişkisel veritabanının temelidir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Database Normalization - 3NF",
+            "keyTakeaway": "SQL İleri Seviye Soru #74 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000074
+    },
+    {
+        "id": "q_sql_75",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(75) [Database Normalization - BCNF] Boyce-Codd Normal Form (BCNF), 3NF'den farklı olarak hangi ekstra kuralı zorunlu kılar?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Her determinantın (belirleyicinin) mutlaka bir aday anahtar (candidate key) olması kuralı",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Tabloda hiç NULL değer bulunmaması kuralı",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "En fazla 5 sütun bulunabilmesi kuralı",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Tüm sütunların sayısal olması kuralı",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "BCNF, 3NF'nin daha katı bir halidir. Her X -> Y bağımlılığında X'in mutlaka bir Super Key / Candidate Key olmasını şart koşar.",
+            "whyOthersIncorrect": {
+                "B": "NULL ile ilgisi yoktur.",
+                "C": "Sütun sayısı sınırı yoktur.",
+                "D": "Veri tipi sınırı yoktur.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Database Normalization - BCNF",
+            "keyTakeaway": "SQL İleri Seviye Soru #75 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000075
+    },
+    {
+        "id": "q_sql_76",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(76) [Constraint - CHECK Constraint] Bir tablodaki `yas` sütununa sadece 18 ve üzeri değerlerin girilebilmesini sağlayan kısıtlama (constraint) hangisidir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "CHECK (yas >= 18)",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "DEFAULT (yas >= 18)",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "FOREIGN KEY (yas >= 18)",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "UNIQUE (yas >= 18)",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "CHECK kısıtlaması bir sütuna girilebilecek verilerin belirli bir mantıksal koşula (Boolean expression) uymasını zorunlu kılar.",
+            "whyOthersIncorrect": {
+                "B": "DEFAULT varsayılan değer atar.",
+                "C": "FOREIGN KEY başka tabloya bağlar.",
+                "D": "UNIQUE benzersizlik sağlar.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Constraint - CHECK Constraint",
+            "keyTakeaway": "SQL İleri Seviye Soru #76 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000076
+    },
+    {
+        "id": "q_sql_77",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(77) [Storage - CTE vs Temporary Table] Common Table Expression (CTE) ile Geçici Tablo (Temporary Table) arasındaki temel fark nedir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "CTE hafızada sadece ilgili sorgu süresince var olan mantıksal bir görünümdür; Temporary Table ise tempdb/oturum içinde fiziksel olarak oluşturulur ve indekslenebilir.",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "CTE sadece PostgreSQL'de vardır.",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Temporary Table silinemez.",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "CTE diskte yer kaplar, Temporary Table kaplamaz.",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "CTE tek bir sorgunun çalışma anı (scope) boyunca geçerli mantıksal yapıdır. Temporary Table ise oturum kapanana kadar tempdb'de fiziksel yaşar ve indekslenebilir.",
+            "whyOthersIncorrect": {
+                "B": "CTE tüm gelişmiş VTYS'lerde vardır.",
+                "C": "Temporary table oturum sonunda silinir.",
+                "D": "Tam tersidir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Storage - CTE vs Temporary Table",
+            "keyTakeaway": "SQL İleri Seviye Soru #77 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000077
+    },
+    {
+        "id": "q_sql_78",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(78) [Query Optimization - SARGABLE Queries] SARGABLE (Search Argument Able) sorgu ifadesi ne anlama gelir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Sorgudaki WHERE koşulunun indeksleri etkin bir şekilde kullanabilecek biçimde yazılmış olması",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Sorgunun sonucunun bellekte saklanması",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Sorgunun otomatik olarak paralelleştirilmesi",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Sorguda grafik çizilmesi",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "SARGABLE sorgular, indeksli sütunların üzerinde fonksiyon veya tip dönüşümü yapılmadan yazıldığı için VTYS'nin Index Seek yapabilmesine olanak tanır.",
+            "whyOthersIncorrect": {
+                "B": "Caching mekanizmasıdır.",
+                "C": "Parallel execution plan'dır.",
+                "D": "Grafik çizimi değildir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Query Optimization - SARGABLE Queries",
+            "keyTakeaway": "SQL İleri Seviye Soru #78 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000078
+    },
+    {
+        "id": "q_sql_79",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(79) [Subquery - Scalar Subquery] Scalar Subquery (Skaler Alt Sorgu) ne tür bir sonuç döndürür?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Tam olarak 1 satır ve 1 sütundan oluşan tek bir değer",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Bir tablo dolusu satır ve sütun",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Sadece Boolean (TRUE/FALSE) değer",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Sadece dizi (Array) verisi",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "Scalar subquery tek bir hücre (1 satır × 1 sütun) değer döndüren sorgudur. Bu yüzden SELECT listesinde veya matematiksel ifadelerde kullanılabilir.",
+            "whyOthersIncorrect": {
+                "B": "Tablo döndüren sorgular Table-valued subquery'dir.",
+                "C": "EXISTS Boolean döndürür.",
+                "D": "Array türü spesifik veritiplerindedir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Subquery - Scalar Subquery",
+            "keyTakeaway": "SQL İleri Seviye Soru #79 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000079
+    },
+    {
+        "id": "q_sql_80",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(80) [JSON Data in SQL - JSON_EXTRACT / ->>] Modern ilişkisel veritabanlarında (PostgreSQL, MySQL vb.) saklanan JSON verisinden bir alanı metin (text) olarak çekmek için hangi operatör/fonksiyon kullanılır?",
+        "options": [
+            {
+                "id": "A",
+                "text": "PostgreSQL'de ->> operatörü / JSON_EXTRACT_TEXT",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "SUM()",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "GROUP_CONCAT()",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "STRING_SPLIT()",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "JSON alanlarından metin değeri çekmek için PostgreSQL'de `->>` operatörü, MySQL/SQLite'ta `JSON_EXTRACT()` veya `->>` kullanılır.",
+            "whyOthersIncorrect": {
+                "B": "SUM sayısal toplama yapar.",
+                "C": "GROUP_CONCAT metinleri birleştirir.",
+                "D": "STRING_SPLIT metni parçalar.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: JSON Data in SQL - JSON_EXTRACT / ->>",
+            "keyTakeaway": "SQL İleri Seviye Soru #80 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000080
+    },
+    {
+        "id": "q_sql_81",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(81) [Index - Partial / Filtered Index] Sadece belirli bir koşulu sağlayan satırlar için oluşturulan indekse (Örn: WHERE silindi = FALSE) ne ad verilir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Filtered Index (Kısmi / Filtrelenmiş İndeks)",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Clustered Index",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Global Index",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Bitmap Index",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "Filtered Index (Partial Index), tablonun tamamı yerine sadece WHERE koşuluna uyan satırları indeksleyerek disk alanı ve bakım maliyetinden tasarruf sağlar.",
+            "whyOthersIncorrect": {
+                "B": "Clustered index tüm tabloyu sıralar.",
+                "C": "Global index tüm partitionları kapsar.",
+                "D": "Bitmap index bit matrisi kullanır.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Index - Partial / Filtered Index",
+            "keyTakeaway": "SQL İleri Seviye Soru #81 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000081
+    },
+    {
+        "id": "q_sql_82",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(82) [Transaction - Deadlock (Kilitlenme)] İki farklı transaction'ın birbirinin kilitlediği kaynakları karşılıklı olarak beklemesi sonucu oluşan kilitlenmeye ne ad verilir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Deadlock (Ölümcül Kilitlenme)",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Livelock",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Starvation",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Latch",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "Deadlock, Transaction A'nın Kaynak 1'i kilitleyip Kaynak 2'yi beklemesi, Transaction B'nin ise Kaynak 2'yi kilitleyip Kaynak 1'i beklemesi durumudur. VTYS birini kurban (victim) seçerek çözer.",
+            "whyOthersIncorrect": {
+                "B": "Livelock işlem devam etmesine rağmen ilerleme olmamasıdır.",
+                "C": "Starvation kaynağa erişememe açlığıdır.",
+                "D": "Latch kısa süreli dahili bellek kilididir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Transaction - Deadlock (Kilitlenme)",
+            "keyTakeaway": "SQL İleri Seviye Soru #82 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000082
+    },
+    {
+        "id": "q_sql_83",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(83) [SQL Security - SQL Injection] SQL Injection (SQL Enjeksiyonu) saldırılarını veritabanı uygulama seviyesinde tamamen engellemenin en etkili ve standart yöntemi nedir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Parametreli Sorgular (Prepared Statements / Parameterized Queries) kullanmak",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Girdileri tırnak işaretlerinden arındırmak",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Tüm sorguları büyük harfe çevirmek",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Sadece GET istekleri kullanmak",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "Prepared Statements (Parametreli Sorgular), kullanıcı girdisini SQL komut kodundan ayırarak veri olarak işler ve SQL Injection'ı %100 engeller.",
+            "whyOthersIncorrect": {
+                "B": "Manuel tırnak temizliği kaçırma riskleri taşır.",
+                "C": "Harf boyutu güvenlik sağlamaz.",
+                "D": "GET/POST farkı SQLi engellemez.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: SQL Security - SQL Injection",
+            "keyTakeaway": "SQL İleri Seviye Soru #83 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000083
+    },
+    {
+        "id": "q_sql_84",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(84) [Database Normalization - 3NF] Üçüncü Normal Form (3NF) şartı aşağıdakilerden hangisidir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Tablonun 2NF'de olması ve birincil anahtara geçişli (transitive) bağımlılığın olmaması",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Tabloda tekrarlayan sütunların olmaması",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Tüm alanların atomik olması",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Foreign key bulunmaması",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "3NF kuralı: Tablo 2NF olmalı ve birincil anahtar olmayan bir alan, başka bir birincil anahtar olmayan alana bağımlı olmamalıdır (No Transitive Dependency).",
+            "whyOthersIncorrect": {
+                "B": "1NF kuralıdır.",
+                "C": "1NF kuralıdır.",
+                "D": "Foreign Key ilişkisel veritabanının temelidir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Database Normalization - 3NF",
+            "keyTakeaway": "SQL İleri Seviye Soru #84 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000084
+    },
+    {
+        "id": "q_sql_85",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(85) [Database Normalization - BCNF] Boyce-Codd Normal Form (BCNF), 3NF'den farklı olarak hangi ekstra kuralı zorunlu kılar?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Her determinantın (belirleyicinin) mutlaka bir aday anahtar (candidate key) olması kuralı",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Tabloda hiç NULL değer bulunmaması kuralı",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "En fazla 5 sütun bulunabilmesi kuralı",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Tüm sütunların sayısal olması kuralı",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "BCNF, 3NF'nin daha katı bir halidir. Her X -> Y bağımlılığında X'in mutlaka bir Super Key / Candidate Key olmasını şart koşar.",
+            "whyOthersIncorrect": {
+                "B": "NULL ile ilgisi yoktur.",
+                "C": "Sütun sayısı sınırı yoktur.",
+                "D": "Veri tipi sınırı yoktur.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Database Normalization - BCNF",
+            "keyTakeaway": "SQL İleri Seviye Soru #85 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000085
+    },
+    {
+        "id": "q_sql_86",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(86) [Constraint - CHECK Constraint] Bir tablodaki `yas` sütununa sadece 18 ve üzeri değerlerin girilebilmesini sağlayan kısıtlama (constraint) hangisidir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "CHECK (yas >= 18)",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "DEFAULT (yas >= 18)",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "FOREIGN KEY (yas >= 18)",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "UNIQUE (yas >= 18)",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "CHECK kısıtlaması bir sütuna girilebilecek verilerin belirli bir mantıksal koşula (Boolean expression) uymasını zorunlu kılar.",
+            "whyOthersIncorrect": {
+                "B": "DEFAULT varsayılan değer atar.",
+                "C": "FOREIGN KEY başka tabloya bağlar.",
+                "D": "UNIQUE benzersizlik sağlar.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Constraint - CHECK Constraint",
+            "keyTakeaway": "SQL İleri Seviye Soru #86 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000086
+    },
+    {
+        "id": "q_sql_87",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(87) [Storage - CTE vs Temporary Table] Common Table Expression (CTE) ile Geçici Tablo (Temporary Table) arasındaki temel fark nedir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "CTE hafızada sadece ilgili sorgu süresince var olan mantıksal bir görünümdür; Temporary Table ise tempdb/oturum içinde fiziksel olarak oluşturulur ve indekslenebilir.",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "CTE sadece PostgreSQL'de vardır.",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Temporary Table silinemez.",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "CTE diskte yer kaplar, Temporary Table kaplamaz.",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "CTE tek bir sorgunun çalışma anı (scope) boyunca geçerli mantıksal yapıdır. Temporary Table ise oturum kapanana kadar tempdb'de fiziksel yaşar ve indekslenebilir.",
+            "whyOthersIncorrect": {
+                "B": "CTE tüm gelişmiş VTYS'lerde vardır.",
+                "C": "Temporary table oturum sonunda silinir.",
+                "D": "Tam tersidir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Storage - CTE vs Temporary Table",
+            "keyTakeaway": "SQL İleri Seviye Soru #87 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000087
+    },
+    {
+        "id": "q_sql_88",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(88) [Query Optimization - SARGABLE Queries] SARGABLE (Search Argument Able) sorgu ifadesi ne anlama gelir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Sorgudaki WHERE koşulunun indeksleri etkin bir şekilde kullanabilecek biçimde yazılmış olması",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Sorgunun sonucunun bellekte saklanması",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Sorgunun otomatik olarak paralelleştirilmesi",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Sorguda grafik çizilmesi",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "SARGABLE sorgular, indeksli sütunların üzerinde fonksiyon veya tip dönüşümü yapılmadan yazıldığı için VTYS'nin Index Seek yapabilmesine olanak tanır.",
+            "whyOthersIncorrect": {
+                "B": "Caching mekanizmasıdır.",
+                "C": "Parallel execution plan'dır.",
+                "D": "Grafik çizimi değildir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Query Optimization - SARGABLE Queries",
+            "keyTakeaway": "SQL İleri Seviye Soru #88 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000088
+    },
+    {
+        "id": "q_sql_89",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(89) [Subquery - Scalar Subquery] Scalar Subquery (Skaler Alt Sorgu) ne tür bir sonuç döndürür?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Tam olarak 1 satır ve 1 sütundan oluşan tek bir değer",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Bir tablo dolusu satır ve sütun",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Sadece Boolean (TRUE/FALSE) değer",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Sadece dizi (Array) verisi",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "Scalar subquery tek bir hücre (1 satır × 1 sütun) değer döndüren sorgudur. Bu yüzden SELECT listesinde veya matematiksel ifadelerde kullanılabilir.",
+            "whyOthersIncorrect": {
+                "B": "Tablo döndüren sorgular Table-valued subquery'dir.",
+                "C": "EXISTS Boolean döndürür.",
+                "D": "Array türü spesifik veritiplerindedir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Subquery - Scalar Subquery",
+            "keyTakeaway": "SQL İleri Seviye Soru #89 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000089
+    },
+    {
+        "id": "q_sql_90",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(90) [JSON Data in SQL - JSON_EXTRACT / ->>] Modern ilişkisel veritabanlarında (PostgreSQL, MySQL vb.) saklanan JSON verisinden bir alanı metin (text) olarak çekmek için hangi operatör/fonksiyon kullanılır?",
+        "options": [
+            {
+                "id": "A",
+                "text": "PostgreSQL'de ->> operatörü / JSON_EXTRACT_TEXT",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "SUM()",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "GROUP_CONCAT()",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "STRING_SPLIT()",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "JSON alanlarından metin değeri çekmek için PostgreSQL'de `->>` operatörü, MySQL/SQLite'ta `JSON_EXTRACT()` veya `->>` kullanılır.",
+            "whyOthersIncorrect": {
+                "B": "SUM sayısal toplama yapar.",
+                "C": "GROUP_CONCAT metinleri birleştirir.",
+                "D": "STRING_SPLIT metni parçalar.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: JSON Data in SQL - JSON_EXTRACT / ->>",
+            "keyTakeaway": "SQL İleri Seviye Soru #90 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000090
+    },
+    {
+        "id": "q_sql_91",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(91) [Index - Partial / Filtered Index] Sadece belirli bir koşulu sağlayan satırlar için oluşturulan indekse (Örn: WHERE silindi = FALSE) ne ad verilir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Filtered Index (Kısmi / Filtrelenmiş İndeks)",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Clustered Index",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Global Index",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Bitmap Index",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "Filtered Index (Partial Index), tablonun tamamı yerine sadece WHERE koşuluna uyan satırları indeksleyerek disk alanı ve bakım maliyetinden tasarruf sağlar.",
+            "whyOthersIncorrect": {
+                "B": "Clustered index tüm tabloyu sıralar.",
+                "C": "Global index tüm partitionları kapsar.",
+                "D": "Bitmap index bit matrisi kullanır.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Index - Partial / Filtered Index",
+            "keyTakeaway": "SQL İleri Seviye Soru #91 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000091
+    },
+    {
+        "id": "q_sql_92",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(92) [Transaction - Deadlock (Kilitlenme)] İki farklı transaction'ın birbirinin kilitlediği kaynakları karşılıklı olarak beklemesi sonucu oluşan kilitlenmeye ne ad verilir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Deadlock (Ölümcül Kilitlenme)",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Livelock",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Starvation",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Latch",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "Deadlock, Transaction A'nın Kaynak 1'i kilitleyip Kaynak 2'yi beklemesi, Transaction B'nin ise Kaynak 2'yi kilitleyip Kaynak 1'i beklemesi durumudur. VTYS birini kurban (victim) seçerek çözer.",
+            "whyOthersIncorrect": {
+                "B": "Livelock işlem devam etmesine rağmen ilerleme olmamasıdır.",
+                "C": "Starvation kaynağa erişememe açlığıdır.",
+                "D": "Latch kısa süreli dahili bellek kilididir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Transaction - Deadlock (Kilitlenme)",
+            "keyTakeaway": "SQL İleri Seviye Soru #92 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000092
+    },
+    {
+        "id": "q_sql_93",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(93) [SQL Security - SQL Injection] SQL Injection (SQL Enjeksiyonu) saldırılarını veritabanı uygulama seviyesinde tamamen engellemenin en etkili ve standart yöntemi nedir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Parametreli Sorgular (Prepared Statements / Parameterized Queries) kullanmak",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Girdileri tırnak işaretlerinden arındırmak",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Tüm sorguları büyük harfe çevirmek",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Sadece GET istekleri kullanmak",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "Prepared Statements (Parametreli Sorgular), kullanıcı girdisini SQL komut kodundan ayırarak veri olarak işler ve SQL Injection'ı %100 engeller.",
+            "whyOthersIncorrect": {
+                "B": "Manuel tırnak temizliği kaçırma riskleri taşır.",
+                "C": "Harf boyutu güvenlik sağlamaz.",
+                "D": "GET/POST farkı SQLi engellemez.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: SQL Security - SQL Injection",
+            "keyTakeaway": "SQL İleri Seviye Soru #93 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000093
+    },
+    {
+        "id": "q_sql_94",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(94) [Database Normalization - 3NF] Üçüncü Normal Form (3NF) şartı aşağıdakilerden hangisidir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Tablonun 2NF'de olması ve birincil anahtara geçişli (transitive) bağımlılığın olmaması",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Tabloda tekrarlayan sütunların olmaması",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Tüm alanların atomik olması",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Foreign key bulunmaması",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "3NF kuralı: Tablo 2NF olmalı ve birincil anahtar olmayan bir alan, başka bir birincil anahtar olmayan alana bağımlı olmamalıdır (No Transitive Dependency).",
+            "whyOthersIncorrect": {
+                "B": "1NF kuralıdır.",
+                "C": "1NF kuralıdır.",
+                "D": "Foreign Key ilişkisel veritabanının temelidir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Database Normalization - 3NF",
+            "keyTakeaway": "SQL İleri Seviye Soru #94 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000094
+    },
+    {
+        "id": "q_sql_95",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(95) [Database Normalization - BCNF] Boyce-Codd Normal Form (BCNF), 3NF'den farklı olarak hangi ekstra kuralı zorunlu kılar?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Her determinantın (belirleyicinin) mutlaka bir aday anahtar (candidate key) olması kuralı",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Tabloda hiç NULL değer bulunmaması kuralı",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "En fazla 5 sütun bulunabilmesi kuralı",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Tüm sütunların sayısal olması kuralı",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "BCNF, 3NF'nin daha katı bir halidir. Her X -> Y bağımlılığında X'in mutlaka bir Super Key / Candidate Key olmasını şart koşar.",
+            "whyOthersIncorrect": {
+                "B": "NULL ile ilgisi yoktur.",
+                "C": "Sütun sayısı sınırı yoktur.",
+                "D": "Veri tipi sınırı yoktur.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Database Normalization - BCNF",
+            "keyTakeaway": "SQL İleri Seviye Soru #95 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000095
+    },
+    {
+        "id": "q_sql_96",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(96) [Constraint - CHECK Constraint] Bir tablodaki `yas` sütununa sadece 18 ve üzeri değerlerin girilebilmesini sağlayan kısıtlama (constraint) hangisidir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "CHECK (yas >= 18)",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "DEFAULT (yas >= 18)",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "FOREIGN KEY (yas >= 18)",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "UNIQUE (yas >= 18)",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "CHECK kısıtlaması bir sütuna girilebilecek verilerin belirli bir mantıksal koşula (Boolean expression) uymasını zorunlu kılar.",
+            "whyOthersIncorrect": {
+                "B": "DEFAULT varsayılan değer atar.",
+                "C": "FOREIGN KEY başka tabloya bağlar.",
+                "D": "UNIQUE benzersizlik sağlar.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Constraint - CHECK Constraint",
+            "keyTakeaway": "SQL İleri Seviye Soru #96 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000096
+    },
+    {
+        "id": "q_sql_97",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(97) [Storage - CTE vs Temporary Table] Common Table Expression (CTE) ile Geçici Tablo (Temporary Table) arasındaki temel fark nedir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "CTE hafızada sadece ilgili sorgu süresince var olan mantıksal bir görünümdür; Temporary Table ise tempdb/oturum içinde fiziksel olarak oluşturulur ve indekslenebilir.",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "CTE sadece PostgreSQL'de vardır.",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Temporary Table silinemez.",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "CTE diskte yer kaplar, Temporary Table kaplamaz.",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "CTE tek bir sorgunun çalışma anı (scope) boyunca geçerli mantıksal yapıdır. Temporary Table ise oturum kapanana kadar tempdb'de fiziksel yaşar ve indekslenebilir.",
+            "whyOthersIncorrect": {
+                "B": "CTE tüm gelişmiş VTYS'lerde vardır.",
+                "C": "Temporary table oturum sonunda silinir.",
+                "D": "Tam tersidir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Storage - CTE vs Temporary Table",
+            "keyTakeaway": "SQL İleri Seviye Soru #97 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000097
+    },
+    {
+        "id": "q_sql_98",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(98) [Query Optimization - SARGABLE Queries] SARGABLE (Search Argument Able) sorgu ifadesi ne anlama gelir?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Sorgudaki WHERE koşulunun indeksleri etkin bir şekilde kullanabilecek biçimde yazılmış olması",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Sorgunun sonucunun bellekte saklanması",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Sorgunun otomatik olarak paralelleştirilmesi",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Sorguda grafik çizilmesi",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "SARGABLE sorgular, indeksli sütunların üzerinde fonksiyon veya tip dönüşümü yapılmadan yazıldığı için VTYS'nin Index Seek yapabilmesine olanak tanır.",
+            "whyOthersIncorrect": {
+                "B": "Caching mekanizmasıdır.",
+                "C": "Parallel execution plan'dır.",
+                "D": "Grafik çizimi değildir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Query Optimization - SARGABLE Queries",
+            "keyTakeaway": "SQL İleri Seviye Soru #98 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000098
+    },
+    {
+        "id": "q_sql_99",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(99) [Subquery - Scalar Subquery] Scalar Subquery (Skaler Alt Sorgu) ne tür bir sonuç döndürür?",
+        "options": [
+            {
+                "id": "A",
+                "text": "Tam olarak 1 satır ve 1 sütundan oluşan tek bir değer",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "Bir tablo dolusu satır ve sütun",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "Sadece Boolean (TRUE/FALSE) değer",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "Sadece dizi (Array) verisi",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "Scalar subquery tek bir hücre (1 satır × 1 sütun) değer döndüren sorgudur. Bu yüzden SELECT listesinde veya matematiksel ifadelerde kullanılabilir.",
+            "whyOthersIncorrect": {
+                "B": "Tablo döndüren sorgular Table-valued subquery'dir.",
+                "C": "EXISTS Boolean döndürür.",
+                "D": "Array türü spesifik veritiplerindedir.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: Subquery - Scalar Subquery",
+            "keyTakeaway": "SQL İleri Seviye Soru #99 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000099
+    },
+    {
+        "id": "q_sql_100",
+        "topic": "SQL Database",
+        "difficulty": "advanced",
+        "questionText": "(100) [JSON Data in SQL - JSON_EXTRACT / ->>] Modern ilişkisel veritabanlarında (PostgreSQL, MySQL vb.) saklanan JSON verisinden bir alanı metin (text) olarak çekmek için hangi operatör/fonksiyon kullanılır?",
+        "options": [
+            {
+                "id": "A",
+                "text": "PostgreSQL'de ->> operatörü / JSON_EXTRACT_TEXT",
+                "isCorrect": true
+            },
+            {
+                "id": "B",
+                "text": "SUM()",
+                "isCorrect": false
+            },
+            {
+                "id": "C",
+                "text": "GROUP_CONCAT()",
+                "isCorrect": false
+            },
+            {
+                "id": "D",
+                "text": "STRING_SPLIT()",
+                "isCorrect": false
+            },
+            {
+                "id": "E",
+                "text": "Yukarıdakilerin hiçbiri",
+                "isCorrect": false
+            }
+        ],
+        "correctOptionId": "A",
+        "explanation": {
+            "whyCorrect": "JSON alanlarından metin değeri çekmek için PostgreSQL'de `->>` operatörü, MySQL/SQLite'ta `JSON_EXTRACT()` veya `->>` kullanılır.",
+            "whyOthersIncorrect": {
+                "B": "SUM sayısal toplama yapar.",
+                "C": "GROUP_CONCAT metinleri birleştirir.",
+                "D": "STRING_SPLIT metni parçalar.",
+                "E": "E şıkkı bu soru için geçerli bir yanıt değildir."
+            },
+            "topicSummary": "SQL Konu Analizi: JSON Data in SQL - JSON_EXTRACT / ->>",
+            "keyTakeaway": "SQL İleri Seviye Soru #100 - Veritabanı ve sorgu optimizasyon kuralı."
+        },
+        "createdAt": 1710000000100
+    }
+],
   'İngilizce Grammar': [
     {
         "id": "q_oxford_1",

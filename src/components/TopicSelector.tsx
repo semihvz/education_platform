@@ -8,14 +8,14 @@ interface TopicSelectorProps {
 }
 
 const PRESET_TOPICS = [
+  { name: 'SQL Database', icon: '💾', desc: 'İleri Seviye SQL, Window Functions & CTE (100 Zor Soru)' },
   { name: 'İngilizce Grammar', icon: '🇬🇧', desc: 'Oxford Practice Grammar 100 Soru Bitirme Sınavı' },
   { name: 'Yapay Zeka & LLM', icon: '🤖', desc: 'Derin öğrenme, Transformer & AI' },
   { name: 'Kuantum Fiziği', icon: '⚛️', desc: 'Süperpozisyon, Dolanıklık & Atom' },
-  { name: 'Osmanlı & Dünya Tarihi', icon: '🏛️', desc: 'Tarihi zaferler & Dönüm noktaları' },
   { name: 'Python & Algoritmalar', icon: '🐍', desc: 'Kodlama, Veri yapıları & Yazılım' },
+  { name: 'Osmanlı & Dünya Tarihi', icon: '🏛️', desc: 'Tarihi zaferler & Dönüm noktaları' },
   { name: 'Uzay & Astronomi', icon: '🚀', desc: 'Karadelikler, Galaksiler & Evren' },
   { name: 'Felsefe & Mantık', icon: '📜', desc: 'Düşünce tarihi, Etik & Mantık' },
-  { name: 'Genel Biyoloji & Genetik', icon: '🧬', desc: 'DNA, Hücre biyolojisi & Evrim' },
 ];
 
 export const TopicSelector: React.FC<TopicSelectorProps> = ({ onGenerate, isLoading }) => {
