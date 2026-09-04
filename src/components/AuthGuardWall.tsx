@@ -1,0 +1,78 @@
+import React from 'react';
+import { Lock, LogIn, Zap, ShieldCheck, Sparkles, BookOpen, Layers } from 'lucide-react';
+import { quickDemoLogin } from '../services/storageService';
+import type { UserProfile } from '../types/quiz';
+
+interface AuthGuardWallProps {
+  onOpenAuth: () => void;
+  onLoginSuccess: (user: UserProfile) => void;
+}
+
+export const AuthGuardWall: React.FC<AuthGuardWallProps> = ({ onOpenAuth, onLoginSuccess }) => {
+  const handleDemoLogin = () => {
+    const user = quickDemoLogin();
+    onLoginSuccess(user);
+  };
+
+  return (
+    <div className="auth-guard-wall">
+      <div className="guard-card">
+        {/* Lock Shield Icon */}
+        <div className="guard-icon-box">
+          <Lock className="guard-lock-icon" />
+        </div>
+
+        <h2>🔒 İçeriğe Erişim İçin Giriş Yapın</h2>
+        <p className="guard-desc">
+          MindPulse AI platformunda yer alan <strong>100 Oxford İngilizce Sınavı</strong>, <strong>100 İleri Seviye SQL Soru Bankası</strong>, 
+          Yapay Zeka Soru Üreticisi ve 3D Bilgi Kartlarına erişmek için oturum açmanız gerekmektedir.
+        </p>
+
+        {/* Feature Highlights Grid */}
+        <div className="guard-features-grid">
+          <div className="guard-feature-item">
+            <BookOpen className="feat-icon text-indigo" />
+            <div>
+              <strong>200+ Gömülü Soru</strong>
+              <span>Oxford & SQL İleri Seviye Testleri</span>
+            </div>
+          </div>
+          <div className="guard-feature-item">
+            <Sparkles className="feat-icon text-purple" />
+            <div>
+              <strong>Dinamik AI Üretici</strong>
+              <span>İstediğin konuda yeni sorular türet</span>
+            </div>
+          </div>
+          <div className="guard-feature-item">
+            <Layers className="feat-icon text-amber" />
+            <div>
+              <strong>3D Bilgi Kartları</strong>
+              <span>Görsel formüller ve hızlı tekrar</span>
+            </div>
+          </div>
+          <div className="guard-feature-item">
+            <ShieldCheck className="feat-icon text-green" />
+            <div>
+              <strong>Kişisel İlerleme</strong>
+              <span>XP puanları, seriler ve kaydedilenler</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Primary Action Buttons */}
+        <div className="guard-actions">
+          <button className="guard-primary-btn" onClick={onOpenAuth}>
+            <LogIn className="btn-icon" />
+            <span>Giriş Yap / Kayıt Ol</span>
+          </button>
+
+          <button className="guard-demo-btn" onClick={handleDemoLogin}>
+            <Zap className="btn-icon" />
+            <span>⚡ Hızlı Demo Girişi (Saniyeler İçinde Dene)</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};

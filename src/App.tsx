@@ -10,6 +10,7 @@ import { SettingsModal } from './components/SettingsModal';
 import { SavedQuestionsModal } from './components/SavedQuestionsModal';
 import { StatsDashboard } from './components/StatsDashboard';
 import { AuthModal } from './components/AuthModal';
+import { AuthGuardWall } from './components/AuthGuardWall';
 
 import type { Question, Difficulty, AppSettings, UserStats, SavedQuestionItem, Flashcard, SavedFlashcardItem, UserProfile } from './types/quiz';
 import { generateQuestionFromAI, generateFlashcardsFromAI, getPreloadedQuestions } from './services/aiService';
@@ -210,75 +211,88 @@ export function App() {
       )}
 
       <main className="main-container">
-        {/* 1. ALAN: AI ILE SORU URET (DYANMIC GENERATOR) */}
-        {activeMode === 'ai-quiz' && (
+        {!currentUser ? (
+          <AuthGuardWall
+            onOpenAuth={() => setShowAuthModal(true)}
+            onLoginSuccess={(user) => {
+              setCurrentUser(user);
+              setSaveToast(`Hoş geldin, ${user.name}! 👋`);
+              setTimeout(() => setSaveToast(null), 2500);
+            }}
+          />
+        ) : (
           <>
-            {!currentQuestion && (
-              <TopicSelector
-                onGenerate={handleGenerateQuestion}
-                isLoading={isLoadingAI}
-              />
-            )}
-
-            {currentQuestion && (
-              <div className="active-quiz-view">
-                <QuestionCard
-                  question={currentQuestion}
-                  onAnswerSubmit={(optId) => {
-                    setUserAnswerId(optId);
-                    handleAnswerSubmit(currentQuestion, optId);
-                  }}
-                  answeredOptionId={userAnswerId}
-                />
-
-                {userAnswerId !== null && (
-                  <ExplanationCard
-                    question={currentQuestion}
-                    userAnswerId={userAnswerId}
-                    isSaved={isCurrentQuestionSaved(currentQuestion.id)}
-                    onToggleSave={() => handleToggleSaveQuestion(currentQuestion, userAnswerId)}
-                    onNextQuestion={() => {
-                      if (currentQuestion) {
-                        handleGenerateQuestion(currentQuestion.topic, currentQuestion.difficulty);
-                      } else {
-                        setCurrentQuestion(null);
-                        setUserAnswerId(null);
-                      }
-                    }}
+            {/* 1. ALAN: AI ILE SORU URET (DYANMIC GENERATOR) */}
+            {activeMode === 'ai-quiz' && (
+              <>
+                {!currentQuestion && (
+                  <TopicSelector
+                    onGenerate={handleGenerateQuestion}
+                    isLoading={isLoadingAI}
                   />
                 )}
-              </div>
+
+                {currentQuestion && (
+                  <div className="active-quiz-view">
+                    <QuestionCard
+                      question={currentQuestion}
+                      onAnswerSubmit={(optId) => {
+                        setUserAnswerId(optId);
+                        handleAnswerSubmit(currentQuestion, optId);
+                      }}
+                      answeredOptionId={userAnswerId}
+                    />
+
+                    {userAnswerId !== null && (
+                      <ExplanationCard
+                        question={currentQuestion}
+                        userAnswerId={userAnswerId}
+                        isSaved={isCurrentQuestionSaved(currentQuestion.id)}
+                        onToggleSave={() => handleToggleSaveQuestion(currentQuestion, userAnswerId)}
+                        onNextQuestion={() => {
+                          if (currentQuestion) {
+                            handleGenerateQuestion(currentQuestion.topic, currentQuestion.difficulty);
+                          } else {
+                            setCurrentQuestion(null);
+                            setUserAnswerId(null);
+                          }
+                        }}
+                      />
+                    )}
+                  </div>
+                )}
+              </>
             )}
-          </>
-        )}
 
-        {/* 2. ALAN: GOMULU SORULARI GOSTER / COZ (100 OXFORD SINAVI) */}
-        {activeMode === 'embedded-bank' && (
-          <EmbeddedQuestionBankView
-            questions={embeddedQuestions}
-            onAnswerSubmit={handleAnswerSubmit}
-            onSaveQuestion={handleToggleSaveQuestion}
-            isQuestionSaved={isCurrentQuestionSaved}
-          />
-        )}
-
-        {/* 3. ALAN: BILGI KARTLARI (FLASHCARD SYSTEM) */}
-        {activeMode === 'flashcards' && (
-          <>
-            {!currentDeck && (
-              <FlashcardTopicSelector
-                onGenerateDeck={handleGenerateFlashcardDeck}
-                isLoading={isLoadingAI}
+            {/* 2. ALAN: GOMULU SORULARI GOSTER / COZ (100 OXFORD SINAVI) */}
+            {activeMode === 'embedded-bank' && (
+              <EmbeddedQuestionBankView
+                questions={embeddedQuestions}
+                onAnswerSubmit={handleAnswerSubmit}
+                onSaveQuestion={handleToggleSaveQuestion}
+                isQuestionSaved={isCurrentQuestionSaved}
               />
             )}
 
-            {currentDeck && (
-              <FlashcardDeckView
-                cards={currentDeck}
-                onSaveCard={handleToggleSaveFlashcard}
-                isCardSaved={isFlashcardSaved}
-                onNewDeckRequest={() => setCurrentDeck(null)}
-              />
+            {/* 3. ALAN: BILGI KARTLARI (FLASHCARD SYSTEM) */}
+            {activeMode === 'flashcards' && (
+              <>
+                {!currentDeck && (
+                  <FlashcardTopicSelector
+                    onGenerateDeck={handleGenerateFlashcardDeck}
+                    isLoading={isLoadingAI}
+                  />
+                )}
+
+                {currentDeck && (
+                  <FlashcardDeckView
+                    cards={currentDeck}
+                    onSaveCard={handleToggleSaveFlashcard}
+                    isCardSaved={isFlashcardSaved}
+                    onNewDeckRequest={() => setCurrentDeck(null)}
+                  />
+                )}
+              </>
             )}
           </>
         )}
