@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import confetti from 'canvas-confetti';
 import { 
   CheckCircle, 
@@ -9,7 +9,12 @@ import {
   BookmarkCheck, 
   RefreshCw, 
   Sparkles,
-  Lightbulb
+  Lightbulb,
+  GraduationCap,
+  X,
+  FileText,
+  AlertTriangle,
+  Check
 } from 'lucide-react';
 import type { Question } from '../types/quiz';
 
@@ -29,10 +34,10 @@ export const ExplanationCard: React.FC<ExplanationCardProps> = ({
   onNextQuestion,
 }) => {
   const isCorrect = userAnswerId === question.correctOptionId;
+  const [showFullLessonModal, setShowFullLessonModal] = useState<boolean>(false);
 
   useEffect(() => {
     if (isCorrect) {
-      // Confetti burst for correct answer
       try {
         confetti({
           particleCount: 80,
@@ -118,6 +123,14 @@ export const ExplanationCard: React.FC<ExplanationCardProps> = ({
       {/* Bottom Action Toolbar */}
       <div className="explanation-actions">
         <button 
+          className="lesson-explain-btn"
+          onClick={() => setShowFullLessonModal(true)}
+        >
+          <GraduationCap className="btn-icon" />
+          <span>📖 Konuyu Tam Olarak Anlat</span>
+        </button>
+
+        <button 
           className={`save-btn ${isSaved ? 'saved' : ''}`}
           onClick={onToggleSave}
         >
@@ -136,9 +149,83 @@ export const ExplanationCard: React.FC<ExplanationCardProps> = ({
 
         <button className="next-btn" onClick={onNextQuestion}>
           <RefreshCw className="btn-icon" />
-          <span>Yeni Soru Üret</span>
+          <span>Sonraki Soru</span>
         </button>
       </div>
+
+      {/* FULL LESSON EXPLANATION MODAL */}
+      {showFullLessonModal && (
+        <div className="modal-overlay" onClick={() => setShowFullLessonModal(false)}>
+          <div className="modal-content full-lesson-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <div className="modal-title-group">
+                <GraduationCap className="modal-icon text-indigo" />
+                <div>
+                  <h2>📖 Kapsamlı Konu Anlatım Rehberi</h2>
+                  <p className="modal-subtitle">{question.topic} — İleri Seviye Ders Analizi</p>
+                </div>
+              </div>
+              <button className="close-btn" onClick={() => setShowFullLessonModal(false)}>
+                <X />
+              </button>
+            </div>
+
+            <div className="modal-body full-lesson-body">
+              {/* Section A: Core Theoretical Foundation */}
+              <div className="lesson-block">
+                <div className="lesson-block-title">
+                  <FileText className="block-icon text-blue" />
+                  <h3>1. Konunun Mantığı ve Teorik Altyapısı</h3>
+                </div>
+                <p className="lesson-text">
+                  {question.explanation.topicSummary}
+                </p>
+                <div className="lesson-highlight-box">
+                  <strong>🎯 Sorunun Doğru Çözüm Anahtarı ({question.correctOptionId}):</strong>
+                  <p>{question.explanation.whyCorrect}</p>
+                </div>
+              </div>
+
+              {/* Section B: Exam Tips & Pitfalls */}
+              <div className="lesson-block">
+                <div className="lesson-block-title">
+                  <AlertTriangle className="block-icon text-amber" />
+                  <h3>2. Sınavlarda En Çok Yapılan Hatalar ve Çeldiriciler</h3>
+                </div>
+                <div className="pitfalls-list">
+                  {Object.entries(question.explanation.whyOthersIncorrect || {}).map(([optId, text]) => (
+                    <div key={optId} className="pitfall-card">
+                      <div className="pitfall-badge">Şık {optId} Çeldirici Tuzağı</div>
+                      <p>{text}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Section C: Golden Rule / Takeaway */}
+              <div className="lesson-block">
+                <div className="lesson-block-title">
+                  <Check className="block-icon text-green" />
+                  <h3>3. Altın Kural ve Hafıza Notu</h3>
+                </div>
+                <div className="golden-takeaway-card">
+                  <Lightbulb className="takeaway-big-icon" />
+                  <div>
+                    <h4>Unutmamanız Gereken Ana Kural:</h4>
+                    <p>{question.explanation.keyTakeaway || "Bu konuda temel mantık adımlarını sırasıyla izleyin ve çeldirici ifadelerdeki istisnalara dikkat edin."}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="modal-footer">
+              <button className="primary-modal-btn" onClick={() => setShowFullLessonModal(false)}>
+                Anladım, Kapat
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
