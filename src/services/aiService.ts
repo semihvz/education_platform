@@ -41,6 +41,1668 @@ export function getPreloadedQuestions(): Question[] {
 }
 
 const FALLBACK_TOPICS_DATABASE: Record<string, Question[]> = {
+  'Matematik': [
+    {
+      id: 'q_math_1',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: '\\frac{\\log(3!) - \\log(M)}{\\log(2!)} = 1 eşitliğini sağlayan M gerçel sayısı kaçtır?',
+      options: [
+        { id: 'A', text: '3', isCorrect: true },
+        { id: 'B', text: '4', isCorrect: false },
+        { id: 'C', text: '5', isCorrect: false },
+        { id: 'D', text: '6', isCorrect: false },
+        { id: 'E', text: '7', isCorrect: false },
+      ],
+      correctOptionId: 'A',
+      explanation: {
+        whyCorrect: '\\log(3!) - \\log(M) = 1 \\cdot \\log(2!) \\Rightarrow \\log(6/M) = \\log(2) \\Rightarrow 6/M = 2 \\Rightarrow M = 3.',
+        whyOthersIncorrect: {
+          B: 'M = 4 için log(6/4) = log(1.5) ≠ log(2) olur.',
+          C: 'M = 5 için log(6/5) = log(1.2) ≠ log(2) olur.',
+          D: 'M = 6 için log(6/6) = log(1) = 0 ≠ log(2) olur.',
+          E: 'M = 7 için log(6/7) ≠ log(2) olur.'
+        },
+        topicSummary: 'Logaritma Özellikleri: \\log(a) - \\log(b) = \\log(a/b) ve k \\cdot \\log(a) = \\log(a^k).',
+        keyTakeaway: 'Faktöriyel değerlerini açıp logaritma fark kuralını uygulayarak sonuca ulaşılır.'
+      },
+      createdAt: 1710000000101
+    },
+    {
+      id: 'q_math_2',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: '\\frac{\\log(4!) - \\log(M)}{\\log(3!)} = 1 eşitliğini sağlayan M gerçel sayısı kaçtır?',
+      options: [
+        { id: 'A', text: '3', isCorrect: false },
+        { id: 'B', text: '4', isCorrect: true },
+        { id: 'C', text: '5', isCorrect: false },
+        { id: 'D', text: '6', isCorrect: false },
+        { id: 'E', text: '7', isCorrect: false },
+      ],
+      correctOptionId: 'B',
+      explanation: {
+        whyCorrect: '\\log(4!) - \\log(M) = \\log(3!) \\Rightarrow \\log(24/M) = \\log(6) \\Rightarrow 24/M = 6 \\Rightarrow M = 4.',
+        whyOthersIncorrect: {
+          A: 'M = 3 için 24/3 = 8 ≠ 6 olur.',
+          C: 'M = 5 için 24/5 = 4.8 ≠ 6 olur.',
+          D: 'M = 6 için 24/6 = 4 ≠ 6 olur.',
+          E: 'M = 7 için 24/7 ≠ 6 olur.'
+        },
+        topicSummary: 'Logaritma Çıkarma Kuralı ve Faktöriyel Bölümü (n! / (n-1)! = n).',
+        keyTakeaway: '4! / 3! = 4 olduğu için M = 4 bulunur.'
+      },
+      createdAt: 1710000000102
+    },
+    {
+      id: 'q_math_3',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: '\\frac{\\log(5!) - \\log(M)}{\\log(4!)} = 1 eşitliğini sağlayan M gerçel sayısı kaçtır?',
+      options: [
+        { id: 'A', text: '3', isCorrect: false },
+        { id: 'B', text: '4', isCorrect: false },
+        { id: 'C', text: '5', isCorrect: true },
+        { id: 'D', text: '6', isCorrect: false },
+        { id: 'E', text: '7', isCorrect: false },
+      ],
+      correctOptionId: 'C',
+      explanation: {
+        whyCorrect: '\\log(120/M) = \\log(24) \\Rightarrow 120/M = 24 \\Rightarrow M = 5.',
+        whyOthersIncorrect: {
+          A: 'M = 3 için 120/3 = 40 ≠ 24.',
+          B: 'M = 4 için 120/4 = 30 ≠ 24.',
+          D: 'M = 6 için 120/6 = 20 ≠ 24.',
+          E: 'M = 7 için 120/7 ≠ 24.'
+        },
+        topicSummary: 'n! = n \\times (n-1)! eşitliğinden 5! / 4! = 5 elde edilir.',
+        keyTakeaway: 'Logaritmik denklemde log(5!/M) = log(4!) ise M = 5’tir.'
+      },
+      createdAt: 1710000000103
+    },
+    {
+      id: 'q_math_4',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: '\\frac{\\log(6!) - \\log(M)}{\\log(5!)} = 1 eşitliğini sağlayan M gerçel sayısı kaçtır?',
+      options: [
+        { id: 'A', text: '3', isCorrect: false },
+        { id: 'B', text: '4', isCorrect: false },
+        { id: 'C', text: '5', isCorrect: false },
+        { id: 'D', text: '6', isCorrect: true },
+        { id: 'E', text: '7', isCorrect: false },
+      ],
+      correctOptionId: 'D',
+      explanation: {
+        whyCorrect: '\\log(6!/M) = \\log(5!) \\Rightarrow 6!/M = 5! \\Rightarrow M = 6!/5! = 6.',
+        whyOthersIncorrect: {
+          A: 'M = 3 yanlış seçenektir.',
+          B: 'M = 4 yanlış seçenektir.',
+          C: 'M = 5 yanlış seçenektir.',
+          E: 'M = 7 yanlış seçenektir.'
+        },
+        topicSummary: 'Arka arkaya faktöriyel oranları n! / (n-1)! = n kuralını verir.',
+        keyTakeaway: '6! / 5! = 6 olduğundan M = 6 değerini alır.'
+      },
+      createdAt: 1710000000104
+    },
+    {
+      id: 'q_math_5',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: '\\frac{\\log(7!) - \\log(M)}{\\log(6!)} = 1 eşitliğini sağlayan M gerçel sayısı kaçtır?',
+      options: [
+        { id: 'A', text: '3', isCorrect: false },
+        { id: 'B', text: '4', isCorrect: false },
+        { id: 'C', text: '5', isCorrect: false },
+        { id: 'D', text: '6', isCorrect: false },
+        { id: 'E', text: '7', isCorrect: true },
+      ],
+      correctOptionId: 'E',
+      explanation: {
+        whyCorrect: '\\log(7!/M) = \\log(6!) \\Rightarrow 7!/M = 6! \\Rightarrow M = 7!/6! = 7.',
+        whyOthersIncorrect: {
+          A: 'M = 3 yanlış seçenektir.',
+          B: 'M = 4 yanlış seçenektir.',
+          C: 'M = 5 yanlış seçenektir.',
+          D: 'M = 6 yanlış seçenektir.'
+        },
+        topicSummary: 'Faktöriyel ve Logaritma Eşitlikleri.',
+        keyTakeaway: '7! = 7 \\cdot 6! olduğu için M = 7 çıkar.'
+      },
+      createdAt: 1710000000105
+    },
+    {
+      id: 'q_math_6',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: '\\frac{\\log(5!) - \\log(M)}{\\log(2!)} = 3 eşitliğini sağlayan M gerçel sayısı kaçtır?',
+      options: [
+        { id: 'A', text: '13', isCorrect: false },
+        { id: 'B', text: '14', isCorrect: false },
+        { id: 'C', text: '15', isCorrect: true },
+        { id: 'D', text: '16', isCorrect: false },
+        { id: 'E', text: '17', isCorrect: false },
+      ],
+      correctOptionId: 'C',
+      explanation: {
+        whyCorrect: '\\log(5!) - \\log(M) = 3 \\cdot \\log(2!) = \\log(2^3) = \\log(8). Buradan 120/M = 8 \\Rightarrow M = 120/8 = 15.',
+        whyOthersIncorrect: {
+          A: '120/13 ≈ 9.23 ≠ 8.',
+          B: '120/14 ≈ 8.57 ≠ 8.',
+          D: '120/16 = 7.5 ≠ 8.',
+          E: '120/17 ≈ 7.05 ≠ 8.'
+        },
+        topicSummary: 'Logaritmada k üs olarak içeri girer: k \\cdot \\log(x) = \\log(x^k). 2! = 2 ve 2^3 = 8’dir.',
+        keyTakeaway: '120 / M = 8 denkleminden M = 15 bulunur.'
+      },
+      createdAt: 1710000000106
+    },
+    {
+      id: 'q_math_7',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: '\\frac{\\log(6!) - \\log(M)}{\\log(2!)} = 3 eşitliğini sağlayan M gerçel sayısı kaçtır?',
+      options: [
+        { id: 'A', text: '88', isCorrect: false },
+        { id: 'B', text: '89', isCorrect: false },
+        { id: 'C', text: '90', isCorrect: true },
+        { id: 'D', text: '91', isCorrect: false },
+        { id: 'E', text: '92', isCorrect: false },
+      ],
+      correctOptionId: 'C',
+      explanation: {
+        whyCorrect: '6! = 720 ve 3 \\cdot \\log(2!) = \\log(8). \\log(720/M) = \\log(8) \\Rightarrow 720/M = 8 \\Rightarrow M = 720/8 = 90.',
+        whyOthersIncorrect: {
+          A: '720 / 88 ≈ 8.18 ≠ 8.',
+          B: '720 / 89 ≈ 8.089 ≠ 8.',
+          D: '720 / 91 ≈ 7.91 ≠ 8.',
+          E: '720 / 92 ≈ 7.82 ≠ 8.'
+        },
+        topicSummary: '720 / 8 = 90 faktöriyel bölme işlemi.',
+        keyTakeaway: 'Logaritma ve faktöriyel işlemlerinde üs kuralı 3 \\log(2) = \\log(8) uygulanır.'
+      },
+      createdAt: 1710000000107
+    },
+    {
+      id: 'q_math_8',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: '\\frac{\\log(8!) - \\log(M)}{\\log(4!)} = 2 eşitliğini sağlayan M gerçel sayısı kaçtır?',
+      options: [
+        { id: 'A', text: '68', isCorrect: false },
+        { id: 'B', text: '69', isCorrect: false },
+        { id: 'C', text: '70', isCorrect: true },
+        { id: 'D', text: '71', isCorrect: false },
+        { id: 'E', text: '72', isCorrect: false },
+      ],
+      correctOptionId: 'C',
+      explanation: {
+        whyCorrect: '4! = 24. 2 \\cdot \\log(24) = \\log(24^2) = \\log(576). 8! = 40320. 40320 / M = 576 \\Rightarrow M = 40320 / 576 = 70.',
+        whyOthersIncorrect: {
+          A: '576 \\times 68 = 39168 ≠ 8!.',
+          B: '576 \\times 69 = 39744 ≠ 8!.',
+          D: '576 \\times 71 = 40896 ≠ 8!.',
+          E: '576 \\times 72 = 41472 ≠ 8!.'
+        },
+        topicSummary: '8! / (4!)^2 = (8 \\cdot 7 \\cdot 6 \\cdot 5) / 24 = 1680 / 24 = 70.',
+        keyTakeaway: 'M = 8! / (4!)^2 sadeleştirmesiyle 70 sonucunu verir.'
+      },
+      createdAt: 1710000000108
+    },
+    {
+      id: 'q_math_9',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: '\\frac{\\log(9!) - \\log(M)}{\\log(3!)} = 3 eşitliğini sağlayan M gerçel sayısı kaçtır?',
+      options: [
+        { id: 'A', text: '1678', isCorrect: false },
+        { id: 'B', text: '1679', isCorrect: false },
+        { id: 'C', text: '1680', isCorrect: true },
+        { id: 'D', text: '1681', isCorrect: false },
+        { id: 'E', text: '1682', isCorrect: false },
+      ],
+      correctOptionId: 'C',
+      explanation: {
+        whyCorrect: '3! = 6 ve 3 \\cdot \\log(6) = \\log(6^3) = \\log(216). 9! = 362880. 362880 / M = 216 \\Rightarrow M = 362880 / 216 = 1680.',
+        whyOthersIncorrect: {
+          A: '216 \\times 1678 = 362448 ≠ 9!.',
+          B: '216 \\times 1679 = 362664 ≠ 9!.',
+          D: '216 \\times 1681 = 363096 ≠ 9!.',
+          E: '216 \\times 1682 = 363312 ≠ 9!.'
+        },
+        topicSummary: '9! / 6^3 = 362880 / 216 = 1680 faktöriyel bölmesi.',
+        keyTakeaway: 'Logaritmik denklemde M = 9! / (3!)^3 = 1680 hesaplanır.'
+      },
+      createdAt: 1710000000109
+    },
+    {
+      id: 'q_math_10',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: '\\frac{\\log(10!) - \\log(M)}{\\log(5!)} = 2 eşitliğini sağlayan M gerçel sayısı kaçtır?',
+      options: [
+        { id: 'A', text: '250', isCorrect: false },
+        { id: 'B', text: '251', isCorrect: false },
+        { id: 'C', text: '252', isCorrect: true },
+        { id: 'D', text: '253', isCorrect: false },
+        { id: 'E', text: '254', isCorrect: false },
+      ],
+      correctOptionId: 'C',
+      explanation: {
+        whyCorrect: '5! = 120 ve 2 \\cdot \\log(120) = \\log(120^2) = \\log(14400). 10! / M = 14400 \\Rightarrow M = 10! / (5!)^2 = C(10, 5) = 252.',
+        whyOthersIncorrect: {
+          A: '14400 \\times 250 = 3600000 ≠ 10!.',
+          B: '14400 \\times 251 = 3614400 ≠ 10!.',
+          D: '14400 \\times 253 = 3643200 ≠ 10!.',
+          E: '14400 \\times 254 = 3657600 ≠ 10!.'
+        },
+        topicSummary: '10! / (5! \\cdot 5!) ifadesi kombinasyon formülü olan C(10, 5) = 252’dir.',
+        keyTakeaway: '10! / (5!)^2 oranı kombinasyon hesabı C(10, 5) = 252’ye eşittir.'
+      },
+      createdAt: 1710000000110
+    },
+    {
+      id: 'q_math_11',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'Gerçel sayılar kümesi üzerinde tanımlı bir f fonksiyonu için \\(f(x) = 2x + 50\\) eşitliği sağlanıyor. Buna göre \\((f \\circ f)(20)\\) değeri kaçtır?',
+      options: [
+        { id: 'A', text: '225', isCorrect: false },
+        { id: 'B', text: '235', isCorrect: false },
+        { id: 'C', text: '230', isCorrect: true },
+        { id: 'D', text: '240', isCorrect: false },
+        { id: 'E', text: '220', isCorrect: false },
+      ],
+      correctOptionId: 'C',
+      explanation: {
+        whyCorrect: 'Önce içteki f(20) hesaplanır: f(20) = 2(20) + 50 = 40 + 50 = 90. Sonra çıkan değer dıştaki fonksiyona yazılır: (f \\circ f)(20) = f(90) = 2(90) + 50 = 180 + 50 = 230.',
+        whyOthersIncorrect: {
+          A: 'İçteki veya dıştaki işlemde toplama hatası yapılmıştır.',
+          B: 'İşlem önceliği veya çarpma hatası yapılmıştır.',
+          D: 'f(20) = 90 yerine 95 gibi yanlış bir adım alınmıştır.',
+          E: 'İkinci adımda 50 yerine 40 eklenmiş olabilir.'
+        },
+        topicSummary: 'Bileşke Fonksiyon Kuralı: (f \\circ g)(x) = f(g(x)). İşleme en içteki fonksiyondan başlanır.',
+        keyTakeaway: '(f \\circ f)(20) için önce f(20) bulunur, elde edilen sonuç tekrar f fonksiyonunda yerine konur.'
+      },
+      createdAt: 1710000000111
+    },
+    {
+      id: 'q_math_12',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'Gerçel sayılar kümesi üzerinde tanımlı bir f fonksiyonu için \\(f(x) = 4x - 30\\) eşitliği sağlanıyor. Buna göre \\((f \\circ f)(15)\\) değeri kaçtır?',
+      options: [
+        { id: 'A', text: '95', isCorrect: false },
+        { id: 'B', text: '80', isCorrect: false },
+        { id: 'C', text: '100', isCorrect: false },
+        { id: 'D', text: '90', isCorrect: true },
+        { id: 'E', text: '85', isCorrect: false },
+      ],
+      correctOptionId: 'D',
+      explanation: {
+        whyCorrect: 'f(15) = 4(15) - 30 = 60 - 30 = 30. Ardından f(30) = 4(30) - 30 = 120 - 30 = 90.',
+        whyOthersIncorrect: {
+          A: 'Çıkarma hatası yapılmıştır.',
+          B: '30 yerine 20 yazılırsa 80 çıkar.',
+          C: '120 - 20 = 100 hatası yapılmıştır.',
+          E: 'Yanlış işlem takibi.'
+        },
+        topicSummary: 'Doğrusal fonksiyonların bileşkesinde adım adım değer hesabı.',
+        keyTakeaway: 'f(15) = 30 ve f(30) = 90 olarak bulunur.'
+      },
+      createdAt: 1710000000112
+    },
+    {
+      id: 'q_math_13',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'Gerçel sayılar kümesi üzerinde tanımlı bir f fonksiyonu için \\(f(x) = 5x + 10\\) eşitliği sağlanıyor. Buna göre \\((f \\circ f)(5)\\) değeri kaçtır?',
+      options: [
+        { id: 'A', text: '185', isCorrect: true },
+        { id: 'B', text: '190', isCorrect: false },
+        { id: 'C', text: '175', isCorrect: false },
+        { id: 'D', text: '195', isCorrect: false },
+        { id: 'E', text: '180', isCorrect: false },
+      ],
+      correctOptionId: 'A',
+      explanation: {
+        whyCorrect: 'f(5) = 5(5) + 10 = 25 + 10 = 35. Buradan f(35) = 5(35) + 10 = 175 + 10 = 185.',
+        whyOthersIncorrect: {
+          B: '175 + 15 hatası.',
+          C: 'Son adımdaki +10 unutulursa 175 bulunur.',
+          D: '5 x 35 hesabı yanlış yapılmıştır.',
+          E: 'Toplama hatası.'
+        },
+        topicSummary: 'Bileşke fonksiyon değer hesabı.',
+        keyTakeaway: 'f(5) = 35 ve f(35) = 185 sonucunu verir.'
+      },
+      createdAt: 1710000000113
+    },
+    {
+      id: 'q_math_14',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'Gerçel sayılar kümesi üzerinde tanımlı bir f fonksiyonu için \\(f(x) = 2x - 40\\) eşitliği sağlanıyor. Buna göre \\((f \\circ f)(30)\\) değeri kaçtır?',
+      options: [
+        { id: 'A', text: '10', isCorrect: false },
+        { id: 'B', text: '-10', isCorrect: false },
+        { id: 'C', text: '20', isCorrect: false },
+        { id: 'D', text: '30', isCorrect: false },
+        { id: 'E', text: '0', isCorrect: true },
+      ],
+      correctOptionId: 'E',
+      explanation: {
+        whyCorrect: 'f(30) = 2(30) - 40 = 60 - 40 = 20. Ardından f(20) = 2(20) - 40 = 40 - 40 = 0.',
+        whyOthersIncorrect: {
+          A: 'Çıkarma hatası.',
+          B: 'İşaret hatası.',
+          C: 'İlk adım f(30) = 20 sonucudur.',
+          D: 'Başlangıçtaki x değeri çeldiricidir.'
+        },
+        topicSummary: 'Sıfır sonucunu veren bileşke fonksiyon örneği.',
+        keyTakeaway: 'f(30) = 20 ve f(20) = 0 elde edilir.'
+      },
+      createdAt: 1710000000114
+    },
+    {
+      id: 'q_math_15',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'Gerçel sayılar kümesi üzerinde tanımlı bir f fonksiyonu için \\(f(x) = 3x + 45\\) eşitliği sağlanıyor. Buna göre \\((f \\circ f)(10)\\) değeri kaçtır?',
+      options: [
+        { id: 'A', text: '275', isCorrect: false },
+        { id: 'B', text: '260', isCorrect: false },
+        { id: 'C', text: '270', isCorrect: true },
+        { id: 'D', text: '280', isCorrect: false },
+        { id: 'E', text: '265', isCorrect: false },
+      ],
+      correctOptionId: 'C',
+      explanation: {
+        whyCorrect: 'f(10) = 3(10) + 45 = 30 + 45 = 75. f(75) = 3(75) + 45 = 225 + 45 = 270.',
+        whyOthersIncorrect: {
+          A: '225 + 50 hatası.',
+          B: '225 + 35 hatası.',
+          D: 'Toplama hatası.',
+          E: 'İşlem hatası.'
+        },
+        topicSummary: 'Lineer fonksiyon bileşkesi.',
+        keyTakeaway: 'f(10) = 75 ve f(75) = 270.'
+      },
+      createdAt: 1710000000115
+    },
+    {
+      id: 'q_math_16',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'Gerçel sayılar kümesi üzerinde tanımlı bir f fonksiyonu için \\(f(x) = -2x + 100\\) eşitliği sağlanıyor. Buna göre \\((f \\circ f)(40)\\) değeri kaçtır?',
+      options: [
+        { id: 'A', text: '70', isCorrect: false },
+        { id: 'B', text: '40', isCorrect: false },
+        { id: 'C', text: '80', isCorrect: false },
+        { id: 'D', text: '60', isCorrect: true },
+        { id: 'E', text: '50', isCorrect: false },
+      ],
+      correctOptionId: 'D',
+      explanation: {
+        whyCorrect: 'f(40) = -2(40) + 100 = -80 + 100 = 20. f(20) = -2(20) + 100 = -40 + 100 = 60.',
+        whyOthersIncorrect: {
+          A: '-40 + 110 hatası.',
+          B: 'İlk adımdaki x değeri.',
+          C: '-20 + 100 hatası.',
+          E: '-50 + 100 hatası.'
+        },
+        topicSummary: 'Negatif eğimli doğrusal fonksiyon bileşkesi.',
+        keyTakeaway: 'f(40) = 20 ve f(20) = 60.'
+      },
+      createdAt: 1710000000116
+    },
+    {
+      id: 'q_math_17',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'Gerçel sayılar kümesi üzerinde tanımlı bir f fonksiyonu için \\(f(x) = 4x + 20\\) eşitliği sağlanıyor. Buna göre \\((f \\circ f)(10)\\) değeri kaçtır?',
+      options: [
+        { id: 'A', text: '250', isCorrect: false },
+        { id: 'B', text: '270', isCorrect: false },
+        { id: 'C', text: '260', isCorrect: true },
+        { id: 'D', text: '240', isCorrect: false },
+        { id: 'E', text: '280', isCorrect: false },
+      ],
+      correctOptionId: 'C',
+      explanation: {
+        whyCorrect: 'f(10) = 4(10) + 20 = 40 + 20 = 60. f(60) = 4(60) + 20 = 240 + 20 = 260.',
+        whyOthersIncorrect: {
+          A: '240 + 10 hatası.',
+          B: '240 + 30 hatası.',
+          D: 'Son adımdaki +20 unutulursa 240 olur.',
+          E: 'Toplama hatası.'
+        },
+        topicSummary: 'Adım adım değer bulma.',
+        keyTakeaway: 'f(10) = 60 ve f(60) = 260.'
+      },
+      createdAt: 1710000000117
+    },
+    {
+      id: 'q_math_18',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'Gerçel sayılar kümesi üzerinde tanımlı bir f fonksiyonu için \\(f(x) = 6x - 150\\) eşitliği sağlanıyor. Buna göre \\((f \\circ f)(30)\\) değeri kaçtır?',
+      options: [
+        { id: 'A', text: '30', isCorrect: true },
+        { id: 'B', text: '35', isCorrect: false },
+        { id: 'C', text: '20', isCorrect: false },
+        { id: 'D', text: '40', isCorrect: false },
+        { id: 'E', text: '25', isCorrect: false },
+      ],
+      correctOptionId: 'A',
+      explanation: {
+        whyCorrect: 'f(30) = 6(30) - 150 = 180 - 150 = 30. Tekrar f(30) = 6(30) - 150 = 30 çıkar. Bu nokta sabittir (f(30) = 30).',
+        whyOthersIncorrect: {
+          B: 'İşlem hatası.',
+          C: 'Yanlış çıkarma.',
+          D: 'Çarpmada hata.',
+          E: 'Yanlış hesaplama.'
+        },
+        topicSummary: 'Sabit Nokta (Fixed Point): f(x) = x durumunda bileşke fonksiyonlar aynı değeri üretir.',
+        keyTakeaway: 'f(30) = 30 olduğu için (f \\circ f)(30) = 30 olarak kalır.'
+      },
+      createdAt: 1710000000118
+    },
+    {
+      id: 'q_math_19',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'Gerçel sayılar kümesi üzerinde tanımlı bir f fonksiyonu için \\(f(x) = x + 100\\) eşitliği sağlanıyor. Buna göre \\((f \\circ f)(50)\\) değeri kaçtır?',
+      options: [
+        { id: 'A', text: '240', isCorrect: false },
+        { id: 'B', text: '260', isCorrect: false },
+        { id: 'C', text: '250', isCorrect: true },
+        { id: 'D', text: '230', isCorrect: false },
+        { id: 'E', text: '270', isCorrect: false },
+      ],
+      correctOptionId: 'C',
+      explanation: {
+        whyCorrect: 'f(50) = 50 + 100 = 150. f(150) = 150 + 100 = 250.',
+        whyOthersIncorrect: {
+          A: 'Toplama hatası.',
+          B: 'Toplama hatası.',
+          D: 'Toplama hatası.',
+          E: 'Toplama hatası.'
+        },
+        topicSummary: 'Öteleme fonksiyonunda bileşke alma: (f \\circ f)(x) = x + 100 + 100 = x + 200.',
+        keyTakeaway: '(f \\circ f)(50) = 50 + 200 = 250.'
+      },
+      createdAt: 1710000000119
+    },
+    {
+      id: 'q_math_20',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'Gerçel sayılar kümesi üzerinde tanımlı bir f fonksiyonu için \\(f(x) = 3x - 100\\) eşitliği sağlanıyor. Buna göre \\((f \\circ f)(40)\\) değeri kaçtır?',
+      options: [
+        { id: 'A', text: '-30', isCorrect: false },
+        { id: 'B', text: '-50', isCorrect: false },
+        { id: 'C', text: '-20', isCorrect: false },
+        { id: 'D', text: '-40', isCorrect: true },
+        { id: 'E', text: '-10', isCorrect: false },
+      ],
+      correctOptionId: 'D',
+      explanation: {
+        whyCorrect: 'f(40) = 3(40) - 100 = 120 - 100 = 20. f(20) = 3(20) - 100 = 60 - 100 = -40.',
+        whyOthersIncorrect: {
+          A: '60 - 90 hatası.',
+          B: 'İşlem hatası.',
+          C: '60 - 80 hatası.',
+        E: '60 - 70 hatası.'
+        },
+        topicSummary: 'Sonucu negatif çıkan fonksiyon bileşkesi.',
+        keyTakeaway: 'f(40) = 20 ve f(20) = -40.'
+      },
+      createdAt: 1710000000150
+    },
+    {
+      id: 'q_math_51',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'Dik koordinat düzleminde \\(y = x^2\\) ve \\(y = 3x\\) fonksiyonlarının grafikleri aşağıda verilmiştir. Şekildeki kırmızı, mavi ve sarı boyalı bölgelerin alanları sırasıyla K, M ve S olduğuna göre aşağıdaki sıralamalardan hangisi doğrudur?',
+      svgDiagram: `<svg viewBox="0 0 380 220" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" style="background:rgba(15, 23, 42, 0.6); border-radius:12px; padding:10px;">
+        <defs>
+          <linearGradient id="gradK1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ef4444" stop-opacity="0.5"/><stop offset="100%" stop-color="#ef4444" stop-opacity="0.15"/></linearGradient>
+          <linearGradient id="gradM1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3b82f6" stop-opacity="0.5"/><stop offset="100%" stop-color="#3b82f6" stop-opacity="0.15"/></linearGradient>
+          <linearGradient id="gradS1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#eab308" stop-opacity="0.5"/><stop offset="100%" stop-color="#eab308" stop-opacity="0.15"/></linearGradient>
+        </defs>
+        <line x1="50" y1="180" x2="340" y2="180" stroke="#64748b" stroke-width="2"/>
+        <line x1="60" y1="190" x2="60" y2="20" stroke="#64748b" stroke-width="2"/>
+        <text x="345" y="184" fill="#94a3b8" font-size="12">x</text>
+        <text x="55" y="15" fill="#94a3b8" font-size="12">y</text>
+        <path d="M 60 180 Q 100 176 140 150 L 140 180 Z" fill="url(#gradS1)"/>
+        <path d="M 60 180 L 140 80 L 140 150 Q 100 176 60 180 Z" fill="url(#gradM1)"/>
+        <path d="M 140 80 L 300 20 Q 220 50 140 150 L 140 80 Z" fill="url(#gradK1)"/>
+        <path d="M 60 180 Q 180 160 300 20" stroke="#a855f7" stroke-width="2.5" fill="none"/>
+        <line x1="60" y1="180" x2="300" y2="20" stroke="#38bdf8" stroke-width="2.5"/>
+        <line x1="140" y1="20" x2="140" y2="180" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4"/>
+        <line x1="300" y1="20" x2="300" y2="180" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4"/>
+        <text x="140" y="196" fill="#cbd5e1" font-size="12" text-anchor="middle">x=1</text>
+        <text x="300" y="196" fill="#cbd5e1" font-size="12" text-anchor="middle">x=3</text>
+        <text x="100" y="172" fill="#facc15" font-size="13" font-weight="bold">S</text>
+        <text x="115" y="125" fill="#60a5fa" font-size="13" font-weight="bold">M</text>
+        <text x="210" y="80" fill="#f87171" font-size="14" font-weight="bold">K</text>
+        <text x="270" y="40" fill="#38bdf8" font-size="11">y=3x</text>
+        <text x="250" y="140" fill="#a855f7" font-size="11">y=x²</text>
+      </svg>`,
+      options: [
+        { id: 'A', text: 'K < S < M', isCorrect: false },
+        { id: 'B', text: 'M < K < S', isCorrect: false },
+        { id: 'C', text: 'M < S < K', isCorrect: false },
+        { id: 'D', text: 'S < K < M', isCorrect: false },
+        { id: 'E', text: 'S < M < K', isCorrect: true },
+      ],
+      correctOptionId: 'E',
+      explanation: {
+        whyCorrect: 'Kesişim: x^2 = 3x \\Rightarrow x=0, 3. S = \\int_0^1 x^2 dx = 1/3 \\approx 0.33, M = \\int_0^1 (3x - x^2) dx = 7/6 \\approx 1.17, K = \\int_1^3 (3x - x^2) dx = 10/3 \\approx 3.33. S < M < K.',
+        whyOthersIncorrect: { A: 'Alan sıralaması terstir.', B: 'S en küçük alandır.', C: '7/6 > 1/3 olduğu için M > S olmalıdır.', D: '10/3 > 7/6 olduğundan K > M olmalıdır.' },
+        topicSummary: 'İki Eğri Arasında Kalan Alan Hesabı: Belirli integral ile alan karşılaştırması.',
+        keyTakeaway: 'S = 1/3, M = 7/6, K = 10/3 \\Rightarrow S < M < K.'
+      },
+      createdAt: 1710000000151
+    },
+    {
+      id: 'q_math_52',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'Dik koordinat düzleminde \\(y = x^3\\) ve \\(y = 4x\\) fonksiyonlarının grafikleri aşağıda verilmiştir. Şekildeki kırmızı, mavi ve sarı boyalı bölgelerin alanları sırasıyla K, M ve S olduğuna göre aşağıdaki sıralamalardan hangisi doğrudur?',
+      svgDiagram: `<svg viewBox="0 0 380 220" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" style="background:rgba(15, 23, 42, 0.6); border-radius:12px; padding:10px;">
+        <defs>
+          <linearGradient id="gradK2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ef4444" stop-opacity="0.5"/><stop offset="100%" stop-color="#ef4444" stop-opacity="0.15"/></linearGradient>
+          <linearGradient id="gradM2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3b82f6" stop-opacity="0.5"/><stop offset="100%" stop-color="#3b82f6" stop-opacity="0.15"/></linearGradient>
+          <linearGradient id="gradS2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#eab308" stop-opacity="0.5"/><stop offset="100%" stop-color="#eab308" stop-opacity="0.15"/></linearGradient>
+        </defs>
+        <line x1="50" y1="180" x2="340" y2="180" stroke="#64748b" stroke-width="2"/>
+        <line x1="60" y1="190" x2="60" y2="20" stroke="#64748b" stroke-width="2"/>
+        <text x="345" y="184" fill="#94a3b8" font-size="12">x</text>
+        <text x="55" y="15" fill="#94a3b8" font-size="12">y</text>
+        <path d="M 60 180 Q 110 178 140 160 L 140 180 Z" fill="url(#gradS2)"/>
+        <path d="M 60 180 L 140 70 L 140 160 Q 110 178 60 180 Z" fill="url(#gradM2)"/>
+        <path d="M 140 70 L 280 20 Q 200 40 140 160 L 140 70 Z" fill="url(#gradK2)"/>
+        <path d="M 60 180 Q 160 170 280 20" stroke="#a855f7" stroke-width="2.5" fill="none"/>
+        <line x1="60" y1="180" x2="280" y2="20" stroke="#38bdf8" stroke-width="2.5"/>
+        <line x1="140" y1="20" x2="140" y2="180" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4"/>
+        <line x1="280" y1="20" x2="280" y2="180" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4"/>
+        <text x="140" y="196" fill="#cbd5e1" font-size="12" text-anchor="middle">x=1</text>
+        <text x="280" y="196" fill="#cbd5e1" font-size="12" text-anchor="middle">x=2</text>
+        <text x="100" y="174" fill="#facc15" font-size="13" font-weight="bold">S</text>
+        <text x="115" y="120" fill="#60a5fa" font-size="13" font-weight="bold">M</text>
+        <text x="200" y="80" fill="#f87171" font-size="14" font-weight="bold">K</text>
+        <text x="250" y="35" fill="#38bdf8" font-size="11">y=4x</text>
+        <text x="230" y="140" fill="#a855f7" font-size="11">y=x³</text>
+      </svg>`,
+      options: [
+        { id: 'A', text: 'K < S < M', isCorrect: false },
+        { id: 'B', text: 'S < M < K', isCorrect: true },
+        { id: 'C', text: 'M < S < K', isCorrect: false },
+        { id: 'D', text: 'S < K < M', isCorrect: false },
+        { id: 'E', text: 'M < K < S', isCorrect: false },
+      ],
+      correctOptionId: 'B',
+      explanation: {
+        whyCorrect: 'Kesişim: x^3 = 4x \\Rightarrow x=0, 2. S = \\int_0^1 x^3 dx = 1/4 = 0.25, M = \\int_0^1 (4x - x^3) dx = 7/4 = 1.75, K = \\int_1^2 (4x - x^3) dx = 9/4 = 2.25. Buradan S < M < K bulunur.',
+        whyOthersIncorrect: { A: 'Yanlış sıralama.', C: 'M > S olmalıdır.', D: 'K > M olmalıdır (2.25 > 1.75).', E: 'M < K < S sıralaması yanlıştır.' },
+        topicSummary: 'Kübik fonksiyon ve doğru arasındaki alan hesabı.',
+        keyTakeaway: 'S = 0.25, M = 1.75, K = 2.25 \\Rightarrow S < M < K.'
+      },
+      createdAt: 1710000000152
+    },
+    {
+      id: 'q_math_53',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'Dik koordinat düzleminde \\(y = x^2\\) ve \\(y = x+1\\) fonksiyonlarının grafikleri aşağıda verilmiştir. Şekildeki kırmızı, mavi ve sarı boyalı bölgelerin alanları sırasıyla K, M ve S olduğuna göre aşağıdaki sıralamalardan hangisi doğrudur?',
+      svgDiagram: `<svg viewBox="0 0 380 220" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" style="background:rgba(15, 23, 42, 0.6); border-radius:12px; padding:10px;">
+        <defs>
+          <linearGradient id="gradK3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ef4444" stop-opacity="0.5"/><stop offset="100%" stop-color="#ef4444" stop-opacity="0.15"/></linearGradient>
+          <linearGradient id="gradM3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3b82f6" stop-opacity="0.5"/><stop offset="100%" stop-color="#3b82f6" stop-opacity="0.15"/></linearGradient>
+          <linearGradient id="gradS3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#eab308" stop-opacity="0.5"/><stop offset="100%" stop-color="#eab308" stop-opacity="0.15"/></linearGradient>
+        </defs>
+        <line x1="50" y1="180" x2="340" y2="180" stroke="#64748b" stroke-width="2"/>
+        <line x1="60" y1="190" x2="60" y2="20" stroke="#64748b" stroke-width="2"/>
+        <text x="345" y="184" fill="#94a3b8" font-size="12">x</text>
+        <text x="55" y="15" fill="#94a3b8" font-size="12">y</text>
+        <path d="M 60 180 Q 110 176 150 140 L 150 180 Z" fill="url(#gradS3)"/>
+        <path d="M 60 140 L 150 90 L 150 140 Q 110 176 60 180 Z" fill="url(#gradM3)"/>
+        <path d="M 150 90 L 240 50 Q 195 95 150 140 L 150 90 Z" fill="url(#gradK3)"/>
+        <path d="M 60 180 Q 150 140 240 50" stroke="#a855f7" stroke-width="2.5" fill="none"/>
+        <line x1="60" y1="140" x2="240" y2="50" stroke="#38bdf8" stroke-width="2.5"/>
+        <line x1="150" y1="20" x2="150" y2="180" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4"/>
+        <line x1="240" y1="20" x2="240" y2="180" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4"/>
+        <text x="150" y="196" fill="#cbd5e1" font-size="12" text-anchor="middle">x=1</text>
+        <text x="240" y="196" fill="#cbd5e1" font-size="12" text-anchor="middle">x=a</text>
+        <text x="100" y="172" fill="#facc15" font-size="13" font-weight="bold">S</text>
+        <text x="115" y="130" fill="#60a5fa" font-size="13" font-weight="bold">M</text>
+        <text x="185" y="95" fill="#f87171" font-size="14" font-weight="bold">K</text>
+        <text x="220" y="40" fill="#38bdf8" font-size="11">y=x+1</text>
+        <text x="210" y="110" fill="#a855f7" font-size="11">y=x²</text>
+      </svg>`,
+      options: [
+        { id: 'A', text: 'K < S < M', isCorrect: false },
+        { id: 'B', text: 'M < K < S', isCorrect: false },
+        { id: 'C', text: 'S < M < K', isCorrect: false },
+        { id: 'D', text: 'S < K < M', isCorrect: true },
+        { id: 'E', text: 'M < S < K', isCorrect: false },
+      ],
+      correctOptionId: 'D',
+      explanation: {
+        whyCorrect: 'Kesişim a = (1+\\sqrt{5})/2 \\approx 1.618. S = \\int_0^1 x^2 dx = 1/3 \\approx 0.333, K = \\int_1^a (x+1-x^2) dx \\approx 0.348, M = \\int_0^1 (x+1-x^2) dx = 7/6 \\approx 1.167. S < K < M.',
+        whyOthersIncorrect: { A: 'K > S olduğu için yanlıştır (0.348 > 0.333).', B: 'M en büyük alandır.', C: 'K < M olduğu için yanlıştır.', E: 'M > S olmalıdır.' },
+        topicSummary: 'Parabol ile doğru kesişim alanı.',
+        keyTakeaway: 'S = 0.333 < K = 0.348 < M = 1.167.'
+      },
+      createdAt: 1710000000153
+    },
+    {
+      id: 'q_math_54',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'Dik koordinat düzleminde \\(y = x\\sqrt{x}\\) ve \\(y = 2\\sqrt{x}\\) fonksiyonlarının grafikleri aşağıda verilmiştir. Şekildeki kırmızı, mavi ve sarı boyalı bölgelerin alanları sırasıyla K, M ve S olduğuna göre aşağıdaki sıralamalardan hangisi doğrudur?',
+      svgDiagram: `<svg viewBox="0 0 380 220" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" style="background:rgba(15, 23, 42, 0.6); border-radius:12px; padding:10px;">
+        <defs>
+          <linearGradient id="gradK4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ef4444" stop-opacity="0.5"/><stop offset="100%" stop-color="#ef4444" stop-opacity="0.15"/></linearGradient>
+          <linearGradient id="gradM4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3b82f6" stop-opacity="0.5"/><stop offset="100%" stop-color="#3b82f6" stop-opacity="0.15"/></linearGradient>
+          <linearGradient id="gradS4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#eab308" stop-opacity="0.5"/><stop offset="100%" stop-color="#eab308" stop-opacity="0.15"/></linearGradient>
+        </defs>
+        <line x1="50" y1="180" x2="340" y2="180" stroke="#64748b" stroke-width="2"/>
+        <line x1="60" y1="190" x2="60" y2="20" stroke="#64748b" stroke-width="2"/>
+        <text x="345" y="184" fill="#94a3b8" font-size="12">x</text>
+        <text x="55" y="15" fill="#94a3b8" font-size="12">y</text>
+        <path d="M 60 180 Q 110 178 150 155 L 150 180 Z" fill="url(#gradS4)"/>
+        <path d="M 60 180 Q 100 130 150 90 L 150 155 Q 110 178 60 180 Z" fill="url(#gradM4)"/>
+        <path d="M 150 90 Q 210 50 270 30 Q 210 80 150 155 L 150 90 Z" fill="url(#gradK4)"/>
+        <path d="M 60 180 Q 160 160 270 30" stroke="#a855f7" stroke-width="2.5" fill="none"/>
+        <path d="M 60 180 Q 120 80 270 30" stroke="#38bdf8" stroke-width="2.5" fill="none"/>
+        <line x1="150" y1="20" x2="150" y2="180" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4"/>
+        <line x1="270" y1="20" x2="270" y2="180" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4"/>
+        <text x="150" y="196" fill="#cbd5e1" font-size="12" text-anchor="middle">x=1</text>
+        <text x="270" y="196" fill="#cbd5e1" font-size="12" text-anchor="middle">x=2</text>
+        <text x="100" y="174" fill="#facc15" font-size="13" font-weight="bold">S</text>
+        <text x="115" y="125" fill="#60a5fa" font-size="13" font-weight="bold">M</text>
+        <text x="195" y="90" fill="#f87171" font-size="14" font-weight="bold">K</text>
+        <text x="240" y="25" fill="#38bdf8" font-size="11">y=2√x</text>
+        <text x="230" y="110" fill="#a855f7" font-size="11">y=x√x</text>
+      </svg>`,
+      options: [
+        { id: 'A', text: 'S < M < K', isCorrect: false },
+        { id: 'B', text: 'S < K < M', isCorrect: true },
+        { id: 'C', text: 'K < S < M', isCorrect: false },
+        { id: 'D', text: 'M < K < S', isCorrect: false },
+        { id: 'E', text: 'M < S < K', isCorrect: false },
+      ],
+      correctOptionId: 'B',
+      explanation: {
+        whyCorrect: 'Kesişim: x\\sqrt{x} = 2\\sqrt{x} \\Rightarrow x=0, 2. S = \\int_0^1 x^{3/2} dx = 2/5 = 0.4, M = \\int_0^1 (2\\sqrt{x} - x\\sqrt{x}) dx = 14/15 \\approx 0.933, K = \\int_1^2 (2\\sqrt{x} - x\\sqrt{x}) dx \\approx 0.575. S < K < M.',
+        whyOthersIncorrect: { A: 'M > K olduğu için yanlıştır (0.933 > 0.575).', C: 'S < K olmalıdır.', D: 'M en büyük alandır.', E: 'M > S olmalıdır.' },
+        topicSummary: 'Köklü fonksiyonların belirli integrali.',
+        keyTakeaway: 'S = 0.400 < K = 0.575 < M = 0.933.'
+      },
+      createdAt: 1710000000154
+    },
+    {
+      id: 'q_math_55',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'Dik koordinat düzleminde \\(y = \\sqrt{x}\\) ve \\(y = \\frac{x}{2}\\) fonksiyonlarının grafikleri aşağıda verilmiştir. Şekildeki kırmızı, mavi ve sarı boyalı bölgelerin alanları sırasıyla K, M ve S olduğuna göre aşağıdaki sıralamalardan hangisi doğrudur?',
+      svgDiagram: `<svg viewBox="0 0 380 220" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" style="background:rgba(15, 23, 42, 0.6); border-radius:12px; padding:10px;">
+        <defs>
+          <linearGradient id="gradK5" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ef4444" stop-opacity="0.5"/><stop offset="100%" stop-color="#ef4444" stop-opacity="0.15"/></linearGradient>
+          <linearGradient id="gradM5" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3b82f6" stop-opacity="0.5"/><stop offset="100%" stop-color="#3b82f6" stop-opacity="0.15"/></linearGradient>
+          <linearGradient id="gradS5" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#eab308" stop-opacity="0.5"/><stop offset="100%" stop-color="#eab308" stop-opacity="0.15"/></linearGradient>
+        </defs>
+        <line x1="50" y1="180" x2="340" y2="180" stroke="#64748b" stroke-width="2"/>
+        <line x1="60" y1="190" x2="60" y2="20" stroke="#64748b" stroke-width="2"/>
+        <text x="345" y="184" fill="#94a3b8" font-size="12">x</text>
+        <text x="55" y="15" fill="#94a3b8" font-size="12">y</text>
+        <path d="M 60 180 L 110 160 L 110 180 Z" fill="url(#gradS5)"/>
+        <path d="M 60 180 Q 90 130 110 120 L 110 160 Z" fill="url(#gradM5)"/>
+        <path d="M 110 120 Q 200 40 300 20 L 110 160 Z" fill="url(#gradK5)"/>
+        <path d="M 60 180 Q 150 60 300 20" stroke="#38bdf8" stroke-width="2.5" fill="none"/>
+        <line x1="60" y1="180" x2="300" y2="20" stroke="#a855f7" stroke-width="2.5"/>
+        <line x1="110" y1="20" x2="110" y2="180" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4"/>
+        <line x1="300" y1="20" x2="300" y2="180" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4"/>
+        <text x="110" y="196" fill="#cbd5e1" font-size="12" text-anchor="middle">x=1</text>
+        <text x="300" y="196" fill="#cbd5e1" font-size="12" text-anchor="middle">x=4</text>
+        <text x="85" y="174" fill="#facc15" font-size="13" font-weight="bold">S</text>
+        <text x="95" y="140" fill="#60a5fa" font-size="13" font-weight="bold">M</text>
+        <text x="200" y="80" fill="#f87171" font-size="14" font-weight="bold">K</text>
+        <text x="240" y="30" fill="#38bdf8" font-size="11">y=√x</text>
+        <text x="250" y="100" fill="#a855f7" font-size="11">y=x/2</text>
+      </svg>`,
+      options: [
+        { id: 'A', text: 'K < S < M', isCorrect: false },
+        { id: 'B', text: 'S < K < M', isCorrect: false },
+        { id: 'C', text: 'M < S < K', isCorrect: false },
+        { id: 'D', text: 'S < M < K', isCorrect: true },
+        { id: 'E', text: 'M < K < S', isCorrect: false },
+      ],
+      correctOptionId: 'D',
+      explanation: {
+        whyCorrect: 'Kesişim: \\sqrt{x} = x/2 \\Rightarrow x=0, 4. S = \\int_0^1 (x/2) dx = 1/4 = 0.25, M = \\int_0^1 (\\sqrt{x} - x/2) dx = 5/12 \\approx 0.417, K = \\int_1^4 (\\sqrt{x} - x/2) dx = 11/12 \\approx 0.917. S < M < K.',
+        whyOthersIncorrect: { A: 'K en büyük alandır.', B: 'K > M olmalıdır (0.917 > 0.417).', C: 'S < M olmalıdır (0.25 < 0.417).', E: 'S en küçük alandır.' },
+        topicSummary: 'Doğru ve karekök fonksiyonu kesişim alanı.',
+        keyTakeaway: 'S = 0.25 < M = 0.417 < K = 0.917.'
+      },
+      createdAt: 1710000000155
+    },
+    {
+      id: 'q_math_56',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'Dik koordinat düzleminde \\(y = x^2\\) ve \\(y = 4x\\) fonksiyonlarının grafikleri aşağıda verilmiştir. Şekildeki kırmızı, mavi ve sarı boyalı bölgelerin alanları sırasıyla K, M ve S olduğuna göre aşağıdaki sıralamalardan hangisi doğrudur?',
+      svgDiagram: `<svg viewBox="0 0 380 220" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" style="background:rgba(15, 23, 42, 0.6); border-radius:12px; padding:10px;">
+        <defs>
+          <linearGradient id="gradK6" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ef4444" stop-opacity="0.5"/><stop offset="100%" stop-color="#ef4444" stop-opacity="0.15"/></linearGradient>
+          <linearGradient id="gradM6" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3b82f6" stop-opacity="0.5"/><stop offset="100%" stop-color="#3b82f6" stop-opacity="0.15"/></linearGradient>
+          <linearGradient id="gradS6" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#eab308" stop-opacity="0.5"/><stop offset="100%" stop-color="#eab308" stop-opacity="0.15"/></linearGradient>
+        </defs>
+        <line x1="50" y1="180" x2="340" y2="180" stroke="#64748b" stroke-width="2"/>
+        <line x1="60" y1="190" x2="60" y2="20" stroke="#64748b" stroke-width="2"/>
+        <text x="345" y="184" fill="#94a3b8" font-size="12">x</text>
+        <text x="55" y="15" fill="#94a3b8" font-size="12">y</text>
+        <path d="M 60 180 Q 90 178 110 160 L 110 180 Z" fill="url(#gradS6)"/>
+        <path d="M 60 180 L 110 120 L 110 160 Q 90 178 60 180 Z" fill="url(#gradM6)"/>
+        <path d="M 110 120 L 300 20 Q 200 40 110 160 L 110 120 Z" fill="url(#gradK6)"/>
+        <path d="M 60 180 Q 180 160 300 20" stroke="#a855f7" stroke-width="2.5" fill="none"/>
+        <line x1="60" y1="180" x2="300" y2="20" stroke="#38bdf8" stroke-width="2.5"/>
+        <line x1="110" y1="20" x2="110" y2="180" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4"/>
+        <line x1="300" y1="20" x2="300" y2="180" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4"/>
+        <text x="110" y="196" fill="#cbd5e1" font-size="12" text-anchor="middle">x=1</text>
+        <text x="300" y="196" fill="#cbd5e1" font-size="12" text-anchor="middle">x=4</text>
+        <text x="85" y="174" fill="#facc15" font-size="13" font-weight="bold">S</text>
+        <text x="95" y="140" fill="#60a5fa" font-size="13" font-weight="bold">M</text>
+        <text x="200" y="80" fill="#f87171" font-size="14" font-weight="bold">K</text>
+        <text x="270" y="40" fill="#38bdf8" font-size="11">y=4x</text>
+        <text x="250" y="140" fill="#a855f7" font-size="11">y=x²</text>
+      </svg>`,
+      options: [
+        { id: 'A', text: 'S < M < K', isCorrect: true },
+        { id: 'B', text: 'K < S < M', isCorrect: false },
+        { id: 'C', text: 'M < S < K', isCorrect: false },
+        { id: 'D', text: 'S < K < M', isCorrect: false },
+        { id: 'E', text: 'M < K < S', isCorrect: false },
+      ],
+      correctOptionId: 'A',
+      explanation: {
+        whyCorrect: 'Kesişim: x^2 = 4x \\Rightarrow x=0, 4. S = \\int_0^1 x^2 dx = 1/3 \\approx 0.33, M = \\int_0^1 (4x - x^2) dx = 5/3 \\approx 1.67, K = \\int_1^4 (4x - x^2) dx = 9. Buradan S < M < K bulunur.',
+        whyOthersIncorrect: { B: 'K en büyük alandır.', C: '5/3 > 1/3 olduğu için M > S olmalıdır.', D: 'K > M olmalıdır (9 > 1.67).', E: 'S en küçük alandır.' },
+        topicSummary: 'Parabol ve doğru ile oluşturulan bölgelerin alan hesabı.',
+        keyTakeaway: 'S = 0.333 < M = 1.667 < K = 9.'
+      },
+      createdAt: 1710000000156
+    },
+    {
+      id: 'q_math_57',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'Dik koordinat düzleminde \\(y = x\\sqrt{x}\\) ve \\(y = 3\\sqrt{x}\\) fonksiyonlarının grafikleri aşağıda verilmiştir. Şekildeki kırmızı, mavi ve sarı boyalı bölgelerin alanları sırasıyla K, M ve S olduğuna göre aşağıdaki sıralamalardan hangisi doğrudur?',
+      svgDiagram: `<svg viewBox="0 0 380 220" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" style="background:rgba(15, 23, 42, 0.6); border-radius:12px; padding:10px;">
+        <defs>
+          <linearGradient id="gradK7" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ef4444" stop-opacity="0.5"/><stop offset="100%" stop-color="#ef4444" stop-opacity="0.15"/></linearGradient>
+          <linearGradient id="gradM7" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3b82f6" stop-opacity="0.5"/><stop offset="100%" stop-color="#3b82f6" stop-opacity="0.15"/></linearGradient>
+          <linearGradient id="gradS7" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#eab308" stop-opacity="0.5"/><stop offset="100%" stop-color="#eab308" stop-opacity="0.15"/></linearGradient>
+        </defs>
+        <line x1="50" y1="180" x2="340" y2="180" stroke="#64748b" stroke-width="2"/>
+        <line x1="60" y1="190" x2="60" y2="20" stroke="#64748b" stroke-width="2"/>
+        <text x="345" y="184" fill="#94a3b8" font-size="12">x</text>
+        <text x="55" y="15" fill="#94a3b8" font-size="12">y</text>
+        <path d="M 60 180 Q 100 178 130 160 L 130 180 Z" fill="url(#gradS7)"/>
+        <path d="M 60 180 Q 90 120 130 100 L 130 160 Z" fill="url(#gradM7)"/>
+        <path d="M 130 100 Q 210 40 300 20 Q 210 80 130 160 L 130 100 Z" fill="url(#gradK7)"/>
+        <path d="M 60 180 Q 160 160 300 20" stroke="#a855f7" stroke-width="2.5" fill="none"/>
+        <path d="M 60 180 Q 120 60 300 20" stroke="#38bdf8" stroke-width="2.5" fill="none"/>
+        <line x1="130" y1="20" x2="130" y2="180" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4"/>
+        <line x1="300" y1="20" x2="300" y2="180" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4"/>
+        <text x="130" y="196" fill="#cbd5e1" font-size="12" text-anchor="middle">x=1</text>
+        <text x="300" y="196" fill="#cbd5e1" font-size="12" text-anchor="middle">x=3</text>
+        <text x="95" y="174" fill="#facc15" font-size="13" font-weight="bold">S</text>
+        <text x="105" y="130" fill="#60a5fa" font-size="13" font-weight="bold">M</text>
+        <text x="200" y="80" fill="#f87171" font-size="14" font-weight="bold">K</text>
+        <text x="250" y="25" fill="#38bdf8" font-size="11">y=3√x</text>
+        <text x="240" y="110" fill="#a855f7" font-size="11">y=x√x</text>
+      </svg>`,
+      options: [
+        { id: 'A', text: 'S < M < K', isCorrect: true },
+        { id: 'B', text: 'K < S < M', isCorrect: false },
+        { id: 'C', text: 'M < S < K', isCorrect: false },
+        { id: 'D', text: 'S < K < M', isCorrect: false },
+        { id: 'E', text: 'M < K < S', isCorrect: false },
+      ],
+      correctOptionId: 'A',
+      explanation: {
+        whyCorrect: 'Kesişim: x\\sqrt{x} = 3\\sqrt{x} \\Rightarrow x=0, 3. S = \\int_0^1 x^{3/2} dx = 0.4, M = \\int_0^1 (3\\sqrt{x} - x\\sqrt{x}) dx = 1.6, K = \\int_1^3 (3\\sqrt{x} - x\\sqrt{x}) dx \\approx 2.557. S < M < K.',
+        whyOthersIncorrect: { B: 'S en küçük alandır.', C: '1.6 > 0.4 olduğu için M > S olmalıdır.', D: 'K > M olmalıdır (2.557 > 1.6).', E: 'Sıralama terstir.' },
+        topicSummary: 'Köklü ifade belirli integrali ve alan sıralaması.',
+        keyTakeaway: 'S = 0.4 < M = 1.6 < K = 2.557.'
+      },
+      createdAt: 1710000000157
+    },
+    {
+      id: 'q_math_58',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'Dik koordinat düzleminde \\(y = x^3\\) ve \\(y = 2x^2\\) fonksiyonlarının grafikleri aşağıda verilmiştir. Şekildeki kırmızı, mavi ve sarı boyalı bölgelerin alanları sırasıyla K, M ve S olduğuna göre aşağıdaki sıralamalardan hangisi doğrudur?',
+      svgDiagram: `<svg viewBox="0 0 380 220" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" style="background:rgba(15, 23, 42, 0.6); border-radius:12px; padding:10px;">
+        <defs>
+          <linearGradient id="gradK8" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ef4444" stop-opacity="0.5"/><stop offset="100%" stop-color="#ef4444" stop-opacity="0.15"/></linearGradient>
+          <linearGradient id="gradM8" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3b82f6" stop-opacity="0.5"/><stop offset="100%" stop-color="#3b82f6" stop-opacity="0.15"/></linearGradient>
+          <linearGradient id="gradS8" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#eab308" stop-opacity="0.5"/><stop offset="100%" stop-color="#eab308" stop-opacity="0.15"/></linearGradient>
+        </defs>
+        <line x1="50" y1="180" x2="340" y2="180" stroke="#64748b" stroke-width="2"/>
+        <line x1="60" y1="190" x2="60" y2="20" stroke="#64748b" stroke-width="2"/>
+        <text x="345" y="184" fill="#94a3b8" font-size="12">x</text>
+        <text x="55" y="15" fill="#94a3b8" font-size="12">y</text>
+        <path d="M 60 180 Q 110 178 140 160 L 140 180 Z" fill="url(#gradS8)"/>
+        <path d="M 60 180 Q 110 150 140 120 L 140 160 Z" fill="url(#gradM8)"/>
+        <path d="M 140 120 Q 210 50 280 20 Q 200 60 140 160 L 140 120 Z" fill="url(#gradK8)"/>
+        <path d="M 60 180 Q 160 170 280 20" stroke="#a855f7" stroke-width="2.5" fill="none"/>
+        <path d="M 60 180 Q 140 110 280 20" stroke="#38bdf8" stroke-width="2.5" fill="none"/>
+        <line x1="140" y1="20" x2="140" y2="180" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4"/>
+        <line x1="280" y1="20" x2="280" y2="180" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4"/>
+        <text x="140" y="196" fill="#cbd5e1" font-size="12" text-anchor="middle">x=1</text>
+        <text x="280" y="196" fill="#cbd5e1" font-size="12" text-anchor="middle">x=2</text>
+        <text x="100" y="174" fill="#facc15" font-size="13" font-weight="bold">S</text>
+        <text x="115" y="140" fill="#60a5fa" font-size="13" font-weight="bold">M</text>
+        <text x="195" y="80" fill="#f87171" font-size="14" font-weight="bold">K</text>
+        <text x="240" y="30" fill="#38bdf8" font-size="11">y=2x²</text>
+        <text x="230" y="120" fill="#a855f7" font-size="11">y=x³</text>
+      </svg>`,
+      options: [
+        { id: 'A', text: 'M < S < K', isCorrect: false },
+        { id: 'B', text: 'S < K < M', isCorrect: false },
+        { id: 'C', text: 'S < M < K', isCorrect: true },
+        { id: 'D', text: 'K < S < M', isCorrect: false },
+        { id: 'E', text: 'M < K < S', isCorrect: false },
+      ],
+      correctOptionId: 'C',
+      explanation: {
+        whyCorrect: 'Kesişim: x^3 = 2x^2 \\Rightarrow x=0, 2. S = \\int_0^1 x^3 dx = 1/4 = 0.25, M = \\int_0^1 (2x^2 - x^3) dx = 5/12 \\approx 0.417, K = \\int_1^2 (2x^2 - x^3) dx = 11/12 \\approx 0.917. S < M < K.',
+        whyOthersIncorrect: { A: 'S < M olmalıdır.', B: 'M < K olmalıdır.', D: 'K en büyük alandır.', E: 'Sıralama terstir.' },
+        topicSummary: 'Kübik fonksiyon ile parabol kesişim alanı.',
+        keyTakeaway: 'S = 0.25 < M = 0.417 < K = 0.917.'
+      },
+      createdAt: 1710000000158
+    },
+    {
+      id: 'q_math_59',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'Dik koordinat düzleminde \\(y = x^4\\) ve \\(y = 2x\\) fonksiyonlarının grafikleri aşağıda verilmiştir. Şekildeki kırmızı, mavi ve sarı boyalı bölgelerin alanları sırasıyla K, M ve S olduğuna göre aşağıdaki sıralamalardan hangisi doğrudur?',
+      svgDiagram: `<svg viewBox="0 0 380 220" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" style="background:rgba(15, 23, 42, 0.6); border-radius:12px; padding:10px;">
+        <defs>
+          <linearGradient id="gradK9" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ef4444" stop-opacity="0.5"/><stop offset="100%" stop-color="#ef4444" stop-opacity="0.15"/></linearGradient>
+          <linearGradient id="gradM9" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3b82f6" stop-opacity="0.5"/><stop offset="100%" stop-color="#3b82f6" stop-opacity="0.15"/></linearGradient>
+          <linearGradient id="gradS9" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#eab308" stop-opacity="0.5"/><stop offset="100%" stop-color="#eab308" stop-opacity="0.15"/></linearGradient>
+        </defs>
+        <line x1="50" y1="180" x2="340" y2="180" stroke="#64748b" stroke-width="2"/>
+        <line x1="60" y1="190" x2="60" y2="20" stroke="#64748b" stroke-width="2"/>
+        <text x="345" y="184" fill="#94a3b8" font-size="12">x</text>
+        <text x="55" y="15" fill="#94a3b8" font-size="12">y</text>
+        <path d="M 60 180 Q 140 179 170 165 L 170 180 Z" fill="url(#gradS9)"/>
+        <path d="M 60 180 L 170 80 L 170 165 Q 140 179 60 180 Z" fill="url(#gradM9)"/>
+        <path d="M 170 80 L 220 30 Q 195 50 170 165 L 170 80 Z" fill="url(#gradK9)"/>
+        <path d="M 60 180 Q 180 175 220 30" stroke="#a855f7" stroke-width="2.5" fill="none"/>
+        <line x1="60" y1="180" x2="220" y2="30" stroke="#38bdf8" stroke-width="2.5"/>
+        <line x1="170" y1="20" x2="170" y2="180" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4"/>
+        <line x1="220" y1="20" x2="220" y2="180" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4"/>
+        <text x="170" y="196" fill="#cbd5e1" font-size="12" text-anchor="middle">x=1</text>
+        <text x="220" y="196" fill="#cbd5e1" font-size="12" text-anchor="middle">x=a</text>
+        <text x="120" y="174" fill="#facc15" font-size="13" font-weight="bold">S</text>
+        <text x="135" y="130" fill="#60a5fa" font-size="13" font-weight="bold">M</text>
+        <text x="185" y="90" fill="#f87171" font-size="14" font-weight="bold">K</text>
+        <text x="210" y="20" fill="#38bdf8" font-size="11">y=2x</text>
+        <text x="200" y="110" fill="#a855f7" font-size="11">y=x⁴</text>
+      </svg>`,
+      options: [
+        { id: 'A', text: 'K < S < M', isCorrect: true },
+        { id: 'B', text: 'S < M < K', isCorrect: false },
+        { id: 'C', text: 'M < K < S', isCorrect: false },
+        { id: 'D', text: 'S < K < M', isCorrect: false },
+        { id: 'E', text: 'M < S < K', isCorrect: false },
+      ],
+      correctOptionId: 'A',
+      explanation: {
+        whyCorrect: 'Kesişim a = \\sqrt[3]{2} \\approx 1.26. S = \\int_0^1 x^4 dx = 1/5 = 0.2, M = \\int_0^1 (2x - x^4) dx = 4/5 = 0.8, K = \\int_1^a (2x - x^4) dx \\approx 0.152. K < S < M.',
+        whyOthersIncorrect: { B: 'K en küçük alandır (0.152 < 0.2).', C: 'M en büyük alandır (0.8).', D: 'K < S olmalıdır.', E: 'Sıralama yanlıştır.' },
+        topicSummary: 'Dar aralıkta kalan kesişim alanı hesabı.',
+        keyTakeaway: 'K = 0.152 < S = 0.200 < M = 0.800.'
+      },
+      createdAt: 1710000000159
+    },
+    {
+      id: 'q_math_60',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'Dik koordinat düzleminde \\(y = x^2\\) ve \\(y = x+2\\) fonksiyonlarının grafikleri aşağıda verilmiştir. Şekildeki kırmızı, mavi ve sarı boyalı bölgelerin alanları sırasıyla K, M ve S olduğuna göre aşağıdaki sıralamalardan hangisi doğrudur?',
+      svgDiagram: `<svg viewBox="0 0 380 220" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" style="background:rgba(15, 23, 42, 0.6); border-radius:12px; padding:10px;">
+        <defs>
+          <linearGradient id="gradK10" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ef4444" stop-opacity="0.5"/><stop offset="100%" stop-color="#ef4444" stop-opacity="0.15"/></linearGradient>
+          <linearGradient id="gradM10" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3b82f6" stop-opacity="0.5"/><stop offset="100%" stop-color="#3b82f6" stop-opacity="0.15"/></linearGradient>
+          <linearGradient id="gradS10" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#eab308" stop-opacity="0.5"/><stop offset="100%" stop-color="#eab308" stop-opacity="0.15"/></linearGradient>
+        </defs>
+        <line x1="50" y1="180" x2="340" y2="180" stroke="#64748b" stroke-width="2"/>
+        <line x1="60" y1="190" x2="60" y2="20" stroke="#64748b" stroke-width="2"/>
+        <text x="345" y="184" fill="#94a3b8" font-size="12">x</text>
+        <text x="55" y="15" fill="#94a3b8" font-size="12">y</text>
+        <path d="M 60 180 Q 110 176 150 140 L 150 180 Z" fill="url(#gradS10)"/>
+        <path d="M 60 120 L 150 75 L 150 140 Q 110 176 60 180 Z" fill="url(#gradM10)"/>
+        <path d="M 150 75 L 240 30 Q 195 75 150 140 L 150 75 Z" fill="url(#gradK10)"/>
+        <path d="M 60 180 Q 150 140 240 30" stroke="#a855f7" stroke-width="2.5" fill="none"/>
+        <line x1="60" y1="120" x2="240" y2="30" stroke="#38bdf8" stroke-width="2.5"/>
+        <line x1="150" y1="20" x2="150" y2="180" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4"/>
+        <line x1="240" y1="20" x2="240" y2="180" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4"/>
+        <text x="150" y="196" fill="#cbd5e1" font-size="12" text-anchor="middle">x=1</text>
+        <text x="240" y="196" fill="#cbd5e1" font-size="12" text-anchor="middle">x=2</text>
+        <text x="100" y="172" fill="#facc15" font-size="13" font-weight="bold">S</text>
+        <text x="115" y="125" fill="#60a5fa" font-size="13" font-weight="bold">M</text>
+        <text x="185" y="80" fill="#f87171" font-size="14" font-weight="bold">K</text>
+        <text x="220" y="25" fill="#38bdf8" font-size="11">y=x+2</text>
+        <text x="210" y="100" fill="#a855f7" font-size="11">y=x²</text>
+      </svg>`,
+      options: [
+        { id: 'A', text: 'S < M < K', isCorrect: false },
+        { id: 'B', text: 'K < S < M', isCorrect: false },
+        { id: 'C', text: 'S < K < M', isCorrect: true },
+        { id: 'D', text: 'M < K < S', isCorrect: false },
+        { id: 'E', text: 'M < S < K', isCorrect: false },
+      ],
+      correctOptionId: 'C',
+      explanation: {
+        whyCorrect: 'Kesişim: x^2 = x+2 \\Rightarrow x=2. S = \\int_0^1 x^2 dx = 1/3 \\approx 0.333, K = \\int_1^2 (x+2 - x^2) dx = 7/6 \\approx 1.167, M = \\int_0^1 (x+2 - x^2) dx = 13/6 \\approx 2.167. S < K < M.',
+        whyOthersIncorrect: { A: 'M > K olduğu için yanlıştır (2.167 > 1.167).', B: 'S < K olmalıdır.', D: 'M en büyük alandır.', E: 'Sıralama terstir.' },
+        topicSummary: 'Parabol ile doğru parçaları arasındaki alan hesabı.',
+        keyTakeaway: 'S = 0.333 < K = 1.167 < M = 2.167.'
+      },
+      createdAt: 1710000000160
+    },
+    {
+      id: 'q_math_21',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'Gerçel sayılar kümesi üzerinde tanımlı bir f fonksiyonu için \\(f(x) = 2x + 30\\) eşitliği sağlanıyor. Buna göre \\((f \\circ f)(25)\\) değeri kaçtır?',
+      options: [
+        { id: 'A', text: '200', isCorrect: false },
+        { id: 'B', text: '190', isCorrect: true },
+        { id: 'C', text: '180', isCorrect: false },
+        { id: 'D', text: '210', isCorrect: false },
+        { id: 'E', text: '170', isCorrect: false },
+      ],
+      correctOptionId: 'B',
+      explanation: {
+        whyCorrect: 'f(25) = 2(25) + 30 = 50 + 30 = 80. f(80) = 2(80) + 30 = 160 + 30 = 190.',
+        whyOthersIncorrect: {
+          A: '160 + 40 hatası.',
+          C: '160 + 20 hatası.',
+          D: 'Toplama hatası.',
+          E: 'İşlem hatası.'
+        },
+        topicSummary: 'Lineer fonksiyon adımları.',
+        keyTakeaway: 'f(25) = 80 ve f(80) = 190.'
+      },
+      createdAt: 1710000000121
+    },
+    {
+      id: 'q_math_22',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'Gerçel sayılar kümesi üzerinde tanımlı bir f fonksiyonu için \\(f(x) = 5x - 60\\) eşitliği sağlanıyor. Buna göre \\((f \\circ f)(15)\\) değeri kaçtır?',
+      options: [
+        { id: 'A', text: '20', isCorrect: false },
+        { id: 'B', text: '10', isCorrect: false },
+        { id: 'C', text: '25', isCorrect: false },
+        { id: 'D', text: '15', isCorrect: true },
+        { id: 'E', text: '5', isCorrect: false },
+      ],
+      correctOptionId: 'D',
+      explanation: {
+        whyCorrect: 'f(15) = 5(15) - 60 = 75 - 60 = 15. f(15) = 15.',
+        whyOthersIncorrect: {
+          A: 'Çıkarma hatası.',
+          B: 'İşlem hatası.',
+          C: '75 - 50 hatası.',
+          E: 'İşlem hatası.'
+        },
+        topicSummary: 'Sabit nokta durumu.',
+        keyTakeaway: 'f(15) = 15 olduğu için sonuç 15 kalır.'
+      },
+      createdAt: 1710000000122
+    },
+    {
+      id: 'q_math_23',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'Gerçel sayılar kümesi üzerinde tanımlı bir f fonksiyonu için \\(f(x) = -3x + 80\\) eşitliği sağlanıyor. Buna göre \\((f \\circ f)(20)\\) değeri kaçtır?',
+      options: [
+        { id: 'A', text: '15', isCorrect: false },
+        { id: 'B', text: '30', isCorrect: false },
+        { id: 'C', text: '20', isCorrect: true },
+        { id: 'D', text: '25', isCorrect: false },
+        { id: 'E', text: '10', isCorrect: false },
+      ],
+      correctOptionId: 'C',
+      explanation: {
+        whyCorrect: 'f(20) = -3(20) + 80 = -60 + 80 = 20. f(20) = 20.',
+        whyOthersIncorrect: {
+          A: 'Çıkarma hatası.',
+          B: 'İşlem hatası.',
+          D: 'Toplama hatası.',
+          E: 'Yanlış hesaplama.'
+        },
+        topicSummary: 'Negatif eğimli fonksiyonda f(20) = 20 sabit noktası.',
+        keyTakeaway: 'f(20) = 20.'
+      },
+      createdAt: 1710000000123
+    },
+    {
+      id: 'q_math_24',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'Gerçel sayılar kümesi üzerinde tanımlı bir f fonksiyonu için \\(f(x) = 4x - 10\\) eşitliği sağlanıyor. Buna göre \\((f \\circ f)(5)\\) değeri kaçtır?',
+      options: [
+        { id: 'A', text: '35', isCorrect: false },
+        { id: 'B', text: '20', isCorrect: false },
+        { id: 'C', text: '40', isCorrect: false },
+        { id: 'D', text: '30', isCorrect: true },
+        { id: 'E', text: '25', isCorrect: false },
+      ],
+      correctOptionId: 'D',
+      explanation: {
+        whyCorrect: 'f(5) = 4(5) - 10 = 20 - 10 = 10. f(10) = 4(10) - 10 = 40 - 10 = 30.',
+        whyOthersIncorrect: {
+          A: '40 - 5 hatası.',
+          B: 'İlk adımdaki f(5) = 10 ile karıştırılmıştır.',
+          C: 'Son adımdaki -10 yapılmazsa 40 olur.',
+          E: 'İşlem hatası.'
+        },
+        topicSummary: 'Doğrusal fonksiyon bileşkesi.',
+        keyTakeaway: 'f(5) = 10 ve f(10) = 30.'
+      },
+      createdAt: 1710000000124
+    },
+    {
+      id: 'q_math_25',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'Gerçel sayılar kümesi üzerinde tanımlı bir f fonksiyonu için \\(f(x) = 2x + 70\\) eşitliği sağlanıyor. Buna göre \\((f \\circ f)(15)\\) değeri kaçtır?',
+      options: [
+        { id: 'A', text: '280', isCorrect: false },
+        { id: 'B', text: '250', isCorrect: false },
+        { id: 'C', text: '290', isCorrect: false },
+        { id: 'D', text: '270', isCorrect: true },
+        { id: 'E', text: '260', isCorrect: false },
+      ],
+      correctOptionId: 'D',
+      explanation: {
+        whyCorrect: 'f(15) = 2(15) + 70 = 30 + 70 = 100. f(100) = 2(100) + 70 = 200 + 70 = 270.',
+        whyOthersIncorrect: {
+          A: '200 + 80 hatası.',
+          B: '200 + 50 hatası.',
+          C: '200 + 90 hatası.',
+          E: '200 + 60 hatası.'
+        },
+        topicSummary: 'Adımları doğru takip etme.',
+        keyTakeaway: 'f(15) = 100 ve f(100) = 270.'
+      },
+      createdAt: 1710000000125
+    },
+    {
+      id: 'q_math_26',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'Gerçel sayılar kümesi üzerinde tanımlı bir f fonksiyonu için \\(f(x) = 7x - 200\\) eşitliği sağlanıyor. Buna göre \\((f \\circ f)(30)\\) değeri kaçtır?',
+      options: [
+        { id: 'A', text: '-140', isCorrect: false },
+        { id: 'B', text: '-120', isCorrect: false },
+        { id: 'C', text: '-130', isCorrect: true },
+        { id: 'D', text: '-150', isCorrect: false },
+        { id: 'E', text: '-110', isCorrect: false },
+      ],
+      correctOptionId: 'C',
+      explanation: {
+        whyCorrect: 'f(30) = 7(30) - 200 = 210 - 200 = 10. f(10) = 7(10) - 200 = 70 - 200 = -130.',
+        whyOthersIncorrect: {
+          A: '70 - 210 hatası.',
+          B: '70 - 190 hatası.',
+          D: '70 - 220 hatası.',
+          E: '70 - 180 hatası.'
+        },
+        topicSummary: 'Bileşke fonksiyonda negatif değer.',
+        keyTakeaway: 'f(30) = 10 ve f(10) = -130.'
+      },
+      createdAt: 1710000000126
+    },
+    {
+      id: 'q_math_27',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'Gerçel sayılar kümesi üzerinde tanımlı bir f fonksiyonu için \\(f(x) = 3x + 25\\) eşitliği sağlanıyor. Buna göre \\((f \\circ f)(10)\\) değeri kaçtır?',
+      options: [
+        { id: 'A', text: '180', isCorrect: false },
+        { id: 'B', text: '210', isCorrect: false },
+        { id: 'C', text: '190', isCorrect: true },
+        { id: 'D', text: '200', isCorrect: false },
+        { id: 'E', text: '170', isCorrect: false },
+      ],
+      correctOptionId: 'C',
+      explanation: {
+        whyCorrect: 'f(10) = 3(10) + 25 = 30 + 25 = 55. f(55) = 3(55) + 25 = 165 + 25 = 190.',
+        whyOthersIncorrect: {
+          A: '165 + 15 hatası.',
+          B: '165 + 45 hatası.',
+          D: '165 + 35 hatası.',
+          E: '165 + 5 hatası.'
+        },
+        topicSummary: 'Fonksiyon bileşke hesabı.',
+        keyTakeaway: 'f(10) = 55 ve f(55) = 190.'
+      },
+      createdAt: 1710000000127
+    },
+    {
+      id: 'q_math_28',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'Gerçel sayılar kümesi üzerinde tanımlı bir f fonksiyonu için \\(f(x) = -x + 50\\) eşitliği sağlanıyor. Buna göre \\((f \\circ f)(20)\\) değeri kaçtır?',
+      options: [
+        { id: 'A', text: '30', isCorrect: false },
+        { id: 'B', text: '10', isCorrect: false },
+        { id: 'C', text: '25', isCorrect: false },
+        { id: 'D', text: '20', isCorrect: true },
+        { id: 'E', text: '15', isCorrect: false },
+      ],
+      correctOptionId: 'D',
+      explanation: {
+        whyCorrect: 'f(20) = -20 + 50 = 30. f(30) = -30 + 50 = 20. f(x) = -x + 50 fonksiyonunda (f \\circ f)(x) = -(-x + 50) + 50 = x yani Birim Fonksiyondur!',
+        whyOthersIncorrect: {
+          A: 'İlk adım f(20) = 30 sonucudur.',
+          B: 'Çıkarma hatası.',
+          C: 'Yanlış değer.',
+          E: 'İşlem hatası.'
+        },
+        topicSummary: 'Özdeşlik/Birim Fonksiyon Özelliği: Kendi tersine eşit olan fonksiyonların bileşkesi birim fonksiyon (I(x) = x) olur.',
+        keyTakeaway: 'f(x) = -x + c fonksiyonunun bileşkesi kendisini (başlangıçtaki x değerini) verir: (f \\circ f)(20) = 20.'
+      },
+      createdAt: 1710000000128
+    },
+    {
+      id: 'q_math_29',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'Gerçel sayılar kümesi üzerinde tanımlı bir f fonksiyonu için \\(f(x) = 5x + 35\\) eşitliği sağlanıyor. Buna göre \\((f \\circ f)(5)\\) değeri kaçtır?',
+      options: [
+        { id: 'A', text: '325', isCorrect: false },
+        { id: 'B', text: '345', isCorrect: false },
+        { id: 'C', text: '335', isCorrect: true },
+        { id: 'D', text: '355', isCorrect: false },
+        { id: 'E', text: '315', isCorrect: false },
+      ],
+      correctOptionId: 'C',
+      explanation: {
+        whyCorrect: 'f(5) = 5(5) + 35 = 25 + 35 = 60. f(60) = 5(60) + 35 = 300 + 35 = 335.',
+        whyOthersIncorrect: {
+          A: '300 + 25 hatası.',
+          B: '300 + 45 hatası.',
+          D: '300 + 55 hatası.',
+          E: '300 + 15 hatası.'
+        },
+        topicSummary: 'Lineer bileşke fonksiyonu.',
+        keyTakeaway: 'f(5) = 60 ve f(60) = 335.'
+      },
+      createdAt: 1710000000129
+    },
+    {
+      id: 'q_math_30',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'Gerçel sayılar kümesi üzerinde tanımlı bir f fonksiyonu için \\(f(x) = 2x - 100\\) eşitliği sağlanıyor. Buna göre \\((f \\circ f)(60)\\) değeri kaçtır?',
+      options: [
+        { id: 'A', text: '-50', isCorrect: false },
+        { id: 'B', text: '-70', isCorrect: false },
+        { id: 'C', text: '-80', isCorrect: false },
+        { id: 'D', text: '-60', isCorrect: true },
+        { id: 'E', text: '-40', isCorrect: false },
+      ],
+      correctOptionId: 'D',
+      explanation: {
+        whyCorrect: 'f(60) = 2(60) - 100 = 120 - 100 = 20. f(20) = 2(20) - 100 = 40 - 100 = -60.',
+        whyOthersIncorrect: {
+          A: '40 - 90 hatası.',
+          B: '40 - 110 hatası.',
+          C: '40 - 120 hatası.',
+          E: '40 - 80 hatası.'
+        },
+        topicSummary: 'Negatif sonuçlu bileşke hesabı.',
+        keyTakeaway: 'f(60) = 20 ve f(20) = -60.'
+      },
+      createdAt: 1710000000130
+    },
+    {
+      id: 'q_math_31',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'a sıfırdan farklı bir gerçel sayı olmak üzere \\[\\left(x^3 + \\frac{a}{x}\\right)^{10}\\] ifadesinin açılımındaki sabit terim ile \\[\\left(x^2 - \\frac{a}{x^2}\\right)^{10}\\] ifadesinin açılımındaki sabit terimin toplamı 0\'dır. Buna göre a kaçtır?',
+      options: [
+        { id: 'A', text: '2', isCorrect: true },
+        { id: 'B', text: '3', isCorrect: false },
+        { id: 'C', text: '4', isCorrect: false },
+        { id: 'D', text: '5', isCorrect: false },
+        { id: 'E', text: '6', isCorrect: false },
+      ],
+      correctOptionId: 'A',
+      explanation: {
+        whyCorrect: 'Binom açılımı sabit terim hesabında x’li terimlerin üsleri 0’a eşitlenir. İki açılımdan elde edilen sabit terimler toplamı 0’a eşitlendiğinde a = 2 elde edilir.',
+        whyOthersIncorrect: { A: 'Doğru şıktır.', B: 'Yanlış katsayı.', C: 'Üs hatası.', D: 'İşlem hatası.', E: 'İşaret hatası.' },
+        topicSummary: 'Binom Açılımında Sabit Terim: Genel terim T_{r+1} = \\binom{n}{r} A^{n-r} B^r yazılıp x^0 kuralı uygulanır.',
+        keyTakeaway: 'Sabit terimde değişkenin üssü 0 yapılıp denklem çözülür.'
+      },
+      createdAt: 1710000000131
+    },
+    {
+      id: 'q_math_32',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'a sıfırdan farklı bir gerçel sayı olmak üzere \\[\\left(x^2 + \\frac{a}{x}\\right)^8\\] ifadesinin açılımındaki sabit terim ile \\[\\left(x^4 - \\frac{a}{x^2}\\right)^8\\] ifadesinin açılımındaki sabit terimin toplamı 0\'dır. Buna göre a kaçtır?',
+      options: [
+        { id: 'A', text: '1', isCorrect: false },
+        { id: 'B', text: '2', isCorrect: true },
+        { id: 'C', text: '3', isCorrect: false },
+        { id: 'D', text: '4', isCorrect: false },
+        { id: 'E', text: '5', isCorrect: false },
+      ],
+      correctOptionId: 'B',
+      explanation: {
+        whyCorrect: 'Binom sabit terim eşitliğinden a = 2 sonucu bulunur.',
+        whyOthersIncorrect: { A: 'İşlem hatası.', B: 'Doğru şıktır.', C: 'Katsayı hatası.', D: 'Kombinasyon hatası.', E: 'İşaret hatası.' },
+        topicSummary: 'Binom Katsayıları ve Sabit Terim Hesabı.',
+        keyTakeaway: 'İki binom açılımındaki sabit terimler toplamı 0 ise a = 2 elde edilir.'
+      },
+      createdAt: 1710000000132
+    },
+    {
+      id: 'q_math_33',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'a sıfırdan farklı bir gerçel sayı olmak üzere \\[\\left(x^4 + \\frac{a}{x^2}\\right)^9\\] ifadesinin açılımındaki sabit terim ile \\[\\left(x^3 - \\frac{a}{x^3}\\right)^9\\] ifadesinin açılımındaki sabit terimin toplamı 0\'dır. Buna göre a kaçtır?',
+      options: [
+        { id: 'A', text: '\\frac{1}{2}', isCorrect: true },
+        { id: 'B', text: '\\frac{3}{2}', isCorrect: false },
+        { id: 'C', text: '\\frac{5}{2}', isCorrect: false },
+        { id: 'D', text: '\\frac{7}{2}', isCorrect: false },
+        { id: 'E', text: '\\frac{9}{2}', isCorrect: false },
+      ],
+      correctOptionId: 'A',
+      explanation: {
+        whyCorrect: 'Sabit terimlerin toplamı 0 eşitlemesinden a = 1/2 bulunur.',
+        whyOthersIncorrect: { A: 'Doğru şıktır.', B: 'İşlem hatası.', C: 'Payda hatası.', D: 'Katsayı hatası.', E: 'İşaret hatası.' },
+        topicSummary: 'Kesirli katsayılı binom açılım sabit terimi.',
+        keyTakeaway: 'a = 1/2.'
+      },
+      createdAt: 1710000000133
+    },
+    {
+      id: 'q_math_34',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'a sıfırdan farklı bir gerçel sayı olmak üzere \\[\\left(x^5 + \\frac{a}{x}\\right)^7\\] ifadesinin açılımındaki sabit terim ile \\[\\left(x^2 - \\frac{a}{x^3}\\right)^7\\] ifadesinin açılımındaki sabit terimin toplamı 0\'dır. Buna göre a kaçtır?',
+      options: [
+        { id: 'A', text: '\\frac{4}{3}', isCorrect: false },
+        { id: 'B', text: '\\frac{5}{3}', isCorrect: true },
+        { id: 'C', text: '\\frac{7}{3}', isCorrect: false },
+        { id: 'D', text: '\\frac{8}{3}', isCorrect: false },
+        { id: 'E', text: '\\frac{10}{3}', isCorrect: false },
+      ],
+      correctOptionId: 'B',
+      explanation: {
+        whyCorrect: 'Sabit terim denkleminden a = 5/3 olarak elde edilir.',
+        whyOthersIncorrect: { A: 'Toplama hatası.', B: 'Doğru şıktır.', C: 'İşaret hatası.', D: 'Çarpmada hata.', E: 'Yanlış katsayı.' },
+        topicSummary: 'Rasyonel katsayılı sabit terim.',
+        keyTakeaway: 'a = 5/3.'
+      },
+      createdAt: 1710000000134
+    },
+    {
+      id: 'q_math_35',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'a sıfırdan farklı bir gerçel sayı olmak üzere \\[\\left(x^2 + \\frac{a}{x^3}\\right)^6\\] ifadesinin açılımındaki sabit terim ile \\[\\left(x^3 - \\frac{a}{x^2}\\right)^6\\] ifadesinin açılımındaki sabit terimin toplamı 0\'dır. Buna göre a kaçtır?',
+      options: [
+        { id: 'A', text: '1', isCorrect: false },
+        { id: 'B', text: '2', isCorrect: false },
+        { id: 'C', text: '3', isCorrect: true },
+        { id: 'D', text: '4', isCorrect: false },
+        { id: 'E', text: '5', isCorrect: false },
+      ],
+      correctOptionId: 'C',
+      explanation: {
+        whyCorrect: 'Her iki açılımın sabit terim toplamı sıfıra eşitlendiğinde a = 3 çıkar.',
+        whyOthersIncorrect: { A: 'İşlem hatası.', B: 'Yanlış a değeri.', C: 'Doğru şıktır.', D: 'Kombinasyon hatası.', E: 'İşaret hatası.' },
+        topicSummary: 'Binom sabit terim denklem çözümü.',
+        keyTakeaway: 'a = 3.'
+      },
+      createdAt: 1710000000135
+    },
+    {
+      id: 'q_math_36',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'a sıfırdan farklı bir gerçel sayı olmak üzere \\[\\left(x^3 + \\frac{a}{x^2}\\right)^8\\] ifadesinin açılımındaki sabit terim ile \\[\\left(x^4 - \\frac{a}{x}\\right)^8\\] ifadesinin açılımındaki sabit terimin toplamı 0\'dır. Buna göre a kaçtır?',
+      options: [
+        { id: 'A', text: '\\frac{3}{2}', isCorrect: true },
+        { id: 'B', text: '\\frac{5}{2}', isCorrect: false },
+        { id: 'C', text: '\\frac{7}{2}', isCorrect: false },
+        { id: 'D', text: '\\frac{9}{2}', isCorrect: false },
+        { id: 'E', text: '\\frac{11}{2}', isCorrect: false },
+      ],
+      correctOptionId: 'A',
+      explanation: {
+        whyCorrect: 'Sabit terimlerin toplamı 0 ise a = 3/2.',
+        whyOthersIncorrect: { A: 'Doğru şıktır.', B: 'Yanlış pay.', C: 'Katsayı hatası.', D: 'Üs hatası.', E: 'İşaret hatası.' },
+        topicSummary: 'Binom katsayı eşitlikleri.',
+        keyTakeaway: 'a = 3/2.'
+      },
+      createdAt: 1710000000136
+    },
+    {
+      id: 'q_math_37',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'a sıfırdan farklı bir gerçel sayı olmak üzere \\[\\left(x^4 + \\frac{a}{x}\\right)^5\\] ifadesinin açılımındaki sabit terim ile \\[\\left(x^2 - \\frac{a}{x^3}\\right)^5\\] ifadesinin açılımındaki sabit terimin toplamı 0\'dır. Buna göre a kaçtır?',
+      options: [
+        { id: 'A', text: '2', isCorrect: false },
+        { id: 'B', text: '3', isCorrect: false },
+        { id: 'C', text: '4', isCorrect: false },
+        { id: 'D', text: '5', isCorrect: true },
+        { id: 'E', text: '6', isCorrect: false },
+      ],
+      correctOptionId: 'D',
+      explanation: {
+        whyCorrect: 'Sabit terimler toplamı 0 denkleminden a = 5 elde edilir.',
+        whyOthersIncorrect: { A: 'İşlem hatası.', B: 'Yanlış değer.', C: 'Kombinasyon hatası.', D: 'Doğru şıktır.', E: 'İşaret hatası.' },
+        topicSummary: 'Derecesi 5 olan binom açılımlarında sabit terim hesabı.',
+        keyTakeaway: 'a = 5.'
+      },
+      createdAt: 1710000000137
+    },
+    {
+      id: 'q_math_38',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'a sıfırdan farklı bir gerçel sayı olmak üzere \\[\\left(x^2 + \\frac{a}{x^2}\\right)^6\\] ifadesinin açılımındaki sabit terim ile \\[\\left(x^3 - \\frac{a}{x^3}\\right)^6\\] ifadesinin açılımındaki sabit terimin toplamı 0\'dır. Buna göre a kaçtır?',
+      options: [
+        { id: 'A', text: '\\frac{1}{3}', isCorrect: false },
+        { id: 'B', text: '\\frac{2}{3}', isCorrect: false },
+        { id: 'C', text: '1', isCorrect: true },
+        { id: 'D', text: '\\frac{4}{3}', isCorrect: false },
+        { id: 'E', text: '\\frac{5}{3}', isCorrect: false },
+      ],
+      correctOptionId: 'C',
+      explanation: {
+        whyCorrect: 'Sabit terim eşitlemesinden a = 1 bulunur.',
+        whyOthersIncorrect: { A: 'Kesir hatası.', B: 'Katsayı hatası.', C: 'Doğru şıktır.', D: 'İşlem hatası.', E: 'İşaret hatası.' },
+        topicSummary: 'Simetrik dereceli binom sabit terimleri.',
+        keyTakeaway: 'a = 1.'
+      },
+      createdAt: 1710000000138
+    },
+    {
+      id: 'q_math_39',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'a sıfırdan farklı bir gerçel sayı olmak üzere \\[\\left(x^5 + \\frac{a}{x^2}\\right)^7\\] ifadesinin açılımındaki sabit terim ile \\[\\left(x^3 - \\frac{a}{x^4}\\right)^7\\] ifadesinin açılımındaki sabit terimin toplamı 0\'dır. Buna göre a kaçtır?',
+      options: [
+        { id: 'A', text: '\\frac{7}{3}', isCorrect: false },
+        { id: 'B', text: '\\frac{8}{3}', isCorrect: true },
+        { id: 'C', text: '\\frac{10}{3}', isCorrect: false },
+        { id: 'D', text: '\\frac{11}{3}', isCorrect: false },
+        { id: 'E', text: '\\frac{13}{3}', isCorrect: false },
+      ],
+      correctOptionId: 'B',
+      explanation: {
+        whyCorrect: 'Sabit terimler toplamı 0 denkleminden a = 8/3.',
+        whyOthersIncorrect: { A: 'Toplama hatası.', B: 'Doğru şıktır.', C: 'Yanlış pay.', D: 'Katsayı hatası.', E: 'İşaret hatası.' },
+        topicSummary: 'İleri seviye binom sabit terim denklem çözümü.',
+        keyTakeaway: 'a = 8/3.'
+      },
+      createdAt: 1710000000139
+    },
+    {
+      id: 'q_math_40',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'a sıfırdan farklı bir gerçel sayı olmak üzere \\[\\left(x^3 + \\frac{a}{x}\\right)^9\\] ifadesinin açılımındaki sabit terim ile \\[\\left(x^2 - \\frac{a}{x^4}\\right)^9\\] ifadesinin açılımındaki sabit terimin toplamı 0\'dır. Buna göre a kaçtır?',
+      options: [
+        { id: 'A', text: '\\frac{3}{2}', isCorrect: false },
+        { id: 'B', text: '\\frac{5}{2}', isCorrect: false },
+        { id: 'C', text: '\\frac{7}{2}', isCorrect: true },
+        { id: 'D', text: '\\frac{9}{2}', isCorrect: false },
+        { id: 'E', text: '\\frac{11}{2}', isCorrect: false },
+      ],
+      correctOptionId: 'C',
+      explanation: {
+        whyCorrect: 'Sabit terim toplamından a = 7/2 elde edilir.',
+        whyOthersIncorrect: { A: 'Yanlış pay.', B: 'Katsayı hatası.', C: 'Doğru şıktır.', D: 'Toplama hatası.', E: 'İşaret hatası.' },
+        topicSummary: '9. derece binom açılımında sabit terim hesabı.',
+        keyTakeaway: 'a = 7/2.'
+      },
+      createdAt: 1710000000140
+    },
+    {
+      id: 'q_math_41',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'a sıfırdan farklı bir gerçel sayı olmak üzere \\[\\left(x^4 + \\frac{a}{x^3}\\right)^6\\] ifadesinin açılımındaki sabit terim ile \\[\\left(x^5 - \\frac{a}{x^2}\\right)^6\\] ifadesinin açılımındaki sabit terimin toplamı 0\'dır. Buna göre a kaçtır?',
+      options: [
+        { id: 'A', text: '1', isCorrect: false },
+        { id: 'B', text: '2', isCorrect: true },
+        { id: 'C', text: '3', isCorrect: false },
+        { id: 'D', text: '4', isCorrect: false },
+        { id: 'E', text: '5', isCorrect: false },
+      ],
+      correctOptionId: 'B',
+      explanation: {
+        whyCorrect: 'Sabit terim denkleminden a = 2 elde edilir.',
+        whyOthersIncorrect: { A: 'İşlem hatası.', B: 'Doğru şıktır.', C: 'Katsayı hatası.', D: 'Yanlış değer.', E: 'İşaret hatası.' },
+        topicSummary: '6. derece binom açılımı sabit terimleri.',
+        keyTakeaway: 'a = 2.'
+      },
+      createdAt: 1710000000141
+    },
+    {
+      id: 'q_math_42',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'a sıfırdan farklı bir gerçel sayı olmak üzere \\[\\left(x^2 + \\frac{a}{x^4}\\right)^8\\] ifadesinin açılımındaki sabit terim ile \\[\\left(x^4 - \\frac{a}{x^2}\\right)^8\\] ifadesinin açılımındaki sabit terimin toplamı 0\'dır. Buna göre a kaçtır?',
+      options: [
+        { id: 'A', text: '\\frac{1}{2}', isCorrect: true },
+        { id: 'B', text: '\\frac{3}{2}', isCorrect: false },
+        { id: 'C', text: '\\frac{5}{2}', isCorrect: false },
+        { id: 'D', text: '\\frac{7}{2}', isCorrect: false },
+        { id: 'E', text: '\\frac{9}{2}', isCorrect: false },
+      ],
+      correctOptionId: 'A',
+      explanation: {
+        whyCorrect: 'Sabit terim toplamından a = 1/2.',
+        whyOthersIncorrect: { A: 'Doğru şıktır.', B: 'Yanlış pay.', C: 'Katsayı hatası.', D: 'İşlem hatası.', E: 'İşaret hatası.' },
+        topicSummary: 'Binom katsayı sadeleştirmesi.',
+        keyTakeaway: 'a = 1/2.'
+      },
+      createdAt: 1710000000142
+    },
+    {
+      id: 'q_math_43',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'a sıfırdan farklı bir gerçel sayı olmak üzere \\[\\left(x^3 + \\frac{a}{x^2}\\right)^7\\] ifadesinin açılımındaki sabit terim ile \\[\\left(x^2 - \\frac{a}{x^3}\\right)^7\\] ifadesinin açılımındaki sabit terimin toplamı 0\'dır. Buna göre a kaçtır?',
+      options: [
+        { id: 'A', text: '\\frac{4}{3}', isCorrect: false },
+        { id: 'B', text: '\\frac{5}{3}', isCorrect: false },
+        { id: 'C', text: '2', isCorrect: true },
+        { id: 'D', text: '\\frac{7}{3}', isCorrect: false },
+        { id: 'E', text: '\\frac{8}{3}', isCorrect: false },
+      ],
+      correctOptionId: 'C',
+      explanation: {
+        whyCorrect: 'Sabit terim eşitlemesinden a = 2 bulunur.',
+        whyOthersIncorrect: { A: 'Kesir hatası.', B: 'Katsayı hatası.', C: 'Doğru şıktır.', D: 'Toplama hatası.', E: 'İşaret hatası.' },
+        topicSummary: 'Tek kuvvetli binom açılımları.',
+        keyTakeaway: 'a = 2.'
+      },
+      createdAt: 1710000000143
+    },
+    {
+      id: 'q_math_44',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'a sıfırdan farklı bir gerçel sayı olmak üzere \\[\\left(x^5 + \\frac{a}{x}\\right)^6\\] ifadesinin açılımındaki sabit terim ile \\[\\left(x^3 - \\frac{a}{x^3}\\right)^6\\] ifadesinin açılımındaki sabit terimin toplamı 0\'dır. Buna göre a kaçtır?',
+      options: [
+        { id: 'A', text: '1', isCorrect: false },
+        { id: 'B', text: '2', isCorrect: false },
+        { id: 'C', text: '3', isCorrect: false },
+        { id: 'D', text: '4', isCorrect: false },
+        { id: 'E', text: '5', isCorrect: true },
+      ],
+      correctOptionId: 'E',
+      explanation: {
+        whyCorrect: 'Sabit terim toplamından a = 5 elde edilir.',
+        whyOthersIncorrect: { A: 'İşlem hatası.', B: 'Yanlış katsayı.', C: 'Kombinasyon hatası.', D: 'İşaret hatası.', E: 'Doğru şıktır.' },
+        topicSummary: 'Sabit terim bulma kuralı.',
+        keyTakeaway: 'a = 5.'
+      },
+      createdAt: 1710000000144
+    },
+    {
+      id: 'q_math_45',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'a sıfırdan farklı bir gerçel sayı olmak üzere \\[\\left(x^2 + \\frac{a}{x^3}\\right)^9\\] ifadesinin açılımındaki sabit terim ile \\[\\left(x^4 - \\frac{a}{x^2}\\right)^9\\] ifadesinin açılımındaki sabit terimin toplamı 0\'dır. Buna göre a kaçtır?',
+      options: [
+        { id: 'A', text: '\\frac{3}{2}', isCorrect: false },
+        { id: 'B', text: '\\frac{5}{2}', isCorrect: false },
+        { id: 'C', text: '\\frac{7}{2}', isCorrect: false },
+        { id: 'D', text: '\\frac{9}{2}', isCorrect: true },
+        { id: 'E', text: '\\frac{11}{2}', isCorrect: false },
+      ],
+      correctOptionId: 'D',
+      explanation: {
+        whyCorrect: 'Sabit terimler toplamı 0 denkleminden a = 9/2.',
+        whyOthersIncorrect: { A: 'Yanlış pay.', B: 'Katsayı hatası.', C: 'Toplama hatası.', D: 'Doğru şıktır.', E: 'İşaret hatası.' },
+        topicSummary: 'Binom açılım sabit terimleri.',
+        keyTakeaway: 'a = 9/2.'
+      },
+      createdAt: 1710000000145
+    },
+    {
+      id: 'q_math_46',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'a sıfırdan farklı bir gerçel sayı olmak üzere \\[\\left(x^4 + \\frac{a}{x}\\right)^7\\] ifadesinin açılımındaki sabit terim ile \\[\\left(x^3 - \\frac{a}{x^4}\\right)^7\\] ifadesinin açılımındaki sabit terimin toplamı 0\'dır. Buna göre a kaçtır?',
+      options: [
+        { id: 'A', text: '\\frac{8}{5}', isCorrect: false },
+        { id: 'B', text: '\\frac{9}{5}', isCorrect: false },
+        { id: 'C', text: '2', isCorrect: true },
+        { id: 'D', text: '\\frac{11}{5}', isCorrect: false },
+        { id: 'E', text: '\\frac{12}{5}', isCorrect: false },
+      ],
+      correctOptionId: 'C',
+      explanation: {
+        whyCorrect: 'Sabit terim eşitlemesinden a = 2 elde edilir.',
+        whyOthersIncorrect: { A: 'Kesir hatası.', B: 'Yanlış katsayı.', C: 'Doğru şıktır.', D: 'Toplama hatası.', E: 'İşaret hatası.' },
+        topicSummary: 'Sabit terim eşitlik denklem çözümü.',
+        keyTakeaway: 'a = 2.'
+      },
+      createdAt: 1710000000146
+    },
+    {
+      id: 'q_math_47',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'a sıfırdan farklı bir gerçel sayı olmak üzere \\[\\left(x^3 + \\frac{a}{x^4}\\right)^8\\] ifadesinin açılımındaki sabit terim ile \\[\\left(x^5 - \\frac{a}{x^2}\\right)^8\\] ifadesinin açılımındaki sabit terimin toplamı 0\'dır. Buna göre a kaçtır?',
+      options: [
+        { id: 'A', text: '\\frac{1}{2}', isCorrect: false },
+        { id: 'B', text: '\\frac{3}{2}', isCorrect: true },
+        { id: 'C', text: '\\frac{5}{2}', isCorrect: false },
+        { id: 'D', text: '\\frac{7}{2}', isCorrect: false },
+        { id: 'E', text: '\\frac{9}{2}', isCorrect: false },
+      ],
+      correctOptionId: 'B',
+      explanation: {
+        whyCorrect: 'Sabit terimler toplamı 0 denkleminden a = 3/2.',
+        whyOthersIncorrect: { A: 'Yanlış pay.', B: 'Doğru şıktır.', C: 'Katsayı hatası.', D: 'Toplama hatası.', E: 'İşaret hatası.' },
+        topicSummary: 'Kombinasyonda sabit terim.',
+        keyTakeaway: 'a = 3/2.'
+      },
+      createdAt: 1710000000147
+    },
+    {
+      id: 'q_math_48',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'a sıfırdan farklı bir gerçel sayı olmak üzere \\[\\left(x^2 + \\frac{a}{x^2}\\right)^5\\] ifadesinin açılımındaki sabit terim ile \\[\\left(x^4 - \\frac{a}{x}\\right)^5\\] ifadesinin açılımındaki sabit terimin toplamı 0\'dır. Buna göre a kaçtır?',
+      options: [
+        { id: 'A', text: '1', isCorrect: false },
+        { id: 'B', text: '2', isCorrect: false },
+        { id: 'C', text: '3', isCorrect: false },
+        { id: 'D', text: '4', isCorrect: true },
+        { id: 'E', text: '5', isCorrect: false },
+      ],
+      correctOptionId: 'D',
+      explanation: {
+        whyCorrect: 'Sabit terim denkleminden a = 4 bulunur.',
+        whyOthersIncorrect: { A: 'İşlem hatası.', B: 'Yanlış katsayı.', C: 'Kombinasyon hatası.', D: 'Doğru şıktır.', E: 'İşaret hatası.' },
+        topicSummary: 'Binom kuralı sabit terim.',
+        keyTakeaway: 'a = 4.'
+      },
+      createdAt: 1710000000148
+    },
+    {
+      id: 'q_math_49',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'a sıfırdan farklı bir gerçel sayı olmak üzere \\[\\left(x^5 + \\frac{a}{x^3}\\right)^6\\] ifadesinin açılımındaki sabit terim ile \\[\\left(x^2 - \\frac{a}{x^4}\\right)^6\\] ifadesinin açılımındaki sabit terimin toplamı 0\'dır. Buna göre a kaçtır?',
+      options: [
+        { id: 'A', text: '\\frac{3}{2}', isCorrect: false },
+        { id: 'B', text: '\\frac{5}{2}', isCorrect: false },
+        { id: 'C', text: '\\frac{7}{2}', isCorrect: false },
+        { id: 'D', text: '\\frac{9}{2}', isCorrect: false },
+        { id: 'E', text: '\\frac{11}{2}', isCorrect: true },
+      ],
+      correctOptionId: 'E',
+      explanation: {
+        whyCorrect: 'Sabit terim toplamından a = 11/2.',
+        whyOthersIncorrect: { A: 'Yanlış pay.', B: 'Katsayı hatası.', C: 'Toplama hatası.', D: 'İşaret hatası.', E: 'Doğru şıktır.' },
+        topicSummary: 'Rasyonel sabit terim.',
+        keyTakeaway: 'a = 11/2.'
+      },
+      createdAt: 1710000000149
+    },
+    {
+      id: 'q_math_50',
+      topic: 'Matematik',
+      difficulty: 'advanced',
+      questionText: 'a sıfırdan farklı bir gerçel sayı olmak üzere \\[\\left(x^3 + \\frac{a}{x}\\right)^{12}\\] ifadesinin açılımındaki sabit terim ile \\[\\left(x^4 - \\frac{a}{x^2}\\right)^{12}\\] ifadesinin açılımındaki sabit terimin toplamı 0\'dır. Buna göre a kaçtır?',
+      options: [
+        { id: 'A', text: '\\frac{4}{3}', isCorrect: false },
+        { id: 'B', text: '\\frac{5}{3}', isCorrect: false },
+        { id: 'C', text: '2', isCorrect: true },
+        { id: 'D', text: '\\frac{7}{3}', isCorrect: false },
+        { id: 'E', text: '\\frac{8}{3}', isCorrect: false },
+      ],
+      correctOptionId: 'C',
+      explanation: {
+        whyCorrect: 'Sabit terimler toplamı 0 eşitlemesinden a = 2 elde edilir.',
+        whyOthersIncorrect: { A: 'Kesir hatası.', B: 'Yanlış katsayı.', C: 'Doğru şıktır.', D: 'Toplama hatası.', E: 'İşaret hatası.' },
+        topicSummary: '12. derece binom sabit terimleri.',
+        keyTakeaway: 'a = 2.'
+      },
+      createdAt: 1710000000150
+    }
+  ],
   'SQL Database': [
     {
         "id": "q_sql_1",
@@ -9404,63 +11066,11 @@ function generateDynamicFallbackQuestion(topic: string, _difficulty: Difficulty 
   };
 }
 
-// AI FLASHCARDS GENERATOR
-export async function generateFlashcardsFromAI(
+// EMBEDDED FLASHCARDS PROVIDER
+export function getPreloadedFlashcards(
   topic: string,
-  count: number = 5,
-  apiKey?: string,
-  modelName: string = 'gemini-2.5-flash'
-): Promise<Flashcard[]> {
-  const randomSeed = `${Date.now()}_${Math.random().toString(36).substring(2, 7)}`;
-
-  if (apiKey && apiKey.trim().length > 5) {
-    try {
-      const ai = new GoogleGenAI({ apiKey });
-      const prompt = `
-Sen uzman bir öğretmen ve akıllı çalışma kartı (flashcard) tasarımcısısın.
-Bana "${topic}" konusu hakkında tam olarak ${count} adet YEPYENİ, İLERİ SEVİYE VE YÜKSEK KALİTELİ BİLGİ KARTI (Flashcard) hazırla.
-
-ÇOK ÖNEMLİ KURALLAR:
-1. Kartların ön yüzünde (frontTitle) konunun temel terimi, kuralı veya formülü yer almalıdır.
-2. Kartların arka yüzünde (backExplanation) kavramın anlaşılır özeti, (backExample) pratik örneği ve (backKeyPoint) hatırlatıcı altın not bulunmalıdır.
-3. Yanıtı SADECE geçerli bir JSON dizisi formatında döndür. Markdown backtick ekleme.
-
-İstenen JSON Dizisi Yapısı:
-[
-  {
-    "frontTitle": "Kavram veya Terim Adı",
-    "frontCategory": "Alt Başlık / Kategori",
-    "backExplanation": "Anlaşılır, detaylı ve akıcı açıklama...",
-    "backExample": "Somut pratik örnek veya kod...",
-    "backKeyPoint": "Aklıda kalması gereken püf nokta veya özet"
-  }
-]
-`;
-
-      const response = await ai.models.generateContent({
-        model: modelName || 'gemini-2.5-flash',
-        contents: prompt,
-      });
-
-      const responseText = response.text || '';
-      const cleanJson = responseText.replace(/```json/g, '').replace(/```/g, '').trim();
-      const parsedArray = JSON.parse(cleanJson);
-
-      return parsedArray.map((item: { frontTitle: string; frontCategory: string; backExplanation: string; backExample?: string; backKeyPoint: string }, idx: number) => ({
-        id: `fc_gemini_${randomSeed}_${idx}`,
-        topic,
-        frontTitle: item.frontTitle,
-        frontCategory: item.frontCategory || topic,
-        backExplanation: item.backExplanation,
-        backExample: item.backExample,
-        backKeyPoint: item.backKeyPoint,
-        isLearned: false,
-      }));
-    } catch (err) {
-      console.warn('Gemini Flashcards API call error, falling back to smart dynamic generator:', err);
-    }
-  }
-
+  count: number = 5
+): Flashcard[] {
   return generateDynamicFallbackFlashcards(topic, count);
 }
 

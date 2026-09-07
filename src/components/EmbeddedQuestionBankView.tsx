@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { BookOpen, ChevronLeft, ChevronRight, Database, Globe } from 'lucide-react';
+import { BookOpen, ChevronLeft, ChevronRight, Database, Globe, Calculator } from 'lucide-react';
 import type { Question } from '../types/quiz';
 import { shuffleQuestionOptions } from '../services/aiService';
 import { QuestionCard } from './QuestionCard';
@@ -18,7 +18,7 @@ export const EmbeddedQuestionBankView: React.FC<EmbeddedQuestionBankViewProps> =
   onSaveQuestion,
   isQuestionSaved,
 }) => {
-  const [selectedTopic, setSelectedTopic] = useState<string>('SQL Database');
+  const [selectedTopic, setSelectedTopic] = useState<string>('Matematik');
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [userAnswers, setUserAnswers] = useState<Record<string, string>>({});
 
@@ -79,6 +79,13 @@ export const EmbeddedQuestionBankView: React.FC<EmbeddedQuestionBankViewProps> =
     <div className="embedded-bank-container">
       {/* Category Filter Pills */}
       <div className="bank-topic-filter-tabs">
+        <button
+          className={`filter-tab-btn ${selectedTopic === 'Matematik' ? 'active' : ''}`}
+          onClick={() => handleTopicChange('Matematik')}
+        >
+          <Calculator className="tab-icon" />
+          <span>📐 Matematik (Logaritma)</span>
+        </button>
         <button
           className={`filter-tab-btn ${selectedTopic === 'SQL Database' ? 'active' : ''}`}
           onClick={() => handleTopicChange('SQL Database')}

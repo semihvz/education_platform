@@ -1,8 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Header } from './components/Header';
-import { TopicSelector } from './components/TopicSelector';
-import { QuestionCard } from './components/QuestionCard';
-import { ExplanationCard } from './components/ExplanationCard';
 import { EmbeddedQuestionBankView } from './components/EmbeddedQuestionBankView';
 import { FlashcardTopicSelector } from './components/FlashcardTopicSelector';
 import { FlashcardDeckView } from './components/FlashcardDeckView';
@@ -12,8 +9,8 @@ import { StatsDashboard } from './components/StatsDashboard';
 import { AuthModal } from './components/AuthModal';
 import { AuthGuardWall } from './components/AuthGuardWall';
 
-import type { Question, Difficulty, AppSettings, UserStats, SavedQuestionItem, Flashcard, SavedFlashcardItem, UserProfile } from './types/quiz';
-import { generateQuestionFromAI, generateFlashcardsFromAI, getPreloadedQuestions } from './services/aiService';
+import type { Question, AppSettings, UserStats, SavedQuestionItem, Flashcard, SavedFlashcardItem, UserProfile } from './types/quiz';
+import { getPreloadedFlashcards, getPreloadedQuestions } from './services/aiService';
 import { 
   loadSettings, 
   saveSettings, 
@@ -35,12 +32,8 @@ export function App() {
   const [savedQuestions, setSavedQuestions] = useState<SavedQuestionItem[]>([]);
   const [savedFlashcards, setSavedFlashcards] = useState<SavedFlashcardItem[]>([]);
 
-  // 3 Modes: 'ai-quiz' | 'embedded-bank' | 'flashcards'
-  const [activeMode, setActiveMode] = useState<'ai-quiz' | 'embedded-bank' | 'flashcards'>('ai-quiz');
-
-  // AI Quiz State
-  const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
-  const [userAnswerId, setUserAnswerId] = useState<string | null>(null);
+  // 2 Modes: 'embedded-bank' | 'flashcards'
+  const [activeMode, setActiveMode] = useState<'embedded-bank' | 'flashcards'>('embedded-bank');
 
   // Embedded Question Bank State
   const [embeddedQuestions] = useState<Question[]>(() => getPreloadedQuestions());
@@ -48,7 +41,6 @@ export function App() {
   // Flashcards State
   const [currentDeck, setCurrentDeck] = useState<Flashcard[] | null>(null);
 
-  const [isLoadingAI, setIsLoadingAI] = useState<boolean>(false);
   const [saveToast, setSaveToast] = useState<string | null>(null);
 
   // Modals
@@ -64,47 +56,11 @@ export function App() {
     loadSavedFlashcardsFromDB().then((items) => setSavedFlashcards(items));
   }, [settings.theme]);
 
-  // Generate new AI Question
-  const handleGenerateQuestion = async (topic: string, difficulty: Difficulty) => {
+  // Select preloaded Flashcard Deck
+  const handleSelectFlashcardDeck = (topic: string) => {
     audioService.playClickSound(settings.soundEnabled);
-    setIsLoadingAI(true);
-    setUserAnswerId(null);
-    setCurrentQuestion(null);
-
-    try {
-      const question = await generateQuestionFromAI(
-        topic, 
-        difficulty, 
-        settings.apiKey, 
-        settings.selectedModel
-      );
-      setCurrentQuestion(question);
-    } catch (e) {
-      console.error('Error generating AI question:', e);
-    } finally {
-      setIsLoadingAI(false);
-    }
-  };
-
-  // Generate new AI Flashcard Deck
-  const handleGenerateFlashcardDeck = async (topic: string) => {
-    audioService.playClickSound(settings.soundEnabled);
-    setIsLoadingAI(true);
-    setCurrentDeck(null);
-
-    try {
-      const deck = await generateFlashcardsFromAI(
-        topic,
-        5,
-        settings.apiKey,
-        settings.selectedModel
-      );
-      setCurrentDeck(deck);
-    } catch (e) {
-      console.error('Error generating flashcard deck:', e);
-    } finally {
-      setIsLoadingAI(false);
-    }
+    const deck = getPreloadedFlashcards(topic, 5);
+    setCurrentDeck(deck);
   };
 
   // Handle user submitting answer in Quiz mode
@@ -163,10 +119,8 @@ export function App() {
     saveSettings(newSettings);
   };
 
-  const handleReviewSavedQuestion = (item: SavedQuestionItem) => {
-    setActiveMode('ai-quiz');
-    setCurrentQuestion(item.question);
-    setUserAnswerId(item.userAnswerId);
+  const handleReviewSavedQuestion = (_item: SavedQuestionItem) => {
+    setActiveMode('embedded-bank');
   };
 
   const handleRemoveSavedQuestionItem = async (item: SavedQuestionItem) => {
@@ -222,47 +176,6 @@ export function App() {
           />
         ) : (
           <>
-            {/* 1. ALAN: AI ILE SORU URET (DYANMIC GENERATOR) */}
-            {activeMode === 'ai-quiz' && (
-              <>
-                {!currentQuestion && (
-                  <TopicSelector
-                    onGenerate={handleGenerateQuestion}
-                    isLoading={isLoadingAI}
-                  />
-                )}
-
-                {currentQuestion && (
-                  <div className="active-quiz-view">
-                    <QuestionCard
-                      question={currentQuestion}
-                      onAnswerSubmit={(optId) => {
-                        setUserAnswerId(optId);
-                        handleAnswerSubmit(currentQuestion, optId);
-                      }}
-                      answeredOptionId={userAnswerId}
-                    />
-
-                    {userAnswerId !== null && (
-                      <ExplanationCard
-                        question={currentQuestion}
-                        userAnswerId={userAnswerId}
-                        isSaved={isCurrentQuestionSaved(currentQuestion.id)}
-                        onToggleSave={() => handleToggleSaveQuestion(currentQuestion, userAnswerId)}
-                        onNextQuestion={() => {
-                          if (currentQuestion) {
-                            handleGenerateQuestion(currentQuestion.topic, currentQuestion.difficulty);
-                          } else {
-                            setCurrentQuestion(null);
-                            setUserAnswerId(null);
-                          }
-                        }}
-                      />
-                    )}
-                  </div>
-                )}
-              </>
-            )}
 
             {/* 2. ALAN: GOMULU SORULARI GOSTER / COZ (100 OXFORD SINAVI) */}
             {activeMode === 'embedded-bank' && (
@@ -279,8 +192,7 @@ export function App() {
               <>
                 {!currentDeck && (
                   <FlashcardTopicSelector
-                    onGenerateDeck={handleGenerateFlashcardDeck}
-                    isLoading={isLoadingAI}
+                    onSelectDeck={handleSelectFlashcardDeck}
                   />
                 )}
 

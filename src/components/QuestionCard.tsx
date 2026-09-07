@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { HelpCircle, CheckCircle2, ArrowRight, Layers } from 'lucide-react';
 import type { Question } from '../types/quiz';
+import { FormattedMathText } from './FormattedMathText';
 
 interface QuestionCardProps {
   question: Question;
@@ -53,7 +54,9 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
       {/* Question Prompt */}
       <div className="question-prompt">
         <HelpCircle className="prompt-icon" />
-        <h2 className="prompt-text">{question.questionText}</h2>
+        <h2 className="prompt-text">
+          <FormattedMathText text={question.questionText} />
+        </h2>
       </div>
 
       {/* Visual SVG Diagram (if available) */}
@@ -94,7 +97,9 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
               onClick={() => handleOptionClick(option.id)}
             >
               <div className="option-badge">{option.id}</div>
-              <div className="option-text">{option.text}</div>
+              <div className="option-text">
+                <FormattedMathText text={option.text} />
+              </div>
               <div className="option-status-icon">
                 {isSubmitted && isCorrect && <CheckCircle2 className="correct-icon" />}
                 {isSubmitted && isUserChoice && !isCorrect && <span className="wrong-x">✕</span>}

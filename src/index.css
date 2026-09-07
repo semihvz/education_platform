@@ -2346,3 +2346,299 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+/* Math Fraction & Formula Styling */
+.math-text-container {
+  display: inline;
+}
+
+.math-frac {
+  display: inline-flex;
+  flex-direction: column;
+  vertical-align: middle;
+  text-align: center;
+  margin: 0 4px;
+  padding: 0 2px;
+  font-weight: 700;
+  color: var(--color-indigo-light);
+}
+
+.math-num {
+  border-bottom: 2px solid currentColor;
+  padding-bottom: 2px;
+  line-height: 1.1;
+  font-size: 0.95em;
+}
+
+.math-den {
+  padding-top: 2px;
+  line-height: 1.1;
+  font-size: 0.95em;
+}
+
+.katex-inline-math {
+  display: inline-block;
+  margin: 0 6px;
+  vertical-align: middle;
+  font-size: 1.15em;
+  color: #818cf8;
+}
+
+.katex-inline-math .katex {
+  font-size: 1.15em;
+}
+
+/* ==========================================================================
+   Full Mobile Responsiveness & Native Touch Optimization
+   ========================================================================== */
+
+/* Touch Target Sizes & Safe Area Spacing */
+button, input, select, textarea, .stat-pill, .option-btn, .mode-tab-btn, .bank-topic-btn {
+  min-height: 44px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.app-header {
+  padding-top: calc(0.5rem + env(safe-area-inset-top, 0px));
+}
+
+.main-container {
+  padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
+}
+
+/* KaTeX & Math Formula Responsiveness */
+.katex-inline-math, .katex-display, .math-text-container {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.katex-display {
+  padding: 0.5rem 0;
+  margin: 0.5rem 0;
+}
+
+/* Horizontal Scroll Bars for Mobile Tabs */
+.bank-topic-tabs, .deck-topics-grid {
+  display: flex;
+  overflow-x: auto;
+  gap: 0.5rem;
+  padding-bottom: 0.5rem;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.bank-topic-tabs::-webkit-scrollbar, .deck-topics-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.bank-topic-btn {
+  flex-shrink: 0;
+  white-space: nowrap;
+}/* Desktop / Mobile utility visibility */
+.mobile-bottom-nav {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none !important;
+  }
+
+  /* Fixed Bottom Navigation Bar */
+  .mobile-bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: calc(62px + env(safe-area-inset-bottom, 0px));
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    background: rgba(11, 15, 25, 0.88);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid var(--border-color);
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.4);
+  }
+
+  [data-theme='light'] .mobile-bottom-nav {
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.08);
+  }
+
+  .bottom-nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    height: 100%;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 6px 0;
+    touch-action: manipulation;
+  }
+
+  .bottom-nav-item .nav-icon {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+
+  .bottom-nav-item:active {
+    transform: scale(0.92);
+  }
+
+  .bottom-nav-item.active {
+    color: var(--primary-indigo);
+    font-weight: 700;
+  }
+
+  .bottom-nav-item.active .nav-icon {
+    transform: translateY(-2px) scale(1.12);
+    color: var(--primary-indigo);
+  }
+
+  /* Root padding so content doesn't get covered by bottom nav */
+  .app-root {
+    padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .header-container {
+    padding: 0.6rem 0.85rem;
+  }
+
+  .brand {
+    gap: 0.5rem;
+  }
+
+  .brand .subtitle {
+    display: none;
+  }
+
+  .brand-text .title {
+    font-size: 1.15rem;
+  }
+
+  .header-actions {
+    margin-left: auto;
+    gap: 0.35rem;
+  }
+
+  .stat-pill {
+    padding: 0.3rem 0.55rem;
+    font-size: 0.75rem;
+  }
+
+  .main-container {
+    padding: 0.85rem 0.75rem;
+  }
+
+  .question-card, .explanation-card, .bank-view-container {
+    padding: 1rem 0.85rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .bank-topic-filter-tabs {
+    display: flex;
+    gap: 0.4rem;
+    overflow-x: auto;
+    padding-bottom: 0.35rem;
+    margin-bottom: 1rem;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .bank-topic-filter-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter-tab-btn {
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding: 0.45rem 0.85rem;
+    font-size: 0.82rem;
+  }
+
+  .option-card {
+    padding: 0.75rem 0.85rem;
+    font-size: 0.92rem;
+    min-height: 48px;
+  }
+
+  .modal-overlay {
+    align-items: flex-end;
+  }
+
+  .modal-content, .auth-modal, .full-lesson-modal, .bookmarks-modal, .stats-modal {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 1.25rem 1rem !important;
+    max-height: 85vh !important;
+    border-top-left-radius: 24px !important;
+    border-top-right-radius: 24px !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    animation: slideUpBottom 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .flashcard-3d {
+    min-height: 260px;
+  }
+
+  .flashcard-inner {
+    padding: 1.15rem;
+  }
+}
+
+@keyframes slideUpBottom {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Small Mobile Screens (< 480px) */
+@media (max-width: 480px) {
+  .header-actions .stat-pill span {
+    font-size: 0.72rem;
+  }
+
+  .user-name {
+    display: none;
+  }
+
+  .guard-card {
+    padding: 1.25rem 0.85rem;
+  }
+
+  .guard-card h2 {
+    font-size: 1.15rem;
+  }
+
+  .guard-desc {
+    font-size: 0.85rem;
+  }
+
+  .question-text {
+    font-size: 1rem;
+    line-height: 1.45;
+  }
+}
+
+
+

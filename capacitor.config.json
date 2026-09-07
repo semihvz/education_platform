@@ -1,6 +1,6 @@
 {
   "appId": "com.mindpulse.learningapp",
-  "appName": "MindPulse AI",
+  "appName": "Optimizasyon AI",
   "webDir": "dist",
   "bundledWebRuntime": false,
   "server": {

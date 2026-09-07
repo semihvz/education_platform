@@ -17,6 +17,7 @@ import {
   Check
 } from 'lucide-react';
 import type { Question } from '../types/quiz';
+import { FormattedMathText } from './FormattedMathText';
 
 interface ExplanationCardProps {
   question: Question;
@@ -79,7 +80,9 @@ export const ExplanationCard: React.FC<ExplanationCardProps> = ({
             <Sparkles className="sec-icon icon-green" />
             <h4>1. Neden Doğru Cevap ({question.correctOptionId})?</h4>
           </div>
-          <p className="sec-content">{question.explanation.whyCorrect}</p>
+          <p className="sec-content">
+            <FormattedMathText text={question.explanation.whyCorrect} />
+          </p>
         </div>
 
         {/* Section 2: Why Others are Wrong */}
@@ -93,30 +96,35 @@ export const ExplanationCard: React.FC<ExplanationCardProps> = ({
               {Object.entries(question.explanation.whyOthersIncorrect).map(([optId, text]) => (
                 <div key={optId} className="wrong-opt-item">
                   <span className="wrong-opt-badge">Şık {optId}</span>
-                  <span className="wrong-opt-text">{text}</span>
+                  <span className="wrong-opt-text">
+                    <FormattedMathText text={text} />
+                  </span>
                 </div>
               ))}
             </div>
           </div>
         )}
 
-        {/* Section 3: Topic Summary & Key Takeaway */}
+        {/* Section 3: Topic Summary Note */}
         <div className="explain-section section-summary">
           <div className="section-header">
-            <BookOpen className="sec-icon icon-amber" />
-            <h4>3. Konu Özeti & Ders Notu ({question.topic})</h4>
+            <BookOpen className="sec-icon icon-blue" />
+            <h4>3. Özet Ders Notu ({question.topic})</h4>
           </div>
-          <p className="sec-content">{question.explanation.topicSummary}</p>
-          
-          {question.explanation.keyTakeaway && (
-            <div className="takeaway-box">
-              <Lightbulb className="takeaway-icon" />
-              <div>
-                <strong>Altın Kural / Özet:</strong>
-                <p>{question.explanation.keyTakeaway}</p>
-              </div>
-            </div>
-          )}
+          <p className="sec-content">
+            <FormattedMathText text={question.explanation.topicSummary} />
+          </p>
+        </div>
+
+        {/* Section 4: Key Takeaway */}
+        <div className="explain-section section-takeaway">
+          <div className="section-header">
+            <Lightbulb className="sec-icon icon-amber" />
+            <h4>4. Akılda Kalması Gereken Altın Kural</h4>
+          </div>
+          <p className="sec-content takeaway-text">
+            <FormattedMathText text={question.explanation.keyTakeaway || ""} />
+          </p>
         </div>
       </div>
 

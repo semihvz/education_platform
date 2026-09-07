@@ -66,7 +66,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ onLoginSuccess, onClose })
             <LogIn className="modal-icon text-indigo" />
             <div>
               <h2>{mode === 'login' ? 'Hesabınıza Giriş Yapın' : 'Yeni Hesap Oluşturun'}</h2>
-              <p className="modal-subtitle">MindPulse AI Öğrenme Platformu</p>
+              <p className="modal-subtitle">Optimizasyon AI Öğrenme Platformu</p>
             </div>
           </div>
           <button className="close-btn" onClick={onClose}>

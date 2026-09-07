@@ -24,8 +24,7 @@ export const AuthGuardWall: React.FC<AuthGuardWallProps> = ({ onOpenAuth, onLogi
 
         <h2>🔒 İçeriğe Erişim İçin Giriş Yapın</h2>
         <p className="guard-desc">
-          MindPulse AI platformunda yer alan <strong>100 Oxford İngilizce Sınavı</strong>, <strong>100 İleri Seviye SQL Soru Bankası</strong>, 
-          Yapay Zeka Soru Üreticisi ve 3D Bilgi Kartlarına erişmek için oturum açmanız gerekmektedir.
+          Optimizasyon AI platformunda yer alan <strong>260+ Gömülü Soru Bankası</strong> (Matematik, Oxford İngilizce & İleri Seviye SQL) ve 3D Bilgi Kartlarına erişmek için oturum açmanız gerekmektedir.
         </p>
 
         {/* Feature Highlights Grid */}
@@ -33,15 +32,15 @@ export const AuthGuardWall: React.FC<AuthGuardWallProps> = ({ onOpenAuth, onLogi
           <div className="guard-feature-item">
             <BookOpen className="feat-icon text-indigo" />
             <div>
-              <strong>200+ Gömülü Soru</strong>
-              <span>Oxford & SQL İleri Seviye Testleri</span>
+              <strong>260+ Gömülü Soru</strong>
+              <span>Matematik, Oxford & SQL Testleri</span>
             </div>
           </div>
           <div className="guard-feature-item">
             <Sparkles className="feat-icon text-purple" />
             <div>
-              <strong>Dinamik AI Üretici</strong>
-              <span>İstediğin konuda yeni sorular türet</span>
+              <strong>KaTeX & Formüller</strong>
+              <span>Gelişmiş matematiksel denklem desteği</span>
             </div>
           </div>
           <div className="guard-feature-item">

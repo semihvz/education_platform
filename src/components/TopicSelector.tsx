@@ -8,6 +8,7 @@ interface TopicSelectorProps {
 }
 
 const PRESET_TOPICS = [
+  { name: 'Matematik', icon: '📐', desc: 'Logaritma ve Faktöriyel Denklem Soruları' },
   { name: 'SQL Database', icon: '💾', desc: 'İleri Seviye SQL, Window Functions & CTE (100 Zor Soru)' },
   { name: 'İngilizce Grammar', icon: '🇬🇧', desc: 'Oxford Practice Grammar 100 Soru Bitirme Sınavı' },
   { name: 'Yapay Zeka & LLM', icon: '🤖', desc: 'Derin öğrenme, Transformer & AI' },
