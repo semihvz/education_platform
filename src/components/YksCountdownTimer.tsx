@@ -8,60 +8,94 @@ interface TimeLeft {
   seconds: number;
 }
 
-export const YksCountdownTimer: React.FC = () => {
-  // Target: YKS 2028 - 17 June 2028, 10:15 AM (UTC+3)
-  const targetDate = useMemoTargetDate();
+const YKS_2027_TARGET = new Date(2027, 5, 19, 10, 15, 0).getTime();
+const YKS_2028_TARGET = new Date(2028, 5, 17, 10, 15, 0).getTime();
 
-  const [timeLeft, setTimeLeft] = useState<TimeLeft>(() => calculateTimeLeft(targetDate));
+export const YksCountdownTimer: React.FC = () => {
+  const [time2027, setTime2027] = useState<TimeLeft>(() => calculateTimeLeft(YKS_2027_TARGET));
+  const [time2028, setTime2028] = useState<TimeLeft>(() => calculateTimeLeft(YKS_2028_TARGET));
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft(targetDate));
+      setTime2027(calculateTimeLeft(YKS_2027_TARGET));
+      setTime2028(calculateTimeLeft(YKS_2028_TARGET));
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [targetDate]);
+  }, []);
 
   return (
-    <div className="yks-countdown-banner">
-      <div className="yks-banner-header">
-        <div className="yks-title-group">
-          <Timer className="yks-timer-icon" />
-          <span className="yks-title">2028 YKS'ye Kalan Süre</span>
-          <Sparkles className="yks-sparkle-icon" />
+    <div className="yks-dual-countdown-container">
+      {/* 2027 YKS Sayaç */}
+      <div className="yks-countdown-banner yks-banner-2027">
+        <div className="yks-banner-header">
+          <div className="yks-title-group">
+            <Timer className="yks-timer-icon icon-2027" />
+            <span className="yks-title">2027 YKS'ye Kalan Süre</span>
+            <Sparkles className="yks-sparkle-icon" />
+          </div>
+          <span className="yks-target-date">19 Haziran 2027 • 10:15</span>
         </div>
-        <span className="yks-target-date">17 Haziran 2028 • 10:15</span>
+
+        <div className="yks-countdown-grid">
+          <div className="yks-time-box">
+            <span className="yks-num">{padZero(time2027.days)}</span>
+            <span className="yks-label">GÜN</span>
+          </div>
+          <span className="yks-colon">:</span>
+          <div className="yks-time-box">
+            <span className="yks-num">{padZero(time2027.hours)}</span>
+            <span className="yks-label">SAAT</span>
+          </div>
+          <span className="yks-colon">:</span>
+          <div className="yks-time-box">
+            <span className="yks-num">{padZero(time2027.minutes)}</span>
+            <span className="yks-label">DAKİKA</span>
+          </div>
+          <span className="yks-colon">:</span>
+          <div className="yks-time-box yks-sec-box">
+            <span className="yks-num">{padZero(time2027.seconds)}</span>
+            <span className="yks-label">SANİYE</span>
+          </div>
+        </div>
       </div>
 
-      <div className="yks-countdown-grid">
-        <div className="yks-time-box">
-          <span className="yks-num">{padZero(timeLeft.days)}</span>
-          <span className="yks-label">GÜN</span>
+      {/* 2028 YKS Sayaç */}
+      <div className="yks-countdown-banner yks-banner-2028">
+        <div className="yks-banner-header">
+          <div className="yks-title-group">
+            <Timer className="yks-timer-icon icon-2028" />
+            <span className="yks-title">2028 YKS'ye Kalan Süre</span>
+            <Sparkles className="yks-sparkle-icon" />
+          </div>
+          <span className="yks-target-date">17 Haziran 2028 • 10:15</span>
         </div>
-        <span className="yks-colon">:</span>
-        <div className="yks-time-box">
-          <span className="yks-num">{padZero(timeLeft.hours)}</span>
-          <span className="yks-label">SAAT</span>
-        </div>
-        <span className="yks-colon">:</span>
-        <div className="yks-time-box">
-          <span className="yks-num">{padZero(timeLeft.minutes)}</span>
-          <span className="yks-label">DAKİKA</span>
-        </div>
-        <span className="yks-colon">:</span>
-        <div className="yks-time-box yks-sec-box">
-          <span className="yks-num">{padZero(timeLeft.seconds)}</span>
-          <span className="yks-label">SANİYE</span>
+
+        <div className="yks-countdown-grid">
+          <div className="yks-time-box">
+            <span className="yks-num">{padZero(time2028.days)}</span>
+            <span className="yks-label">GÜN</span>
+          </div>
+          <span className="yks-colon">:</span>
+          <div className="yks-time-box">
+            <span className="yks-num">{padZero(time2028.hours)}</span>
+            <span className="yks-label">SAAT</span>
+          </div>
+          <span className="yks-colon">:</span>
+          <div className="yks-time-box">
+            <span className="yks-num">{padZero(time2028.minutes)}</span>
+            <span className="yks-label">DAKİKA</span>
+          </div>
+          <span className="yks-colon">:</span>
+          <div className="yks-time-box yks-sec-box">
+            <span className="yks-num">{padZero(time2028.seconds)}</span>
+            <span className="yks-label">SANİYE</span>
+          </div>
         </div>
       </div>
     </div>
   );
 };
-
-function useMemoTargetDate() {
-  // 17 June 2028, 10:15:00 Local Time
-  return new Date(2028, 5, 17, 10, 15, 0).getTime();
-}
 
 function calculateTimeLeft(targetTimestamp: number): TimeLeft {
   const now = Date.now();
@@ -82,3 +116,4 @@ function calculateTimeLeft(targetTimestamp: number): TimeLeft {
 function padZero(num: number): string {
   return num < 10 ? `0${num}` : `${num}`;
 }
+

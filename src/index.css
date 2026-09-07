@@ -2434,15 +2434,23 @@ button, input, select, textarea, .stat-pill, .option-btn, .mode-tab-btn, .bank-t
 }
 
 /* ==========================================================================
-   2027 YKS Countdown Banner Component
+   YKS Dual Countdown Banners (2027 & 2028)
    ========================================================================== */
+.yks-dual-countdown-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 1.25rem;
+  width: 100%;
+}
+
 .yks-countdown-banner {
   background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.15), rgba(236, 72, 153, 0.12));
   border: 1px solid rgba(139, 92, 246, 0.3);
   border-radius: var(--radius-lg);
   padding: 0.85rem 1.25rem;
-  margin-bottom: 1.25rem;
-  box-shadow: 0 8px 25px -5px rgba(99, 102, 241, 0.2);
+  margin-bottom: 0;
+  box-shadow: 0 6px 20px -5px rgba(99, 102, 241, 0.18);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -2451,6 +2459,20 @@ button, input, select, textarea, .stat-pill, .option-btn, .mode-tab-btn, .bank-t
   width: 100%;
   box-sizing: border-box;
   backdrop-filter: blur(12px);
+}
+
+.yks-banner-2028 {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(6, 182, 212, 0.12), rgba(99, 102, 241, 0.12));
+  border-color: rgba(16, 185, 129, 0.35);
+  box-shadow: 0 6px 20px -5px rgba(16, 185, 129, 0.18);
+}
+
+.icon-2027 {
+  color: var(--primary-indigo);
+}
+
+.icon-2028 {
+  color: var(--color-cyan);
 }
 
 [data-theme='light'] .yks-countdown-banner {
