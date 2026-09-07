@@ -2437,6 +2437,56 @@ button, input, select, textarea, .stat-pill, .option-btn, .mode-tab-btn, .bank-t
   flex-shrink: 0;
   white-space: nowrap;
 }/* Desktop / Mobile utility visibility */
+/* Global Reset & Viewport Constraints */
+html, body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  position: relative;
+}
+
+#root, .app-root {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+.main-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* Ensure images, SVG, KaTeX and code don't burst bounds */
+img, svg, canvas, iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+.katex-display {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  padding: 0.25rem 0;
+}
+
+.visual-diagram-box {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.visual-diagram-box svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Desktop / Mobile utility visibility */
 .mobile-bottom-nav {
   display: none;
 }
@@ -2454,9 +2504,9 @@ button, input, select, textarea, .stat-pill, .option-btn, .mode-tab-btn, .bank-t
     left: 0;
     right: 0;
     z-index: 1000;
-    height: calc(62px + env(safe-area-inset-bottom, 0px));
+    height: calc(60px + env(safe-area-inset-bottom, 0px));
     padding-bottom: env(safe-area-inset-bottom, 0px);
-    background: rgba(11, 15, 25, 0.88);
+    background: rgba(11, 15, 25, 0.92);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-top: 1px solid var(--border-color);
@@ -2466,7 +2516,7 @@ button, input, select, textarea, .stat-pill, .option-btn, .mode-tab-btn, .bank-t
   }
 
   [data-theme='light'] .mobile-bottom-nav {
-    background: rgba(255, 255, 255, 0.92);
+    background: rgba(255, 255, 255, 0.94);
     box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.08);
   }
 
@@ -2476,22 +2526,22 @@ button, input, select, textarea, .stat-pill, .option-btn, .mode-tab-btn, .bank-t
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 3px;
+    gap: 2px;
     height: 100%;
     background: transparent;
     border: none;
     color: var(--text-muted);
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    padding: 6px 0;
+    padding: 4px 0;
     touch-action: manipulation;
   }
 
   .bottom-nav-item .nav-icon {
-    width: 20px;
-    height: 20px;
+    width: 19px;
+    height: 19px;
     transition: transform 0.2s ease, color 0.2s ease;
   }
 
@@ -2505,56 +2555,91 @@ button, input, select, textarea, .stat-pill, .option-btn, .mode-tab-btn, .bank-t
   }
 
   .bottom-nav-item.active .nav-icon {
-    transform: translateY(-2px) scale(1.12);
+    transform: translateY(-2px) scale(1.1);
     color: var(--primary-indigo);
   }
 
   /* Root padding so content doesn't get covered by bottom nav */
   .app-root {
-    padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+    padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .app-header {
+    width: 100%;
+    max-width: 100vw;
+    overflow: hidden;
   }
 
   .header-container {
-    padding: 0.6rem 0.85rem;
+    width: 100%;
+    max-width: 100vw;
+    padding: 0.5rem 0.75rem;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .brand {
-    gap: 0.5rem;
+    gap: 0.4rem;
+    min-width: 0;
+    flex-shrink: 1;
+  }
+
+  .logo-icon {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+  }
+
+  .brain-svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .brand-text .title {
+    font-size: 1.05rem;
+    white-space: nowrap;
   }
 
   .brand .subtitle {
     display: none;
   }
 
-  .brand-text .title {
-    font-size: 1.15rem;
-  }
-
   .header-actions {
     margin-left: auto;
     gap: 0.35rem;
+    flex-shrink: 0;
   }
 
   .stat-pill {
-    padding: 0.3rem 0.55rem;
-    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.72rem;
   }
 
   .main-container {
-    padding: 0.85rem 0.75rem;
+    padding: 0.75rem 0.6rem;
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
   }
 
-  .question-card, .explanation-card, .bank-view-container {
-    padding: 1rem 0.85rem;
+  .question-card, .explanation-card, .bank-view-container, .embedded-bank-container, .flashcard-3d, .guard-card {
+    padding: 0.85rem 0.75rem;
     border-radius: var(--radius-lg);
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
 
   .bank-topic-filter-tabs {
     display: flex;
-    gap: 0.4rem;
+    gap: 0.35rem;
     overflow-x: auto;
+    width: 100%;
+    max-width: 100%;
     padding-bottom: 0.35rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.85rem;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
   }
@@ -2566,14 +2651,48 @@ button, input, select, textarea, .stat-pill, .option-btn, .mode-tab-btn, .bank-t
   .filter-tab-btn {
     white-space: nowrap;
     flex-shrink: 0;
-    padding: 0.45rem 0.85rem;
-    font-size: 0.82rem;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  .question-prompt .prompt-text,
+  .option-text,
+  .explanation-card p,
+  .formatted-math-text {
+    word-break: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+  }
+
+  .question-prompt .prompt-text {
+    font-size: 1.05rem;
+    line-height: 1.45;
   }
 
   .option-card {
-    padding: 0.75rem 0.85rem;
-    font-size: 0.92rem;
+    padding: 0.7rem 0.75rem;
+    font-size: 0.9rem;
     min-height: 48px;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .embedded-bank-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.65rem;
+    padding: 0.85rem;
+  }
+
+  .bank-nav-controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .question-jump-select {
+    flex: 1;
+    max-width: none;
   }
 
   .modal-overlay {
@@ -2583,21 +2702,21 @@ button, input, select, textarea, .stat-pill, .option-btn, .mode-tab-btn, .bank-t
   .modal-content, .auth-modal, .full-lesson-modal, .bookmarks-modal, .stats-modal {
     width: 100% !important;
     max-width: 100% !important;
-    padding: 1.25rem 1rem !important;
+    padding: 1.15rem 0.85rem !important;
     max-height: 85vh !important;
-    border-top-left-radius: 24px !important;
-    border-top-right-radius: 24px !important;
+    border-top-left-radius: 20px !important;
+    border-top-right-radius: 20px !important;
     border-bottom-left-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
-    animation: slideUpBottom 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    animation: slideUpBottom 0.28s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .flashcard-3d {
-    min-height: 260px;
+    min-height: 250px;
   }
 
   .flashcard-inner {
-    padding: 1.15rem;
+    padding: 1rem;
   }
 }
 
@@ -2612,10 +2731,14 @@ button, input, select, textarea, .stat-pill, .option-btn, .mode-tab-btn, .bank-t
   }
 }
 
-/* Small Mobile Screens (< 480px) */
-@media (max-width: 480px) {
-  .header-actions .stat-pill span {
-    font-size: 0.72rem;
+/* Extra Small Mobile Screens (< 400px) */
+@media (max-width: 400px) {
+  .header-actions .xp-pill {
+    display: none;
+  }
+
+  .brand-text .title {
+    font-size: 0.95rem;
   }
 
   .user-name {
@@ -2623,22 +2746,18 @@ button, input, select, textarea, .stat-pill, .option-btn, .mode-tab-btn, .bank-t
   }
 
   .guard-card {
-    padding: 1.25rem 0.85rem;
+    padding: 1rem 0.65rem;
   }
 
   .guard-card h2 {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
   }
 
   .guard-desc {
-    font-size: 0.85rem;
-  }
-
-  .question-text {
-    font-size: 1rem;
-    line-height: 1.45;
+    font-size: 0.82rem;
   }
 }
+
 
 
 
