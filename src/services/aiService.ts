@@ -1,5 +1,6 @@
 import { GoogleGenAI } from '@google/genai';
 import type { Question, Difficulty, Flashcard } from '../types/quiz';
+import { YDT_PRELOADED_QUESTIONS } from './ydtQuestionsData';
 
 // Dynamic Random Option Shuffling Engine (Fisher-Yates)
 export function shuffleQuestionOptions(question: Question): Question {
@@ -37,6 +38,9 @@ export function getPreloadedQuestions(): Question[] {
   Object.values(FALLBACK_TOPICS_DATABASE).forEach(list => {
     all.push(...list);
   });
+  if (YDT_PRELOADED_QUESTIONS && Array.isArray(YDT_PRELOADED_QUESTIONS)) {
+    all.push(...YDT_PRELOADED_QUESTIONS);
+  }
   return all;
 }
 

@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { BookOpen, ChevronLeft, ChevronRight, Database, Globe, Calculator } from 'lucide-react';
+import { BookOpen, ChevronLeft, ChevronRight, Database, Globe, Calculator, GraduationCap } from 'lucide-react';
 import type { Question } from '../types/quiz';
 import { shuffleQuestionOptions } from '../services/aiService';
 import { QuestionCard } from './QuestionCard';
@@ -18,9 +18,18 @@ export const EmbeddedQuestionBankView: React.FC<EmbeddedQuestionBankViewProps> =
   onSaveQuestion,
   isQuestionSaved,
 }) => {
-  const [selectedTopic, setSelectedTopic] = useState<string>('Matematik');
+  const [selectedTopic, setSelectedTopic] = useState<string>('ALL');
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [userAnswers, setUserAnswers] = useState<Record<string, string>>({});
+
+  // Dynamically extract unique topics and counts
+  const availableTopics = useMemo(() => {
+    const counts: Record<string, number> = {};
+    questions.forEach(q => {
+      counts[q.topic] = (counts[q.topic] || 0) + 1;
+    });
+    return Object.entries(counts).map(([topic, count]) => ({ topic, count }));
+  }, [questions]);
 
   const filteredQuestions = useMemo(() => {
     if (!selectedTopic || selectedTopic === 'ALL') return questions;
@@ -75,31 +84,17 @@ export const EmbeddedQuestionBankView: React.FC<EmbeddedQuestionBankViewProps> =
     setCurrentIndex(idx);
   };
 
+  const getTopicIcon = (tName: string) => {
+    if (tName.includes('Matematik')) return <Calculator className="tab-icon" />;
+    if (tName.includes('SQL')) return <Database className="tab-icon" />;
+    if (tName.includes('Grammar') || tName.includes('İngilizce')) return <Globe className="tab-icon" />;
+    return <GraduationCap className="tab-icon" />;
+  };
+
   return (
     <div className="embedded-bank-container">
       {/* Category Filter Pills */}
       <div className="bank-topic-filter-tabs">
-        <button
-          className={`filter-tab-btn ${selectedTopic === 'Matematik' ? 'active' : ''}`}
-          onClick={() => handleTopicChange('Matematik')}
-        >
-          <Calculator className="tab-icon" />
-          <span>📐 Matematik (Logaritma)</span>
-        </button>
-        <button
-          className={`filter-tab-btn ${selectedTopic === 'SQL Database' ? 'active' : ''}`}
-          onClick={() => handleTopicChange('SQL Database')}
-        >
-          <Database className="tab-icon" />
-          <span>💾 SQL Database (100 Zor Soru)</span>
-        </button>
-        <button
-          className={`filter-tab-btn ${selectedTopic === 'İngilizce Grammar' ? 'active' : ''}`}
-          onClick={() => handleTopicChange('İngilizce Grammar')}
-        >
-          <Globe className="tab-icon" />
-          <span>🇬🇧 İngilizce Grammar (100 Oxford)</span>
-        </button>
         <button
           className={`filter-tab-btn ${selectedTopic === 'ALL' ? 'active' : ''}`}
           onClick={() => handleTopicChange('ALL')}
@@ -107,6 +102,17 @@ export const EmbeddedQuestionBankView: React.FC<EmbeddedQuestionBankViewProps> =
           <BookOpen className="tab-icon" />
           <span>Tüm Sorular ({questions.length})</span>
         </button>
+
+        {availableTopics.map(({ topic, count }) => (
+          <button
+            key={topic}
+            className={`filter-tab-btn ${selectedTopic === topic ? 'active' : ''}`}
+            onClick={() => handleTopicChange(topic)}
+          >
+            {getTopicIcon(topic)}
+            <span>{topic} ({count})</span>
+          </button>
+        ))}
       </div>
 
       {/* Top Bank Info Bar */}
