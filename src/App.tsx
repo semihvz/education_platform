@@ -8,6 +8,7 @@ import { SavedQuestionsModal } from './components/SavedQuestionsModal';
 import { StatsDashboard } from './components/StatsDashboard';
 import { AuthModal } from './components/AuthModal';
 import { AuthGuardWall } from './components/AuthGuardWall';
+import { YksCountdownTimer } from './components/YksCountdownTimer';
 
 import type { Question, AppSettings, UserStats, SavedQuestionItem, Flashcard, SavedFlashcardItem, UserProfile } from './types/quiz';
 import { getPreloadedFlashcards, getPreloadedQuestions } from './services/aiService';
@@ -176,8 +177,10 @@ export function App() {
           />
         ) : (
           <>
+            {/* 2027 YKS Kalan Süre Sayacı */}
+            <YksCountdownTimer />
 
-            {/* 2. ALAN: GOMULU SORULARI GOSTER / COZ (100 OXFORD SINAVI) */}
+            {/* 2. ALAN: GOMULU SORULARI GOSTER / COZ */}
             {activeMode === 'embedded-bank' && (
               <EmbeddedQuestionBankView
                 questions={embeddedQuestions}
