@@ -9,7 +9,7 @@ interface TimeLeft {
 }
 
 export const YksCountdownTimer: React.FC = () => {
-  // Target: YKS 2027 - 19 June 2027, 10:15 AM (UTC+3)
+  // Target: YKS 2028 - 17 June 2028, 10:15 AM (UTC+3)
   const targetDate = useMemoTargetDate();
 
   const [timeLeft, setTimeLeft] = useState<TimeLeft>(() => calculateTimeLeft(targetDate));
@@ -27,10 +27,10 @@ export const YksCountdownTimer: React.FC = () => {
       <div className="yks-banner-header">
         <div className="yks-title-group">
           <Timer className="yks-timer-icon" />
-          <span className="yks-title">2027 YKS'ye Kalan Süre</span>
+          <span className="yks-title">2028 YKS'ye Kalan Süre</span>
           <Sparkles className="yks-sparkle-icon" />
         </div>
-        <span className="yks-target-date">19 Haziran 2027 • 10:15</span>
+        <span className="yks-target-date">17 Haziran 2028 • 10:15</span>
       </div>
 
       <div className="yks-countdown-grid">
@@ -59,8 +59,8 @@ export const YksCountdownTimer: React.FC = () => {
 };
 
 function useMemoTargetDate() {
-  // 19 June 2027, 10:15:00 Local Time
-  return new Date(2027, 5, 19, 10, 15, 0).getTime();
+  // 17 June 2028, 10:15:00 Local Time
+  return new Date(2028, 5, 17, 10, 15, 0).getTime();
 }
 
 function calculateTimeLeft(targetTimestamp: number): TimeLeft {
