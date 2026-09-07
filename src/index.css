@@ -2436,7 +2436,36 @@ button, input, select, textarea, .stat-pill, .option-btn, .mode-tab-btn, .bank-t
 .bank-topic-btn {
   flex-shrink: 0;
   white-space: nowrap;
-}/* Desktop / Mobile utility visibility */
+}/* Flexbox Min-Width 0 & Text Wrapping Bounds */
+.banner-left > div,
+.wrong-opt-text,
+.sec-content,
+.option-text,
+.prompt-text,
+.bank-title-info > div,
+.math-text-container {
+  flex: 1;
+  min-width: 0;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.banner-left,
+.wrong-opt-item,
+.section-header,
+.question-prompt,
+.option-card,
+.result-banner,
+.bank-title-info,
+.explain-section,
+.explanation-body,
+.flashcard-front,
+.flashcard-back {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
 /* Global Reset & Viewport Constraints */
 html, body {
   width: 100%;
@@ -2464,6 +2493,29 @@ html, body {
 img, svg, canvas, iframe {
   max-width: 100%;
   height: auto;
+}
+
+.katex-inline-math {
+  display: inline-block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  vertical-align: middle;
+  scrollbar-width: none;
+  margin: 0 2px;
+}
+
+.katex-inline-math::-webkit-scrollbar {
+  display: none;
+}
+
+.katex-inline-math .katex {
+  font-size: 1em;
+  max-width: 100%;
+}
+
+.katex-html {
+  max-width: 100%;
 }
 
 .katex-display {
@@ -2660,22 +2712,23 @@ img, svg, canvas, iframe {
   .explanation-card p,
   .formatted-math-text {
     word-break: break-word;
-    overflow-wrap: break-word;
+    overflow-wrap: anywhere;
     max-width: 100%;
   }
 
   .question-prompt .prompt-text {
-    font-size: 1.05rem;
+    font-size: 1rem;
     line-height: 1.45;
   }
 
   .option-card {
     padding: 0.7rem 0.75rem;
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     min-height: 48px;
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
+    gap: 0.65rem;
   }
 
   .embedded-bank-header {
