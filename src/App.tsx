@@ -138,12 +138,17 @@ export function App() {
   return (
     <div className="mobile-app-wrapper">
       <div className="mobile-phone-shell">
-        {/* Mobile Top Status Bar */}
-        <div className="mobile-notch-bar">
-          <span className="notch-time">09:41</span>
-          <div className="notch-pill"></div>
+        {/* Realme C55 Mini Capsule Status Bar */}
+        <div className="mobile-notch-bar realme-c55-bar">
+          <span className="notch-time">10:15</span>
+          <div className="mini-capsule-container" title="Realme C55 Mini Capsule">
+            <div className="camera-punch-hole"></div>
+            <div className="mini-capsule-badge">
+              <span className="capsule-text">⚡ 90Hz • 100%</span>
+            </div>
+          </div>
           <div className="notch-icons">
-            <span className="network-text">5G</span>
+            <span className="network-text">4G+</span>
             <span className="battery-level">100%</span>
           </div>
         </div>

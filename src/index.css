@@ -107,16 +107,16 @@ body {
 
 .mobile-phone-shell {
   width: 100%;
-  max-width: 440px;
+  max-width: 393px; /* Realme C55 exact rendering width */
   height: 94vh;
-  max-height: 920px;
+  max-height: 873px; /* Realme C55 20:9 aspect ratio */
   background: var(--bg-primary);
-  border-radius: 44px;
+  border-radius: 40px;
   border: 1px solid var(--border-color);
   box-shadow: 
-    0 0 0 10px #1e293b,
+    0 0 0 10px #111827,
     0 0 0 12px rgba(255, 255, 255, 0.08),
-    0 25px 60px rgba(0, 0, 0, 0.7);
+    0 25px 65px rgba(0, 0, 0, 0.8);
   display: flex;
   flex-direction: column;
   position: relative;
@@ -130,31 +130,50 @@ body {
     0 25px 60px rgba(0, 0, 0, 0.15);
 }
 
-/* Mobile Top Status Notch Bar */
-.mobile-notch-bar {
+/* Realme C55 Mini Capsule Status Bar */
+.realme-c55-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.5rem 1.25rem 0.25rem 1.25rem;
+  padding: 0.5rem 1rem 0.25rem 1rem;
   background: var(--bg-primary);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 600;
   color: var(--text-muted);
   user-select: none;
   z-index: 101;
 }
 
-.notch-pill {
-  width: 90px;
-  height: 18px;
-  background: #000;
+.mini-capsule-container {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #000000;
+  padding: 0.15rem 0.6rem 0.15rem 0.35rem;
   border-radius: 20px;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.2);
+}
+
+.camera-punch-hole {
+  width: 12px;
+  height: 12px;
+  background: #111827;
+  border-radius: 50%;
+  border: 1.5px solid #374151;
+}
+
+.mini-capsule-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #38bdf8;
+  letter-spacing: -0.01em;
 }
 
 .notch-icons {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.35rem;
   font-size: 0.7rem;
 }
 
