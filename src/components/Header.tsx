@@ -1,13 +1,13 @@
 import React from 'react';
-import { Brain, Flame, Award, Bookmark, Settings, Moon, Sun, BarChart2, Layers, BookOpen, LogIn, LogOut } from 'lucide-react';
+import { Brain, Flame, Award, Bookmark, Settings, Moon, Sun, BarChart2, Layers, BookOpen, LogIn, LogOut, BookOpenCheck } from 'lucide-react';
 import type { UserStats, AppSettings, UserProfile } from '../types/quiz';
 
 interface HeaderProps {
   stats: UserStats;
   settings: AppSettings;
   currentUser: UserProfile | null;
-  activeMode: 'embedded-bank' | 'flashcards';
-  onSwitchMode: (mode: 'embedded-bank' | 'flashcards') => void;
+  activeMode: 'embedded-bank' | 'flashcards' | 'journal';
+  onSwitchMode: (mode: 'embedded-bank' | 'flashcards' | 'journal') => void;
   onUpdateSettings: (newSettings: AppSettings) => void;
   onOpenSettings: () => void;
   onOpenBookmarks: () => void;
@@ -64,6 +64,13 @@ export const Header: React.FC<HeaderProps> = ({
             >
               <Layers className="tab-icon" />
               <span>🎴 Bilgi Kartları</span>
+            </button>
+            <button
+              className={`mode-tab-btn ${activeMode === 'journal' ? 'active' : ''}`}
+              onClick={() => onSwitchMode('journal')}
+            >
+              <BookOpenCheck className="tab-icon" />
+              <span>📖 Günlük</span>
             </button>
           </div>
 
@@ -152,6 +159,13 @@ export const Header: React.FC<HeaderProps> = ({
           <Layers className="nav-icon" />
           <span>Kartlar</span>
         </button>
+        <button
+          className={`bottom-nav-item ${activeMode === 'journal' ? 'active' : ''}`}
+          onClick={() => onSwitchMode('journal')}
+        >
+          <BookOpenCheck className="nav-icon" />
+          <span>Günlük</span>
+        </button>
         <button className="bottom-nav-item" onClick={onOpenBookmarks}>
           <Bookmark className="nav-icon" />
           <span>Kaydedilen</span>
@@ -159,10 +173,6 @@ export const Header: React.FC<HeaderProps> = ({
         <button className="bottom-nav-item" onClick={onOpenStats}>
           <BarChart2 className="nav-icon" />
           <span>İstatistik</span>
-        </button>
-        <button className="bottom-nav-item" onClick={onOpenSettings}>
-          <Settings className="nav-icon" />
-          <span>Ayarlar</span>
         </button>
       </nav>
     </>

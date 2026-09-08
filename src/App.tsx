@@ -3,6 +3,7 @@ import { Header } from './components/Header';
 import { EmbeddedQuestionBankView } from './components/EmbeddedQuestionBankView';
 import { FlashcardTopicSelector } from './components/FlashcardTopicSelector';
 import { FlashcardDeckView } from './components/FlashcardDeckView';
+import { DailyJournalView } from './components/DailyJournalView';
 import { SettingsModal } from './components/SettingsModal';
 import { SavedQuestionsModal } from './components/SavedQuestionsModal';
 import { StatsDashboard } from './components/StatsDashboard';
@@ -33,8 +34,8 @@ export function App() {
   const [savedQuestions, setSavedQuestions] = useState<SavedQuestionItem[]>([]);
   const [savedFlashcards, setSavedFlashcards] = useState<SavedFlashcardItem[]>([]);
 
-  // 2 Modes: 'embedded-bank' | 'flashcards'
-  const [activeMode, setActiveMode] = useState<'embedded-bank' | 'flashcards'>('embedded-bank');
+  // 3 Modes: 'embedded-bank' | 'flashcards' | 'journal'
+  const [activeMode, setActiveMode] = useState<'embedded-bank' | 'flashcards' | 'journal'>('embedded-bank');
 
   // Embedded Question Bank State
   const [embeddedQuestions] = useState<Question[]>(() => getPreloadedQuestions());
@@ -208,6 +209,11 @@ export function App() {
                   />
                 )}
               </>
+            )}
+
+            {/* 4. ALAN: GUNLUK (DAILY JOURNAL SYSTEM) */}
+            {activeMode === 'journal' && (
+              <DailyJournalView />
             )}
           </>
         )}

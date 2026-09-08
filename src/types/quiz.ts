@@ -74,3 +74,16 @@ export interface UserProfile {
   avatar?: string;
   createdAt: number;
 }
+
+export interface JournalEntry {
+  id: string;
+  title: string;
+  date: string;
+  timestamp: number;
+  content: string;
+  photoUrl?: string;
+  photoCaption?: string;
+  mood?: 'verimli' | 'motive' | 'yorgun' | 'odakli' | 'normal';
+  tags?: string[];
+}
+

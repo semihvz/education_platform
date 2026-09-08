@@ -402,3 +402,48 @@ export const quickDemoLogin = (): UserProfile => {
 export const logoutUserAccount = (): void => {
   saveActiveUserSession(null);
 };
+
+// JOURNAL STORAGE HANDLERS
+import type { JournalEntry } from '../types/quiz';
+
+const JOURNAL_ENTRIES_KEY = 'optimizacion_ai_journal_entries';
+
+export const loadJournalEntries = (): JournalEntry[] => {
+  try {
+    const raw = localStorage.getItem(JOURNAL_ENTRIES_KEY);
+    if (!raw) return [];
+    const entries: JournalEntry[] = JSON.parse(raw);
+    return entries.sort((a, b) => b.timestamp - a.timestamp);
+  } catch (e) {
+    console.error('Error loading journal entries:', e);
+    return [];
+  }
+};
+
+export const saveJournalEntries = (entries: JournalEntry[]): void => {
+  try {
+    localStorage.setItem(JOURNAL_ENTRIES_KEY, JSON.stringify(entries));
+  } catch (e) {
+    console.error('Error saving journal entries:', e);
+  }
+};
+
+export const addJournalEntry = (newEntry: Omit<JournalEntry, 'id' | 'timestamp'>): JournalEntry[] => {
+  const current = loadJournalEntries();
+  const entryWithMeta: JournalEntry = {
+    ...newEntry,
+    id: `jrn_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`,
+    timestamp: Date.now()
+  };
+  const updated = [entryWithMeta, ...current];
+  saveJournalEntries(updated);
+  return updated;
+};
+
+export const deleteJournalEntry = (id: string): JournalEntry[] => {
+  const current = loadJournalEntries();
+  const updated = current.filter(item => item.id !== id);
+  saveJournalEntries(updated);
+  return updated;
+};
+
