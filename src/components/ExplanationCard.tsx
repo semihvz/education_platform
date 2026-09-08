@@ -14,7 +14,8 @@ import {
   X,
   FileText,
   AlertTriangle,
-  Check
+  Check,
+  Clock
 } from 'lucide-react';
 import type { Question } from '../types/quiz';
 import { FormattedMathText } from './FormattedMathText';
@@ -23,6 +24,7 @@ interface ExplanationCardProps {
   question: Question;
   userAnswerId: string;
   isSaved: boolean;
+  solveTimeSeconds?: number;
   onToggleSave: () => void;
   onNextQuestion: () => void;
 }
@@ -31,6 +33,7 @@ export const ExplanationCard: React.FC<ExplanationCardProps> = ({
   question,
   userAnswerId,
   isSaved,
+  solveTimeSeconds,
   onToggleSave,
   onNextQuestion,
 }) => {
@@ -70,6 +73,13 @@ export const ExplanationCard: React.FC<ExplanationCardProps> = ({
             </p>
           </div>
         </div>
+
+        {solveTimeSeconds !== undefined && solveTimeSeconds > 0 && (
+          <div className="solve-time-badge" title="Bu Sorunun Çözüm Süresi">
+            <Clock className="time-icon" />
+            <span>Çözüm Süresi: <strong>{solveTimeSeconds} sn</strong></span>
+          </div>
+        )}
       </div>
 
       {/* Explanation Details */}

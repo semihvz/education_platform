@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { HelpCircle, CheckCircle2, ArrowRight, Layers } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { HelpCircle, CheckCircle2, ArrowRight, Layers, Clock } from 'lucide-react';
 import type { Question } from '../types/quiz';
 import { FormattedMathText } from './FormattedMathText';
 
 interface QuestionCardProps {
   question: Question;
-  onAnswerSubmit: (selectedOptionId: string) => void;
+  onAnswerSubmit: (selectedOptionId: string, solveTimeSeconds: number) => void;
   answeredOptionId: string | null;
 }
 
@@ -15,6 +15,21 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
   answeredOptionId,
 }) => {
   const [selectedId, setSelectedId] = useState<string | null>(answeredOptionId);
+  const [elapsedSeconds, setElapsedSeconds] = useState<number>(0);
+
+  // Per-question timer: resets on question change, stops when answered
+  useEffect(() => {
+    setSelectedId(answeredOptionId);
+    setElapsedSeconds(0);
+
+    if (answeredOptionId !== null) return;
+
+    const timer = setInterval(() => {
+      setElapsedSeconds(prev => prev + 1);
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [question.id, answeredOptionId]);
 
   const handleOptionClick = (id: string) => {
     if (answeredOptionId !== null) return; // Prevent changing after submission
@@ -23,7 +38,13 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
 
   const handleSubmit = () => {
     if (!selectedId || answeredOptionId !== null) return;
-    onAnswerSubmit(selectedId);
+    onAnswerSubmit(selectedId, elapsedSeconds);
+  };
+
+  const formatTimer = (totalSec: number) => {
+    const mins = Math.floor(totalSec / 60);
+    const secs = totalSec % 60;
+    return `${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
   };
 
   const getDifficultyBadge = (diff: string) => {
@@ -45,6 +66,13 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
           <Layers className="icon" />
           {question.topic}
         </span>
+
+        {/* Live Per-Question Timer Badge */}
+        <span className={`question-timer-badge ${answeredOptionId !== null ? 'stopped' : 'running'}`} title="Soru Çözüm Süresi">
+          <Clock className="timer-icon" />
+          <span>{formatTimer(elapsedSeconds)}</span>
+        </span>
+
         <span className={`diff-badge ${diffInfo.class}`}>
           {diffInfo.label}
         </span>

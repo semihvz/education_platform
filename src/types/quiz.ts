@@ -43,6 +43,8 @@ export interface UserStats {
   streakDays: number;
   lastActiveDate: string; // YYYY-MM-DD
   topicMastery: { [topicName: string]: { total: number; correct: number } };
+  totalTimeSpentSeconds?: number;
+  averageTimePerQuestion?: number;
 }
 
 export interface AppSettings {
@@ -57,6 +59,7 @@ export interface SavedQuestionItem {
   userAnswerId: string;
   savedAt: number;
   wasCorrect: boolean;
+  solveDurationSeconds?: number;
 }
 
 export interface SavedFlashcardItem {

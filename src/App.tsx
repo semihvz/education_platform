@@ -65,7 +65,7 @@ export function App() {
   };
 
   // Handle user submitting answer in Quiz mode
-  const handleAnswerSubmit = (question: Question, optionId: string) => {
+  const handleAnswerSubmit = (question: Question, optionId: string, solveTimeSeconds: number = 0) => {
     const isCorrect = optionId === question.correctOptionId;
 
     if (isCorrect) {
@@ -76,7 +76,7 @@ export function App() {
       audioService.triggerHaptic('warning');
     }
 
-    const updatedStats = recordAnswerResult(question.topic, isCorrect);
+    const updatedStats = recordAnswerResult(question.topic, isCorrect, solveTimeSeconds);
     setStats(updatedStats);
   };
 

@@ -7,7 +7,7 @@ import { ExplanationCard } from './ExplanationCard';
 
 interface EmbeddedQuestionBankViewProps {
   questions: Question[];
-  onAnswerSubmit: (question: Question, optionId: string) => void;
+  onAnswerSubmit: (question: Question, optionId: string, solveTimeSeconds: number) => void;
   onSaveQuestion: (question: Question, userAnswerId: string) => void;
   isQuestionSaved: (questionId: string) => boolean;
 }
@@ -21,6 +21,7 @@ export const EmbeddedQuestionBankView: React.FC<EmbeddedQuestionBankViewProps> =
   const [selectedTopic, setSelectedTopic] = useState<string>('ALL');
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [userAnswers, setUserAnswers] = useState<Record<string, string>>({});
+  const [userAnswerTimes, setUserAnswerTimes] = useState<Record<string, number>>({});
 
   // Dynamically extract unique topics and counts
   const availableTopics = useMemo(() => {
@@ -60,12 +61,14 @@ export const EmbeddedQuestionBankView: React.FC<EmbeddedQuestionBankViewProps> =
   }
 
   const currentAnswer = userAnswers[currentQ.id] || null;
+  const currentSolveTime = userAnswerTimes[currentQ.id] || 0;
   const isSaved = isQuestionSaved(currentQ.id);
 
-  const handleSelectOption = (optionId: string) => {
+  const handleSelectOption = (optionId: string, solveTimeSeconds: number) => {
     if (currentAnswer !== null) return;
     setUserAnswers(prev => ({ ...prev, [currentQ.id]: optionId }));
-    onAnswerSubmit(currentQ, optionId);
+    setUserAnswerTimes(prev => ({ ...prev, [currentQ.id]: solveTimeSeconds }));
+    onAnswerSubmit(currentQ, optionId, solveTimeSeconds);
   };
 
   const handlePrev = () => {
@@ -178,6 +181,7 @@ export const EmbeddedQuestionBankView: React.FC<EmbeddedQuestionBankViewProps> =
             question={currentQ}
             userAnswerId={currentAnswer}
             isSaved={isSaved}
+            solveTimeSeconds={currentSolveTime}
             onToggleSave={() => onSaveQuestion(currentQ, currentAnswer)}
             onNextQuestion={handleNext}
           />

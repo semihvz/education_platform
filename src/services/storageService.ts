@@ -110,7 +110,7 @@ export const saveUserStats = (stats: UserStats): void => {
   }
 };
 
-export const recordAnswerResult = (topic: string, isCorrect: boolean): UserStats => {
+export const recordAnswerResult = (topic: string, isCorrect: boolean, timeSpentSeconds: number = 0): UserStats => {
   const stats = loadUserStats();
   stats.totalAnswered += 1;
   if (isCorrect) {
@@ -119,6 +119,10 @@ export const recordAnswerResult = (topic: string, isCorrect: boolean): UserStats
   } else {
     stats.xp += 5; // Participation XP
   }
+
+  // Update time tracking
+  stats.totalTimeSpentSeconds = (stats.totalTimeSpentSeconds || 0) + timeSpentSeconds;
+  stats.averageTimePerQuestion = Math.round(stats.totalTimeSpentSeconds / stats.totalAnswered);
 
   // Update topic mastery
   if (!stats.topicMastery[topic]) {

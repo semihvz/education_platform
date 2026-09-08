@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Award, Flame, CheckCircle, Target, BookOpen, BarChart2 } from 'lucide-react';
+import { X, Award, Flame, CheckCircle, Target, BookOpen, BarChart2, Clock } from 'lucide-react';
 import type { UserStats } from '../types/quiz';
 
 interface StatsDashboardProps {
@@ -11,6 +11,8 @@ export const StatsDashboard: React.FC<StatsDashboardProps> = ({ stats, onClose }
   const accuracyPercentage = stats.totalAnswered > 0
     ? Math.round((stats.correctAnswers / stats.totalAnswered) * 100)
     : 0;
+
+  const avgSolveTime = stats.averageTimePerQuestion || 0;
 
   // Level calculation: Every 100 XP is 1 level
   const userLevel = Math.floor(stats.xp / 100) + 1;
@@ -67,6 +69,14 @@ export const StatsDashboard: React.FC<StatsDashboardProps> = ({ stats, onClose }
             <div className="stat-info">
               <span className="stat-number">%{accuracyPercentage}</span>
               <span className="stat-label">Doğruluk Oranı</span>
+            </div>
+          </div>
+
+          <div className="stat-card">
+            <Clock className="stat-icon icon-cyan" />
+            <div className="stat-info">
+              <span className="stat-number">{avgSolveTime} sn / Soru</span>
+              <span className="stat-label">Ort. Çözüm Süresi</span>
             </div>
           </div>
         </div>
