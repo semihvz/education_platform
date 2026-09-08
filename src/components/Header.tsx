@@ -45,7 +45,7 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
             <div className="brand-text">
               <h1 className="title">OPTIMIZATION<span className="ai-badge">LIFE</span></h1>
-              <p className="subtitle">Öğrenme & Soru Platformu</p>
+              <p className="subtitle">Learning & Practice Platform</p>
             </div>
           </div>
 
@@ -56,34 +56,34 @@ export const Header: React.FC<HeaderProps> = ({
               onClick={() => onSwitchMode('embedded-bank')}
             >
               <BookOpen className="tab-icon" />
-              <span>📚 Soru Bankası</span>
+              <span>📚 Question Bank</span>
             </button>
             <button
               className={`mode-tab-btn ${activeMode === 'flashcards' ? 'active' : ''}`}
               onClick={() => onSwitchMode('flashcards')}
             >
               <Layers className="tab-icon" />
-              <span>🎴 Bilgi Kartları</span>
+              <span>🎴 Flashcards</span>
             </button>
             <button
               className={`mode-tab-btn ${activeMode === 'journal' ? 'active' : ''}`}
               onClick={() => onSwitchMode('journal')}
             >
               <BookOpenCheck className="tab-icon" />
-              <span>📖 Günlük</span>
+              <span>📖 Daily Journal</span>
             </button>
           </div>
 
           {/* Stats & Actions Bar */}
           <div className="header-actions">
             {/* Streak Counter */}
-            <div className="stat-pill streak-pill" title="Günlük Öğrenme Serisi">
+            <div className="stat-pill streak-pill" title="Daily Study Streak">
               <Flame className="icon flame-icon" />
-              <span className="stat-val">{stats.streakDays} G</span>
+              <span className="stat-val">{stats.streakDays} D</span>
             </div>
 
             {/* XP Counter */}
-            <div className="stat-pill xp-pill" title="Toplam XP Puanı">
+            <div className="stat-pill xp-pill" title="Total XP Points">
               <Award className="icon xp-icon" />
               <span className="stat-val">{stats.xp} XP</span>
             </div>
@@ -92,7 +92,7 @@ export const Header: React.FC<HeaderProps> = ({
             <button 
               className="action-btn desktop-only"
               onClick={onOpenStats}
-              title="İstatistikler ve Konu Başarısı"
+              title="Statistics & Topic Performance"
             >
               <BarChart2 className="icon" />
             </button>
@@ -101,7 +101,7 @@ export const Header: React.FC<HeaderProps> = ({
             <button 
               className="action-btn desktop-only"
               onClick={onOpenBookmarks}
-              title="Kaydedilen Soru ve Kartlarım"
+              title="Bookmarks & Saved Items"
             >
               <Bookmark className="icon" />
             </button>
@@ -110,7 +110,7 @@ export const Header: React.FC<HeaderProps> = ({
             <button 
               className="action-btn"
               onClick={toggleTheme}
-              title="Koyu / Açık Tema"
+              title="Dark / Light Theme"
             >
               {settings.theme === 'dark' ? <Sun className="icon sun-icon" /> : <Moon className="icon" />}
             </button>
@@ -119,24 +119,24 @@ export const Header: React.FC<HeaderProps> = ({
             <button 
               className="action-btn desktop-only"
               onClick={onOpenSettings}
-              title="Ayarlar"
+              title="Settings"
             >
               <Settings className="icon" />
             </button>
 
             {/* User Auth Profile / Login Button */}
             {currentUser ? (
-              <div className="user-profile-badge" title={`Giriş Yapıldı: ${currentUser.email}`}>
+              <div className="user-profile-badge" title={`Logged in: ${currentUser.email}`}>
                 <span className="user-avatar">{currentUser.avatar || '🎓'}</span>
                 <span className="user-name">{currentUser.name}</span>
-                <button className="user-logout-btn" onClick={onLogout} title="Çıkış Yap">
+                <button className="user-logout-btn" onClick={onLogout} title="Log Out">
                   <LogOut className="icon-sm" />
                 </button>
               </div>
             ) : (
-              <button className="auth-login-btn" onClick={onOpenAuth} title="Giriş Yap / Kayıt Ol">
+              <button className="auth-login-btn" onClick={onOpenAuth} title="Log In / Sign Up">
                 <LogIn className="btn-icon" />
-                <span className="login-text">Giriş Yap</span>
+                <span className="login-text">Log In</span>
               </button>
             )}
           </div>
@@ -150,29 +150,29 @@ export const Header: React.FC<HeaderProps> = ({
           onClick={() => onSwitchMode('embedded-bank')}
         >
           <BookOpen className="nav-icon" />
-          <span>Sorular</span>
+          <span>Questions</span>
         </button>
         <button
           className={`bottom-nav-item ${activeMode === 'flashcards' ? 'active' : ''}`}
           onClick={() => onSwitchMode('flashcards')}
         >
           <Layers className="nav-icon" />
-          <span>Kartlar</span>
+          <span>Flashcards</span>
         </button>
         <button
           className={`bottom-nav-item ${activeMode === 'journal' ? 'active' : ''}`}
           onClick={() => onSwitchMode('journal')}
         >
           <BookOpenCheck className="nav-icon" />
-          <span>Günlük</span>
+          <span>Journal</span>
         </button>
         <button className="bottom-nav-item" onClick={onOpenBookmarks}>
           <Bookmark className="nav-icon" />
-          <span>Kaydedilen</span>
+          <span>Saved</span>
         </button>
         <button className="bottom-nav-item" onClick={onOpenStats}>
           <BarChart2 className="nav-icon" />
-          <span>İstatistik</span>
+          <span>Stats</span>
         </button>
       </nav>
     </>

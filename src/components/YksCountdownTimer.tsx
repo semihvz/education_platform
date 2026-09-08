@@ -30,109 +30,109 @@ export const YksCountdownTimer: React.FC = () => {
 
   return (
     <div className="yks-dual-countdown-container">
-      {/* 2027 YKS Sayaç */}
+      {/* 2027 YKS Countdown */}
       <div className="yks-countdown-banner yks-banner-2027">
         <div className="yks-banner-header">
           <div className="yks-title-group">
             <Timer className="yks-timer-icon icon-2027" />
-            <span className="yks-title">2027 YKS'ye Kalan Süre</span>
+            <span className="yks-title">Countdown to 2027 YKS Exam</span>
             <Sparkles className="yks-sparkle-icon" />
           </div>
-          <span className="yks-target-date">19 Haziran 2027 • 10:15</span>
+          <span className="yks-target-date">June 19, 2027 • 10:15 AM</span>
         </div>
 
         <div className="yks-countdown-grid">
           <div className="yks-time-box">
             <span className="yks-num">{padZero(time2027.days)}</span>
-            <span className="yks-label">GÜN</span>
+            <span className="yks-label">DAYS</span>
           </div>
           <span className="yks-colon">:</span>
           <div className="yks-time-box">
             <span className="yks-num">{padZero(time2027.hours)}</span>
-            <span className="yks-label">SAAT</span>
+            <span className="yks-label">HOURS</span>
           </div>
           <span className="yks-colon">:</span>
           <div className="yks-time-box">
             <span className="yks-num">{padZero(time2027.minutes)}</span>
-            <span className="yks-label">DAKİKA</span>
+            <span className="yks-label">MINS</span>
           </div>
           <span className="yks-colon">:</span>
           <div className="yks-time-box yks-sec-box">
             <span className="yks-num">{padZero(time2027.seconds)}</span>
-            <span className="yks-label">SANİYE</span>
+            <span className="yks-label">SECS</span>
           </div>
         </div>
       </div>
 
-      {/* 2028 YKS Sayaç */}
+      {/* 2028 YKS Countdown */}
       <div className="yks-countdown-banner yks-banner-2028">
         <div className="yks-banner-header">
           <div className="yks-title-group">
             <Timer className="yks-timer-icon icon-2028" />
-            <span className="yks-title">2028 YKS'ye Kalan Süre</span>
+            <span className="yks-title">Countdown to 2028 YKS Exam</span>
             <Sparkles className="yks-sparkle-icon" />
           </div>
-          <span className="yks-target-date">17 Haziran 2028 • 10:15</span>
+          <span className="yks-target-date">June 17, 2028 • 10:15 AM</span>
         </div>
 
         <div className="yks-countdown-grid">
           <div className="yks-time-box">
             <span className="yks-num">{padZero(time2028.days)}</span>
-            <span className="yks-label">GÜN</span>
+            <span className="yks-label">DAYS</span>
           </div>
           <span className="yks-colon">:</span>
           <div className="yks-time-box">
             <span className="yks-num">{padZero(time2028.hours)}</span>
-            <span className="yks-label">SAAT</span>
+            <span className="yks-label">HOURS</span>
           </div>
           <span className="yks-colon">:</span>
           <div className="yks-time-box">
             <span className="yks-num">{padZero(time2028.minutes)}</span>
-            <span className="yks-label">DAKİKA</span>
+            <span className="yks-label">MINS</span>
           </div>
           <span className="yks-colon">:</span>
           <div className="yks-time-box yks-sec-box">
             <span className="yks-num">{padZero(time2028.seconds)}</span>
-            <span className="yks-label">SANİYE</span>
+            <span className="yks-label">SECS</span>
           </div>
         </div>
       </div>
 
-      {/* 15 Yıllık Ölüm Sayacı */}
+      {/* 15-Year Memento Mori Timer */}
       <div className="yks-countdown-banner yks-banner-15year">
         <div className="yks-banner-header">
           <div className="yks-title-group">
             <Skull className="yks-timer-icon icon-15year" />
-            <span className="yks-title">15 Yıllık Ölüm Sayacı (Memento Mori)</span>
+            <span className="yks-title">15-Year Memento Mori Timer</span>
             <Sparkles className="yks-sparkle-icon" />
           </div>
-          <span className="yks-target-date">9 Eylül 2041 • Kalan Yaşam & Süre</span>
+          <span className="yks-target-date">Sep 9, 2041 • Remaining Life & Time</span>
         </div>
 
         <div className="yks-countdown-grid">
           <div className="yks-time-box">
             <span className="yks-num">{padZero(time15Year.years || 0)}</span>
-            <span className="yks-label">YIL</span>
+            <span className="yks-label">YEARS</span>
           </div>
           <span className="yks-colon">:</span>
           <div className="yks-time-box">
             <span className="yks-num">{padZero(time15Year.days)}</span>
-            <span className="yks-label">GÜN</span>
+            <span className="yks-label">DAYS</span>
           </div>
           <span className="yks-colon">:</span>
           <div className="yks-time-box">
             <span className="yks-num">{padZero(time15Year.hours)}</span>
-            <span className="yks-label">SAAT</span>
+            <span className="yks-label">HOURS</span>
           </div>
           <span className="yks-colon">:</span>
           <div className="yks-time-box">
             <span className="yks-num">{padZero(time15Year.minutes)}</span>
-            <span className="yks-label">DAKİKA</span>
+            <span className="yks-label">MINS</span>
           </div>
           <span className="yks-colon">:</span>
           <div className="yks-time-box yks-sec-box">
             <span className="yks-num">{padZero(time15Year.seconds)}</span>
-            <span className="yks-label">SANİYE</span>
+            <span className="yks-label">SECS</span>
           </div>
         </div>
       </div>

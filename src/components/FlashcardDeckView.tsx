@@ -83,18 +83,18 @@ export const FlashcardDeckView: React.FC<FlashcardDeckViewProps> = ({
             {currentCard.topic}
           </span>
           <span className="card-counter-badge">
-            Kart {currentIndex + 1} / {cards.length}
+            Card {currentIndex + 1} / {cards.length}
           </span>
         </div>
 
         <div className="deck-info-right">
           <span className="learned-stat">
             <Award className="icon-sm icon-gold" />
-            {learnedCount} / {cards.length} Öğrenildi
+            {learnedCount} / {cards.length} Mastered
           </span>
-          <button className="shuffle-btn" onClick={handleShuffle} title="Kartları Karıştır">
+          <button className="shuffle-btn" onClick={handleShuffle} title="Shuffle Cards">
             <Shuffle className="icon-sm" />
-            <span>Karıştır</span>
+            <span>Shuffle</span>
           </button>
         </div>
       </div>
@@ -108,7 +108,7 @@ export const FlashcardDeckView: React.FC<FlashcardDeckViewProps> = ({
               <span className="category-pill">{currentCard.frontCategory}</span>
               {isLearned && (
                 <span className="learned-badge">
-                  <CheckCircle className="icon-xs" /> Öğrenildi
+                  <CheckCircle className="icon-xs" /> Mastered
                 </span>
               )}
             </div>
@@ -120,7 +120,7 @@ export const FlashcardDeckView: React.FC<FlashcardDeckViewProps> = ({
 
             <div className="card-flip-hint">
               <RotateCw className="hint-icon" />
-              <span>Açıklamayı görmek için kartı çevirin</span>
+              <span>Click to flip and read explanation</span>
             </div>
           </div>
 
@@ -128,7 +128,7 @@ export const FlashcardDeckView: React.FC<FlashcardDeckViewProps> = ({
           <div className="card-face card-back">
             <div className="card-top-bar">
               <span className="back-badge">
-                <BookOpen className="icon-xs" /> Bilgi & Özet
+                <BookOpen className="icon-xs" /> Concept Summary
               </span>
               <button 
                 className={`card-save-icon-btn ${isSaved ? 'saved' : ''}`}
@@ -136,7 +136,7 @@ export const FlashcardDeckView: React.FC<FlashcardDeckViewProps> = ({
                   e.stopPropagation();
                   onSaveCard(currentCard);
                 }}
-                title="Kartı DB'ye Kaydet"
+                title="Save Card"
               >
                 {isSaved ? <BookmarkCheck className="icon-sm" /> : <Bookmark className="icon-sm" />}
               </button>
@@ -149,7 +149,7 @@ export const FlashcardDeckView: React.FC<FlashcardDeckViewProps> = ({
                 <div className="back-example-box">
                   <Code className="example-icon" />
                   <div>
-                    <strong>Pratik Örnek:</strong>
+                    <strong>Practical Example:</strong>
                     <p>{currentCard.backExample}</p>
                   </div>
                 </div>
@@ -159,7 +159,7 @@ export const FlashcardDeckView: React.FC<FlashcardDeckViewProps> = ({
                 <div className="back-key-box">
                   <Lightbulb className="key-icon" />
                   <div>
-                    <strong>Hatırlatıcı Not:</strong>
+                    <strong>Key Takeaway:</strong>
                     <p>{currentCard.backKeyPoint}</p>
                   </div>
                 </div>
@@ -168,7 +168,7 @@ export const FlashcardDeckView: React.FC<FlashcardDeckViewProps> = ({
 
             <div className="card-flip-hint">
               <RotateCw className="hint-icon" />
-              <span>Ön yüze dönmek için tıklayın</span>
+              <span>Click to return to front</span>
             </div>
           </div>
         </div>
@@ -176,7 +176,7 @@ export const FlashcardDeckView: React.FC<FlashcardDeckViewProps> = ({
 
       {/* Navigation Controls Toolbar */}
       <div className="deck-controls">
-        <button className="nav-arrow-btn" onClick={handlePrev} title="Önceki Kart">
+        <button className="nav-arrow-btn" onClick={handlePrev} title="Previous Card">
           <ChevronLeft className="icon-lg" />
         </button>
 
@@ -185,7 +185,7 @@ export const FlashcardDeckView: React.FC<FlashcardDeckViewProps> = ({
           onClick={() => setIsFlipped(!isFlipped)}
         >
           <RotateCw className="btn-icon" />
-          <span>{isFlipped ? 'Ön Yüzü Göster' : 'Kartı Çevir'}</span>
+          <span>{isFlipped ? 'Show Front' : 'Flip Card'}</span>
         </button>
 
         <button 
@@ -195,12 +195,12 @@ export const FlashcardDeckView: React.FC<FlashcardDeckViewProps> = ({
           {isLearned ? (
             <>
               <CheckCircle className="btn-icon" />
-              <span>Öğrenildi</span>
+              <span>Mastered</span>
             </>
           ) : (
             <>
               <Circle className="btn-icon" />
-              <span>Öğrendim Olarak İşaretle</span>
+              <span>Mark as Mastered</span>
             </>
           )}
         </button>
@@ -212,17 +212,17 @@ export const FlashcardDeckView: React.FC<FlashcardDeckViewProps> = ({
           {isSaved ? (
             <>
               <BookmarkCheck className="btn-icon" />
-              <span>Kaydedildi</span>
+              <span>Saved</span>
             </>
           ) : (
             <>
               <Bookmark className="btn-icon" />
-              <span>DB'ye Kaydet</span>
+              <span>Save Card</span>
             </>
           )}
         </button>
 
-        <button className="nav-arrow-btn" onClick={handleNext} title="Sonraki Kart">
+        <button className="nav-arrow-btn" onClick={handleNext} title="Next Card">
           <ChevronRight className="icon-lg" />
         </button>
       </div>
@@ -230,7 +230,7 @@ export const FlashcardDeckView: React.FC<FlashcardDeckViewProps> = ({
       {/* New Deck CTA */}
       <div className="new-deck-box">
         <button className="new-deck-btn" onClick={onNewDeckRequest}>
-          <span>Başka Konuda Bilgi Kartı Üret</span>
+          <span>Select Another Flashcard Deck</span>
         </button>
       </div>
     </div>

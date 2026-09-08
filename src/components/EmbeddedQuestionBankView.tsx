@@ -54,8 +54,8 @@ export const EmbeddedQuestionBankView: React.FC<EmbeddedQuestionBankViewProps> =
     return (
       <div className="embedded-empty-box">
         <BookOpen className="icon" />
-        <h3>Gömülü Soru Bulunamadı</h3>
-        <p>Sistemde kayıtlı gömülü soru bulunmamaktadır.</p>
+        <h3>No Questions Found</h3>
+        <p>No questions registered in the question bank yet.</p>
       </div>
     );
   }
@@ -89,11 +89,11 @@ export const EmbeddedQuestionBankView: React.FC<EmbeddedQuestionBankViewProps> =
 
   return (
     <div className="embedded-bank-container">
-      {/* Ders / Konu Başlıkları Combobox Seçici */}
+      {/* Subject / Topic Combobox */}
       <div className="bank-topic-combobox-wrapper">
         <label htmlFor="subject-combobox" className="combobox-label">
           <BookOpen className="combobox-icon" />
-          <span>Ders / Konu Seçin:</span>
+          <span>Select Subject / Topic:</span>
         </label>
         <select
           id="subject-combobox"
@@ -101,10 +101,10 @@ export const EmbeddedQuestionBankView: React.FC<EmbeddedQuestionBankViewProps> =
           value={selectedTopic}
           onChange={(e) => handleTopicChange(e.target.value)}
         >
-          <option value="ALL">📚 Tüm Dersler & Sorular ({questions.length} Soru)</option>
+          <option value="ALL">📚 All Subjects & Questions ({questions.length} Questions)</option>
           {availableTopics.map(({ topic, count }) => (
             <option key={topic} value={topic}>
-              📖 {topic} ({count} Soru)
+              📖 {topic} ({count} Questions)
             </option>
           ))}
         </select>
@@ -115,9 +115,9 @@ export const EmbeddedQuestionBankView: React.FC<EmbeddedQuestionBankViewProps> =
         <div className="bank-title-info">
           <BookOpen className="bank-icon" />
           <div>
-            <h2>📚 Gömülü Soru Bankası</h2>
+            <h2>📚 Practice Question Bank</h2>
             <p className="bank-subtitle">
-              Soru {currentIndex + 1} / {filteredQuestions.length} • {currentQ.topic}
+              Question {currentIndex + 1} / {filteredQuestions.length} • {currentQ.topic}
             </p>
           </div>
         </div>
@@ -128,7 +128,7 @@ export const EmbeddedQuestionBankView: React.FC<EmbeddedQuestionBankViewProps> =
             className="nav-arrow-btn" 
             onClick={handlePrev} 
             disabled={currentIndex === 0}
-            title="Önceki Soru"
+            title="Previous Question"
           >
             <ChevronLeft />
           </button>
@@ -142,7 +142,7 @@ export const EmbeddedQuestionBankView: React.FC<EmbeddedQuestionBankViewProps> =
               const isAns = userAnswers[q.id] !== undefined;
               return (
                 <option key={q.id} value={idx}>
-                  Soru {idx + 1} {isAns ? '✓' : ''}
+                  Question {idx + 1} {isAns ? '✓' : ''}
                 </option>
               );
             })}
@@ -152,7 +152,7 @@ export const EmbeddedQuestionBankView: React.FC<EmbeddedQuestionBankViewProps> =
             className="nav-arrow-btn" 
             onClick={handleNext} 
             disabled={currentIndex === filteredQuestions.length - 1}
-            title="Sonraki Soru"
+            title="Next Question"
           >
             <ChevronRight />
           </button>

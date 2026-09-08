@@ -8,15 +8,15 @@ interface TopicSelectorProps {
 }
 
 const PRESET_TOPICS = [
-  { name: 'Matematik', icon: '📐', desc: 'Logaritma ve Faktöriyel Denklem Soruları' },
-  { name: 'SQL Database', icon: '💾', desc: 'İleri Seviye SQL, Window Functions & CTE (100 Zor Soru)' },
-  { name: 'İngilizce Grammar', icon: '🇬🇧', desc: 'Oxford Practice Grammar 100 Soru Bitirme Sınavı' },
-  { name: 'Yapay Zeka & LLM', icon: '🤖', desc: 'Derin öğrenme, Transformer & AI' },
-  { name: 'Kuantum Fiziği', icon: '⚛️', desc: 'Süperpozisyon, Dolanıklık & Atom' },
-  { name: 'Python & Algoritmalar', icon: '🐍', desc: 'Kodlama, Veri yapıları & Yazılım' },
-  { name: 'Osmanlı & Dünya Tarihi', icon: '🏛️', desc: 'Tarihi zaferler & Dönüm noktaları' },
-  { name: 'Uzay & Astronomi', icon: '🚀', desc: 'Karadelikler, Galaksiler & Evren' },
-  { name: 'Felsefe & Mantık', icon: '📜', desc: 'Düşünce tarihi, Etik & Mantık' },
+  { name: 'Mathematics', icon: '📐', desc: 'Logarithms, Factorials & Algebra Questions' },
+  { name: 'SQL Database', icon: '💾', desc: 'Advanced SQL, Window Functions & CTE (100 Challenging Questions)' },
+  { name: 'English Grammar', icon: '🇬🇧', desc: 'Oxford Practice Grammar Master Test' },
+  { name: 'Artificial Intelligence & LLM', icon: '🤖', desc: 'Deep Learning, Transformers & Neural Networks' },
+  { name: 'Quantum Physics', icon: '⚛️', desc: 'Superposition, Entanglement & Atomic Models' },
+  { name: 'Python & Algorithms', icon: '🐍', desc: 'Data Structures, Asyncio & Software Architecture' },
+  { name: 'World History', icon: '🏛️', desc: 'Historic Milestones, Empires & Revolutions' },
+  { name: 'Space & Astronomy', icon: '🚀', desc: 'Black Holes, Galaxies & Universe Physics' },
+  { name: 'Philosophy & Logic', icon: '📜', desc: 'History of Thought, Ethics & Formal Logic' },
 ];
 
 export const TopicSelector: React.FC<TopicSelectorProps> = ({ onGenerate, isLoading }) => {
@@ -39,10 +39,10 @@ export const TopicSelector: React.FC<TopicSelectorProps> = ({ onGenerate, isLoad
       <div className="selector-header">
         <div className="selector-title-box">
           <Sparkles className="sparkle-icon" />
-          <h2>Öğrenmek İstediğin Konuyu Seç</h2>
+          <h2>Select Topic to Learn</h2>
         </div>
         <p className="selector-desc">
-          Yapay zeka istediğin her konuda sana özel 5 şıklı öğretici sorular hazırlar ve detaylıca anlatır.
+          AI generates custom 5-option practice questions with detailed step-by-step explanations on any subject.
         </p>
       </div>
 
@@ -53,7 +53,7 @@ export const TopicSelector: React.FC<TopicSelectorProps> = ({ onGenerate, isLoad
           <input
             type="text"
             className="topic-input"
-            placeholder="Örn: Kuantum Bilgisayarlar, Roma İmparatorluğu, JavaScript..."
+            placeholder="e.g. Quantum Computing, Roman Empire, JavaScript..."
             value={topicInput}
             onChange={(e) => setTopicInput(e.target.value)}
             disabled={isLoading}
@@ -64,11 +64,11 @@ export const TopicSelector: React.FC<TopicSelectorProps> = ({ onGenerate, isLoad
             disabled={isLoading || !topicInput.trim()}
           >
             {isLoading ? (
-              <span className="spinner-loader">AI Hazırlıyor...</span>
+              <span className="spinner-loader">AI Generating...</span>
             ) : (
               <>
                 <Zap className="btn-icon" />
-                <span>Soru Üret</span>
+                <span>Generate Questions</span>
               </>
             )}
           </button>
@@ -77,10 +77,10 @@ export const TopicSelector: React.FC<TopicSelectorProps> = ({ onGenerate, isLoad
 
       {/* Difficulty Selector */}
       <div className="difficulty-section">
-        <span className="diff-label">Zorluk Seviyesi:</span>
+        <span className="diff-label">Difficulty Level:</span>
         <div className="diff-buttons">
           {(['beginner', 'intermediate', 'advanced'] as Difficulty[]).map((level) => {
-            const labels = { beginner: 'Başlangıç', intermediate: 'Orta', advanced: 'İleri Seviye' };
+            const labels = { beginner: 'Beginner', intermediate: 'Intermediate', advanced: 'Advanced' };
             return (
               <button
                 key={level}
@@ -100,14 +100,14 @@ export const TopicSelector: React.FC<TopicSelectorProps> = ({ onGenerate, isLoad
       <div className="presets-section">
         <div className="presets-header">
           <Compass className="preset-icon" />
-          <h3>Popüler Öğrenme Konuları</h3>
+          <h3>Popular Learning Topics</h3>
         </div>
 
         {/* Ders Başlıkları Combobox */}
         <div className="bank-topic-combobox-wrapper" style={{ marginBottom: '1rem' }}>
           <label htmlFor="preset-topic-combobox" className="combobox-label">
             <Compass className="combobox-icon" />
-            <span>Hazır Konu Seçin:</span>
+            <span>Select Preset Topic:</span>
           </label>
           <select
             id="preset-topic-combobox"
@@ -117,7 +117,7 @@ export const TopicSelector: React.FC<TopicSelectorProps> = ({ onGenerate, isLoad
             }}
             defaultValue=""
           >
-            <option value="" disabled>-- Bir Ders / Konu Seçin --</option>
+            <option value="" disabled>-- Select a Topic --</option>
             {PRESET_TOPICS.map((item) => (
               <option key={item.name} value={item.name}>
                 {item.icon} {item.name} ({item.desc})

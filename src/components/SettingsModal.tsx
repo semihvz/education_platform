@@ -39,7 +39,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
         <div className="modal-header">
           <div className="modal-title">
             <Key className="icon icon-purple" />
-            <h3>Uygulama & AI Ayarları</h3>
+            <h3>Application & AI Settings</h3>
           </div>
           <button className="close-btn" onClick={onClose}>
             <X className="icon" />
@@ -57,18 +57,18 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                 rel="noreferrer"
                 className="api-link"
               >
-                Ücretsiz Key Al <ExternalLink className="link-icon" />
+                Get Free Key <ExternalLink className="link-icon" />
               </a>
             </label>
             <input
               type="password"
               className="form-input"
-              placeholder="AI Key yapıştırın (Boş kalırsa akıllı simülatör çalışır)"
+              placeholder="Paste AI Key (If blank, smart offline engine runs)"
               value={apiKey}
               onChange={(e) => setApiKey(e.target.value)}
             />
             <p className="form-help">
-              API anahtarınız tarayıcınızda güvenli bir şekilde saklanır. Girilmezse dahili akıllı AI simülatörü devreye girer.
+              Your API key is securely stored in your browser. If empty, the built-in AI simulator will be used.
             </p>
           </div>
 
@@ -76,16 +76,16 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           <div className="form-group">
             <label className="form-label">
               <Cpu className="icon-sm" />
-              <span>Gemini Model Seçimi</span>
+              <span>Gemini Model Selection</span>
             </label>
             <select
               className="form-select"
               value={selectedModel}
               onChange={(e) => setSelectedModel(e.target.value)}
             >
-              <option value="gemini-2.5-flash">Gemini 2.5 Flash (En Hızlı & Öğretici - Tavsiye Edilen)</option>
-              <option value="gemini-1.5-flash">Gemini 1.5 Flash (Standart Hızlı)</option>
-              <option value="gemini-2.5-pro">Gemini 2.5 Pro (Karmaşık & Derin Sorular)</option>
+              <option value="gemini-2.5-flash">Gemini 2.5 Flash (Fastest & Recommended)</option>
+              <option value="gemini-1.5-flash">Gemini 1.5 Flash (Standard Fast)</option>
+              <option value="gemini-2.5-pro">Gemini 2.5 Pro (Deep & Complex Questions)</option>
             </select>
           </div>
 
@@ -93,14 +93,14 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           <div className="form-group">
             <label className="form-label">
               <Volume2 className="icon-sm" />
-              <span>Ses Efektleri (Doğru / Yanlış Sesleri)</span>
+              <span>Sound Effects (Correct / Incorrect Sounds)</span>
             </label>
             <button
               type="button"
               className={`toggle-btn ${soundEnabled ? 'active' : ''}`}
               onClick={() => setSoundEnabled(!soundEnabled)}
             >
-              {soundEnabled ? 'Açık' : 'Kapalı'}
+              {soundEnabled ? 'Enabled' : 'Disabled'}
             </button>
           </div>
 
@@ -110,12 +110,12 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               {savedSuccess ? (
                 <>
                   <Check className="btn-icon" />
-                  <span>Kaydedildi!</span>
+                  <span>Saved!</span>
                 </>
               ) : (
                 <>
                   <Save className="btn-icon" />
-                  <span>Ayarları Kaydet</span>
+                  <span>Save Settings</span>
                 </>
               )}
             </button>

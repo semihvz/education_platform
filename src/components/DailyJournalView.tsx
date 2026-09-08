@@ -30,7 +30,7 @@ export const DailyJournalView: React.FC = () => {
     if (!file) return;
 
     if (file.size > 8 * 1024 * 1024) {
-      alert('Fotoğraf boyutu çok yüksek (Maksimum 8 MB yükleyebilirsiniz).');
+      alert('Photo file size is too large (Maximum size is 8 MB).');
       return;
     }
 
@@ -49,7 +49,7 @@ export const DailyJournalView: React.FC = () => {
   const handleSubmitEntry = (e: React.FormEvent) => {
     e.preventDefault();
     if (!title.trim() || !content.trim()) {
-      alert('Lütfen günlük başlığı ve açıklamasını doldurunuz.');
+      alert('Please fill in the journal entry title and study notes.');
       return;
     }
 
@@ -84,7 +84,7 @@ export const DailyJournalView: React.FC = () => {
   };
 
   const handleDelete = (id: string) => {
-    if (window.confirm('Bu günlük yazısını silmek istediğinize emin misiniz?')) {
+    if (window.confirm('Are you sure you want to delete this journal entry?')) {
       const updated = deleteJournalEntry(id);
       setEntries(updated);
     }
@@ -102,15 +102,15 @@ export const DailyJournalView: React.FC = () => {
   const getMoodBadge = (m?: string) => {
     switch (m) {
       case 'verimli':
-        return <span className="journal-mood-badge mood-green">🎯 Verimli Gün</span>;
+        return <span className="journal-mood-badge mood-green">🎯 Productive Day</span>;
       case 'motive':
-        return <span className="journal-mood-badge mood-purple">🔥 Yüksek Motivasyon</span>;
+        return <span className="journal-mood-badge mood-purple">🔥 High Motivation</span>;
       case 'odakli':
-        return <span className="journal-mood-badge mood-blue">💡 Odaklı Çalışma</span>;
+        return <span className="journal-mood-badge mood-blue">💡 Focused Session</span>;
       case 'yorgun':
-        return <span className="journal-mood-badge mood-amber">😴 Yorgun Tempolu</span>;
+        return <span className="journal-mood-badge mood-amber">😴 Tired Pace</span>;
       default:
-        return <span className="journal-mood-badge mood-gray">⚡ Normal Gün</span>;
+        return <span className="journal-mood-badge mood-gray">⚡ Normal Day</span>;
     }
   };
 
@@ -120,7 +120,7 @@ export const DailyJournalView: React.FC = () => {
       {saveSuccessToast && (
         <div className="save-toast-banner">
           <Check className="toast-icon" />
-          <span>Günlük yazısı ve fotoğraf başarıyla kaydedildi!</span>
+          <span>Journal entry and attached photo saved successfully!</span>
         </div>
       )}
 
@@ -131,9 +131,9 @@ export const DailyJournalView: React.FC = () => {
             <BookOpenCheck className="journal-header-icon" />
           </div>
           <div>
-            <h2>📓 Çalışma Günlüğü & Not Defteri</h2>
+            <h2>📓 Study Journal & Daily Notes</h2>
             <p className="journal-header-sub">
-              Çözdüğün soruları, günlük net hedeflerini ve çalışma masanın fotoğraflarını kaydet.
+              Record your daily study notes, net targets, and attach workspace/question photos.
             </p>
           </div>
         </div>
@@ -143,7 +143,7 @@ export const DailyJournalView: React.FC = () => {
           onClick={() => setShowForm(!showForm)}
         >
           {showForm ? <X className="btn-icon" /> : <Plus className="btn-icon" />}
-          <span>{showForm ? 'Formu Kapat' : 'Yeni Günlük Ekle'}</span>
+          <span>{showForm ? 'Close Form' : 'Add New Entry'}</span>
         </button>
       </div>
 
@@ -152,18 +152,18 @@ export const DailyJournalView: React.FC = () => {
         <form onSubmit={handleSubmitEntry} className="journal-entry-form-card">
           <div className="form-card-header">
             <Sparkles className="sparkle-icon" />
-            <h3>Günün Notunu & Fotoğrafını Ekle</h3>
+            <h3>Add Daily Study Note & Photo</h3>
           </div>
 
           <div className="form-grid">
             {/* Title & Date */}
             <div className="form-row">
               <div className="form-group flex-2">
-                <label className="form-label">Günlük Başlığı *</label>
+                <label className="form-label">Entry Title *</label>
                 <input
                   type="text"
                   className="journal-input"
-                  placeholder="Örn: 9 Eylül AYT Matematik 250 Soru Çözümü & Deneme Netleri"
+                  placeholder="e.g., Sep 9 AYT Math 250 Questions Solved & Practice Net Score"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   required
@@ -171,7 +171,7 @@ export const DailyJournalView: React.FC = () => {
               </div>
 
               <div className="form-group flex-1">
-                <label className="form-label">Tarih</label>
+                <label className="form-label">Date</label>
                 <div className="input-with-icon">
                   <Calendar className="field-icon" />
                   <input
@@ -186,13 +186,13 @@ export const DailyJournalView: React.FC = () => {
 
             {/* Mood Selector */}
             <div className="form-group">
-              <label className="form-label">Günün Modu / Verimi</label>
+              <label className="form-label">Daily Study Mood / Efficiency</label>
               <div className="mood-selection-grid">
                 {[
-                  { key: 'verimli', label: '🎯 Verimli', color: 'green' },
-                  { key: 'motive', label: '🔥 Yüksek Motivasyon', color: 'purple' },
-                  { key: 'odakli', label: '💡 Odaklı', color: 'blue' },
-                  { key: 'yorgun', label: '😴 Yorgun', color: 'amber' },
+                  { key: 'verimli', label: '🎯 Productive', color: 'green' },
+                  { key: 'motive', label: '🔥 High Motivation', color: 'purple' },
+                  { key: 'odakli', label: '💡 Focused', color: 'blue' },
+                  { key: 'yorgun', label: '😴 Tired', color: 'amber' },
                   { key: 'normal', label: '⚡ Normal', color: 'gray' },
                 ].map((item) => (
                   <button
@@ -209,11 +209,11 @@ export const DailyJournalView: React.FC = () => {
 
             {/* Main Content Area */}
             <div className="form-group">
-              <label className="form-label">Çalışma Notları, Çözülen Sorular & Hedefler *</label>
+              <label className="form-label">Study Notes, Practice Questions & Goals *</label>
               <textarea
                 className="journal-textarea"
                 rows={5}
-                placeholder="Bugün hangi derslerden kaç soru çözdün? Yanlış çıkan soruların mantığı neydi? Yarınki net ve soru hedefin nedir?..."
+                placeholder="What subjects did you practice today? How many questions were solved? Key takeaways learned?..."
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
                 required
@@ -222,7 +222,7 @@ export const DailyJournalView: React.FC = () => {
 
             {/* Photo Upload Section */}
             <div className="form-group photo-upload-group">
-              <label className="form-label">📷 Fotoğraf Ekle (Çözülen Soru / Ders Notu / Masa)</label>
+              <label className="form-label">📷 Attach Photo (Question / Notes / Workspace)</label>
               
               {!photoUrl ? (
                 <div className="photo-dropzone">
@@ -235,19 +235,19 @@ export const DailyJournalView: React.FC = () => {
                   />
                   <label htmlFor="journal-photo-input" className="photo-upload-label">
                     <ImageIcon className="upload-icon" />
-                    <span className="upload-title">Fotoğraf Seç veya Yükle</span>
-                    <span className="upload-hint">PNG, JPG veya WEBP (Maks 8 MB)</span>
+                    <span className="upload-title">Select or Drop Photo</span>
+                    <span className="upload-hint">PNG, JPG or WEBP (Max 8 MB)</span>
                   </label>
                 </div>
               ) : (
                 <div className="photo-preview-container">
                   <div className="photo-preview-wrapper">
-                    <img src={photoUrl} alt="Günlük Görseli" className="preview-img" />
+                    <img src={photoUrl} alt="Journal Attachment" className="preview-img" />
                     <button
                       type="button"
                       className="remove-photo-btn"
                       onClick={handleRemovePhoto}
-                      title="Fotoğrafı Kaldır"
+                      title="Remove Photo"
                     >
                       <X />
                     </button>
@@ -255,7 +255,7 @@ export const DailyJournalView: React.FC = () => {
                   <input
                     type="text"
                     className="journal-input caption-input"
-                    placeholder="Fotoğraf açıklaması (Örn: Çözülemeyen zor permütasyon sorusu ve AI çözümü)..."
+                    placeholder="Photo caption (e.g. Tough permutation question solution)..."
                     value={photoCaption}
                     onChange={(e) => setPhotoCaption(e.target.value)}
                   />
@@ -265,13 +265,13 @@ export const DailyJournalView: React.FC = () => {
 
             {/* Tags Input */}
             <div className="form-group">
-              <label className="form-label">Etiketler (Virgülle Ayırın)</label>
+              <label className="form-label">Tags (Separate with commas)</label>
               <div className="input-with-icon">
                 <Tag className="field-icon" />
                 <input
                   type="text"
                   className="journal-input"
-                  placeholder="Örn: AYT Matematik, Paragraf, HacettepeTıp, 250Soru"
+                  placeholder="e.g. AYTMath, Practice, MedSchoolTarget, 250Questions"
                   value={tagsInput}
                   onChange={(e) => setTagsInput(e.target.value)}
                 />
@@ -282,7 +282,7 @@ export const DailyJournalView: React.FC = () => {
             <div className="form-actions">
               <button type="submit" className="save-entry-btn">
                 <BookOpenCheck className="btn-icon" />
-                <span>Günlüğe Kaydet</span>
+                <span>Save Journal Entry</span>
               </button>
             </div>
           </div>
@@ -292,14 +292,14 @@ export const DailyJournalView: React.FC = () => {
       {/* Journal Entries List Section */}
       <div className="journal-list-section">
         <div className="journal-list-bar">
-          <h3>📖 Kayıtlı Günlüklerim ({entries.length})</h3>
+          <h3>📖 My Journal Entries ({entries.length})</h3>
           
           <div className="journal-search-box">
             <Search className="search-icon" />
             <input
               type="text"
               className="search-input"
-              placeholder="Günlüklerde ara..."
+              placeholder="Search entries..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -309,11 +309,11 @@ export const DailyJournalView: React.FC = () => {
         {filteredEntries.length === 0 ? (
           <div className="journal-empty-box">
             <BookOpenCheck className="empty-icon" />
-            <h4>Henüz Günlük Girişi Yok</h4>
+            <h4>No Journal Entries Found</h4>
             <p>
               {searchQuery
-                ? 'Aramanıza uygun günlük bulunamadı.'
-                : 'İlk çalışma günlüğünü eklemek için yukarıdaki "Yeni Günlük Ekle" butonuna tıkla!'}
+                ? 'No journal entries match your search query.'
+                : 'Click "Add New Entry" above to record your first study journal and upload a photo!'}
             </p>
           </div>
         ) : (
@@ -331,7 +331,7 @@ export const DailyJournalView: React.FC = () => {
                   <button
                     className="delete-entry-btn"
                     onClick={() => handleDelete(item.id)}
-                    title="Günlüğü Sil"
+                    title="Delete Entry"
                   >
                     <Trash2 />
                   </button>
@@ -351,7 +351,7 @@ export const DailyJournalView: React.FC = () => {
                       <img src={item.photoUrl} alt={item.title} className="journal-card-img" />
                       <div className="zoom-overlay">
                         <ZoomIn className="zoom-icon" />
-                        <span>Büyüt</span>
+                        <span>Zoom</span>
                       </div>
                     </div>
                     {item.photoCaption && (
@@ -383,7 +383,7 @@ export const DailyJournalView: React.FC = () => {
             <button className="close-zoom-btn" onClick={() => setActiveZoomImage(null)}>
               <X />
             </button>
-            <img src={activeZoomImage} alt="Fotoğraf Önizleme" className="full-zoomed-img" />
+            <img src={activeZoomImage} alt="Full Zoom Preview" className="full-zoomed-img" />
           </div>
         </div>
       )}

@@ -26,12 +26,12 @@ export const AuthModal: React.FC<AuthModalProps> = ({ onLoginSuccess, onClose })
     setErrorMsg(null);
 
     if (!emailInput.trim() || !passwordInput.trim()) {
-      setErrorMsg('Lütfen e-posta ve şifre alanlarını doldurun.');
+      setErrorMsg('Please fill in both email and password fields.');
       return;
     }
 
     if (mode === 'signup' && !nameInput.trim()) {
-      setErrorMsg('Lütfen ad ve soyadınızı girin.');
+      setErrorMsg('Please enter your full name.');
       return;
     }
 
@@ -46,7 +46,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ onLoginSuccess, onClose })
         onLoginSuccess(loggedInUser);
       }
     } catch (err: any) {
-      setErrorMsg(err.message || 'Giriş yapılırken bir hata oluştu.');
+      setErrorMsg(err.message || 'An error occurred during authentication.');
     } finally {
       setIsSubmitting(false);
     }
@@ -65,8 +65,8 @@ export const AuthModal: React.FC<AuthModalProps> = ({ onLoginSuccess, onClose })
           <div className="modal-title-group">
             <LogIn className="modal-icon text-indigo" />
             <div>
-              <h2>{mode === 'login' ? 'Hesabınıza Giriş Yapın' : 'Yeni Hesap Oluşturun'}</h2>
-              <p className="modal-subtitle">OPTIMIZATION LIFE Öğrenme Platformu</p>
+              <h2>{mode === 'login' ? 'Log In to Your Account' : 'Create New Account'}</h2>
+              <p className="modal-subtitle">OPTIMIZATION LIFE Learning Platform</p>
             </div>
           </div>
           <button className="close-btn" onClick={onClose}>
@@ -81,14 +81,14 @@ export const AuthModal: React.FC<AuthModalProps> = ({ onLoginSuccess, onClose })
             onClick={() => { setMode('login'); setErrorMsg(null); }}
           >
             <LogIn className="tab-icon" />
-            <span>Giriş Yap</span>
+            <span>Log In</span>
           </button>
           <button
             className={`auth-tab-btn ${mode === 'signup' ? 'active' : ''}`}
             onClick={() => { setMode('signup'); setErrorMsg(null); }}
           >
             <UserPlus className="tab-icon" />
-            <span>Kayıt Ol</span>
+            <span>Sign Up</span>
           </button>
         </div>
 
@@ -104,13 +104,13 @@ export const AuthModal: React.FC<AuthModalProps> = ({ onLoginSuccess, onClose })
         <form onSubmit={handleSubmit} className="auth-form">
           {mode === 'signup' && (
             <div className="auth-field-group">
-              <label htmlFor="auth-name">Ad Soyad</label>
+              <label htmlFor="auth-name">Full Name</label>
               <div className="input-with-icon">
                 <User className="field-icon" />
                 <input
                   id="auth-name"
                   type="text"
-                  placeholder="Ahmet Yılmaz"
+                  placeholder="John Doe"
                   value={nameInput}
                   onChange={(e) => setNameInput(e.target.value)}
                   disabled={isSubmitting}
@@ -121,13 +121,13 @@ export const AuthModal: React.FC<AuthModalProps> = ({ onLoginSuccess, onClose })
           )}
 
           <div className="auth-field-group">
-            <label htmlFor="auth-email">E-Posta Adresi</label>
+            <label htmlFor="auth-email">Email Address</label>
             <div className="input-with-icon">
               <Mail className="field-icon" />
               <input
                 id="auth-email"
                 type="email"
-                placeholder="ornek@domain.com"
+                placeholder="user@domain.com"
                 value={emailInput}
                 onChange={(e) => setEmailInput(e.target.value)}
                 disabled={isSubmitting}
@@ -137,7 +137,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ onLoginSuccess, onClose })
           </div>
 
           <div className="auth-field-group">
-            <label htmlFor="auth-password">Şifre</label>
+            <label htmlFor="auth-password">Password</label>
             <div className="input-with-icon">
               <Lock className="field-icon" />
               <input
@@ -163,29 +163,29 @@ export const AuthModal: React.FC<AuthModalProps> = ({ onLoginSuccess, onClose })
           {/* Submit Button */}
           <button type="submit" className="auth-submit-btn" disabled={isSubmitting}>
             {isSubmitting ? (
-              <span className="spinner-loader">İşlem Yapılıyor...</span>
+              <span className="spinner-loader">Processing...</span>
             ) : mode === 'login' ? (
               <>
                 <LogIn className="btn-icon" />
-                <span>Giriş Yap</span>
+                <span>Log In</span>
               </>
             ) : (
               <>
                 <UserPlus className="btn-icon" />
-                <span>Hesabımı Oluştur</span>
+                <span>Create Account</span>
               </>
             )}
           </button>
         </form>
 
         <div className="auth-divider">
-          <span>VEYA</span>
+          <span>OR</span>
         </div>
 
         {/* Quick Demo Login Action */}
         <button type="button" className="demo-login-btn" onClick={handleDemoLogin}>
           <Zap className="btn-icon" />
-          <span>⚡ Hızlı Demo Girişi Yap (Tek Tıkla Dene)</span>
+          <span>⚡ Quick Demo Login (One-click trial)</span>
         </button>
       </div>
     </div>

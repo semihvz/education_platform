@@ -34,7 +34,7 @@ export const SavedQuestionsModal: React.FC<SavedQuestionsModalProps> = ({
         <div className="modal-header">
           <div className="modal-title">
             <Bookmark className="icon icon-amber" />
-            <h3>Kaydedilen İçeriklerim & DB Kütüphanesi</h3>
+            <h3>Bookmarks & Saved Library</h3>
           </div>
           <button className="close-btn" onClick={onClose}>
             <X className="icon" />
@@ -48,14 +48,14 @@ export const SavedQuestionsModal: React.FC<SavedQuestionsModalProps> = ({
             onClick={() => setTab('questions')}
           >
             <HelpCircle className="tab-icon-sm" />
-            <span>Kaydedilen Sorular ({questionItems.length})</span>
+            <span>Saved Questions ({questionItems.length})</span>
           </button>
           <button
             className={`saved-tab-btn ${tab === 'flashcards' ? 'active' : ''}`}
             onClick={() => setTab('flashcards')}
           >
             <Layers className="tab-icon-sm" />
-            <span>Kaydedilen Kartlar ({flashcardItems.length})</span>
+            <span>Saved Flashcards ({flashcardItems.length})</span>
           </button>
         </div>
 
@@ -67,19 +67,19 @@ export const SavedQuestionsModal: React.FC<SavedQuestionsModalProps> = ({
                 className={`filter-pill ${filter === 'all' ? 'active' : ''}`}
                 onClick={() => setFilter('all')}
               >
-                Tümü ({questionItems.length})
+                All ({questionItems.length})
               </button>
               <button
                 className={`filter-pill ${filter === 'wrong' ? 'active' : ''}`}
                 onClick={() => setFilter('wrong')}
               >
-                Yanlış Yanıtladıklarım ({questionItems.filter(i => !i.wasCorrect).length})
+                Answered Incorrectly ({questionItems.filter(i => !i.wasCorrect).length})
               </button>
               <button
                 className={`filter-pill ${filter === 'correct' ? 'active' : ''}`}
                 onClick={() => setFilter('correct')}
               >
-                Doğru Yanıtladıklarım ({questionItems.filter(i => i.wasCorrect).length})
+                Answered Correctly ({questionItems.filter(i => i.wasCorrect).length})
               </button>
             </div>
 
@@ -87,7 +87,7 @@ export const SavedQuestionsModal: React.FC<SavedQuestionsModalProps> = ({
               {filteredQuestions.length === 0 ? (
                 <div className="empty-saved-state">
                   <BookOpen className="empty-icon" />
-                  <p>Henüz kaydedilmiş soru bulunmuyor.</p>
+                  <p>No saved questions found.</p>
                 </div>
               ) : (
                 filteredQuestions.map((item) => (
@@ -98,7 +98,7 @@ export const SavedQuestionsModal: React.FC<SavedQuestionsModalProps> = ({
                         {item.question.topic}
                       </span>
                       <span className={`status-badge-sm ${item.wasCorrect ? 'status-correct' : 'status-wrong'}`}>
-                        {item.wasCorrect ? 'Doğru Yanıtlandı' : 'Yanlış Yanıtlandı'}
+                        {item.wasCorrect ? 'Answered Correctly' : 'Answered Incorrectly'}
                       </span>
                     </div>
 
@@ -106,16 +106,16 @@ export const SavedQuestionsModal: React.FC<SavedQuestionsModalProps> = ({
 
                     <div className="saved-card-footer">
                       <span className="saved-date">
-                        {new Date(item.savedAt).toLocaleDateString('tr-TR')}
+                        {new Date(item.savedAt).toLocaleDateString('en-US')}
                       </span>
                       <div className="saved-actions">
                         <button
                           className="remove-btn"
                           onClick={() => onRemoveQuestionItem(item)}
-                          title="Sil"
+                          title="Delete"
                         >
                           <Trash2 className="icon-xs" />
-                          <span>Sil</span>
+                          <span>Delete</span>
                         </button>
                         <button
                           className="review-btn"
@@ -124,7 +124,7 @@ export const SavedQuestionsModal: React.FC<SavedQuestionsModalProps> = ({
                             onClose();
                           }}
                         >
-                          <span>İncele & Tekrar Çöz</span>
+                          <span>Review & Practice</span>
                           <ArrowRight className="icon-xs" />
                         </button>
                       </div>
@@ -142,8 +142,8 @@ export const SavedQuestionsModal: React.FC<SavedQuestionsModalProps> = ({
             {flashcardItems.length === 0 ? (
               <div className="empty-saved-state">
                 <Sparkles className="empty-icon" />
-                <p>Henüz kaydedilmiş çalışma kartı (Flashcard) bulunmuyor.</p>
-                <span>Bilgi kartı modunda "DB'ye Kaydet" butonuna basarak kartlarınızı buraya ekleyebilirsiniz.</span>
+                <p>No saved flashcards found.</p>
+                <span>Save cards while reviewing in flashcard mode to view them here.</span>
               </div>
             ) : (
               flashcardItems.map((item) => (
@@ -160,20 +160,20 @@ export const SavedQuestionsModal: React.FC<SavedQuestionsModalProps> = ({
                   <p className="saved-card-desc">{item.card.backExplanation}</p>
                   {item.card.backKeyPoint && (
                     <div className="saved-card-keypoint">
-                      <strong>Not:</strong> {item.card.backKeyPoint}
+                      <strong>Note:</strong> {item.card.backKeyPoint}
                     </div>
                   )}
 
                   <div className="saved-card-footer">
                     <span className="saved-date">
-                      {new Date(item.savedAt).toLocaleDateString('tr-TR')}
+                      {new Date(item.savedAt).toLocaleDateString('en-US')}
                     </span>
                     <button
                       className="remove-btn"
                       onClick={() => onRemoveFlashcardItem(item)}
                     >
                       <Trash2 className="icon-xs" />
-                      <span>Kütüphaneden Sil</span>
+                      <span>Remove from Library</span>
                     </button>
                   </div>
                 </div>

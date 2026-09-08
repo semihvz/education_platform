@@ -22,10 +22,10 @@ export const FlashcardTopicSelector: React.FC<FlashcardTopicSelectorProps> = ({
       <div className="selector-header">
         <div className="selector-title-box">
           <Layers className="sparkle-icon icon-purple" />
-          <h2>🎴 Bilgi & Çalışma Kartları (3D Flashcards)</h2>
+          <h2>🎴 3D Study Flashcards</h2>
         </div>
         <p className="selector-desc">
-          Konu başlıklarına göre hazırlanmış özel özetli, pratik örnekli ve çevrilebilir 3D bilgi kartlarını inceleyin.
+          Master key concepts with interactive 3D study cards, concise summaries, and practical examples.
         </p>
       </div>
 
@@ -33,14 +33,14 @@ export const FlashcardTopicSelector: React.FC<FlashcardTopicSelectorProps> = ({
       <div className="presets-section">
         <div className="presets-header">
           <Compass className="preset-icon" />
-          <h3>Çalışma Kartı Konu Paketleri</h3>
+          <h3>Flashcard Study Decks</h3>
         </div>
 
         {/* Ders Başlıkları Combobox */}
         <div className="bank-topic-combobox-wrapper" style={{ marginBottom: '1rem' }}>
           <label htmlFor="flashcard-combobox" className="combobox-label">
             <Layers className="combobox-icon" />
-            <span>Ders / Paketi Seçin:</span>
+            <span>Select Deck / Subject:</span>
           </label>
           <select
             id="flashcard-combobox"
@@ -50,7 +50,7 @@ export const FlashcardTopicSelector: React.FC<FlashcardTopicSelectorProps> = ({
             }}
             defaultValue=""
           >
-            <option value="" disabled>-- Bir Ders Paketi Seçin --</option>
+            <option value="" disabled>-- Select a Study Deck --</option>
             {PRESET_FLASHCARD_TOPICS.map((item) => (
               <option key={item.name} value={item.name}>
                 {item.icon} {item.name} ({item.desc})
