@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { BookOpen, ChevronLeft, ChevronRight, Database, Globe, Calculator, GraduationCap } from 'lucide-react';
+import { BookOpen, ChevronLeft, ChevronRight } from 'lucide-react';
 import type { Question } from '../types/quiz';
 import { shuffleQuestionOptions } from '../services/aiService';
 import { QuestionCard } from './QuestionCard';
@@ -87,35 +87,27 @@ export const EmbeddedQuestionBankView: React.FC<EmbeddedQuestionBankViewProps> =
     setCurrentIndex(idx);
   };
 
-  const getTopicIcon = (tName: string) => {
-    if (tName.includes('Matematik')) return <Calculator className="tab-icon" />;
-    if (tName.includes('SQL')) return <Database className="tab-icon" />;
-    if (tName.includes('Grammar') || tName.includes('İngilizce')) return <Globe className="tab-icon" />;
-    return <GraduationCap className="tab-icon" />;
-  };
-
   return (
     <div className="embedded-bank-container">
-      {/* Category Filter Pills */}
-      <div className="bank-topic-filter-tabs">
-        <button
-          className={`filter-tab-btn ${selectedTopic === 'ALL' ? 'active' : ''}`}
-          onClick={() => handleTopicChange('ALL')}
+      {/* Ders / Konu Başlıkları Combobox Seçici */}
+      <div className="bank-topic-combobox-wrapper">
+        <label htmlFor="subject-combobox" className="combobox-label">
+          <BookOpen className="combobox-icon" />
+          <span>Ders / Konu Seçin:</span>
+        </label>
+        <select
+          id="subject-combobox"
+          className="subject-combobox-select"
+          value={selectedTopic}
+          onChange={(e) => handleTopicChange(e.target.value)}
         >
-          <BookOpen className="tab-icon" />
-          <span>Tüm Sorular ({questions.length})</span>
-        </button>
-
-        {availableTopics.map(({ topic, count }) => (
-          <button
-            key={topic}
-            className={`filter-tab-btn ${selectedTopic === topic ? 'active' : ''}`}
-            onClick={() => handleTopicChange(topic)}
-          >
-            {getTopicIcon(topic)}
-            <span>{topic} ({count})</span>
-          </button>
-        ))}
+          <option value="ALL">📚 Tüm Dersler & Sorular ({questions.length} Soru)</option>
+          {availableTopics.map(({ topic, count }) => (
+            <option key={topic} value={topic}>
+              📖 {topic} ({count} Soru)
+            </option>
+          ))}
+        </select>
       </div>
 
       {/* Top Bank Info Bar */}

@@ -29,12 +29,36 @@ export const FlashcardTopicSelector: React.FC<FlashcardTopicSelectorProps> = ({
         </p>
       </div>
 
-      {/* Preset Deck Selection Grid */}
+      {/* Combobox & Preset Deck Selection */}
       <div className="presets-section">
         <div className="presets-header">
           <Compass className="preset-icon" />
           <h3>Çalışma Kartı Konu Paketleri</h3>
         </div>
+
+        {/* Ders Başlıkları Combobox */}
+        <div className="bank-topic-combobox-wrapper" style={{ marginBottom: '1rem' }}>
+          <label htmlFor="flashcard-combobox" className="combobox-label">
+            <Layers className="combobox-icon" />
+            <span>Ders / Paketi Seçin:</span>
+          </label>
+          <select
+            id="flashcard-combobox"
+            className="subject-combobox-select"
+            onChange={(e) => {
+              if (e.target.value) onSelectDeck(e.target.value);
+            }}
+            defaultValue=""
+          >
+            <option value="" disabled>-- Bir Ders Paketi Seçin --</option>
+            {PRESET_FLASHCARD_TOPICS.map((item) => (
+              <option key={item.name} value={item.name}>
+                {item.icon} {item.name} ({item.desc})
+              </option>
+            ))}
+          </select>
+        </div>
+
         <div className="presets-grid">
           {PRESET_FLASHCARD_TOPICS.map((item) => (
             <div
