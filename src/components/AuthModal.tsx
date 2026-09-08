@@ -66,7 +66,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ onLoginSuccess, onClose })
             <LogIn className="modal-icon text-indigo" />
             <div>
               <h2>{mode === 'login' ? 'Log In to Your Account' : 'Create New Account'}</h2>
-              <p className="modal-subtitle">OPTIMIZATION LIFE Learning Platform</p>
+              <p className="modal-subtitle">OPTIMIZATION LIFE</p>
             </div>
           </div>
           <button className="close-btn" onClick={onClose}>

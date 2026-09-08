@@ -22,9 +22,9 @@ export const AuthGuardWall: React.FC<AuthGuardWallProps> = ({ onOpenAuth, onLogi
           <Lock className="guard-lock-icon" />
         </div>
 
-        <h2>🔒 İçeriğe Erişim İçin Giriş Yapın</h2>
+        <h2>🔒 Log In to Access Content</h2>
         <p className="guard-desc">
-          OPTIMIZATION LIFE platformunda yer alan <strong>260+ Gömülü Soru Bankası</strong> (Matematik, Oxford İngilizce & İleri Seviye SQL), 3D Bilgi Kartları ve Çalışma Günlüğüne erişmek için oturum açmanız gerekmektedir.
+          You need to sign in to access the <strong>260+ Embedded Question Bank</strong> (Mathematics, Oxford English & Advanced SQL), 3D Flashcards, and Daily Journal in OPTIMIZATION LIFE.
         </p>
 
         {/* Feature Highlights Grid */}
@@ -32,29 +32,29 @@ export const AuthGuardWall: React.FC<AuthGuardWallProps> = ({ onOpenAuth, onLogi
           <div className="guard-feature-item">
             <BookOpen className="feat-icon text-indigo" />
             <div>
-              <strong>260+ Gömülü Soru</strong>
-              <span>Matematik, Oxford & SQL Testleri</span>
+              <strong>260+ Embedded Questions</strong>
+              <span>Mathematics, Oxford & SQL Tests</span>
             </div>
           </div>
           <div className="guard-feature-item">
             <Sparkles className="feat-icon text-purple" />
             <div>
-              <strong>KaTeX & Formüller</strong>
-              <span>Gelişmiş matematiksel denklem desteği</span>
+              <strong>KaTeX & Formulas</strong>
+              <span>Advanced mathematical equation support</span>
             </div>
           </div>
           <div className="guard-feature-item">
             <Layers className="feat-icon text-amber" />
             <div>
-              <strong>3D Bilgi Kartları</strong>
-              <span>Görsel formüller ve hızlı tekrar</span>
+              <strong>3D Flashcards</strong>
+              <span>Visual formulas & quick reviews</span>
             </div>
           </div>
           <div className="guard-feature-item">
             <ShieldCheck className="feat-icon text-green" />
             <div>
-              <strong>Kişisel İlerleme</strong>
-              <span>XP puanları, seriler ve kaydedilenler</span>
+              <strong>Personal Progress</strong>
+              <span>XP points, streaks & saved items</span>
             </div>
           </div>
         </div>
@@ -63,12 +63,12 @@ export const AuthGuardWall: React.FC<AuthGuardWallProps> = ({ onOpenAuth, onLogi
         <div className="guard-actions">
           <button className="guard-primary-btn" onClick={onOpenAuth}>
             <LogIn className="btn-icon" />
-            <span>Giriş Yap / Kayıt Ol</span>
+            <span>Log In / Sign Up</span>
           </button>
 
           <button className="guard-demo-btn" onClick={handleDemoLogin}>
             <Zap className="btn-icon" />
-            <span>⚡ Hızlı Demo Girişi (Saniyeler İçinde Dene)</span>
+            <span>⚡ Quick Demo Login (Try in Seconds)</span>
           </button>
         </div>
       </div>

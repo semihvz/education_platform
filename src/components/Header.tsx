@@ -45,7 +45,6 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
             <div className="brand-text">
               <h1 className="title">OPTIMIZATION<span className="ai-badge">LIFE</span></h1>
-              <p className="subtitle">Learning & Practice Platform</p>
             </div>
           </div>
 
