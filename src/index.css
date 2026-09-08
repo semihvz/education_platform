@@ -2519,12 +2519,22 @@ button, input, select, textarea, .stat-pill, .option-btn, .mode-tab-btn, .bank-t
   box-shadow: 0 6px 20px -5px rgba(16, 185, 129, 0.18);
 }
 
+.yks-banner-15year {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.14), rgba(236, 72, 153, 0.14), rgba(139, 92, 246, 0.14));
+  border-color: rgba(245, 158, 11, 0.4);
+  box-shadow: 0 6px 20px -5px rgba(245, 158, 11, 0.2);
+}
+
 .icon-2027 {
   color: var(--primary-indigo);
 }
 
 .icon-2028 {
   color: var(--color-cyan);
+}
+
+.icon-15year {
+  color: var(--color-amber);
 }
 
 [data-theme='light'] .yks-countdown-banner {
