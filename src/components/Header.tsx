@@ -48,37 +48,12 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
           </div>
 
-          {/* Mode Switcher Tabs (Desktop) */}
-          <div className="mode-switcher-tabs desktop-only">
-            <button
-              className={`mode-tab-btn ${activeMode === 'embedded-bank' ? 'active' : ''}`}
-              onClick={() => onSwitchMode('embedded-bank')}
-            >
-              <BookOpen className="tab-icon" />
-              <span>📚 Question Bank</span>
-            </button>
-            <button
-              className={`mode-tab-btn ${activeMode === 'flashcards' ? 'active' : ''}`}
-              onClick={() => onSwitchMode('flashcards')}
-            >
-              <Layers className="tab-icon" />
-              <span>🎴 Flashcards</span>
-            </button>
-            <button
-              className={`mode-tab-btn ${activeMode === 'journal' ? 'active' : ''}`}
-              onClick={() => onSwitchMode('journal')}
-            >
-              <BookOpenCheck className="tab-icon" />
-              <span>📖 Daily Journal</span>
-            </button>
-          </div>
-
           {/* Stats & Actions Bar */}
           <div className="header-actions">
             {/* Streak Counter */}
             <div className="stat-pill streak-pill" title="Daily Study Streak">
               <Flame className="icon flame-icon" />
-              <span className="stat-val">{stats.streakDays} D</span>
+              <span className="stat-val">{stats.streakDays}d</span>
             </div>
 
             {/* XP Counter */}
@@ -86,24 +61,6 @@ export const Header: React.FC<HeaderProps> = ({
               <Award className="icon xp-icon" />
               <span className="stat-val">{stats.xp} XP</span>
             </div>
-
-            {/* Stats Button (Desktop) */}
-            <button 
-              className="action-btn desktop-only"
-              onClick={onOpenStats}
-              title="Statistics & Topic Performance"
-            >
-              <BarChart2 className="icon" />
-            </button>
-
-            {/* Saved Questions Button (Desktop) */}
-            <button 
-              className="action-btn desktop-only"
-              onClick={onOpenBookmarks}
-              title="Bookmarks & Saved Items"
-            >
-              <Bookmark className="icon" />
-            </button>
 
             {/* Theme Toggle */}
             <button 
@@ -114,9 +71,9 @@ export const Header: React.FC<HeaderProps> = ({
               {settings.theme === 'dark' ? <Sun className="icon sun-icon" /> : <Moon className="icon" />}
             </button>
 
-            {/* Settings Gear (Desktop) */}
+            {/* Settings Gear */}
             <button 
-              className="action-btn desktop-only"
+              className="action-btn"
               onClick={onOpenSettings}
               title="Settings"
             >
@@ -127,7 +84,6 @@ export const Header: React.FC<HeaderProps> = ({
             {currentUser ? (
               <div className="user-profile-badge" title={`Logged in: ${currentUser.email}`}>
                 <span className="user-avatar">{currentUser.avatar || '🎓'}</span>
-                <span className="user-name">{currentUser.name}</span>
                 <button className="user-logout-btn" onClick={onLogout} title="Log Out">
                   <LogOut className="icon-sm" />
                 </button>
@@ -135,7 +91,6 @@ export const Header: React.FC<HeaderProps> = ({
             ) : (
               <button className="auth-login-btn" onClick={onOpenAuth} title="Log In / Sign Up">
                 <LogIn className="btn-icon" />
-                <span className="login-text">Log In</span>
               </button>
             )}
           </div>

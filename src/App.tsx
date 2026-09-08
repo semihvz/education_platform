@@ -136,88 +136,100 @@ export function App() {
   };
 
   return (
-    <div className="app-root">
-      <Header
-        stats={stats}
-        settings={settings}
-        currentUser={currentUser}
-        activeMode={activeMode}
-        onSwitchMode={(mode) => {
-          audioService.playClickSound(settings.soundEnabled);
-          setActiveMode(mode);
-        }}
-        onUpdateSettings={handleUpdateSettings}
-        onOpenSettings={() => setShowSettings(true)}
-        onOpenBookmarks={() => setShowBookmarks(true)}
-        onOpenStats={() => setShowStats(true)}
-        onOpenAuth={() => setShowAuthModal(true)}
-        onLogout={() => {
-          logoutUserAccount();
-          setCurrentUser(null);
-          setSaveToast('Çıkış yapıldı.');
-          setTimeout(() => setSaveToast(null), 2500);
-        }}
-      />
-
-      {/* Database Save Notification Toast */}
-      {saveToast && (
-        <div className="toast-notification">
-          <span>{saveToast}</span>
+    <div className="mobile-app-wrapper">
+      <div className="mobile-phone-shell">
+        {/* Mobile Top Status Bar */}
+        <div className="mobile-notch-bar">
+          <span className="notch-time">09:41</span>
+          <div className="notch-pill"></div>
+          <div className="notch-icons">
+            <span className="network-text">5G</span>
+            <span className="battery-level">100%</span>
+          </div>
         </div>
-      )}
 
-      <main className="main-container">
-        {!currentUser ? (
-          <AuthGuardWall
-            onOpenAuth={() => setShowAuthModal(true)}
-            onLoginSuccess={(user) => {
-              setCurrentUser(user);
-              setSaveToast(`Hoş geldin, ${user.name}! 👋`);
-              setTimeout(() => setSaveToast(null), 2500);
-            }}
-          />
-        ) : (
-          <>
-            {/* 2027 YKS Kalan Süre Sayacı */}
-            <YksCountdownTimer />
+        <Header
+          stats={stats}
+          settings={settings}
+          currentUser={currentUser}
+          activeMode={activeMode}
+          onSwitchMode={(mode) => {
+            audioService.playClickSound(settings.soundEnabled);
+            setActiveMode(mode);
+          }}
+          onUpdateSettings={handleUpdateSettings}
+          onOpenSettings={() => setShowSettings(true)}
+          onOpenBookmarks={() => setShowBookmarks(true)}
+          onOpenStats={() => setShowStats(true)}
+          onOpenAuth={() => setShowAuthModal(true)}
+          onLogout={() => {
+            logoutUserAccount();
+            setCurrentUser(null);
+            setSaveToast('Logged out successfully.');
+            setTimeout(() => setSaveToast(null), 2500);
+          }}
+        />
 
-            {/* 2. ALAN: GOMULU SORULARI GOSTER / COZ */}
-            {activeMode === 'embedded-bank' && (
-              <EmbeddedQuestionBankView
-                questions={embeddedQuestions}
-                onAnswerSubmit={handleAnswerSubmit}
-                onSaveQuestion={handleToggleSaveQuestion}
-                isQuestionSaved={isCurrentQuestionSaved}
-              />
-            )}
-
-            {/* 3. ALAN: BILGI KARTLARI (FLASHCARD SYSTEM) */}
-            {activeMode === 'flashcards' && (
-              <>
-                {!currentDeck && (
-                  <FlashcardTopicSelector
-                    onSelectDeck={handleSelectFlashcardDeck}
-                  />
-                )}
-
-                {currentDeck && (
-                  <FlashcardDeckView
-                    cards={currentDeck}
-                    onSaveCard={handleToggleSaveFlashcard}
-                    isCardSaved={isFlashcardSaved}
-                    onNewDeckRequest={() => setCurrentDeck(null)}
-                  />
-                )}
-              </>
-            )}
-
-            {/* 4. ALAN: GUNLUK (DAILY JOURNAL SYSTEM) */}
-            {activeMode === 'journal' && (
-              <DailyJournalView />
-            )}
-          </>
+        {/* Database Save Notification Toast */}
+        {saveToast && (
+          <div className="toast-notification">
+            <span>{saveToast}</span>
+          </div>
         )}
-      </main>
+
+        <main className="main-container">
+          {!currentUser ? (
+            <AuthGuardWall
+              onOpenAuth={() => setShowAuthModal(true)}
+              onLoginSuccess={(user) => {
+                setCurrentUser(user);
+                setSaveToast(`Welcome, ${user.name}! 👋`);
+                setTimeout(() => setSaveToast(null), 2500);
+              }}
+            />
+          ) : (
+            <>
+              {/* 2041 Death Countdown Timer */}
+              <YksCountdownTimer />
+
+              {/* 2. AREA: EMBEDDED QUESTION BANK */}
+              {activeMode === 'embedded-bank' && (
+                <EmbeddedQuestionBankView
+                  questions={embeddedQuestions}
+                  onAnswerSubmit={handleAnswerSubmit}
+                  onSaveQuestion={handleToggleSaveQuestion}
+                  isQuestionSaved={isCurrentQuestionSaved}
+                />
+              )}
+
+              {/* 3. AREA: FLASHCARD SYSTEM */}
+              {activeMode === 'flashcards' && (
+                <>
+                  {!currentDeck && (
+                    <FlashcardTopicSelector
+                      onSelectDeck={handleSelectFlashcardDeck}
+                    />
+                  )}
+
+                  {currentDeck && (
+                    <FlashcardDeckView
+                      cards={currentDeck}
+                      onSaveCard={handleToggleSaveFlashcard}
+                      isCardSaved={isFlashcardSaved}
+                      onNewDeckRequest={() => setCurrentDeck(null)}
+                    />
+                  )}
+                </>
+              )}
+
+              {/* 4. AREA: DAILY JOURNAL SYSTEM */}
+              {activeMode === 'journal' && (
+                <DailyJournalView />
+              )}
+            </>
+          )}
+        </main>
+      </div>
 
       {/* Modals */}
       {showSettings && (
@@ -251,7 +263,7 @@ export function App() {
           onLoginSuccess={(user) => {
             setCurrentUser(user);
             setShowAuthModal(false);
-            setSaveToast(`Hoş geldin, ${user.name}! 👋`);
+            setSaveToast(`Welcome, ${user.name}! 👋`);
             setTimeout(() => setSaveToast(null), 2500);
           }}
           onClose={() => setShowAuthModal(false)}
