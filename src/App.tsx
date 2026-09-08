@@ -229,46 +229,46 @@ export function App() {
             </>
           )}
         </main>
+
+        {/* Modals inside mobile frame */}
+        {showSettings && (
+          <SettingsModal
+            settings={settings}
+            onSave={handleUpdateSettings}
+            onClose={() => setShowSettings(false)}
+          />
+        )}
+
+        {showBookmarks && (
+          <SavedQuestionsModal
+            questionItems={savedQuestions}
+            flashcardItems={savedFlashcards}
+            onRemoveQuestionItem={handleRemoveSavedQuestionItem}
+            onRemoveFlashcardItem={handleRemoveSavedFlashcardItem}
+            onSelectQuestionForReview={handleReviewSavedQuestion}
+            onClose={() => setShowBookmarks(false)}
+          />
+        )}
+
+        {showStats && (
+          <StatsDashboard
+            stats={stats}
+            onClose={() => setShowStats(false)}
+          />
+        )}
+
+        {showAuthModal && (
+          <AuthModal
+            onLoginSuccess={(user) => {
+              setCurrentUser(user);
+              setShowAuthModal(false);
+              setSaveToast(`Welcome, ${user.name}! 👋`);
+              setTimeout(() => setSaveToast(null), 2500);
+            }}
+            onClose={() => setShowAuthModal(false)}
+          />
+        )}
       </div>
-
-      {/* Modals */}
-      {showSettings && (
-        <SettingsModal
-          settings={settings}
-          onSave={handleUpdateSettings}
-          onClose={() => setShowSettings(false)}
-        />
-      )}
-
-      {showBookmarks && (
-        <SavedQuestionsModal
-          questionItems={savedQuestions}
-          flashcardItems={savedFlashcards}
-          onRemoveQuestionItem={handleRemoveSavedQuestionItem}
-          onRemoveFlashcardItem={handleRemoveSavedFlashcardItem}
-          onSelectQuestionForReview={handleReviewSavedQuestion}
-          onClose={() => setShowBookmarks(false)}
-        />
-      )}
-
-      {showStats && (
-        <StatsDashboard
-          stats={stats}
-          onClose={() => setShowStats(false)}
-        />
-      )}
-
-      {showAuthModal && (
-        <AuthModal
-          onLoginSuccess={(user) => {
-            setCurrentUser(user);
-            setShowAuthModal(false);
-            setSaveToast(`Welcome, ${user.name}! 👋`);
-            setTimeout(() => setSaveToast(null), 2500);
-          }}
-          onClose={() => setShowAuthModal(false)}
-        />
-      )}
     </div>
   );
 }
