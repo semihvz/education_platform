@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Timer, Sparkles, Target } from 'lucide-react';
+import { Timer, Sparkles, Skull } from 'lucide-react';
 
 interface TimeLeft {
   years?: number;
@@ -11,7 +11,7 @@ interface TimeLeft {
 
 const YKS_2027_TARGET = new Date(2027, 5, 19, 10, 15, 0).getTime();
 const YKS_2028_TARGET = new Date(2028, 5, 17, 10, 15, 0).getTime();
-const TARGET_15_YEAR = new Date(2041, 8, 9, 0, 0, 0).getTime(); // 15 Yıl Hedefi (9 Eylül 2041)
+const TARGET_15_YEAR = new Date(2041, 8, 9, 0, 0, 0).getTime(); // 15 Yıllık Ölüm Sayacı (9 Eylül 2041)
 
 export const YksCountdownTimer: React.FC = () => {
   const [time2027, setTime2027] = useState<TimeLeft>(() => calculateTimeLeft(YKS_2027_TARGET));
@@ -98,15 +98,15 @@ export const YksCountdownTimer: React.FC = () => {
         </div>
       </div>
 
-      {/* 15 Yıllık Vizyon Sayaç */}
+      {/* 15 Yıllık Ölüm Sayacı */}
       <div className="yks-countdown-banner yks-banner-15year">
         <div className="yks-banner-header">
           <div className="yks-title-group">
-            <Target className="yks-timer-icon icon-15year" />
-            <span className="yks-title">15 Yıllık Vizyon & Uzun Vadeli Hedef Sayacı</span>
+            <Skull className="yks-timer-icon icon-15year" />
+            <span className="yks-title">15 Yıllık Ölüm Sayacı (Memento Mori)</span>
             <Sparkles className="yks-sparkle-icon" />
           </div>
-          <span className="yks-target-date">9 Eylül 2041 • 15 Yıllık Gelecek Planı</span>
+          <span className="yks-target-date">9 Eylül 2041 • Kalan Yaşam & Süre</span>
         </div>
 
         <div className="yks-countdown-grid">
