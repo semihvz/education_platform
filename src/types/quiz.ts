@@ -83,6 +83,8 @@ export interface JournalEntry {
   content: string;
   photoUrl?: string;
   photoCaption?: string;
+  videoUrl?: string;
+  videoCaption?: string;
   mood?: 'verimli' | 'motive' | 'yorgun' | 'odakli' | 'normal';
   tags?: string[];
 }

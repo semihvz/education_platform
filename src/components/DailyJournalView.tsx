@@ -1,7 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { BookOpenCheck, Image as ImageIcon, Trash2, Calendar, Tag, Plus, X, Search, Sparkles, ZoomIn, Check } from 'lucide-react';
+import { BookOpenCheck, Image as ImageIcon, Video, Trash2, Calendar, Tag, Plus, X, Search, Sparkles, ZoomIn, Check, Link } from 'lucide-react';
 import type { JournalEntry } from '../types/quiz';
 import { loadJournalEntries, addJournalEntry, deleteJournalEntry } from '../services/storageService';
+
+const getEmbedVideoUrl = (url: string) => {
+  if (url.includes('youtube.com/watch?v=')) {
+    const videoId = url.split('v=')[1]?.split('&')[0];
+    return `https://www.youtube.com/embed/${videoId}`;
+  }
+  if (url.includes('youtu.be/')) {
+    const videoId = url.split('youtu.be/')[1]?.split('?')[0];
+    return `https://www.youtube.com/embed/${videoId}`;
+  }
+  return null;
+};
 
 export const DailyJournalView: React.FC = () => {
   const [entries, setEntries] = useState<JournalEntry[]>([]);
@@ -13,6 +25,13 @@ export const DailyJournalView: React.FC = () => {
   const [content, setContent] = useState('');
   const [photoUrl, setPhotoUrl] = useState<string | undefined>(undefined);
   const [photoCaption, setPhotoCaption] = useState('');
+  
+  // Video attachment state
+  const [videoUrl, setVideoUrl] = useState<string | undefined>(undefined);
+  const [videoCaption, setVideoCaption] = useState('');
+  const [videoUrlInput, setVideoUrlInput] = useState('');
+  const [videoMode, setVideoMode] = useState<'upload' | 'url'>('upload');
+
   const [mood, setMood] = useState<'verimli' | 'motive' | 'yorgun' | 'odakli' | 'normal'>('verimli');
   const [tagsInput, setTagsInput] = useState('');
   
@@ -41,9 +60,36 @@ export const DailyJournalView: React.FC = () => {
     reader.readAsDataURL(file);
   };
 
+  const handleVideoFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (file.size > 25 * 1024 * 1024) {
+      alert('Video file size is too large (Maximum size is 25 MB).');
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setVideoUrl(reader.result as string);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleAddVideoUrl = () => {
+    if (!videoUrlInput.trim()) return;
+    setVideoUrl(videoUrlInput.trim());
+  };
+
   const handleRemovePhoto = () => {
     setPhotoUrl(undefined);
     setPhotoCaption('');
+  };
+
+  const handleRemoveVideo = () => {
+    setVideoUrl(undefined);
+    setVideoCaption('');
+    setVideoUrlInput('');
   };
 
   const handleSubmitEntry = (e: React.FormEvent) => {
@@ -64,6 +110,8 @@ export const DailyJournalView: React.FC = () => {
       content: content.trim(),
       photoUrl,
       photoCaption: photoCaption.trim() || undefined,
+      videoUrl,
+      videoCaption: videoCaption.trim() || undefined,
       mood,
       tags: parsedTags.length > 0 ? parsedTags : undefined
     });
@@ -75,6 +123,9 @@ export const DailyJournalView: React.FC = () => {
     setContent('');
     setPhotoUrl(undefined);
     setPhotoCaption('');
+    setVideoUrl(undefined);
+    setVideoCaption('');
+    setVideoUrlInput('');
     setTagsInput('');
     setMood('verimli');
     setShowForm(false);
@@ -263,6 +314,101 @@ export const DailyJournalView: React.FC = () => {
               )}
             </div>
 
+            {/* Video Attachment Section */}
+            <div className="form-group photo-upload-group">
+              <label className="form-label">🎥 Attach Video (File Upload or YouTube / MP4 Link)</label>
+
+              {!videoUrl ? (
+                <div className="video-attachment-card">
+                  <div className="video-mode-switcher">
+                    <button
+                      type="button"
+                      className={`video-mode-btn ${videoMode === 'upload' ? 'active' : ''}`}
+                      onClick={() => setVideoMode('upload')}
+                    >
+                      <Video className="btn-icon-sm" />
+                      <span>Upload Video File</span>
+                    </button>
+                    <button
+                      type="button"
+                      className={`video-mode-btn ${videoMode === 'url' ? 'active' : ''}`}
+                      onClick={() => setVideoMode('url')}
+                    >
+                      <Link className="btn-icon-sm" />
+                      <span>Paste Video Link</span>
+                    </button>
+                  </div>
+
+                  {videoMode === 'upload' ? (
+                    <div className="photo-dropzone">
+                      <input
+                        type="file"
+                        accept="video/*"
+                        id="journal-video-input"
+                        className="hidden-file-input"
+                        onChange={handleVideoFileUpload}
+                      />
+                      <label htmlFor="journal-video-input" className="photo-upload-label">
+                        <Video className="upload-icon text-indigo" />
+                        <span className="upload-title">Select Video File</span>
+                        <span className="upload-hint">MP4, WebM or MOV (Max 25 MB)</span>
+                      </label>
+                    </div>
+                  ) : (
+                    <div className="video-url-input-group">
+                      <div className="input-with-icon">
+                        <Link className="field-icon" />
+                        <input
+                          type="url"
+                          className="journal-input"
+                          placeholder="Paste YouTube or video link (e.g. https://www.youtube.com/watch?v=...)"
+                          value={videoUrlInput}
+                          onChange={(e) => setVideoUrlInput(e.target.value)}
+                        />
+                      </div>
+                      <button
+                        type="button"
+                        className="attach-url-btn"
+                        onClick={handleAddVideoUrl}
+                      >
+                        Attach Video
+                      </button>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="video-preview-container">
+                  <div className="video-preview-wrapper">
+                    {getEmbedVideoUrl(videoUrl) ? (
+                      <iframe
+                        src={getEmbedVideoUrl(videoUrl)!}
+                        title="Video Preview"
+                        className="preview-iframe"
+                        allowFullScreen
+                      />
+                    ) : (
+                      <video controls src={videoUrl} className="preview-video" />
+                    )}
+                    <button
+                      type="button"
+                      className="remove-photo-btn"
+                      onClick={handleRemoveVideo}
+                      title="Remove Video"
+                    >
+                      <X />
+                    </button>
+                  </div>
+                  <input
+                    type="text"
+                    className="journal-input caption-input"
+                    placeholder="Video caption (e.g. Solution walkthrough video)..."
+                    value={videoCaption}
+                    onChange={(e) => setVideoCaption(e.target.value)}
+                  />
+                </div>
+              )}
+            </div>
+
             {/* Tags Input */}
             <div className="form-group">
               <label className="form-label">Tags (Separate with commas)</label>
@@ -313,7 +459,7 @@ export const DailyJournalView: React.FC = () => {
             <p>
               {searchQuery
                 ? 'No journal entries match your search query.'
-                : 'Click "Add New Entry" above to record your first study journal and upload a photo!'}
+                : 'Click "Add New Entry" above to record your first study journal with photos and videos!'}
             </p>
           </div>
         ) : (
@@ -356,6 +502,25 @@ export const DailyJournalView: React.FC = () => {
                     </div>
                     {item.photoCaption && (
                       <p className="journal-photo-caption">📷 {item.photoCaption}</p>
+                    )}
+                  </div>
+                )}
+
+                {/* Attached Video */}
+                {item.videoUrl && (
+                  <div className="journal-video-box">
+                    {getEmbedVideoUrl(item.videoUrl) ? (
+                      <iframe
+                        src={getEmbedVideoUrl(item.videoUrl)!}
+                        title={item.title}
+                        className="journal-card-iframe"
+                        allowFullScreen
+                      />
+                    ) : (
+                      <video controls src={item.videoUrl} className="journal-card-video" />
+                    )}
+                    {item.videoCaption && (
+                      <p className="journal-video-caption">🎥 {item.videoCaption}</p>
                     )}
                   </div>
                 )}
