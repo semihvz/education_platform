@@ -24,7 +24,7 @@ export const AuthGuardWall: React.FC<AuthGuardWallProps> = ({ onOpenAuth, onLogi
 
         <h2>🔒 İçeriğe Erişim İçin Giriş Yapın</h2>
         <p className="guard-desc">
-          Optimizasyon AI platformunda yer alan <strong>260+ Gömülü Soru Bankası</strong> (Matematik, Oxford İngilizce & İleri Seviye SQL) ve 3D Bilgi Kartlarına erişmek için oturum açmanız gerekmektedir.
+          OPTIMIZATION LIFE platformunda yer alan <strong>260+ Gömülü Soru Bankası</strong> (Matematik, Oxford İngilizce & İleri Seviye SQL), 3D Bilgi Kartları ve Çalışma Günlüğüne erişmek için oturum açmanız gerekmektedir.
         </p>
 
         {/* Feature Highlights Grid */}

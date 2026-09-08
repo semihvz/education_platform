@@ -44,7 +44,7 @@ export const Header: React.FC<HeaderProps> = ({
               <Brain className="brain-svg" />
             </div>
             <div className="brand-text">
-              <h1 className="title">Optimizasyon<span className="ai-badge">AI</span></h1>
+              <h1 className="title">OPTIMIZATION<span className="ai-badge">LIFE</span></h1>
               <p className="subtitle">Öğrenme & Soru Platformu</p>
             </div>
           </div>
