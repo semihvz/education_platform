@@ -16,7 +16,8 @@ import {
   Mic, 
   Square, 
   Clock,
-  Volume2
+  Volume2,
+  Camera
 } from 'lucide-react';
 import type { JournalEntry, HourlyLogEntry } from '../types/quiz';
 import { 
@@ -27,6 +28,7 @@ import {
   addHourlyLog,
   deleteHourlyLog
 } from '../services/storageService';
+import { CameraCaptureModal } from './CameraCaptureModal';
 
 const getEmbedVideoUrl = (url: string) => {
   if (url.includes('youtube.com/watch?v=')) {
@@ -81,6 +83,23 @@ export const DailyJournalView: React.FC = () => {
   const [showForm, setShowForm] = useState(false);
   const [activeZoomImage, setActiveZoomImage] = useState<string | null>(null);
   const [saveSuccessToast, setSaveSuccessToast] = useState(false);
+
+  // Camera Modal State
+  const [showCameraModal, setShowCameraModal] = useState(false);
+  const [cameraTarget, setCameraTarget] = useState<'daily' | 'hourly'>('daily');
+
+  const handleOpenCamera = (target: 'daily' | 'hourly') => {
+    setCameraTarget(target);
+    setShowCameraModal(true);
+  };
+
+  const handleCameraCapture = (imageDataUrl: string) => {
+    if (cameraTarget === 'daily') {
+      setPhotoUrl(imageDataUrl);
+    } else {
+      setHourlyImageUrl(imageDataUrl);
+    }
+  };
 
   useEffect(() => {
     setEntries(loadJournalEntries());
@@ -465,22 +484,36 @@ export const DailyJournalView: React.FC = () => {
 
                 {/* Photo Upload Section */}
                 <div className="form-group photo-upload-group">
-                  <label className="form-label">📷 Attach Photo (Question / Notes / Workspace)</label>
+                  <label className="form-label">📷 Attach Photo (Fotoğraf Çek veya Yükle)</label>
                   
                   {!photoUrl ? (
-                    <div className="photo-dropzone">
-                      <input
-                        type="file"
-                        accept="image/*"
-                        id="journal-photo-input"
-                        className="hidden-file-input"
-                        onChange={handleImageUpload}
-                      />
-                      <label htmlFor="journal-photo-input" className="photo-upload-label">
-                        <ImageIcon className="upload-icon" />
-                        <span className="upload-title">Select or Drop Photo</span>
-                        <span className="upload-hint">PNG, JPG or WEBP (Max 8 MB)</span>
-                      </label>
+                    <div className="photo-dropzone-box">
+                      <div className="camera-trigger-bar">
+                        <button
+                          type="button"
+                          className="take-photo-btn"
+                          onClick={() => handleOpenCamera('daily')}
+                        >
+                          <Camera className="btn-icon" />
+                          <span>📸 Canlı Kamera İle Fotoğraf Çek</span>
+                        </button>
+                      </div>
+
+                      <div className="photo-dropzone margin-top-sm">
+                        <input
+                          type="file"
+                          accept="image/*"
+                          capture="environment"
+                          id="journal-photo-input"
+                          className="hidden-file-input"
+                          onChange={handleImageUpload}
+                        />
+                        <label htmlFor="journal-photo-input" className="photo-upload-label">
+                          <ImageIcon className="upload-icon" />
+                          <span className="upload-title">Galeriden veya Cihazdan Fotoğraf Seç</span>
+                          <span className="upload-hint">PNG, JPG veya WEBP (Maksimum 8 MB)</span>
+                        </label>
+                      </div>
                     </div>
                   ) : (
                     <div className="photo-preview-container">
@@ -863,22 +896,36 @@ export const DailyJournalView: React.FC = () => {
 
                 {/* Photo / Image Attachment Section */}
                 <div className="form-group photo-upload-group">
-                  <label className="form-label">📷 Attach Hourly Photo (Question / Notes Image)</label>
+                  <label className="form-label">📷 Attach Hourly Photo (Saatlik Görsel veya Fotoğraf Çek)</label>
                   
                   {!hourlyImageUrl ? (
-                    <div className="photo-dropzone">
-                      <input
-                        type="file"
-                        accept="image/*"
-                        id="hourly-photo-input"
-                        className="hidden-file-input"
-                        onChange={handleHourlyImageUpload}
-                      />
-                      <label htmlFor="hourly-photo-input" className="photo-upload-label">
-                        <ImageIcon className="upload-icon text-indigo" />
-                        <span className="upload-title">Select Hourly Image</span>
-                        <span className="upload-hint">PNG, JPG or WEBP (Max 8 MB)</span>
-                      </label>
+                    <div className="photo-dropzone-box">
+                      <div className="camera-trigger-bar">
+                        <button
+                          type="button"
+                          className="take-photo-btn"
+                          onClick={() => handleOpenCamera('hourly')}
+                        >
+                          <Camera className="btn-icon" />
+                          <span>📸 Canlı Kamera İle Fotoğraf Çek</span>
+                        </button>
+                      </div>
+
+                      <div className="photo-dropzone margin-top-sm">
+                        <input
+                          type="file"
+                          accept="image/*"
+                          capture="environment"
+                          id="hourly-photo-input"
+                          className="hidden-file-input"
+                          onChange={handleHourlyImageUpload}
+                        />
+                        <label htmlFor="hourly-photo-input" className="photo-upload-label">
+                          <ImageIcon className="upload-icon text-indigo" />
+                          <span className="upload-title">Galeriden Saatlik Görsel Seç</span>
+                          <span className="upload-hint">PNG, JPG veya WEBP (Maksimum 8 MB)</span>
+                        </label>
+                      </div>
                     </div>
                   ) : (
                     <div className="photo-preview-container">
@@ -1009,6 +1056,13 @@ export const DailyJournalView: React.FC = () => {
           </div>
         </div>
       )}
+
+      {/* Live Web Camera Capture Modal */}
+      <CameraCaptureModal
+        isOpen={showCameraModal}
+        onClose={() => setShowCameraModal(false)}
+        onCapture={handleCameraCapture}
+      />
     </div>
   );
 };
