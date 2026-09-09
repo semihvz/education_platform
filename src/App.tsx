@@ -239,8 +239,6 @@ export function App() {
               )}
             </>
           )}
-          {/* Bottom spacing clearance to ensure content is never cut off by mobile nav */}
-          <div className="bottom-scroll-spacer" style={{ height: '80px', flexShrink: 0, width: '100%' }} />
         </main>
 
         {/* Modals inside mobile frame */}
