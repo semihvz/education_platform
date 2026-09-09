@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 /* ==========================================================================
-   Pure Minimal HTML & CSS Design Tokens
+   Single Pure Pitch Black Theme Tokens
    ========================================================================== */
-:root {
+:root, [data-theme='light'], [data-theme='dark'] {
   --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --font-heading: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --font-serif: Georgia, serif;
 
-  /* Plain Black & White Tokens */
+  /* Strict Pitch Black Tokens */
   --bg-primary: #000000;
   --bg-secondary: #0a0a0a;
   --bg-card: #000000;
@@ -45,29 +45,6 @@
   --radius-full: 2px;
 }
 
-/* Light Theme Variables (Plain White HTML) */
-[data-theme='light'] {
-  --bg-primary: #ffffff;
-  --bg-secondary: #fafafa;
-  --bg-card: #ffffff;
-  --bg-card-hover: #f0f0f0;
-  --border-color: #d1d1d1;
-  --border-subtle: #e5e5e5;
-  --border-glow: #000000;
-
-  --text-main: #000000;
-  --text-muted: #666666;
-  --text-dim: #888888;
-
-  --primary-indigo: #000000;
-  --primary-violet: #222222;
-  --primary-pink: #333333;
-  --primary-gold: #000000;
-  --gradient-primary: #000000;
-
-  --shadow-card: none;
-}
-
 /* Global Reset */
 * {
   box-sizing: border-box;
@@ -78,8 +55,8 @@
 
 body {
   font-family: var(--font-family);
-  background-color: var(--bg-primary);
-  color: var(--text-main);
+  background-color: #000000 !important;
+  color: #ffffff !important;
   min-height: 100vh;
   overflow-x: hidden;
   line-height: 1.5;
@@ -94,25 +71,21 @@ svg {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: #000000 !important;
 }
 
 /* ==========================================================================
    Mobile-First Dedicated App Shell
    ========================================================================== */
-.mobile-app-wrapper {
+.mobile-app-wrapper, [data-theme='light'] .mobile-app-wrapper {
   min-height: 100vh;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #000000;
+  background-color: #000000 !important;
   background-image: none !important;
   padding: 1rem 0;
-}
-
-[data-theme='light'] .mobile-app-wrapper {
-  background-color: #eeeeee;
-  background-image: none !important;
 }
 
 .mobile-phone-shell {

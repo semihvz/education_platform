@@ -8,7 +8,6 @@ import {
   Bookmark, 
   Settings, 
   Moon, 
-  Sun, 
   BarChart2, 
   Layers, 
   BookOpen, 
@@ -35,11 +34,11 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({
   stats,
-  settings,
+  settings: _settings,
   currentUser,
   activeMode,
   onSwitchMode,
-  onUpdateSettings,
+  onUpdateSettings: _onUpdateSettings,
   onOpenSettings,
   onOpenBookmarks,
   onOpenStats,
@@ -47,11 +46,6 @@ export const Header: React.FC<HeaderProps> = ({
   onLogout,
 }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
-
-  const toggleTheme = () => {
-    const nextTheme = settings.theme === 'dark' ? 'light' : 'dark';
-    onUpdateSettings({ ...settings, theme: nextTheme });
-  };
 
   const handleNavClick = (action: () => void) => {
     action();
@@ -238,21 +232,13 @@ export const Header: React.FC<HeaderProps> = ({
                 </div>
               </button>
 
-              <button 
-                className="drawer-nav-item"
-                onClick={toggleTheme}
-              >
-                {settings.theme === 'dark' ? (
-                  <Sun className="drawer-item-icon text-amber" />
-                ) : (
-                  <Moon className="drawer-item-icon" />
-                )}
+              <div className="drawer-nav-item">
+                <Moon className="drawer-item-icon text-indigo" />
                 <div className="drawer-item-meta">
-                  <span className="item-title">
-                    {settings.theme === 'dark' ? '☀️ Aydınlık Temaya Geç' : '🌙 Karanlık Temaya Geç'}
-                  </span>
+                  <span className="item-title">🖤 Tema: Tek Siyah (Pitch Black)</span>
+                  <span className="item-sub">Sadece Koyu Siyah Tema Aktif</span>
                 </div>
-              </button>
+              </div>
             </div>
 
             {/* Drawer Footer */}
