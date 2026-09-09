@@ -1,71 +1,71 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 /* ==========================================================================
-   BlackRock Institutional Design Tokens & Variables
+   Pure Minimal HTML & CSS Design Tokens
    ========================================================================== */
 :root {
-  --font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-heading: 'Outfit', 'Playfair Display', system-ui, sans-serif;
-  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-heading: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-serif: Georgia, serif;
 
-  /* BlackRock Onyx Dark Theme (Default) */
+  /* Plain Black & White Tokens */
   --bg-primary: #000000;
-  --bg-secondary: #09090b;
-  --bg-card: #121215;
-  --bg-card-hover: #18181b;
-  --border-color: #27272a;
-  --border-subtle: #1f1f23;
+  --bg-secondary: #0a0a0a;
+  --bg-card: #000000;
+  --bg-card-hover: #141414;
+  --border-color: #333333;
+  --border-subtle: #222222;
   --border-glow: #ffffff;
 
   --text-main: #ffffff;
-  --text-muted: #a1a1aa;
-  --text-dim: #71717a;
+  --text-muted: #888888;
+  --text-dim: #666666;
 
-  /* BlackRock Accents & High Contrast Highlights */
+  /* Simple Solid Buttons & Highlights */
   --primary-indigo: #ffffff;
-  --primary-violet: #e4e4e7;
-  --primary-pink: #d4d4d8;
-  --primary-gold: #eab308;
-  --gradient-primary: linear-gradient(180deg, #ffffff 0%, #d4d4d8 100%);
+  --primary-violet: #dddddd;
+  --primary-pink: #cccccc;
+  --primary-gold: #ffffff;
+  --gradient-primary: #ffffff;
 
   --color-success: #ffffff;
-  --color-success-bg: rgba(255, 255, 255, 0.08);
-  --color-error: #a1a1aa;
-  --color-error-bg: rgba(255, 255, 255, 0.05);
-  --color-amber: #eab308;
-  --color-cyan: #e4e4e7;
+  --color-success-bg: #111111;
+  --color-error: #888888;
+  --color-error-bg: #111111;
+  --color-amber: #ffffff;
+  --color-cyan: #ffffff;
 
-  --shadow-glow: 0 4px 20px rgba(0, 0, 0, 0.9);
-  --shadow-card: 0 10px 30px -5px rgba(0, 0, 0, 0.9);
+  --shadow-glow: none;
+  --shadow-card: none;
 
-  /* Sharp Architectural Corners (BlackRock Style) */
-  --radius-sm: 4px;
-  --radius-md: 6px;
-  --radius-lg: 8px;
-  --radius-full: 9999px;
+  /* Plain Flat Edges */
+  --radius-sm: 0px;
+  --radius-md: 2px;
+  --radius-lg: 2px;
+  --radius-full: 2px;
 }
 
-/* Light Theme Variables (BlackRock Minimalist Institutional White) */
+/* Light Theme Variables (Plain White HTML) */
 [data-theme='light'] {
   --bg-primary: #ffffff;
-  --bg-secondary: #f4f4f5;
+  --bg-secondary: #fafafa;
   --bg-card: #ffffff;
-  --bg-card-hover: #f4f4f5;
-  --border-color: #e4e4e7;
-  --border-subtle: #f4f4f5;
-  --border-glow: #09090b;
+  --bg-card-hover: #f0f0f0;
+  --border-color: #d1d1d1;
+  --border-subtle: #e5e5e5;
+  --border-glow: #000000;
 
-  --text-main: #09090b;
-  --text-muted: #52525b;
-  --text-dim: #a1a1aa;
+  --text-main: #000000;
+  --text-muted: #666666;
+  --text-dim: #888888;
 
-  --primary-indigo: #09090b;
-  --primary-violet: #18181b;
-  --primary-pink: #27272a;
-  --primary-gold: #ca8a04;
-  --gradient-primary: linear-gradient(180deg, #09090b 0%, #27272a 100%);
+  --primary-indigo: #000000;
+  --primary-violet: #222222;
+  --primary-pink: #333333;
+  --primary-gold: #000000;
+  --gradient-primary: #000000;
 
-  --shadow-card: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+  --shadow-card: none;
 }
 
 /* Global Reset */
@@ -83,10 +83,11 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   line-height: 1.5;
-  background-image: 
-    radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.03) 0%, transparent 40%),
-    radial-gradient(circle at 85% 85%, rgba(255, 255, 255, 0.02) 0%, transparent 40%);
-  background-attachment: fixed;
+  background-image: none !important;
+}
+
+svg {
+  stroke-width: 1.4px !important;
 }
 
 #root {
@@ -105,15 +106,13 @@ body {
   justify-content: center;
   align-items: center;
   background-color: #000000;
-  background-image: 
-    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+  background-image: none !important;
   padding: 1rem 0;
 }
 
 [data-theme='light'] .mobile-app-wrapper {
-  background-color: #e5e5e5;
-  background-image: 
-    radial-gradient(circle at 50% 0%, rgba(0, 0, 0, 0.05) 0%, transparent 50%);
+  background-color: #eeeeee;
+  background-image: none !important;
 }
 
 .mobile-phone-shell {
