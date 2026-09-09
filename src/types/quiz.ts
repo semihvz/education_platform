@@ -89,3 +89,13 @@ export interface JournalEntry {
   tags?: string[];
 }
 
+export interface HourlyLogEntry {
+  id: string;
+  date: string;
+  hour: string;
+  timestamp: number;
+  text: string;
+  audioUrl?: string;
+  imageUrl?: string;
+}
+

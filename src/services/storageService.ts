@@ -403,10 +403,11 @@ export const logoutUserAccount = (): void => {
   saveActiveUserSession(null);
 };
 
-// JOURNAL STORAGE HANDLERS
-import type { JournalEntry } from '../types/quiz';
+// JOURNAL & HOURLY LOG STORAGE HANDLERS
+import type { JournalEntry, HourlyLogEntry } from '../types/quiz';
 
 const JOURNAL_ENTRIES_KEY = 'optimizacion_ai_journal_entries';
+const HOURLY_LOGS_KEY = 'optimizacion_ai_hourly_logs';
 
 export const loadJournalEntries = (): JournalEntry[] => {
   try {
@@ -444,6 +445,46 @@ export const deleteJournalEntry = (id: string): JournalEntry[] => {
   const current = loadJournalEntries();
   const updated = current.filter(item => item.id !== id);
   saveJournalEntries(updated);
+  return updated;
+};
+
+// HOURLY LOG Persist Handlers
+export const loadHourlyLogs = (): HourlyLogEntry[] => {
+  try {
+    const raw = localStorage.getItem(HOURLY_LOGS_KEY);
+    if (!raw) return [];
+    const logs: HourlyLogEntry[] = JSON.parse(raw);
+    return logs.sort((a, b) => b.timestamp - a.timestamp);
+  } catch (e) {
+    console.error('Error loading hourly logs:', e);
+    return [];
+  }
+};
+
+export const saveHourlyLogs = (logs: HourlyLogEntry[]): void => {
+  try {
+    localStorage.setItem(HOURLY_LOGS_KEY, JSON.stringify(logs));
+  } catch (e) {
+    console.error('Error saving hourly logs:', e);
+  }
+};
+
+export const addHourlyLog = (newLog: Omit<HourlyLogEntry, 'id' | 'timestamp'>): HourlyLogEntry[] => {
+  const current = loadHourlyLogs();
+  const logWithMeta: HourlyLogEntry = {
+    ...newLog,
+    id: `hrl_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`,
+    timestamp: Date.now()
+  };
+  const updated = [logWithMeta, ...current];
+  saveHourlyLogs(updated);
+  return updated;
+};
+
+export const deleteHourlyLog = (id: string): HourlyLogEntry[] => {
+  const current = loadHourlyLogs();
+  const updated = current.filter(item => item.id !== id);
+  saveHourlyLogs(updated);
   return updated;
 };
 
