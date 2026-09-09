@@ -14,7 +14,9 @@ import {
   LogIn, 
   LogOut, 
   BookOpenCheck, 
-  CheckSquare 
+  CheckSquare,
+  Factory,
+  TrendingUp
 } from 'lucide-react';
 import type { UserStats, AppSettings, UserProfile } from '../types/quiz';
 
@@ -22,8 +24,8 @@ interface HeaderProps {
   stats: UserStats;
   settings: AppSettings;
   currentUser: UserProfile | null;
-  activeMode: 'embedded-bank' | 'flashcards' | 'journal' | 'planner';
-  onSwitchMode: (mode: 'embedded-bank' | 'flashcards' | 'journal' | 'planner') => void;
+  activeMode: 'embedded-bank' | 'flashcards' | 'journal' | 'planner' | 'industrial-engineering' | 'trade';
+  onSwitchMode: (mode: 'embedded-bank' | 'flashcards' | 'journal' | 'planner' | 'industrial-engineering' | 'trade') => void;
   onUpdateSettings: (newSettings: AppSettings) => void;
   onOpenSettings: () => void;
   onOpenBookmarks: () => void;
@@ -191,6 +193,28 @@ export const Header: React.FC<HeaderProps> = ({
                 <div className="drawer-item-meta">
                   <span className="item-title">📋 Planlar & Yapılacaklar</span>
                   <span className="item-sub">Günlük Çalışma Hedefleri</span>
+                </div>
+              </button>
+
+              <button
+                className={`drawer-nav-item ${activeMode === 'industrial-engineering' ? 'active' : ''}`}
+                onClick={() => handleNavClick(() => onSwitchMode('industrial-engineering'))}
+              >
+                <Factory className="drawer-item-icon" />
+                <div className="drawer-item-meta">
+                  <span className="item-title">🏗️ Endüstri Mühendisliği</span>
+                  <span className="item-sub">MRP, BOM, SQL & Üretim</span>
+                </div>
+              </button>
+
+              <button
+                className={`drawer-nav-item ${activeMode === 'trade' ? 'active' : ''}`}
+                onClick={() => handleNavClick(() => onSwitchMode('trade'))}
+              >
+                <TrendingUp className="drawer-item-icon" />
+                <div className="drawer-item-meta">
+                  <span className="item-title">📈 Trade & Finansal Piyasalar</span>
+                  <span className="item-sub">Market Structure, FVG & CHoCH</span>
                 </div>
               </button>
             </div>

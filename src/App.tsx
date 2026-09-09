@@ -5,6 +5,8 @@ import { FlashcardTopicSelector } from './components/FlashcardTopicSelector';
 import { FlashcardDeckView } from './components/FlashcardDeckView';
 import { DailyJournalView } from './components/DailyJournalView';
 import { DailyPlannerView } from './components/DailyPlannerView';
+import { IndustrialEngineeringView } from './components/IndustrialEngineeringView';
+import { TradeMarketStructureView } from './components/TradeMarketStructureView';
 import { SettingsModal } from './components/SettingsModal';
 import { SavedQuestionsModal } from './components/SavedQuestionsModal';
 import { StatsDashboard } from './components/StatsDashboard';
@@ -35,8 +37,8 @@ export function App() {
   const [savedQuestions, setSavedQuestions] = useState<SavedQuestionItem[]>([]);
   const [savedFlashcards, setSavedFlashcards] = useState<SavedFlashcardItem[]>([]);
 
-  // Modes: 'embedded-bank' | 'flashcards' | 'journal' | 'planner'
-  const [activeMode, setActiveMode] = useState<'embedded-bank' | 'flashcards' | 'journal' | 'planner'>('embedded-bank');
+  // Modes: 'embedded-bank' | 'flashcards' | 'journal' | 'planner' | 'industrial-engineering' | 'trade'
+  const [activeMode, setActiveMode] = useState<'embedded-bank' | 'flashcards' | 'journal' | 'planner' | 'industrial-engineering' | 'trade'>('embedded-bank');
 
   // Embedded Question Bank State
   const [embeddedQuestions] = useState<Question[]>(() => getPreloadedQuestions());
@@ -236,6 +238,16 @@ export function App() {
               {/* 5. AREA: DAILY PLANNER & TO-DO TRACKER */}
               {activeMode === 'planner' && (
                 <DailyPlannerView />
+              )}
+
+              {/* 6. AREA: INDUSTRIAL ENGINEERING & MRP */}
+              {activeMode === 'industrial-engineering' && (
+                <IndustrialEngineeringView />
+              )}
+
+              {/* 7. AREA: FINANCIAL TRADING & MARKET STRUCTURE */}
+              {activeMode === 'trade' && (
+                <TradeMarketStructureView />
               )}
             </>
           )}

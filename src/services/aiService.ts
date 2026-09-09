@@ -1,6 +1,7 @@
 import { GoogleGenAI } from '@google/genai';
 import type { Question, Difficulty, Flashcard } from '../types/quiz';
 import { YDT_PRELOADED_QUESTIONS } from './ydtQuestionsData';
+import { LOGARITHM_100_QUESTIONS } from './logarithm100QuestionsData';
 
 // Dynamic Random Option Shuffling Engine (Fisher-Yates)
 export function shuffleQuestionOptions(question: Question): Question {
@@ -35,6 +36,9 @@ export function shuffleQuestionOptions(question: Question): Question {
 // Helper to fetch all embedded preloaded questions
 export function getPreloadedQuestions(): Question[] {
   const all: Question[] = [];
+  if (LOGARITHM_100_QUESTIONS && Array.isArray(LOGARITHM_100_QUESTIONS)) {
+    all.push(...LOGARITHM_100_QUESTIONS);
+  }
   Object.values(FALLBACK_TOPICS_DATABASE).forEach(list => {
     all.push(...list);
   });
