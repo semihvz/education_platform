@@ -1,4 +1,4 @@
-import type { AppSettings, UserStats, SavedQuestionItem, SavedFlashcardItem, Flashcard } from '../types/quiz';
+import type { AppSettings, UserStats, SavedQuestionItem, SavedFlashcardItem, Flashcard, JournalEntry, HourlyLogEntry, DailyPlanTask } from '../types/quiz';
 
 const SETTINGS_KEY = 'mindpulse_settings';
 const STATS_KEY = 'mindpulse_stats';
@@ -6,6 +6,9 @@ const SAVED_QUESTIONS_KEY = 'mindpulse_saved_questions';
 const SAVED_FLASHCARDS_KEY = 'mindpulse_saved_flashcards';
 const ACTIVE_USER_KEY = 'mindpulse_active_user';
 const USERS_LIST_KEY = 'mindpulse_users';
+const JOURNAL_ENTRIES_KEY = 'mindpulse_journal_entries';
+const HOURLY_LOGS_KEY = 'mindpulse_hourly_logs';
+const PLANNER_TASKS_KEY = 'mindpulse_planner_tasks';
 
 const DB_NAME = 'MindPulseDB';
 const DB_VERSION = 3; // Incremented for users store
@@ -404,11 +407,6 @@ export const logoutUserAccount = (): void => {
 };
 
 // JOURNAL & HOURLY LOG STORAGE HANDLERS
-import type { JournalEntry, HourlyLogEntry } from '../types/quiz';
-
-const JOURNAL_ENTRIES_KEY = 'optimizacion_ai_journal_entries';
-const HOURLY_LOGS_KEY = 'optimizacion_ai_hourly_logs';
-
 export const loadJournalEntries = (): JournalEntry[] => {
   try {
     const raw = localStorage.getItem(JOURNAL_ENTRIES_KEY);
@@ -485,6 +483,108 @@ export const deleteHourlyLog = (id: string): HourlyLogEntry[] => {
   const current = loadHourlyLogs();
   const updated = current.filter(item => item.id !== id);
   saveHourlyLogs(updated);
+  return updated;
+};
+
+// PLANNER TASKS Persist Handlers
+export const loadPlannerTasks = (): DailyPlanTask[] => {
+  try {
+    const raw = localStorage.getItem(PLANNER_TASKS_KEY);
+    if (!raw) {
+      // Default sample starter tasks for YKS student
+      const sampleTasks: DailyPlanTask[] = [
+        {
+          id: 'task_sample_1',
+          title: '30 AYT Matematik Türev Soru Çözümü',
+          subject: 'Matematik',
+          date: new Date().toISOString().split('T')[0],
+          priority: 'yuksek',
+          completed: false,
+          targetMinutes: 45,
+          category: 'soru',
+          notes: 'Hedef 25+ Doğru net çıkarmak',
+          createdAt: Date.now() - 10000
+        },
+        {
+          id: 'task_sample_2',
+          title: 'Fizik Elektrik ve Manyetizma Konu Tekrarı',
+          subject: 'Fizik',
+          date: new Date().toISOString().split('T')[0],
+          priority: 'orta',
+          completed: false,
+          targetMinutes: 60,
+          category: 'konu',
+          notes: 'Sağ el kuralı ve bobin formüllerini gözden geçir',
+          createdAt: Date.now() - 5000
+        },
+        {
+          id: 'task_sample_3',
+          title: '20 Paragraf Rutini Çözümü',
+          subject: 'Türkçe',
+          date: new Date().toISOString().split('T')[0],
+          priority: 'yuksek',
+          completed: true,
+          targetMinutes: 25,
+          category: 'soru',
+          notes: 'Zaman tutarak 20 dakikada bitirildi!',
+          createdAt: Date.now() - 2000
+        }
+      ];
+      localStorage.setItem(PLANNER_TASKS_KEY, JSON.stringify(sampleTasks));
+      return sampleTasks;
+    }
+    const tasks: DailyPlanTask[] = JSON.parse(raw);
+    return tasks.sort((a, b) => b.createdAt - a.createdAt);
+  } catch (e) {
+    console.error('Error loading planner tasks:', e);
+    return [];
+  }
+};
+
+export const savePlannerTasks = (tasks: DailyPlanTask[]): void => {
+  try {
+    localStorage.setItem(PLANNER_TASKS_KEY, JSON.stringify(tasks));
+  } catch (e) {
+    console.error('Error saving planner tasks:', e);
+  }
+};
+
+export const addPlannerTask = (newTask: Omit<DailyPlanTask, 'id' | 'createdAt' | 'completed'>): DailyPlanTask[] => {
+  const current = loadPlannerTasks();
+  const taskWithMeta: DailyPlanTask = {
+    ...newTask,
+    id: `tsk_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`,
+    completed: false,
+    createdAt: Date.now()
+  };
+  const updated = [taskWithMeta, ...current];
+  savePlannerTasks(updated);
+  return updated;
+};
+
+export const togglePlannerTask = (id: string): DailyPlanTask[] => {
+  const current = loadPlannerTasks();
+  const updated = current.map(task => {
+    if (task.id === id) {
+      return { ...task, completed: !task.completed };
+    }
+    return task;
+  });
+  savePlannerTasks(updated);
+  return updated;
+};
+
+export const deletePlannerTask = (id: string): DailyPlanTask[] => {
+  const current = loadPlannerTasks();
+  const updated = current.filter(task => task.id !== id);
+  savePlannerTasks(updated);
+  return updated;
+};
+
+export const clearCompletedPlannerTasks = (): DailyPlanTask[] => {
+  const current = loadPlannerTasks();
+  const updated = current.filter(task => !task.completed);
+  savePlannerTasks(updated);
   return updated;
 };
 

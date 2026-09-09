@@ -4,6 +4,7 @@ import { EmbeddedQuestionBankView } from './components/EmbeddedQuestionBankView'
 import { FlashcardTopicSelector } from './components/FlashcardTopicSelector';
 import { FlashcardDeckView } from './components/FlashcardDeckView';
 import { DailyJournalView } from './components/DailyJournalView';
+import { DailyPlannerView } from './components/DailyPlannerView';
 import { SettingsModal } from './components/SettingsModal';
 import { SavedQuestionsModal } from './components/SavedQuestionsModal';
 import { StatsDashboard } from './components/StatsDashboard';
@@ -34,8 +35,8 @@ export function App() {
   const [savedQuestions, setSavedQuestions] = useState<SavedQuestionItem[]>([]);
   const [savedFlashcards, setSavedFlashcards] = useState<SavedFlashcardItem[]>([]);
 
-  // 3 Modes: 'embedded-bank' | 'flashcards' | 'journal'
-  const [activeMode, setActiveMode] = useState<'embedded-bank' | 'flashcards' | 'journal'>('embedded-bank');
+  // Modes: 'embedded-bank' | 'flashcards' | 'journal' | 'planner'
+  const [activeMode, setActiveMode] = useState<'embedded-bank' | 'flashcards' | 'journal' | 'planner'>('embedded-bank');
 
   // Embedded Question Bank State
   const [embeddedQuestions] = useState<Question[]>(() => getPreloadedQuestions());
@@ -230,6 +231,11 @@ export function App() {
               {/* 4. AREA: DAILY JOURNAL SYSTEM */}
               {activeMode === 'journal' && (
                 <DailyJournalView />
+              )}
+
+              {/* 5. AREA: DAILY PLANNER & TO-DO TRACKER */}
+              {activeMode === 'planner' && (
+                <DailyPlannerView />
               )}
             </>
           )}

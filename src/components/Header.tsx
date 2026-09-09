@@ -1,13 +1,13 @@
 import React from 'react';
-import { Brain, Flame, Award, Bookmark, Settings, Moon, Sun, BarChart2, Layers, BookOpen, LogIn, LogOut, BookOpenCheck } from 'lucide-react';
+import { Brain, Flame, Award, Bookmark, Settings, Moon, Sun, BarChart2, Layers, BookOpen, LogIn, LogOut, BookOpenCheck, CheckSquare } from 'lucide-react';
 import type { UserStats, AppSettings, UserProfile } from '../types/quiz';
 
 interface HeaderProps {
   stats: UserStats;
   settings: AppSettings;
   currentUser: UserProfile | null;
-  activeMode: 'embedded-bank' | 'flashcards' | 'journal';
-  onSwitchMode: (mode: 'embedded-bank' | 'flashcards' | 'journal') => void;
+  activeMode: 'embedded-bank' | 'flashcards' | 'journal' | 'planner';
+  onSwitchMode: (mode: 'embedded-bank' | 'flashcards' | 'journal' | 'planner') => void;
   onUpdateSettings: (newSettings: AppSettings) => void;
   onOpenSettings: () => void;
   onOpenBookmarks: () => void;
@@ -119,6 +119,13 @@ export const Header: React.FC<HeaderProps> = ({
         >
           <BookOpenCheck className="nav-icon" />
           <span>Journal</span>
+        </button>
+        <button
+          className={`bottom-nav-item ${activeMode === 'planner' ? 'active' : ''}`}
+          onClick={() => onSwitchMode('planner')}
+        >
+          <CheckSquare className="nav-icon" />
+          <span>Planlar</span>
         </button>
         <button className="bottom-nav-item" onClick={onOpenBookmarks}>
           <Bookmark className="nav-icon" />

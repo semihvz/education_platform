@@ -99,3 +99,16 @@ export interface HourlyLogEntry {
   imageUrl?: string;
 }
 
+export interface DailyPlanTask {
+  id: string;
+  title: string;
+  subject: string;
+  date: string;
+  priority: 'yuksek' | 'orta' | 'dusuk';
+  completed: boolean;
+  targetMinutes?: number;
+  category?: 'soru' | 'konu' | 'deneme' | 'tekrar' | 'diger';
+  notes?: string;
+  createdAt: number;
+}
+
